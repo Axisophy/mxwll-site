@@ -64,13 +64,15 @@ export async function loadStarData(count: number = 50000): Promise<StarData> {
     const response = await fetch('/data/gaia-stars.json');
     if (response.ok) {
       const data: StarData = await response.json();
+      console.log(`Loaded ${data.count} real Gaia DR3 stars`);
       return data;
     }
-  } catch {
-    // File doesn't exist or failed to load - use mock data
+  } catch (error) {
+    console.warn('Real Gaia data not found, using mock data', error);
   }
 
   // Generate mock data
+  console.warn('Using mock star data - real Gaia data not available');
   const stars = generateMockStars(count);
   return {
     count: stars.length,
