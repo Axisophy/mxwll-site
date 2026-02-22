@@ -1,26 +1,330 @@
 @import "tailwindcss";
 
+/* ============================================
+   MXWLL Design System - CSS Custom Properties
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode Colours */
+  --bg-primary: #FAFAF8;
+  --bg-secondary: #F0EFED;
+  --bg-tertiary: #E5E4E1;
+
+  --text-primary: #1A1A18;
+  --text-secondary: #6B6B66;
+  --text-tertiary: #9B9B95;
+
+  --accent: #1A1A18;
+  --accent-hover: #3D3D38;
+
+  --border: #D8D7D4;
+  --border-light: #ECEAE7;
+
+  --surface-elevated: #FFFFFF;
+  --surface-sunken: #F0EFED;
+
+  /* Status Colours (same for both modes) */
+  --status-nominal: #22C55E;
+  --status-elevated: #EAB308;
+  --status-warning: #F97316;
+  --status-critical: #EF4444;
+  --status-offline: #6B7280;
+
+  /* Typography Scale */
+  --text-xs: 0.6875rem;   /* 11px - Input Mono metadata */
+  --text-sm: 0.8125rem;   /* 13px - Input Mono labels */
+  --text-base: 1rem;      /* 16px - NHG body */
+  --text-lg: 1.125rem;    /* 18px - Sabon article body */
+  --text-xl: 1.25rem;     /* 20px - NHG subheadings */
+  --text-2xl: 1.75rem;    /* 28px - NHG section heads */
+  --text-3xl: 2.5rem;     /* 40px - NHG page titles */
+  --text-4xl: 3.5rem;     /* 56px - NHG hero/display */
+  --text-5xl: 4.5rem;     /* 72px - NHG display large */
+
+  /* Spacing (8px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Layout */
+  --container-max: 1400px;
+  --padding-mobile: 24px;
+  --padding-tablet: 48px;
+  --padding-desktop: 64px;
+  --grid-gap: 24px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --transition-fast: 0.15s;
+  --transition-base: 0.2s;
+  --transition-slow: 0.3s;
+  --transition-visualiser: 1.5s;
 }
 
+/* Dark Mode (prep for future) */
+[data-theme="dark"] {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1E1E1E;
+
+  --text-primary: #EAEAE8;
+  --text-secondary: #8A8A85;
+  --text-tertiary: #5A5A55;
+
+  --accent: #EAEAE8;
+  --accent-hover: #FFFFFF;
+
+  --border: #2A2A28;
+  --border-light: #1E1E1C;
+
+  --surface-elevated: #1A1A1A;
+  --surface-sunken: #0E0E0E;
+}
+
+/* Tailwind v4 Theme Configuration */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Map our design tokens to Tailwind */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-sunken: var(--surface-sunken);
+
+  --color-status-nominal: var(--status-nominal);
+  --color-status-elevated: var(--status-elevated);
+  --color-status-warning: var(--status-warning);
+  --color-status-critical: var(--status-critical);
+  --color-status-offline: var(--status-offline);
+
+  /* Spacing */
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
+  --spacing-24: var(--space-24);
+  --spacing-32: var(--space-32);
+
+  /* Typography */
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-4xl: var(--text-4xl);
+  --font-size-5xl: var(--text-5xl);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Border Radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Mobile Typography Adjustments */
+@media (max-width: 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --text-3xl: 1.75rem;  /* 28px on mobile (30% reduction) */
+    --text-4xl: 2.5rem;   /* 40px on mobile */
+    --text-5xl: 3.15rem;  /* 50px on mobile */
   }
 }
 
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-nhg, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  transition: background-color var(--transition-base) ease, color var(--transition-base) ease;
+}
+
+/* Typography Base Classes */
+.font-nhg {
+  font-family: var(--font-nhg, "Helvetica Neue", Arial, sans-serif);
+}
+
+.font-sabon {
+  font-family: var(--font-sabon, Georgia, "Times New Roman", serif);
+  line-height: 1.6;
+}
+
+.font-input {
+  font-family: var(--font-input, Menlo, Monaco, monospace);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Heading defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-nhg, "Helvetica Neue", Arial, sans-serif);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+/* Button Base Style */
+.btn {
+  font-family: var(--font-nhg, "Helvetica Neue", Arial, sans-serif);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  transition: all var(--transition-base) ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Control Panel (always dark) */
+.control-panel {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-family: var(--font-input, Menlo, Monaco, monospace);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.control-panel label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.control-panel input[type="range"] {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1px;
+  outline: none;
+}
+
+.control-panel input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.control-panel input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Work Card */
+.work-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-base) ease;
+}
+
+.work-card:hover {
+  border-color: var(--border);
+}
+
+.work-card video,
+.work-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--padding-mobile);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--padding-desktop);
+  }
+}
+
+/* Utility: Tabular Numbers */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-primary);
 }
