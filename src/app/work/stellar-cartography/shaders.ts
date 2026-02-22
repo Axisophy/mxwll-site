@@ -22,9 +22,8 @@ void main() {
     // Apply pan and zoom
     pos = (pos + u_pan) * u_zoom;
 
-    // Aspect ratio correction
-    float aspect = u_resolution.x / u_resolution.y;
-    pos.x /= aspect;
+    // No aspect correction needed - positions already normalized to [-1, 1]
+    // The viewport naturally handles aspect ratio
 
     gl_Position = vec4(pos, 0.0, 1.0);
 

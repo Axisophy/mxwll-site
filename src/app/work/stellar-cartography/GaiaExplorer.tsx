@@ -86,6 +86,8 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [demoMode, setDemoMode] = useState(propDemoMode);
   const [currentTransition, setCurrentTransition] = useState(0);
+  // Debug state
+  const [debugInfo, setDebugInfo] = useState({ canvasW: 0, canvasH: 0, dpr: 1, aspect: 1 });
 
   // WebGL refs
   const glRef = useRef<WebGL2RenderingContext | null>(null);
@@ -98,7 +100,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
   const transitionStartRef = useRef(0);
   const transitionStartValueRef = useRef(0);
   const isTransitioningRef = useRef(false);
-  const zoomRef = useRef(0.95); // Start slightly zoomed out to fill wide screens
+  const zoomRef = useRef(1.0);
   const panRef = useRef<[number, number]>([0, 0]);
   const pointScaleRef = useRef(1.0);
   const transitionSpeedRef = useRef(1.0);
@@ -148,7 +150,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
   // Reset view
   const resetView = useCallback(() => {
-    zoomRef.current = 0.95;
+    zoomRef.current = 1.0;
     panRef.current = [0, 0];
   }, []);
 
@@ -179,8 +181,8 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
       if (!d) {
         // Starting demo mode
         demoStartTimeRef.current = performance.now();
-        demoDriftStartZoomRef.current = 0.95;
-        zoomRef.current = 0.95;
+        demoDriftStartZoomRef.current = 1.0;
+        zoomRef.current = 1.0;
         panRef.current = [0, 0];
         transitionRef.current = 0;
         targetTransitionRef.current = 0;
@@ -296,6 +298,8 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
       canvas.style.width = `${rect.width}px`;
       canvas.style.height = `${rect.height}px`;
       gl.viewport(0, 0, W, H);
+      // Update debug info
+      setDebugInfo({ canvasW: W, canvasH: H, dpr, aspect: W / H });
     }
 
     const resizeObserver = new ResizeObserver(handleResize);
@@ -333,15 +337,15 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
         switch (currentStep.action) {
           case 'reset':
-            zoomRef.current = 0.95;
+            zoomRef.current = 1.0;
             panRef.current = [0, 0];
             transitionRef.current = 0;
-            demoDriftStartZoomRef.current = 0.95;
+            demoDriftStartZoomRef.current = 1.0;
             break;
           case 'start_drift':
-            // Drift zoom from 0.95 to 1.1 over 3 seconds
+            // Drift zoom from 1.0 to 1.15 over 3 seconds
             const driftProgress = Math.min((elapsed - 500) / 3000, 1);
-            zoomRef.current = lerp(0.95, 1.1, driftProgress);
+            zoomRef.current = lerp(1.0, 1.15, driftProgress);
             break;
           case 'transition_to_hr':
             if (!isTransitioningRef.current && transitionRef.current < 0.99) {
@@ -361,7 +365,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
             break;
           case 'loop':
             demoStartTimeRef.current = now;
-            zoomRef.current = 0.95;
+            zoomRef.current = 1.0;
             panRef.current = [0, 0];
             transitionRef.current = 0;
             isTransitioningRef.current = false;
@@ -424,9 +428,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
       if (demoModeRef.current || disableInteraction) return;
       e.preventDefault();
       const zoomDelta = e.deltaY > 0 ? 0.9 : 1.1;
-      const MIN_ZOOM = 0.7; // Allow some zoom out for aspect ratio correction
-      const MAX_ZOOM = 20;
-      zoomRef.current = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomRef.current * zoomDelta));
+      zoomRef.current = Math.max(1.0, Math.min(20, zoomRef.current * zoomDelta));
     };
 
     // Clamp pan to keep content visible
@@ -460,7 +462,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
     const onDblClick = () => {
       if (demoModeRef.current || disableInteraction) return;
-      zoomRef.current = 0.95;
+      zoomRef.current = 1.0;
       panRef.current = [0, 0];
     };
 
@@ -549,6 +551,19 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
   return (
     <div ref={containerRef} className={`relative bg-[#050508] overflow-hidden ${className}`}>
       <canvas ref={canvasRef} className='block w-full h-full cursor-crosshair' />
+
+      {/* TEMPORARY DEBUG - remove when fixed */}
+      {propShowControls && (
+        <div className='absolute top-0 left-0 text-[10px] font-mono text-red-500 z-50 bg-black/80 p-2 pointer-events-none'>
+          <div>canvas: {debugInfo.canvasW}×{debugInfo.canvasH}</div>
+          <div>dpr: {debugInfo.dpr.toFixed(2)}</div>
+          <div>zoom: {zoomRef.current.toFixed(2)}</div>
+          <div>pan: [{panRef.current[0].toFixed(3)}, {panRef.current[1].toFixed(3)}]</div>
+          <div>aspect: {debugInfo.aspect.toFixed(2)}</div>
+          <div>transition: {currentTransition.toFixed(2)}</div>
+          <div>stars: {starCount}</div>
+        </div>
+      )}
 
       {/* Loading indicator */}
       {isLoading && (
