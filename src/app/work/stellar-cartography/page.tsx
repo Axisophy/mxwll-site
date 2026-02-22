@@ -30,7 +30,7 @@ export default function StellarCartographyPage() {
 
       {/* Interactive Visualiser */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
-        <div className='aspect-[16/10] bg-[#050508] overflow-hidden border border-[var(--border-light)]'>
+        <div className='aspect-square md:aspect-[16/10] bg-[#050508] overflow-hidden border border-[var(--border-light)]'>
           <GaiaExplorer className='w-full h-full' />
         </div>
         <p className='font-mono text-xs text-[var(--text-tertiary)] mt-4 max-w-2xl uppercase tracking-wider'>

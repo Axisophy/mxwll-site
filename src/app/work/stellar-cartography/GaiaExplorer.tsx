@@ -8,6 +8,7 @@ interface GaiaExplorerProps {
   className?: string;
   demoMode?: boolean;
   showControls?: boolean;
+  disableInteraction?: boolean; // For homepage embed
 }
 
 // Easing function for smooth transitions
@@ -67,7 +68,7 @@ const DEMO_STEPS = [
   { at: 15000, action: 'loop' },
 ];
 
-export default function GaiaExplorer({ className, demoMode: propDemoMode = false, showControls: propShowControls = true }: GaiaExplorerProps) {
+export default function GaiaExplorer({ className, demoMode: propDemoMode = false, showControls: propShowControls = true, disableInteraction = false }: GaiaExplorerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
@@ -233,7 +234,11 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
     let starCountLocal = 0;
 
     // Load star data and set up buffers
-    loadStarData(50000).then((data) => {
+    // Reduce star count on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    const targetStarCount = isMobile ? 25000 : 50000;
+
+    loadStarData(targetStarCount).then((data) => {
       const buffers = prepareStarBuffers(data.stars);
       starCountLocal = buffers.count;
       setStarCount(buffers.count);
@@ -282,7 +287,8 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
     function handleResize() {
       if (!container || !canvas || !gl) return;
       const rect = container.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
+      // Cap DPR at 2 for mobile performance
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = Math.floor(rect.width * dpr);
       H = Math.floor(rect.height * dpr);
       canvas.width = W;
@@ -390,7 +396,8 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
       // Set uniforms
       const uniforms = uniformsRef.current;
-      const dpr = window.devicePixelRatio || 1;
+      // Cap DPR at 2 for mobile performance
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       gl.uniform1f(uniforms.u_transition, transitionRef.current);
       gl.uniform2f(uniforms.u_pan, panRef.current[0], panRef.current[1]);
       gl.uniform1f(uniforms.u_zoom, zoomRef.current);
@@ -412,29 +419,38 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
       setFps(avgFps);
     }, 500);
 
-    // Mouse interactions (disabled during demo mode)
+    // Mouse interactions (disabled during demo mode or when interaction disabled)
     const onWheel = (e: WheelEvent) => {
-      if (demoModeRef.current) return;
+      if (demoModeRef.current || disableInteraction) return;
       e.preventDefault();
       const zoomDelta = e.deltaY > 0 ? 0.9 : 1.1;
-      zoomRef.current *= zoomDelta;
-      zoomRef.current = Math.max(0.5, Math.min(20, zoomRef.current));
+      const MIN_ZOOM = 1.0; // Never zoom out smaller than container
+      const MAX_ZOOM = 20;
+      zoomRef.current = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomRef.current * zoomDelta));
+    };
+
+    // Clamp pan to keep content visible
+    const clampPan = () => {
+      const maxPan = Math.max(0, (zoomRef.current - 1) / zoomRef.current);
+      panRef.current[0] = Math.max(-maxPan, Math.min(maxPan, panRef.current[0]));
+      panRef.current[1] = Math.max(-maxPan, Math.min(maxPan, panRef.current[1]));
     };
 
     const onMouseDown = (e: MouseEvent) => {
-      if (demoModeRef.current) return;
+      if (demoModeRef.current || disableInteraction) return;
       isDraggingRef.current = true;
       lastMouseRef.current = [e.clientX, e.clientY];
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      if (demoModeRef.current) return;
+      if (demoModeRef.current || disableInteraction) return;
       if (!isDraggingRef.current) return;
       const rect = canvas.getBoundingClientRect();
       const dx = ((e.clientX - lastMouseRef.current[0]) / rect.width) * 2 / zoomRef.current;
       const dy = (-(e.clientY - lastMouseRef.current[1]) / rect.height) * 2 / zoomRef.current;
       panRef.current[0] += dx;
       panRef.current[1] += dy;
+      clampPan();
       lastMouseRef.current = [e.clientX, e.clientY];
     };
 
@@ -443,14 +459,14 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
     };
 
     const onDblClick = () => {
-      if (demoModeRef.current) return;
+      if (demoModeRef.current || disableInteraction) return;
       zoomRef.current = 1;
       panRef.current = [0, 0];
     };
 
     // Touch interactions
     const onTouchStart = (e: TouchEvent) => {
-      if (demoModeRef.current) return;
+      if (demoModeRef.current || disableInteraction) return;
       if (e.touches.length === 1) {
         isDraggingRef.current = true;
         lastMouseRef.current = [e.touches[0].clientX, e.touches[0].clientY];
@@ -458,14 +474,16 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (demoModeRef.current) return;
-      e.preventDefault();
+      if (demoModeRef.current || disableInteraction) return;
+      // Only prevent default if we're actually dragging (not scrolling)
       if (!isDraggingRef.current || e.touches.length !== 1) return;
+      e.preventDefault();
       const rect = canvas.getBoundingClientRect();
       const dx = ((e.touches[0].clientX - lastMouseRef.current[0]) / rect.width) * 2 / zoomRef.current;
       const dy = (-(e.touches[0].clientY - lastMouseRef.current[1]) / rect.height) * 2 / zoomRef.current;
       panRef.current[0] += dx;
       panRef.current[1] += dy;
+      clampPan();
       lastMouseRef.current = [e.touches[0].clientX, e.touches[0].clientY];
     };
 
@@ -545,7 +563,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
           className='absolute inset-0 pointer-events-none'
           style={{ opacity: annotationOpacity, transition: 'opacity 0.3s ease' }}
         >
-          {HR_ANNOTATIONS.map((ann) => (
+          {HR_ANNOTATIONS.filter((ann) => !ann.isSun).map((ann) => (
             <div
               key={ann.id}
               className='absolute'
@@ -555,55 +573,40 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
                 transform: `translate(-50%, -50%) rotate(${ann.rotate}deg)`,
               }}
             >
-              {ann.isSun ? (
-                <div className='flex items-center gap-2'>
-                  <div
-                    className='w-[10px] h-[10px] rounded-full'
-                    style={{ border: '1px solid rgba(255, 200, 50, 0.6)' }}
-                  />
-                  <span
-                    className='font-mono text-[10px] uppercase tracking-[0.08em]'
-                    style={{ color: 'rgba(255, 200, 50, 0.7)' }}
-                  >
-                    SUN
-                  </span>
+              <div className='text-center'>
+                <div
+                  className='font-mono text-[11px] md:text-[10px] uppercase tracking-[0.08em]'
+                  style={{ color: 'rgba(255, 255, 255, 0.55)' }}
+                >
+                  {ann.label}
                 </div>
-              ) : (
-                <div className='text-center'>
+                {ann.description && (
                   <div
-                    className='font-mono text-[10px] uppercase tracking-[0.08em]'
-                    style={{ color: 'rgba(255, 255, 255, 0.55)' }}
+                    className='hidden md:block text-[9px] tracking-[0.02em] mt-0.5'
+                    style={{ color: 'rgba(255, 255, 255, 0.30)' }}
                   >
-                    {ann.label}
+                    {ann.description}
                   </div>
-                  {ann.description && (
-                    <div
-                      className='text-[9px] tracking-[0.02em] mt-0.5'
-                      style={{ color: 'rgba(255, 255, 255, 0.30)' }}
-                    >
-                      {ann.description}
-                    </div>
-                  )}
-                </div>
-              )}
+                )}
+              </div>
             </div>
           ))}
 
-          {/* Axis labels */}
+          {/* Axis labels - hidden on mobile */}
           <div
-            className='absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
             style={{ left: '10%', bottom: '4%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             HOT (BLUE)
           </div>
           <div
-            className='absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
             style={{ right: '10%', bottom: '4%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             COOL (RED)
           </div>
           <div
-            className='absolute font-mono text-[10px] tracking-[0.08em]'
+            className='hidden md:block absolute font-mono text-[10px] tracking-[0.08em]'
             style={{
               left: '50%',
               bottom: '4%',
@@ -614,13 +617,13 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
             SURFACE TEMPERATURE
           </div>
           <div
-            className='absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
             style={{ left: '3%', top: '10%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             BRIGHTER
           </div>
           <div
-            className='absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
             style={{ left: '3%', bottom: '10%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             DIMMER
@@ -727,23 +730,12 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
         </div>
       )}
 
-      {/* Mobile toggle button */}
+      {/* Mobile controls - bottom sheet */}
       {!demoMode && propShowControls && (
-        <button
-          className='lg:hidden fixed bottom-4 right-4 z-20 w-10 h-10 rounded-full flex items-center justify-center control-panel'
-          onClick={() => setMobileControlsOpen(!mobileControlsOpen)}
-        >
-          ★
-        </button>
-      )}
-
-      {/* Mobile controls panel */}
-      {!demoMode && propShowControls && mobileControlsOpen && (
-        <div
-          className='lg:hidden fixed bottom-16 right-4 left-4 z-20 control-panel'
-        >
-          <div className='space-y-3'>
-            <div className='flex gap-2'>
+        <div className='lg:hidden fixed bottom-0 left-0 right-0 z-20 control-panel'>
+          {/* Always visible controls */}
+          <div className='px-4 py-3 border-t border-white/10'>
+            <div className='flex gap-2 mb-2'>
               <button
                 className={`flex-1 px-3 py-2 text-[10px] border border-white/20 transition-all
                   ${view === 'sky' ? 'bg-white/10' : ''}`}
@@ -760,21 +752,65 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
               </button>
             </div>
             <button
-              className='w-full px-3 py-2.5 text-[10px] border border-white/20'
-              onClick={() => {
-                playFullTransition();
-                setMobileControlsOpen(false);
-              }}
+              className='w-full px-3 py-2.5 text-[10px] border border-white/20 transition-all'
+              onClick={playFullTransition}
+              disabled={isTransitioning}
             >
               {isTransitioning ? 'TRANSITIONING...' : 'TRANSITION'}
             </button>
-            <button
-              className='w-full px-2 py-1.5 text-[9px] border border-white/20'
-              onClick={resetView}
-            >
-              RESET VIEW
-            </button>
           </div>
+
+          {/* Expandable controls */}
+          {mobileControlsOpen && (
+            <div className='px-4 pb-3 border-t border-white/10 space-y-2'>
+              <div>
+                <div className='flex justify-between items-baseline mb-1'>
+                  <label className='text-[9px]'>SPEED</label>
+                  <span className='text-[9px] tabular-nums'>{transitionSpeed.toFixed(1)}×</span>
+                </div>
+                <input
+                  type='range'
+                  className='w-full'
+                  min={0.5}
+                  max={3}
+                  step={0.1}
+                  value={transitionSpeed}
+                  onChange={(e) => setTransitionSpeed(parseFloat(e.target.value))}
+                />
+              </div>
+              <div>
+                <div className='flex justify-between items-baseline mb-1'>
+                  <label className='text-[9px]'>POINT SIZE</label>
+                  <span className='text-[9px] tabular-nums'>{pointScale.toFixed(1)}×</span>
+                </div>
+                <input
+                  type='range'
+                  className='w-full'
+                  min={0.5}
+                  max={2}
+                  step={0.1}
+                  value={pointScale}
+                  onChange={(e) => setPointScale(parseFloat(e.target.value))}
+                />
+              </div>
+              <button
+                className='w-full px-2 py-1.5 text-[9px] border border-white/20'
+                onClick={resetView}
+              >
+                RESET VIEW
+              </button>
+            </div>
+          )}
+
+          {/* Expand/collapse toggle */}
+          <button
+            className='w-full py-1 border-t border-white/10 flex items-center justify-center'
+            onClick={() => setMobileControlsOpen(!mobileControlsOpen)}
+          >
+            <span className='text-[10px] text-white/40'>
+              {mobileControlsOpen ? '▼' : '▲'} {mobileControlsOpen ? 'HIDE' : 'MORE'}
+            </span>
+          </button>
         </div>
       )}
     </div>
