@@ -1,3 +1,5 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 
 const GaiaExplorer = dynamic(() => import('./work/stellar-cartography/GaiaExplorer'), { ssr: false })
