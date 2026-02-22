@@ -7,6 +7,13 @@ import WorkFilter from '@/components/WorkFilter'
 // Sample work data - will be replaced with CMS/database later
 const allWork = [
   {
+    title: 'Stellar Cartography',
+    description: '50,000 stars from the Gaia catalogue, animated between sky view and HR diagram.',
+    category: 'VISUALISERS',
+    year: '2026',
+    slug: 'stellar-cartography',
+  },
+  {
     title: 'Lorenz Attractor Visualisation',
     description: 'An interactive exploration of chaotic systems through the classic Lorenz attractor.',
     category: 'VISUALISERS',
