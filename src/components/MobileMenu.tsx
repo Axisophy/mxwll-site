@@ -40,23 +40,20 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   return (
     <div
       className={`
-        fixed inset-0 z-40 bg-[var(--bg-primary)]
-        transition-all duration-300 ease-in-out
+        fixed inset-0 z-40 bg-white
+        transition-opacity duration-300
         md:hidden
         ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
       `}
-      style={{
-        top: '0',
-        paddingTop: 'calc(var(--space-16) + 40px)', // Account for header height
-      }}
+      style={{ top: '57px' }}
     >
-      <nav className="container flex flex-col items-center justify-center gap-8 h-full pb-32">
+      <nav className="flex flex-col items-center justify-center h-full gap-8 px-4">
         {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className={`
-              text-[32px] font-medium transition-colors
+              font-display text-3xl transition-colors
               ${
                 pathname === link.href
                   ? 'text-[var(--text-primary)]'

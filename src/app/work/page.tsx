@@ -68,31 +68,32 @@ export default function WorkPage() {
       : allWork.filter((work) => work.category === activeCategory)
 
   return (
-    <div className="min-h-screen py-16">
-      <div className="container">
-        {/* Large typographic filter */}
+    <>
+      {/* Filter Section */}
+      <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
         <WorkFilter
           categories={categories}
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
         />
+      </section>
 
-        {/* Work grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredWork.map((work) => (
-            <WorkCard key={work.slug} {...work} />
-          ))}
-        </div>
-
-        {/* No results message */}
-        {filteredWork.length === 0 && (
-          <div className="text-center py-24">
-            <p className="text-xl text-[var(--text-secondary)]">
+      {/* Work Grid */}
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        {filteredWork.length > 0 ? (
+          <div className="grid grid-cols-1 gap-px">
+            {filteredWork.map((work) => (
+              <WorkCard key={work.slug} {...work} />
+            ))}
+          </div>
+        ) : (
+          <div className="py-24 text-center">
+            <p className="text-lg text-[var(--text-secondary)]">
               No work found in this category.
             </p>
           </div>
         )}
-      </div>
-    </div>
+      </section>
+    </>
   )
 }

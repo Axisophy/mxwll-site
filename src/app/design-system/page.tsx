@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Logo from '@/components/Logo'
 
 export default function DesignSystemPage() {
   const [copiedClass, setCopiedClass] = useState<string | null>(null)
@@ -51,8 +52,53 @@ export default function DesignSystemPage() {
   )
 
   return (
-    <div className="min-h-screen py-16">
-      <div className="container max-w-5xl">
+    <div className="min-h-screen py-16 px-4 md:px-8 lg:px-12">
+        {/* Header Elements */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-8">Header</h2>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-medium mb-6">Logo</h3>
+            <div className="space-y-8 p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <div className="space-y-2">
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">HEADER SIZE (H-10)</p>
+                <Logo className="h-10 w-auto text-[var(--text-primary)]" />
+              </div>
+              <div className="space-y-2">
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">MOBILE SIZE (H-6)</p>
+                <Logo className="h-6 w-auto text-[var(--text-primary)]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-medium mb-6">Studio Description</h3>
+            <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+                MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
+                <br />
+                We don't simplify. We clarify.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-medium mb-6">Navigation Structure</h3>
+            <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <div className="flex flex-wrap gap-6 text-sm">
+                <span className="text-[var(--text-primary)]">Work</span>
+                <span className="text-[var(--text-secondary)]">Lab</span>
+                <span className="text-[var(--text-secondary)]">Method</span>
+                <span className="text-[var(--text-secondary)]">About</span>
+                <span className="text-[var(--text-secondary)]">Contact</span>
+              </div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
+                ACTIVE STATE: PRIMARY · INACTIVE: SECONDARY
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Header */}
         <div className="mb-16 pb-8 border-b border-[var(--border)]">
           <h1 className="text-4xl md:text-5xl font-medium mb-4">Design System</h1>
@@ -349,7 +395,6 @@ export default function DesignSystemPage() {
             </div>
           </div>
         </section>
-      </div>
     </div>
   )
 }

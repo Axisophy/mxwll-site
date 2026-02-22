@@ -30,7 +30,7 @@ export default function WorkCard({
   return (
     <Link
       href={`/work/${slug}`}
-      className="work-card block group"
+      className="block group border border-black/10 overflow-hidden transition-colors hover:border-black/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -65,18 +65,13 @@ export default function WorkCard({
 
       {/* Content */}
       <div className="p-6">
-        <h3
-          className={`
-            font-medium mb-2 group-hover:text-[var(--accent-hover)] transition-colors
-            ${featured ? 'text-2xl' : 'text-xl'}
-          `}
-        >
+        <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight mb-2 group-hover:text-[var(--accent-hover)] transition-colors">
           {title}
         </h3>
-        <p className="text-base text-[var(--text-secondary)] mb-3 leading-relaxed">
+        <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-3">
           {description}
         </p>
-        <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">
+        <p className="font-mono text-xs text-[var(--text-tertiary)]">
           {category} · {year}
         </p>
       </div>

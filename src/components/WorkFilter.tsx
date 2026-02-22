@@ -14,24 +14,21 @@ export default function WorkFilter({
   onCategoryChange,
 }: WorkFilterProps) {
   return (
-    <div className="mb-16">
-      <div className="flex flex-wrap gap-4 md:gap-8">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => onCategoryChange(category)}
-            className={clsx(
-              'text-3xl md:text-4xl lg:text-5xl font-medium transition-all duration-300',
-              'hover:text-[var(--text-primary)]',
-              activeCategory === category
-                ? 'text-[var(--text-primary)]'
-                : 'text-[var(--text-tertiary)]'
-            )}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+    <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8">
+      {categories.map((category) => (
+        <button
+          key={category}
+          onClick={() => onCategoryChange(category)}
+          className={clsx(
+            'font-display text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight transition-colors',
+            activeCategory === category
+              ? 'text-[var(--text-primary)]'
+              : 'text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
+          )}
+        >
+          {category}
+        </button>
+      ))}
     </div>
   )
 }

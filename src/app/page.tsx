@@ -46,65 +46,70 @@ const recentWork = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Featured Work Section */}
-      <section className="container py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <>
+      {/* Hero Section */}
+      <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
+        <h1 className="font-display text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+          A digital laboratory for science, maths, and explanation design
+        </h1>
+        <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl">
+          We make complex things visible - through interactive visualisation, illustration, and systematic design.
+        </p>
+      </section>
+
+      {/* Featured Work */}
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <div className="grid grid-cols-1 gap-px">
           {featuredWork.map((work) => (
             <WorkCard key={work.slug} {...work} featured />
           ))}
         </div>
       </section>
 
-      {/* Recent Work Grid */}
-      <section className="container py-16">
-        <div className="mb-12">
-          <h2 className="text-3xl font-medium mb-3">Recent Work</h2>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl">
-            A selection of visualisers, illustrations, and systematic design projects.
-          </p>
-        </div>
+      {/* Recent Work */}
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-8">
+          Recent Work
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-px">
           {recentWork.map((work) => (
             <WorkCard key={work.slug} {...work} />
           ))}
         </div>
 
-        {/* View All Link */}
-        <div className="mt-12 text-center">
-          <a
-            href="/work"
-            className="inline-block btn text-base px-8 py-3"
-          >
+        <div className="mt-12">
+          <a href="/work" className="btn">
             View All Work
           </a>
         </div>
       </section>
 
       {/* Methodology Teaser */}
-      <section className="container py-24">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-medium mb-6">Explanation Design</h2>
-          <div className="font-sabon text-lg text-[var(--text-secondary)] leading-relaxed space-y-4">
-            <p>
+      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
+            Explanation Design
+          </h2>
+          <div className="space-y-4">
+            <p className="font-serif text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
               Making complex things comprehensible requires more than simplification.
               It requires building the right mental models, in the right sequence,
               with the right level of detail.
             </p>
-            <p>
+            <p className="font-serif text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
               Through systematic design, interactive visualisation, and precise
               illustration, we create experiences that help people genuinely understand
               difficult concepts.
             </p>
-          </div>
-          <div className="mt-8">
-            <a href="/method" className="btn text-base px-8 py-3">
-              Our Method
-            </a>
+            <div className="pt-4">
+              <a href="/method" className="btn">
+                Our Method
+              </a>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }
