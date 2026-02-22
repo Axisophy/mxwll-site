@@ -23,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB" className={fontClassNames}>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/qka5zju.css" />
+      </head>
       <body className="antialiased">
         <Header />
         <main>{children}</main>

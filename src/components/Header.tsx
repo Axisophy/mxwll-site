@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Logo from './Logo'
 import MobileMenu from './MobileMenu'
 
 export default function Header() {
@@ -43,9 +44,10 @@ export default function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-xl font-medium tracking-tight transition-colors hover:text-[var(--text-secondary)]"
+              className="block transition-opacity hover:opacity-70"
+              aria-label="MXWLL Home"
             >
-              MXWLL
+              <Logo className="h-6 w-auto text-[var(--text-primary)]" />
             </Link>
 
             {/* Desktop Navigation */}
