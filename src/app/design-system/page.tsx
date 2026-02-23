@@ -369,12 +369,10 @@ export default function DesignSystemPage() {
               </h3>
               <ul className="space-y-2 text-base">
                 <li>• MXWLL (always uppercase)</li>
-                <li>• the observatory (not dashboard/platform)</li>
-                <li>• widget (not module/component/tile)</li>
                 <li>• explanation design</li>
-                <li>• visualisation (British)</li>
-                <li>• colour (British)</li>
+                <li>• visualisation (British spelling)</li>
                 <li>• data visualisation</li>
+                <li>• colour (British)</li>
                 <li>• hyphens for breaks</li>
               </ul>
             </div>
