@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white border-b border-black/10">
+      <header className="w-full bg-white">
         <div className="px-4 md:px-8 lg:px-12 py-6">
           <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-20 items-start">
             {/* Logo */}

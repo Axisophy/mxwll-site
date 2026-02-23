@@ -10,22 +10,22 @@
 
 :root {
   /* Light Mode Colours (Primary) */
-  --bg-primary: #FAFAF8;
-  --bg-secondary: #F0EFED;
-  --bg-tertiary: #E5E4E1;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F5;
+  --bg-tertiary: #E5E5E5;
 
-  --text-primary: #1A1A18;
-  --text-secondary: #6B6B66;
-  --text-tertiary: #9B9B95;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
 
-  --accent: #1A1A18;
-  --accent-hover: #3D3D38;
+  --accent: #000000;
+  --accent-hover: #333333;
 
-  --border: #D8D7D4;
-  --border-light: #ECEAE7;
+  --border: #D4D4D4;
+  --border-light: #E5E5E5;
 
   --surface-elevated: #FFFFFF;
-  --surface-sunken: #F0EFED;
+  --surface-sunken: #F5F5F5;
 
   /* Status Colours (same for both modes) */
   --status-nominal: #22C55E;

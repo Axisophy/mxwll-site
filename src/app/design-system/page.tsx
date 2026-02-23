@@ -13,7 +13,8 @@ export default function DesignSystemPage() {
   }
 
   return (
-    <div className="min-h-screen py-16 px-4 md:px-8 lg:px-12">
+    <div className="min-h-screen py-16">
+      <div className="px-4 md:px-8 lg:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-24 pb-8 border-b border-[var(--border)]">
@@ -245,12 +246,12 @@ export default function DesignSystemPage() {
               <h3 className="text-xl font-medium mb-6">Light Mode</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { name: 'BG Primary', value: '#FAFAF8', var: 'var(--bg-primary)' },
-                  { name: 'BG Secondary', value: '#F0EFED', var: 'var(--bg-secondary)' },
-                  { name: 'Text Primary', value: '#1A1A18', var: 'var(--text-primary)' },
-                  { name: 'Text Secondary', value: '#6B6B66', var: 'var(--text-secondary)' },
-                  { name: 'Accent', value: '#1A1A18', var: 'var(--accent)' },
-                  { name: 'Border', value: '#D8D7D4', var: 'var(--border)' },
+                  { name: 'BG Primary', value: '#FFFFFF', var: 'var(--bg-primary)' },
+                  { name: 'BG Secondary', value: '#F5F5F5', var: 'var(--bg-secondary)' },
+                  { name: 'Text Primary', value: '#000000', var: 'var(--text-primary)' },
+                  { name: 'Text Secondary', value: '#666666', var: 'var(--text-secondary)' },
+                  { name: 'Accent', value: '#000000', var: 'var(--accent)' },
+                  { name: 'Border', value: '#D4D4D4', var: 'var(--border)' },
                 ].map(color => (
                   <div key={color.name} className="space-y-2">
                     <div
@@ -268,18 +269,19 @@ export default function DesignSystemPage() {
               <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
               <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
 {`:root {
-  --bg-primary: #FAFAF8;
-  --bg-secondary: #F0EFED;
-  --bg-tertiary: #E5E4E1;
-  --text-primary: #1A1A18;
-  --text-secondary: #6B6B66;
-  --text-tertiary: #9B9B95;
-  --accent: #1A1A18;
-  --border: #D8D7D4;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F5;
+  --bg-tertiary: #E5E5E5;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --accent: #000000;
+  --border: #D4D4D4;
 }
 
 // Never hardcode hex values
-// Always use CSS custom properties`}
+// Always use CSS custom properties
+// Status colours are Tailwind equivalents (green-500, etc.)`}
               </pre>
             </div>
           </div>
@@ -308,16 +310,18 @@ export default function DesignSystemPage() {
               </div>
               <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-4">
                 FOR VISUALISER UI ONLY - NOT BRAND COLOURS
+                <br />
+                TAILWIND EQUIVALENTS: green-500, yellow-500, orange-500, red-500, gray-500
               </p>
             </div>
             <div>
               <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
               <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`--status-nominal: #22C55E;
---status-elevated: #EAB308;
---status-warning: #F97316;
---status-critical: #EF4444;
---status-offline: #6B7280;
+{`--status-nominal: #22C55E;   /* Tailwind green-500 */
+--status-elevated: #EAB308;  /* Tailwind yellow-500 */
+--status-warning: #F97316;   /* Tailwind orange-500 */
+--status-critical: #EF4444;  /* Tailwind red-500 */
+--status-offline: #6B7280;   /* Tailwind gray-500 */
 
 // Use for lab/visualiser UI indicators
 // Not for brand/marketing contexts`}
@@ -599,7 +603,7 @@ font-input text-xs → METADATA (11px)
         </section>
 
         {/* 8. Brand Voice */}
-        <section>
+        <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
             <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">08</span>
             Brand Voice & Terminology
@@ -632,6 +636,192 @@ font-input text-xs → METADATA (11px)
             </div>
           </div>
         </section>
+
+        {/* 9. Layout & Structure */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">09</span>
+            Layout & Structure
+          </h2>
+
+          {/* Breakpoints */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Breakpoints</h3>
+              <div className="space-y-4">
+                <div className="p-4 border border-[var(--border-light)] rounded">
+                  <p className="font-input text-xs text-[var(--text-tertiary)] mb-2">MOBILE (DEFAULT)</p>
+                  <p className="text-sm text-[var(--text-secondary)]">0px - 767px</p>
+                </div>
+                <div className="p-4 border border-[var(--border-light)] rounded">
+                  <p className="font-input text-xs text-[var(--text-tertiary)] mb-2">TABLET (MD)</p>
+                  <p className="text-sm text-[var(--text-secondary)]">768px - 1023px</p>
+                </div>
+                <div className="p-4 border border-[var(--border-light)] rounded">
+                  <p className="font-input text-xs text-[var(--text-tertiary)] mb-2">DESKTOP (LG)</p>
+                  <p className="text-sm text-[var(--text-secondary)]">1024px+</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Tailwind default breakpoints
+Mobile: default (no prefix)
+Tablet: md: (min-width: 768px)
+Desktop: lg: (min-width: 1024px)
+
+// Usage examples
+className="px-4 md:px-8 lg:px-12"
+className="text-sm md:text-base lg:text-lg"
+className="hidden md:block"
+
+// Always mobile-first approach`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Container Padding */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Container Padding</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-[var(--text-tertiary)]">Mobile:</span>
+                    <span className="font-mono">16px (px-4)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[var(--text-tertiary)]">Tablet:</span>
+                    <span className="font-mono">32px (md:px-8)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[var(--text-tertiary)]">Desktop:</span>
+                    <span className="font-mono">48px (lg:px-12)</span>
+                  </div>
+                </div>
+                <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-6">
+                  HEADER, FOOTER, AND ALL PAGES USE THIS PADDING
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Standard container padding
+className="px-4 md:px-8 lg:px-12"
+
+// Applied to:
+- Header
+- Footer
+- All page content
+- Design system page
+
+// Vertical spacing
+py-6       → Header (24px top/bottom)
+py-12/16/20 → Footer responsive
+pt-24/28/32 → Page hero sections`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Body Styles */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Body & Document</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <p className="font-input text-xs text-[var(--text-tertiary)] mb-1">BACKGROUND</p>
+                    <p className="font-mono">#FFFFFF (white)</p>
+                  </div>
+                  <div>
+                    <p className="font-input text-xs text-[var(--text-tertiary)] mb-1">BASE FONT</p>
+                    <p>Neue Haas Grotesk Text, 16px, -0.01em tracking</p>
+                  </div>
+                  <div>
+                    <p className="font-input text-xs text-[var(--text-tertiary)] mb-1">LINE HEIGHT</p>
+                    <p>1.5 (body), 1.6 (prose)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`body {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 10. Footer */}
+        <section>
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">10</span>
+            Footer
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Footer Layout</h3>
+              <div className="p-8 bg-black rounded-lg">
+                <div className="grid grid-cols-2 gap-8">
+                  <div>
+                    <Logo className="h-10 w-auto text-white" />
+                  </div>
+                  <div className="flex flex-col gap-2 text-xs">
+                    <span className="text-white/70">Work</span>
+                    <span className="text-white/70">Lab</span>
+                    <span className="text-white/70">Method</span>
+                    <span className="text-white/70">Services</span>
+                    <span className="text-white/70">About</span>
+                    <span className="text-white/70">Contact</span>
+                    <span className="px-2 py-1 border border-white text-white text-xs">Get a Quote</span>
+                    <span className="text-white/70 mt-2">hello@mxwll.io</span>
+                    <span className="text-white/50 text-[10px] mt-1">© 2026 MXWLL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<footer className="w-full bg-black mt-24">
+  <div className="px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8">
+      {/* Left: Logo (50% width) */}
+      <Logo className="h-10 w-auto text-white" />
+
+      {/* Right: Navigation + Email + Copyright */}
+      <nav className="flex flex-col gap-3">
+        {/* Nav links (white/70 → white on hover) */}
+        {/* Get a Quote button (white border) */}
+        {/* hello@mxwll.io */}
+        {/* © 2026 MXWLL (white/50) */}
+      </nav>
+    </div>
+  </div>
+</footer>
+
+// Black background, white text throughout
+// No border lines, no social links, no location`}
+              </pre>
+            </div>
+          </div>
+        </section>
+      </div>
       </div>
     </div>
   )

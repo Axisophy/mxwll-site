@@ -54,6 +54,43 @@ src/lib/          - Utilities, fonts, helpers
 src/app/work/stellar-cartography/  - Gaia star visualiser
 ```
 
+## Design System Quick Reference
+
+**Colours:**
+- Background: `#FFFFFF` (white) - use `var(--bg-primary)`
+- Text primary: `#000000` - use `var(--text-primary)`
+- Text secondary: `#666666` - use `var(--text-secondary)`
+- Always use CSS custom properties, never hardcode hex values
+- Status colours are Tailwind equivalents (green-500, yellow-500, etc.)
+
+**Breakpoints:**
+- Mobile: 0-767px (default, no prefix)
+- Tablet: 768-1023px (md:)
+- Desktop: 1024px+ (lg:)
+
+**Container Padding:**
+- Mobile: `px-4` (16px)
+- Tablet: `md:px-8` (32px)
+- Desktop: `lg:px-12` (48px)
+- Use on: Header, Footer, all pages, design-system
+
+**Header:**
+- No border, not sticky
+- Padding: `px-4 md:px-8 lg:px-12 py-6`
+- Logo h-10, hamburger on mobile (md:hidden)
+
+**Footer:**
+- Black background (`bg-black`), white text
+- Logo (50% width) on left, nav menu on right
+- Grid: `md:grid-cols-[1fr_1fr]`
+- Padding: `px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20`
+- No border lines, no social links, no location
+
+**Typography:**
+- `font-nhg` or `font-display` - Neue Haas Grotesk for headings/UI
+- `font-sabon` or `font-serif` - Sabon for prose
+- `font-input` or `font-mono` - Input Mono for data/metadata (always uppercase)
+
 ## Brand Voice (for any copy changes)
 
 - Authoritative without being academic
