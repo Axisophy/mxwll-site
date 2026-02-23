@@ -1,15 +1,10 @@
-import Link from 'next/link'
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium mb-6">Making complex ideas clear</h1>
-          <p className="font-sabon text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed">
-            MXWLL is a design practice specialising in explanation design for complex systems. We work with research institutions, publishers, museums, and organisations who need to communicate difficult ideas with clarity and precision.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-medium mb-6">About</h1>
         </div>
       </section>
 
@@ -18,114 +13,90 @@ export default function AboutPage() {
         <div className="max-w-3xl">
           <div className="font-sabon text-lg text-[var(--text-secondary)] leading-relaxed space-y-12">
 
-            <div>
-              <p>
-                Founded by Simon Tyler, the practice combines deep subject understanding with illustration, data visualisation, and interactive design. We don&apos;t just make things look good. We make them make sense.
-              </p>
-            </div>
-
+            {/* Studio */}
             <div>
               <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                What We Bring
-              </h2>
-              <p className="mb-6">
-                Most data visualisation studios have designers or developers. Rarely both. Almost never someone who can engage deeply with the content itself. We combine five capabilities that don&apos;t usually coexist:
-              </p>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-nhg text-lg font-medium mb-2 text-[var(--text-primary)]">
-                    Subject Understanding
-                  </h3>
-                  <p>
-                    Scientific and technical literacy that lets us engage with complex content directly - not just make it look presentable.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-nhg text-lg font-medium mb-2 text-[var(--text-primary)]">
-                    Illustration
-                  </h3>
-                  <p>
-                    Actual drawing skills. Bespoke visual systems, not just charts and templates.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-nhg text-lg font-medium mb-2 text-[var(--text-primary)]">
-                    Systems Architecture
-                  </h3>
-                  <p>
-                    Pictogram sets, visual languages, design frameworks. Work that scales and maintains consistency.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-nhg text-lg font-medium mb-2 text-[var(--text-primary)]">
-                    Technical Build
-                  </h3>
-                  <p>
-                    React, D3, Python, WebGL. We prototype, build, and deploy - not just design and hand off.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-nhg text-lg font-medium mb-2 text-[var(--text-primary)]">
-                    Author Credibility
-                  </h3>
-                  <p>
-                    Published books demonstrate proven ability to explain complex ideas to general audiences. Not just a claim - evidence.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                Background
+                Studio
               </h2>
               <p>
-                Before founding MXWLL, Simon led projects including the Network Rail wayfinding pictogram system at Spaceagency, developing systematic visual languages for complex operational environments.
+                MXWLL is a science visualisation and explanation design studio. We work with research institutions, publishers, science museums, and organisations who need to make difficult ideas genuinely clear - not simplified, but made accessible without being made wrong.
               </p>
               <p className="mt-4">
-                His work spans scientific illustration, data visualisation, and explanation design. He has written and illustrated several books, including Gizmo (Laurence King), a visual history of gadgets and technology, Bugs (HarperCollins), and Emergency Vehicles (Faber &amp; Faber).
-              </p>
-              <p className="mt-4">
-                He also creates scientific visualisation products through Axisophy, and explores computational art and generative systems at Elxsis.
+                The work spans interactive data visualisation, scientific illustration, and structured explanation design. Sometimes these are combined in a single project. Often the most effective work integrates all three.
               </p>
             </div>
 
+            {/* The studio */}
             <div>
               <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                Books
+                The studio
               </h2>
-              <ul className="space-y-3">
-                <li>
-                  <span className="font-nhg font-medium text-[var(--text-primary)]">Gizmo</span>
-                  <span className="text-[var(--text-tertiary)]"> - Laurence King Publishing. A visual history of the gadgets and technology that shaped the modern world.</span>
-                </li>
-                <li>
-                  <span className="font-nhg font-medium text-[var(--text-primary)]">Bugs</span>
-                  <span className="text-[var(--text-tertiary)]"> - HarperCollins. Illustrated insect portraits combining scientific accuracy with graphic impact.</span>
-                </li>
-                <li>
-                  <span className="font-nhg font-medium text-[var(--text-primary)]">Emergency Vehicles</span>
-                  <span className="text-[var(--text-tertiary)]"> - Faber &amp; Faber. An illustrated children&apos;s book.</span>
-                </li>
-              </ul>
+              <p>
+                Simon Tyler founded MXWLL after a decade working at the intersection of scientific illustration, data visualisation, systems design, and writing. The studio is based in East Sussex, UK.
+              </p>
+              <p className="mt-4">
+                The background is unusual, and deliberately so. Most data visualisation studios are built from design or engineering. MXWLL is built from both, plus a genuine interest in science and a decade of practice in explaining complex things to general audiences through books.
+              </p>
+              <p className="mt-4">
+                The books matter because explanation is a craft that requires iteration and feedback over time, not a style applied to a brief. Writing - and specifically writing about technical subjects for non-specialist readers - builds a different kind of understanding than design practice alone. It forces the question: what does this audience actually need to know? What can be left out? What is the essential structure of this idea? These are the same questions that drive good explanation design.
+              </p>
+              <p className="mt-4">
+                The technical depth matters because subject understanding shapes what questions get asked. A designer who understands the physics can ask whether the chart is actually representing the phenomenon correctly. A designer who understands genetics can identify when a simplification has become a distortion. This changes the conversation with scientists and researchers considerably.
+              </p>
             </div>
 
+            {/* Selected credentials */}
             <div>
               <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                Location
+                Selected credentials
               </h2>
-              <p>Based in East Sussex, UK. Available for remote and on-site projects.</p>
+              <p>
+                Scientific illustration and information design for national and international publishers, science museums, and research institutions.
+              </p>
+              <p className="mt-4">
+                Author of five books on science, technology, and design subjects, including <em>Gizmo: A Visual History of Ingenious Machines</em> (Thames & Hudson), published in multiple languages.
+              </p>
+              <p className="mt-4">
+                Systems design: Network Rail passenger information pictogram system; scientific poster and publication design systems; Maxwell design system for real-time scientific data visualisation.
+              </p>
+              <p className="mt-4">
+                Interactive work includes WebGL-based visualisers for stellar cartography (50,000 stars from the Gaia catalogue), gravitational wave detection, atomic structure, orbital mechanics, reaction-diffusion morphogenesis, and flow field dynamics.
+              </p>
             </div>
+
+            {/* How we work */}
+            <div>
+              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
+                How we work
+              </h2>
+              <p>
+                Projects begin with a conversation about the explanation problem, not the visual output. We ask what the audience currently understands, what the most important thing is that they need to leave with, and what the misconceptions are that stand between their current understanding and the one you need them to have.
+              </p>
+              <p className="mt-4">
+                From that conversation we develop an explanation strategy - a structured document that maps the information architecture before any design decisions are made. This is not a deliverable in the traditional agency sense. It is the thinking that makes the subsequent design work faster, sharper, and more likely to do what it needs to do.
+              </p>
+              <p className="mt-4">
+                We are a small studio. We take on a limited number of projects each year, and we work directly with the people who commission us rather than through account management layers. If you are working with MXWLL, you are working with Simon.
+              </p>
+            </div>
+
+            {/* What we don't do */}
+            <div>
+              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
+                What we don&apos;t do
+              </h2>
+              <p>
+                We don&apos;t do dashboards, business intelligence, or data analytics visualisation. Those are important disciplines; they are simply not ours.
+              </p>
+              <p className="mt-4">
+                We don&apos;t produce quick-turnaround infographics. Our method requires time at the strategy stage, and skipping that stage produces work we would not stand behind.
+              </p>
+              <p className="mt-4">
+                We don&apos;t simplify. We clarify. These are different things. Simplification removes complexity; clarification makes complexity navigable. The science stays accurate.
+              </p>
+            </div>
+
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="px-4 md:px-8 lg:px-12 py-16 mt-12">
-        <div className="max-w-3xl text-center">
-          <Link href="/contact" className="btn text-base px-8 py-3">
-            Get in touch
-          </Link>
         </div>
       </section>
     </div>
