@@ -89,11 +89,13 @@ export default function DesignSystemPage() {
                 <span className="text-[var(--text-primary)]">Work</span>
                 <span className="text-[var(--text-secondary)]">Lab</span>
                 <span className="text-[var(--text-secondary)]">Method</span>
+                <span className="text-[var(--text-secondary)]">Services</span>
                 <span className="text-[var(--text-secondary)]">About</span>
                 <span className="text-[var(--text-secondary)]">Contact</span>
+                <span className="px-3 py-1 border border-[var(--text-primary)] text-[var(--text-primary)] text-sm">Get a Quote</span>
               </div>
               <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
-                ACTIVE STATE: PRIMARY · INACTIVE: SECONDARY
+                ACTIVE STATE: PRIMARY · INACTIVE: SECONDARY · GET A QUOTE: BUTTON TREATMENT
               </p>
             </div>
           </div>
