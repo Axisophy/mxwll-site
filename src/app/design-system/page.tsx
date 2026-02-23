@@ -99,6 +99,78 @@ export default function DesignSystemPage() {
               </p>
             </div>
           </div>
+
+          <div className="mt-12">
+            <h3 className="text-xl font-medium mb-6">Mobile Navigation</h3>
+            <div className="space-y-6">
+              {/* Hamburger State */}
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">HAMBURGER ICON (CLOSED STATE)</p>
+                <div className="flex flex-col gap-[6px] w-6 h-6 justify-center">
+                  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+                  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+                  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+                </div>
+                <pre className="mt-6 p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<button className="md:hidden flex flex-col gap-[6px] w-6">
+  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+</button>`}
+                </pre>
+              </div>
+
+              {/* Close Icon State */}
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">CLOSE ICON (OPEN STATE)</p>
+                <div className="flex flex-col gap-[6px] w-6 h-6 justify-center items-center relative">
+                  <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] rotate-45" />
+                  <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] -rotate-45" />
+                </div>
+                <pre className="mt-6 p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Transforms via CSS when menu is open
+className={\`
+  \${mobileMenuOpen ? 'rotate-45 translate-y-[8px]' : ''}
+\`}`}
+                </pre>
+              </div>
+
+              {/* Mobile Menu Overlay */}
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">MOBILE MENU OVERLAY</p>
+                <div className="space-y-4 text-center">
+                  <div className="text-2xl text-[var(--text-primary)]">Work</div>
+                  <div className="text-2xl text-[var(--text-secondary)]">Lab</div>
+                  <div className="text-2xl text-[var(--text-secondary)]">Method</div>
+                  <div className="text-2xl text-[var(--text-secondary)]">Services</div>
+                  <div className="text-2xl text-[var(--text-secondary)]">About</div>
+                  <div className="text-2xl text-[var(--text-secondary)]">Contact</div>
+                  <div className="inline-block px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] text-2xl">
+                    Get a Quote
+                  </div>
+                </div>
+                <pre className="mt-6 p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<div className="fixed inset-0 z-40 bg-white md:hidden">
+  <nav className="flex flex-col items-center justify-center h-full gap-8">
+    {navLinks.map(link => (
+      <Link className={\`
+        font-display text-3xl
+        \${link.isButton
+          ? 'px-6 py-3 border-2 border-[var(--text-primary)]'
+          : ''}
+      \`}>
+        {link.label}
+      </Link>
+    ))}
+  </nav>
+</div>`}
+                </pre>
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
+                  STATE: useState(false) · CLOSES ON NAV CLICK · LOCKS BODY SCROLL WHEN OPEN
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Header */}
