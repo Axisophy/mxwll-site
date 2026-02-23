@@ -12,145 +12,205 @@ export default function DesignSystemPage() {
     setTimeout(() => setCopiedClass(null), 2000)
   }
 
-  const ColorSwatch = ({ name, value, cssVar }: { name: string; value: string; cssVar: string }) => (
-    <div className="space-y-2">
-      <div
-        className="h-24 rounded-lg border border-[var(--border)] cursor-pointer transition-transform hover:scale-105"
-        style={{ backgroundColor: value }}
-        onClick={() => copyToClipboard(cssVar)}
-      />
-      <div>
-        <p className="font-medium text-sm">{name}</p>
-        <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">{value}</p>
-        <code
-          className="font-input text-[var(--text-xs)] text-[var(--text-secondary)] cursor-pointer hover:text-[var(--text-primary)]"
-          onClick={() => copyToClipboard(cssVar)}
-        >
-          {cssVar}
-        </code>
-      </div>
-    </div>
-  )
-
-  const TypographyExample = ({ level, className, sample }: { level: string; className: string; sample: string }) => (
-    <div className="py-6 border-b border-[var(--border-light)] space-y-2">
-      <code
-        className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] cursor-pointer hover:text-[var(--text-primary)]"
-        onClick={() => copyToClipboard(className)}
-      >
-        {className}
-      </code>
-      <p className={className}>{sample}</p>
-    </div>
-  )
-
-  const ComponentExample = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="space-y-4 py-8 border-b border-[var(--border-light)]">
-      <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)]">{title}</h3>
-      <div className="flex flex-wrap gap-4 items-center">{children}</div>
-    </div>
-  )
-
   return (
     <div className="min-h-screen py-16 px-4 md:px-8 lg:px-12">
-        {/* Header Elements */}
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-24 pb-8 border-b border-[var(--border)]">
+          <h1 className="text-4xl md:text-5xl font-medium mb-4">Design System</h1>
+          <p className="text-lg text-[var(--text-secondary)] mb-2">
+            Living reference for MXWLL visual language.
+          </p>
+          <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">
+            VERSION 1.0 · UPDATED FEBRUARY 2026
+          </p>
+          {copiedClass && (
+            <p className="mt-4 text-sm text-[var(--status-nominal)]">
+              Copied: {copiedClass}
+            </p>
+          )}
+        </div>
+
+        {/* 1. Identity */}
         <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-8">Header</h2>
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">01</span>
+            Identity
+          </h2>
 
-          <div className="mb-12">
-            <h3 className="text-xl font-medium mb-6">Logo</h3>
-            <div className="space-y-8 p-8 border border-[var(--border-light)] rounded-lg bg-white">
-              <div className="space-y-2">
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">HEADER SIZE (H-10)</p>
-                <Logo className="h-10 w-auto text-[var(--text-primary)]" />
-              </div>
-              <div className="space-y-2">
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">MOBILE SIZE (H-6)</p>
-                <Logo className="h-6 w-auto text-[var(--text-primary)]" />
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h3 className="text-xl font-medium mb-6">Studio Description</h3>
-            <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
-                MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
-                <br />
-                We don't simplify. We clarify.
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-medium mb-6">Navigation Structure</h3>
-            <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-              <div className="flex flex-wrap gap-6 text-sm">
-                <span className="text-[var(--text-primary)]">Work</span>
-                <span className="text-[var(--text-secondary)]">Lab</span>
-                <span className="text-[var(--text-secondary)]">Method</span>
-                <span className="text-[var(--text-secondary)]">Services</span>
-                <span className="text-[var(--text-secondary)]">About</span>
-                <span className="text-[var(--text-secondary)]">Contact</span>
-                <span className="px-3 py-1 border border-[var(--text-primary)] text-[var(--text-primary)] text-sm">Get a Quote</span>
-              </div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
-                ACTIVE STATE: PRIMARY · INACTIVE: SECONDARY · GET A QUOTE: BUTTON TREATMENT
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <h3 className="text-xl font-medium mb-6">Mobile Navigation</h3>
-            <div className="space-y-6">
-              {/* Hamburger State */}
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">HAMBURGER ICON (CLOSED STATE)</p>
-                <div className="flex flex-col gap-[6px] w-6 h-6 justify-center">
-                  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-                  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-                  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+          {/* Logo */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Logo</h3>
+              <div className="space-y-8 p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <div className="space-y-4">
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">HEADER SIZE</p>
+                  <Logo className="h-10 w-auto text-[var(--text-primary)]" />
                 </div>
-                <pre className="mt-6 p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<button className="md:hidden flex flex-col gap-[6px] w-6">
-  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-  <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-</button>`}
-                </pre>
-              </div>
-
-              {/* Close Icon State */}
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">CLOSE ICON (OPEN STATE)</p>
-                <div className="flex flex-col gap-[6px] w-6 h-6 justify-center items-center relative">
-                  <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] rotate-45" />
-                  <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] -rotate-45" />
+                <div className="space-y-4">
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">MOBILE SIZE</p>
+                  <Logo className="h-6 w-auto text-[var(--text-primary)]" />
                 </div>
-                <pre className="mt-6 p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`// Transforms via CSS when menu is open
-className={\`
-  \${mobileMenuOpen ? 'rotate-45 translate-y-[8px]' : ''}
-\`}`}
-                </pre>
               </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<Logo className="h-10 w-auto text-[var(--text-primary)]" />
 
-              {/* Mobile Menu Overlay */}
+// Uses currentColor - inherits from parent text colour
+// SVG paths with .logo-fill class
+// Never rotate, stretch, or add effects`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Studio Description */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Studio Description</h3>
               <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">MOBILE MENU OVERLAY</p>
-                <div className="space-y-4 text-center">
-                  <div className="text-2xl text-[var(--text-primary)]">Work</div>
-                  <div className="text-2xl text-[var(--text-secondary)]">Lab</div>
-                  <div className="text-2xl text-[var(--text-secondary)]">Method</div>
-                  <div className="text-2xl text-[var(--text-secondary)]">Services</div>
-                  <div className="text-2xl text-[var(--text-secondary)]">About</div>
-                  <div className="text-2xl text-[var(--text-secondary)]">Contact</div>
-                  <div className="inline-block px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] text-2xl">
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+                  MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
+                  <br />
+                  We don't simplify. We clarify.
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+  Studio description text
+</p>
+
+// Hidden below lg breakpoint in header
+// Max-width: 28rem`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. Navigation */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">02</span>
+            Navigation
+          </h2>
+
+          {/* Desktop Navigation */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Desktop Navigation</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <div className="flex flex-wrap gap-6 text-sm">
+                  <span className="text-[var(--text-primary)]">Work</span>
+                  <span className="text-[var(--text-secondary)]">Lab</span>
+                  <span className="text-[var(--text-secondary)]">Method</span>
+                  <span className="text-[var(--text-secondary)]">Services</span>
+                  <span className="text-[var(--text-secondary)]">About</span>
+                  <span className="text-[var(--text-secondary)]">Contact</span>
+                  <span className="px-3 py-1 border border-[var(--text-primary)] text-[var(--text-primary)] text-sm">Get a Quote</span>
+                </div>
+                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
+                  ACTIVE: PRIMARY · INACTIVE: SECONDARY · BUTTON TREATMENT
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<nav className="hidden md:flex items-center gap-8">
+  {navLinks.map(link => (
+    <Link className={\`
+      text-sm font-text transition-colors whitespace-nowrap
+      \${link.isButton
+        ? 'px-4 py-2 border border-[var(--text-primary)]'
+        : pathname === link.href
+        ? 'text-[var(--text-primary)]'
+        : 'text-[var(--text-secondary)]'}
+    \`}>
+      {link.label}
+    </Link>
+  ))}
+</nav>`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Mobile Hamburger */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Mobile Hamburger</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-8">
+                <div>
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">CLOSED STATE</p>
+                  <div className="flex flex-col gap-[6px] w-6 h-6 justify-center">
+                    <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+                    <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+                    <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
+                  </div>
+                </div>
+                <div>
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">OPEN STATE (×)</p>
+                  <div className="flex flex-col gap-[6px] w-6 h-6 justify-center items-center relative">
+                    <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] rotate-45" />
+                    <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] -rotate-45" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<button className="md:hidden flex flex-col gap-[6px] w-6 h-6">
+  <span className={\`
+    w-6 h-[2px] bg-[var(--text-primary)]
+    transition-all duration-300
+    \${open ? 'rotate-45 translate-y-[8px]' : ''}
+  \`} />
+  <span className={\`
+    w-6 h-[2px] bg-[var(--text-primary)]
+    \${open ? 'opacity-0' : 'opacity-100'}
+  \`} />
+  <span className={\`
+    w-6 h-[2px] bg-[var(--text-primary)]
+    \${open ? '-rotate-45 -translate-y-[8px]' : ''}
+  \`} />
+</button>
+
+// State: useState(false)
+// Absolute positioned top-6 right-4`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Mobile Menu Overlay */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Mobile Menu Overlay</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <div className="space-y-4 text-center text-lg">
+                  <div className="text-[var(--text-primary)]">Work</div>
+                  <div className="text-[var(--text-secondary)]">Lab</div>
+                  <div className="text-[var(--text-secondary)]">Method</div>
+                  <div className="text-[var(--text-secondary)]">Services</div>
+                  <div className="text-[var(--text-secondary)]">About</div>
+                  <div className="text-[var(--text-secondary)]">Contact</div>
+                  <div className="inline-block px-4 py-2 border-2 border-[var(--text-primary)] text-[var(--text-primary)]">
                     Get a Quote
                   </div>
                 </div>
-                <pre className="mt-6 p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<div className="fixed inset-0 z-40 bg-white md:hidden">
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<div className={\`
+  fixed inset-0 z-40 bg-white md:hidden
+  transition-opacity duration-300
+  \${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+\`}>
   <nav className="flex flex-col items-center justify-center h-full gap-8">
     {navLinks.map(link => (
       <Link className={\`
@@ -163,284 +223,391 @@ className={\`
       </Link>
     ))}
   </nav>
-</div>`}
-                </pre>
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
-                  STATE: useState(false) · CLOSES ON NAV CLICK · LOCKS BODY SCROLL WHEN OPEN
-                </p>
-              </div>
+</div>
+
+// Closes on route change
+// Locks body scroll when open`}
+              </pre>
             </div>
           </div>
         </section>
 
-        {/* Header */}
-        <div className="mb-16 pb-8 border-b border-[var(--border)]">
-          <h1 className="text-4xl md:text-5xl font-medium mb-4">Design System</h1>
-          <p className="text-lg text-[var(--text-secondary)] mb-2">
-            Living reference for MXWLL visual language. Click any value to copy.
-          </p>
-          <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">
-            VERSION 1.0 · UPDATED FEBRUARY 2026
-          </p>
-          {copiedClass && (
-            <p className="mt-4 text-sm text-[var(--status-nominal)]">
-              Copied: {copiedClass}
-            </p>
-          )}
-        </div>
-
-        {/* Colours */}
+        {/* 3. Colours */}
         <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-8">Colours</h2>
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">03</span>
+            Colours
+          </h2>
 
-          <div className="mb-12">
-            <h3 className="text-xl font-medium mb-6">Light Mode (Primary)</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              <ColorSwatch name="BG Primary" value="#FAFAF8" cssVar="var(--bg-primary)" />
-              <ColorSwatch name="BG Secondary" value="#F0EFED" cssVar="var(--bg-secondary)" />
-              <ColorSwatch name="BG Tertiary" value="#E5E4E1" cssVar="var(--bg-tertiary)" />
-              <ColorSwatch name="Text Primary" value="#1A1A18" cssVar="var(--text-primary)" />
-              <ColorSwatch name="Text Secondary" value="#6B6B66" cssVar="var(--text-secondary)" />
-              <ColorSwatch name="Text Tertiary" value="#9B9B95" cssVar="var(--text-tertiary)" />
-              <ColorSwatch name="Accent" value="#1A1A18" cssVar="var(--accent)" />
-              <ColorSwatch name="Border" value="#D8D7D4" cssVar="var(--border)" />
+          {/* Light Mode */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Light Mode</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: 'BG Primary', value: '#FAFAF8', var: 'var(--bg-primary)' },
+                  { name: 'BG Secondary', value: '#F0EFED', var: 'var(--bg-secondary)' },
+                  { name: 'Text Primary', value: '#1A1A18', var: 'var(--text-primary)' },
+                  { name: 'Text Secondary', value: '#6B6B66', var: 'var(--text-secondary)' },
+                  { name: 'Accent', value: '#1A1A18', var: 'var(--accent)' },
+                  { name: 'Border', value: '#D8D7D4', var: 'var(--border)' },
+                ].map(color => (
+                  <div key={color.name} className="space-y-2">
+                    <div
+                      className="h-16 rounded border border-[var(--border)] cursor-pointer"
+                      style={{ backgroundColor: color.value }}
+                      onClick={() => copyToClipboard(color.var)}
+                    />
+                    <p className="font-medium text-sm">{color.name}</p>
+                    <code className="font-input text-[10px] text-[var(--text-tertiary)]">{color.value}</code>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`:root {
+  --bg-primary: #FAFAF8;
+  --bg-secondary: #F0EFED;
+  --bg-tertiary: #E5E4E1;
+  --text-primary: #1A1A18;
+  --text-secondary: #6B6B66;
+  --text-tertiary: #9B9B95;
+  --accent: #1A1A18;
+  --border: #D8D7D4;
+}
+
+// Never hardcode hex values
+// Always use CSS custom properties`}
+              </pre>
             </div>
           </div>
 
-          <div className="mb-12">
-            <h3 className="text-xl font-medium mb-6">Status Colours</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-              <ColorSwatch name="Nominal" value="#22C55E" cssVar="var(--status-nominal)" />
-              <ColorSwatch name="Elevated" value="#EAB308" cssVar="var(--status-elevated)" />
-              <ColorSwatch name="Warning" value="#F97316" cssVar="var(--status-warning)" />
-              <ColorSwatch name="Critical" value="#EF4444" cssVar="var(--status-critical)" />
-              <ColorSwatch name="Offline" value="#6B7280" cssVar="var(--status-offline)" />
+          {/* Status Colours */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Status Colours</h3>
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { name: 'Nominal', value: '#22C55E', var: 'var(--status-nominal)' },
+                  { name: 'Elevated', value: '#EAB308', var: 'var(--status-elevated)' },
+                  { name: 'Warning', value: '#F97316', var: 'var(--status-warning)' },
+                  { name: 'Critical', value: '#EF4444', var: 'var(--status-critical)' },
+                  { name: 'Offline', value: '#6B7280', var: 'var(--status-offline)' },
+                ].map(color => (
+                  <div key={color.name} className="space-y-2">
+                    <div
+                      className="h-12 rounded border border-[var(--border)] cursor-pointer"
+                      style={{ backgroundColor: color.value }}
+                      onClick={() => copyToClipboard(color.var)}
+                    />
+                    <p className="font-medium text-xs">{color.name}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-4">
+                FOR VISUALISER UI ONLY - NOT BRAND COLOURS
+              </p>
             </div>
-          </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`--status-nominal: #22C55E;
+--status-elevated: #EAB308;
+--status-warning: #F97316;
+--status-critical: #EF4444;
+--status-offline: #6B7280;
 
-          <div>
-            <h3 className="text-xl font-medium mb-6">Dark Mode (Prepared)</h3>
-            <p className="text-base text-[var(--text-secondary)] mb-4">
-              Dark mode tokens defined in globals.css under <code className="font-input text-[var(--text-xs)]">[data-theme="dark"]</code>
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              <ColorSwatch name="BG Primary" value="#0A0A0A" cssVar="var(--bg-primary)" />
-              <ColorSwatch name="BG Secondary" value="#141414" cssVar="var(--bg-secondary)" />
-              <ColorSwatch name="Text Primary" value="#EAEAE8" cssVar="var(--text-primary)" />
-              <ColorSwatch name="Border" value="#2A2A28" cssVar="var(--border)" />
+// Use for lab/visualiser UI indicators
+// Not for brand/marketing contexts`}
+              </pre>
             </div>
           </div>
         </section>
 
-        {/* Typography */}
+        {/* 4. Typography */}
         <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-8">Typography</h2>
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">04</span>
+            Typography
+          </h2>
 
-          <div className="mb-12">
-            <h3 className="text-xl font-medium mb-6">Font Families</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">NEUE HAAS GROTESK</p>
-                <p className="text-2xl">Headlines, navigation, body text, UI</p>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">Weights: 400, 500, 700</p>
-              </div>
-              <div>
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">SABON</p>
-                <p className="font-sabon text-2xl">Longer prose, articles, quotes</p>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">Weights: 400, 400 italic</p>
-              </div>
-              <div>
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">INPUT MONO</p>
-                <p className="font-input text-base">DATA LABELS, METADATA, CODE</p>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">Weight: 400 only, always uppercase + letter-spacing 0.08em</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-medium mb-6">Type Scale</h3>
-            <div className="space-y-1">
-              <TypographyExample
-                level="5xl"
-                className="text-5xl font-medium"
-                sample="Display Large 72px"
-              />
-              <TypographyExample
-                level="4xl"
-                className="text-4xl font-medium"
-                sample="Hero Display 56px"
-              />
-              <TypographyExample
-                level="3xl"
-                className="text-3xl font-medium"
-                sample="Page Titles 40px"
-              />
-              <TypographyExample
-                level="2xl"
-                className="text-2xl font-medium"
-                sample="Section Heads 28px"
-              />
-              <TypographyExample
-                level="xl"
-                className="text-xl font-medium"
-                sample="Subheadings 20px"
-              />
-              <TypographyExample
-                level="lg"
-                className="text-lg"
-                sample="Article Body 18px"
-              />
-              <TypographyExample
-                level="base"
-                className="text-base"
-                sample="Body Text 16px"
-              />
-              <TypographyExample
-                level="sm"
-                className="font-input text-sm"
-                sample="LABELS 13PX"
-              />
-              <TypographyExample
-                level="xs"
-                className="font-input text-xs"
-                sample="METADATA 11PX"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Spacing */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-8">Spacing</h2>
-          <p className="text-base text-[var(--text-secondary)] mb-8">8px base grid</p>
-          <div className="space-y-4">
-            {[
-              { name: '1', value: '4px', cssVar: 'var(--space-1)' },
-              { name: '2', value: '8px', cssVar: 'var(--space-2)' },
-              { name: '3', value: '12px', cssVar: 'var(--space-3)' },
-              { name: '4', value: '16px', cssVar: 'var(--space-4)' },
-              { name: '6', value: '24px', cssVar: 'var(--space-6)' },
-              { name: '8', value: '32px', cssVar: 'var(--space-8)' },
-              { name: '12', value: '48px', cssVar: 'var(--space-12)' },
-              { name: '16', value: '64px', cssVar: 'var(--space-16)' },
-              { name: '24', value: '96px', cssVar: 'var(--space-24)' },
-              { name: '32', value: '128px', cssVar: 'var(--space-32)' },
-            ].map((space) => (
-              <div
-                key={space.name}
-                className="flex items-center gap-6 cursor-pointer hover:bg-[var(--bg-secondary)] p-2 rounded transition-colors"
-                onClick={() => copyToClipboard(space.cssVar)}
-              >
-                <div className="w-32">
-                  <code className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">
-                    {space.cssVar}
-                  </code>
+          {/* Font Families */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Font Families</h3>
+              <div className="space-y-6">
+                <div>
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">NEUE HAAS GROTESK</p>
+                  <p className="text-2xl">Headlines, navigation, body text, UI</p>
+                  <p className="text-sm text-[var(--text-secondary)] mt-1">Weights: 400, 500, 700</p>
                 </div>
-                <div className="w-24">
-                  <span className="text-sm text-[var(--text-secondary)]">{space.value}</span>
+                <div>
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">SABON</p>
+                  <p className="font-sabon text-2xl">Longer prose, articles, quotes</p>
+                  <p className="text-sm text-[var(--text-secondary)] mt-1">Weights: 400, 400 italic</p>
                 </div>
-                <div
-                  className="h-8 bg-[var(--accent)] rounded"
-                  style={{ width: space.value }}
-                />
+                <div>
+                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">INPUT MONO</p>
+                  <p className="font-input text-base">DATA LABELS, METADATA, CODE</p>
+                  <p className="text-sm text-[var(--text-secondary)] mt-1">Weight: 400 only</p>
+                </div>
               </div>
-            ))}
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Via Adobe Typekit
+<link rel="stylesheet" href="https://use.typekit.net/qka5zju.css" />
+
+// CSS Variables
+--font-display: "neue-haas-grotesk-display", sans-serif;
+--font-text: "neue-haas-grotesk-text", sans-serif;
+--font-serif: "sabon-next", Georgia, serif;
+--font-mono: "input-mono", monospace;
+
+// Utility Classes
+.font-nhg → var(--font-display)
+.font-sabon → var(--font-serif)
+.font-input → var(--font-mono) + uppercase + tracking
+
+// Input Mono ALWAYS uppercase with letter-spacing: 0.08em`}
+              </pre>
+            </div>
           </div>
-        </section>
 
-        {/* Components */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-8">Components</h2>
-
-          <ComponentExample title="BUTTONS">
-            <button className="btn">Default Button</button>
-            <button className="btn" disabled>
-              Disabled State
-            </button>
-          </ComponentExample>
-
-          <ComponentExample title="WORK CARD">
-            <div className="work-card max-w-sm">
-              <div className="w-full aspect-video bg-[var(--bg-tertiary)]" />
-              <div className="p-6">
-                <h3 className="text-xl font-medium mb-2">Work Title</h3>
-                <p className="text-base text-[var(--text-secondary)] mb-3">
-                  Brief description of the work
-                </p>
-                <p className="font-input text-xs text-[var(--text-tertiary)]">
-                  CATEGORY · 2026
-                </p>
+          {/* Type Scale */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Type Scale</h3>
+              <div className="space-y-4">
+                <div className="py-3 border-b border-[var(--border-light)]">
+                  <p className="text-5xl font-medium">Display Large</p>
+                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">72PX</p>
+                </div>
+                <div className="py-3 border-b border-[var(--border-light)]">
+                  <p className="text-3xl font-medium">Page Titles</p>
+                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">40PX</p>
+                </div>
+                <div className="py-3 border-b border-[var(--border-light)]">
+                  <p className="text-xl font-medium">Subheadings</p>
+                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">20PX</p>
+                </div>
+                <div className="py-3 border-b border-[var(--border-light)]">
+                  <p className="text-base">Body Text</p>
+                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">16PX</p>
+                </div>
+                <div className="py-3">
+                  <p className="font-input text-xs">METADATA</p>
+                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">11PX</p>
+                </div>
               </div>
             </div>
-          </ComponentExample>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Tailwind classes
+text-5xl font-medium → Display Large (72px)
+text-4xl font-medium → Hero Display (56px)
+text-3xl font-medium → Page Titles (40px)
+text-2xl font-medium → Section Heads (28px)
+text-xl font-medium → Subheadings (20px)
+text-lg → Article Body (18px)
+text-base → Body Text (16px)
+font-input text-sm → LABELS (13px)
+font-input text-xs → METADATA (11px)
 
-          <ComponentExample title="CONTROL PANEL (ALWAYS DARK)">
-            <div className="control-panel max-w-xs w-full space-y-4">
-              <div>
-                <label>PARAMETER NAME</label>
-                <input type="range" min="0" max="100" defaultValue="50" className="mt-2" />
-              </div>
-              <div className="flex justify-between tabular-nums">
-                <span>FPS: 60</span>
-                <span>PARTICLES: 1000</span>
-              </div>
-            </div>
-          </ComponentExample>
-
-          <ComponentExample title="TYPOGRAPHY CLASSES">
-            <div className="space-y-2">
-              <p className="font-nhg">Neue Haas Grotesk (.font-nhg)</p>
-              <p className="font-sabon">Sabon serif accent (.font-sabon)</p>
-              <p className="font-input">INPUT MONO UPPERCASE (.font-input)</p>
-            </div>
-          </ComponentExample>
-        </section>
-
-        {/* Rules */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-8">Visual Guardrails</h2>
-          <div className="space-y-4">
-            <div className="p-6 border border-[var(--status-critical)] rounded-lg">
-              <h3 className="text-lg font-medium mb-4 text-[var(--status-critical)]">
-                Never Do
-              </h3>
-              <ul className="space-y-2 text-base text-[var(--text-secondary)]">
-                <li>• Use colours outside the defined palette</li>
-                <li>• Add drop shadows to widgets or components</li>
-                <li>• Use decorative gradients</li>
-                <li>• Place text over complex visualisations without background</li>
-                <li>• Use pie charts (bar charts are clearer)</li>
-                <li>• Add animations that serve no informational purpose</li>
-                <li>• Rotate, stretch, outline, or add effects to the logo</li>
-                <li>• Use em dashes (use hyphens instead)</li>
-              </ul>
-            </div>
-
-            <div className="p-6 border border-[var(--status-nominal)] rounded-lg">
-              <h3 className="text-lg font-medium mb-4 text-[var(--status-nominal)]">
-                Always Do
-              </h3>
-              <ul className="space-y-2 text-base text-[var(--text-secondary)]">
-                <li>• Use British English (colour, visualisation, etc.)</li>
-                <li>• Every widget must have: header (title + status), body (visualisation), footer (source + timestamp)</li>
-                <li>• Typography roles: NHG for UI, Input Mono for data, Sabon for reading</li>
-                <li>• Credit data sources in every widget</li>
-                <li>• Last-updated timestamp must be visible</li>
-                <li>• Maintain 8px spacing grid</li>
-                <li>• Respect the mathematics - show equations, don&apos;t hide them</li>
-              </ul>
+// Mobile adjustments in globals.css
+// Type scale: xs 11px → 5xl 72px`}
+              </pre>
             </div>
           </div>
         </section>
 
-        {/* Terminology */}
-        <section>
-          <h2 className="text-3xl font-medium mb-8">Brand Voice & Terminology</h2>
+        {/* 5. Spacing */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">05</span>
+            Spacing
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">8px Base Grid</h3>
+              <div className="space-y-3">
+                {[
+                  { name: 'space-1', value: '4px' },
+                  { name: 'space-2', value: '8px' },
+                  { name: 'space-3', value: '12px' },
+                  { name: 'space-4', value: '16px' },
+                  { name: 'space-6', value: '24px' },
+                  { name: 'space-8', value: '32px' },
+                  { name: 'space-12', value: '48px' },
+                  { name: 'space-16', value: '64px' },
+                  { name: 'space-24', value: '96px' },
+                  { name: 'space-32', value: '128px' },
+                ].map(space => (
+                  <div key={space.name} className="flex items-center gap-4">
+                    <code className="font-input text-xs text-[var(--text-tertiary)] w-20">
+                      var(--{space.name})
+                    </code>
+                    <span className="text-sm text-[var(--text-secondary)] w-16">{space.value}</span>
+                    <div
+                      className="h-6 bg-[var(--accent)] rounded"
+                      style={{ width: space.value }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`:root {
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 2rem;      /* 32px */
+  --space-xl: 4rem;      /* 64px */
+  --space-2xl: 8rem;     /* 128px */
+}
+
+// Or use Tailwind spacing: p-4, mb-8, gap-6 etc.
+// 8px base grid - never invent intermediate values`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Components */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">06</span>
+            Components
+          </h2>
+
+          {/* Buttons */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Buttons</h3>
+              <div className="space-y-4">
+                <button className="btn">Default Button</button>
+                <button className="btn" disabled>Disabled State</button>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`.btn {
+  display: inline-flex;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Control Panel */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Control Panel</h3>
+              <div className="control-panel max-w-xs space-y-4">
+                <div>
+                  <label>PARAMETER NAME</label>
+                  <input type="range" min="0" max="100" defaultValue="50" className="mt-2" />
+                </div>
+                <div className="flex justify-between tabular-nums">
+                  <span>FPS: 60</span>
+                  <span>PARTICLES: 1000</span>
+                </div>
+              </div>
+              <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-4">
+                ALWAYS DARK - EVEN IN LIGHT MODE
+              </p>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`.control-panel {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+// Always dark regardless of page theme
+// For visualiser controls and lab UI`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. Guardrails */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">07</span>
+            Visual Guardrails
+          </h2>
+
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)] mb-4">
-                USE
-              </h3>
+              <div className="p-6 border border-[var(--status-critical)] rounded-lg mb-4">
+                <h3 className="text-lg font-medium mb-4 text-[var(--status-critical)]">Never Do</h3>
+                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
+                  <li>• Use colours outside the defined palette</li>
+                  <li>• Add drop shadows to widgets or components</li>
+                  <li>• Use decorative gradients</li>
+                  <li>• Place text over complex visualisations without background</li>
+                  <li>• Use pie charts (bar charts are clearer)</li>
+                  <li>• Add animations that serve no informational purpose</li>
+                  <li>• Rotate, stretch, outline, or add effects to the logo</li>
+                  <li>• Use em dashes (use hyphens instead)</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div className="p-6 border border-[var(--status-nominal)] rounded-lg">
+                <h3 className="text-lg font-medium mb-4 text-[var(--status-nominal)]">Always Do</h3>
+                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
+                  <li>• Use British English (colour, visualisation, etc.)</li>
+                  <li>• Every widget must have: header (title + status), body (visualisation), footer (source + timestamp)</li>
+                  <li>• Typography roles: NHG for UI, Input Mono for data, Sabon for reading</li>
+                  <li>• Credit data sources in every widget</li>
+                  <li>• Last-updated timestamp must be visible</li>
+                  <li>• Maintain 8px spacing grid</li>
+                  <li>• Respect the mathematics - show equations, don&apos;t hide them</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. Brand Voice */}
+        <section>
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">08</span>
+            Brand Voice & Terminology
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)] mb-4">USE</h3>
               <ul className="space-y-2 text-base">
                 <li>• MXWLL (always uppercase)</li>
                 <li>• explanation design</li>
@@ -451,9 +618,7 @@ className={\`
               </ul>
             </div>
             <div>
-              <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)] mb-4">
-                NEVER USE
-              </h3>
+              <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)] mb-4">NEVER USE</h3>
               <ul className="space-y-2 text-base text-[var(--text-secondary)]">
                 <li>• innovative, cutting-edge</li>
                 <li>• leverage, synergy</li>
@@ -467,6 +632,7 @@ className={\`
             </div>
           </div>
         </section>
+      </div>
     </div>
   )
 }
