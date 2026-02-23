@@ -191,6 +191,19 @@
   letter-spacing: 0.08em;
 }
 
+/* Font utility class aliases (used in components) */
+.font-nhg {
+  font-family: var(--font-display);
+}
+
+.font-sabon {
+  font-family: var(--font-serif);
+}
+
+.font-input {
+  font-family: var(--font-mono);
+}
+
 /* Button Base Style */
 .btn {
   display: inline-flex;
