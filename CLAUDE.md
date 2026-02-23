@@ -51,8 +51,59 @@ Key principles:
 src/app/          - Pages (Next.js App Router)
 src/components/   - Shared components
 src/lib/          - Utilities, fonts, helpers
-src/app/work/stellar-cartography/  - Gaia star visualiser
+
+src/visualisers/  - Interactive visualisations (migrated from Bang Industries)
+src/explanations/ - Video-based or scrollytelling explainers (non-interactive)
+src/widgets/      - Reusable UI components (like FlowFieldVisualiser)
 ```
+
+### Visualiser Directory Structure
+
+Each visualiser follows this pattern:
+
+```
+src/visualisers/[name]/
+├── README.md           - What it is, how to run, current state
+├── SPEC.md             - Design decisions, rejected approaches, intent
+├── CHANGELOG.md        - Migration history and updates
+├── KNOWN-ISSUES.md     - Bugs, limitations, performance notes
+├── core/               - Rendering engine, data, physics/math
+├── demo/               - Autonomous demo mode (for homepage/showcase)
+│   └── DEMO-SPEC.md    - Demo timeline, camera behaviour
+└── interactive/        - User controls, UI, interactive version
+```
+
+**Important**: Most code is currently in `core/` with demo and interactive logic mixed together. Separation into `demo/` and `interactive/` is flagged for future work. Do not attempt to separate during initial development - focus on understanding the existing code structure first.
+
+### Explanations Directory
+
+For video-based or predominantly non-interactive pieces:
+
+```
+src/explanations/[name]/
+├── README.md           - Format, source generation notes
+├── SPEC.md
+├── CHANGELOG.md
+├── KNOWN-ISSUES.md
+└── page.tsx            - Page component (may include minimal interactivity)
+```
+
+**Note**: If an explanation includes pre-rendered video, the README should state: "Source generation code lives in Jupyter notebooks — not in this repo. Python/Jupyter source should be located and documented separately."
+
+### Widgets Directory
+
+For reusable components used across multiple pages:
+
+```
+src/widgets/[name]/
+├── README.md           - Usage, props, configuration
+├── SPEC.md
+├── CHANGELOG.md
+├── KNOWN-ISSUES.md
+└── [Name].tsx          - Component file
+```
+
+Example: `src/widgets/flow-field-visualiser/FlowFieldVisualiser.tsx`
 
 ## Design System Quick Reference
 
@@ -97,3 +148,12 @@ src/app/work/stellar-cartography/  - Gaia star visualiser
 - Precise without being dry
 - British English, no em dashes
 - Never use: innovative, cutting-edge, leverage, synergy, disrupt, stakeholder, solution (unless chemical), utilize, amazing, game-changing, best-in-class, deliverable
+
+## Related Tools & Ecosystem
+
+### Ptolemy Creative Engine
+A standalone desktop app (Tauri + Python backend) for generating mathematical art - strange attractors, fractals, algorithmic visualisations. This is the canonical tool for generating source material for pre-rendered explanation pieces.
+
+Source videos/images for pieces in src/explanations/ may originate from Ptolemy. When documenting an explanation piece, note whether its source assets were generated via Ptolemy or standalone Jupyter notebooks (the goal is to migrate all notebook-based generation into Ptolemy over time).
+
+Ptolemy is a separate repo/project - not part of mxwll-site.
