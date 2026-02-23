@@ -54,6 +54,16 @@
 
 ## Next.js / React
 
+### Canvas and Browser API Mocks for Tests (2026-02-23)
+- **Problem**: jsdom does not implement canvas/WebGL and some browser APIs used by interactive components.
+- **Solution**: Define minimal stubs in `src/test/setup.ts` for `HTMLCanvasElement.getContext` (`2d`, `webgl`, `webgl2`), `ResizeObserver`, `requestAnimationFrame`, and `matchMedia`.
+- **Rule**: Keep test environment mocks minimal and interface-level only - no rendering behaviour in setup stubs.
+
+### Stable Callback Props for Effects (2026-02-23)
+- **Problem**: A mobile menu closed immediately after opening because `useEffect` depended on an `onClose` prop passed as an inline function, so it changed identity on every render.
+- **Solution**: Wrap callback props like `onClose` in `useCallback` when child effects depend on them.
+- **Rule**: If a child `useEffect` includes a callback prop in its dependency array, pass a stable callback reference from the parent.
+
 ### Dynamic Imports for WebGL (2026-02-22)
 - **Rule**: Always use `dynamic(() => import(...), { ssr: false })` for any component that uses WebGL, Canvas, or browser APIs
 - **Why**: Server-side rendering will crash on `window`, `document`, `WebGLRenderingContext`
@@ -94,6 +104,11 @@
 ---
 
 ## Git / Workflow
+
+### Vitest Version Compatibility (2026-02-23)
+- **Problem**: `vitest@3` pulled in a Vite/Node combination that failed to load config on Node 20.15.x.
+- **Solution**: Use `vitest@1.6.x` in this repo for local compatibility.
+- **Rule**: If test runner config fails with ESM/CJS loader errors, check Node engine requirements and pin a compatible Vitest major version.
 
 ### Commit Messages
 - Be descriptive: "Fix zoom clamping on Gaia explorer" not "fix bug"
