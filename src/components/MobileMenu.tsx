@@ -32,9 +32,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   const navLinks = [
     { href: '/work', label: 'Work' },
+    { href: '/lab', label: 'Lab' },
     { href: '/method', label: 'Method' },
+    { href: '/services', label: 'Services' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
+    { href: '/quote', label: 'Get a Quote', isButton: true },
   ]
 
   return (
@@ -55,7 +58,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             className={`
               font-display text-3xl transition-colors
               ${
-                pathname === link.href
+                link.isButton
+                  ? 'px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]'
+                  : pathname === link.href
                   ? 'text-[var(--text-primary)]'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }

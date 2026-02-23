@@ -14,8 +14,10 @@ export default function Header() {
     { href: '/work', label: 'Work' },
     { href: '/lab', label: 'Lab' },
     { href: '/method', label: 'Method' },
+    { href: '/services', label: 'Services' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
+    { href: '/quote', label: 'Get a Quote', isButton: true },
   ]
 
   return (
@@ -48,7 +50,9 @@ export default function Header() {
                   className={`
                     text-sm font-text transition-colors whitespace-nowrap
                     ${
-                      pathname === link.href
+                      link.isButton
+                        ? 'px-4 py-2 border border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]'
+                        : pathname === link.href
                         ? 'text-[var(--text-primary)]'
                         : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }

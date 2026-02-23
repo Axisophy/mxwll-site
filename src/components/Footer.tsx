@@ -5,9 +5,12 @@ export default function Footer() {
 
   const navLinks = [
     { href: '/work', label: 'Work' },
+    { href: '/lab', label: 'Lab' },
     { href: '/method', label: 'Method' },
+    { href: '/services', label: 'Services' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
+    { href: '/quote', label: 'Get a Quote', isButton: true },
   ]
 
   const socialLinks = [
@@ -31,7 +34,14 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors w-fit"
+                className={`
+                  text-sm transition-colors w-fit
+                  ${
+                    link.isButton
+                      ? 'px-4 py-2 border border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }
+                `}
               >
                 {link.label}
               </Link>
