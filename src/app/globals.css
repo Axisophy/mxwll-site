@@ -47,6 +47,9 @@
   --space-lg: 2rem;      /* 32px */
   --space-xl: 4rem;      /* 64px */
   --space-2xl: 8rem;     /* 128px */
+
+  /* Layout */
+  --header-height: 88px; /* py-6 (48px) + logo h-10 (40px) */
 }
 
 /* Dark Mode (prep for future) */

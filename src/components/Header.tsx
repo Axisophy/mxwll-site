@@ -65,7 +65,7 @@ export default function Header() {
 
             {/* Mobile Hamburger */}
             <button
-              className="md:hidden absolute top-6 right-4 flex flex-col gap-[6px] w-6 h-6 justify-center items-center"
+              className="md:hidden absolute top-6 right-4 flex flex-col gap-[6px] w-6 h-6 justify-center items-center z-[60]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >

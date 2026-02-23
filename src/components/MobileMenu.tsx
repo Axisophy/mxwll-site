@@ -43,12 +43,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   return (
     <div
       className={`
-        fixed inset-0 z-40 bg-white
+        fixed inset-0 z-50 bg-white
         transition-opacity duration-300
         md:hidden
         ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
       `}
-      style={{ top: '57px' }}
+      style={{ top: 'var(--header-height)' }}
     >
       <nav className="flex flex-col items-center justify-center h-full gap-8 px-4">
         {navLinks.map((link) => (
