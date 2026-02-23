@@ -289,6 +289,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
     function handleResize() {
       if (!container || !canvas || !gl) return;
       const rect = container.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       // Cap DPR at 2 for mobile performance
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = Math.floor(rect.width * dpr);
@@ -304,7 +305,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(container);
-    handleResize();
+    requestAnimationFrame(handleResize);
 
     // Also handle fullscreen changes
     const onFullscreenChange = () => {

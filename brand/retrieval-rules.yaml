@@ -1,0 +1,63 @@
+# brand/retrieval-rules.yaml
+# Task-to-file mappings for agent sessions
+# Load the minimum necessary context for each task type
+
+task_profiles:
+
+  write_page_copy:
+    description: "Writing or substantially editing page copy"
+    always_load:
+      - "brand/voice.md"
+      - "brand/positioning.yaml"
+      - "content/pages/[relevant-page].md"
+    load_if_relevant:
+      - "brand/positioning.yaml (competitive context section)"
+    rule: "Never write copy without first reading the approved version in content/pages/"
+
+  edit_existing_copy:
+    description: "Editing, refining, or correcting existing copy"
+    always_load:
+      - "brand/voice.md"
+      - "content/pages/[relevant-page].md"
+    rule: "Preserve approved copy structure. Flag changes for human approval."
+
+  build_component:
+    description: "Building a new UI component"
+    always_load:
+      - "CLAUDE.md (design system section)"
+      - "brand/visual-system.json"
+    rule: "All values from tokens. No hardcoded colours, spacing, or type."
+
+  build_visualiser:
+    description: "Building or modifying a visualiser"
+    always_load:
+      - "LEARNINGS.md (visualiser section)"
+      - "brand/visual-system.json"
+    rule: "Read LEARNINGS.md in full before touching any visualiser code."
+
+  debug_visualiser:
+    description: "Debugging a visualiser problem"
+    always_load:
+      - "LEARNINGS.md"
+    rule: "Check LEARNINGS.md first. Document the fix in LEARNINGS.md after."
+
+  add_work_item:
+    description: "Adding a new portfolio project"
+    always_load:
+      - "brand/voice.md"
+      - "content/work/_template.md"
+    rule: "Follow template structure exactly."
+
+  update_site_plan:
+    description: "Marking tasks complete or updating build status"
+    always_load:
+      - "SITE-PLAN.md"
+    rule: "Only update status of tasks actually completed in this session."
+
+  general_coding:
+    description: "General code changes not covered above"
+    always_load:
+      - "CLAUDE.md"
+    load_if_relevant:
+      - "brand/visual-system.json"
+      - "LEARNINGS.md"

@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "studio": "MXWLL",
+    "version": "1.0",
+    "updated": "2026-02-23",
+    "note": "Source of truth for all design tokens. Matches globals.css. Update both files together."
+  },
+
+  "colours": {
+    "light": {
+      "bg-primary":    { "value": "#FAFAF8", "token": "var(--bg-primary)" },
+      "bg-secondary":  { "value": "#F0EFED", "token": "var(--bg-secondary)" },
+      "bg-tertiary":   { "value": "#E5E4E1", "token": "var(--bg-tertiary)" },
+      "text-primary":  { "value": "#1A1A18", "token": "var(--text-primary)" },
+      "text-secondary":{ "value": "#6B6B66", "token": "var(--text-secondary)" },
+      "text-tertiary": { "value": "#9B9B95", "token": "var(--text-tertiary)" },
+      "accent":        { "value": "#1A1A18", "token": "var(--accent)" },
+      "border":        { "value": "#D8D7D4", "token": "var(--border)" }
+    },
+    "dark": {
+      "bg-primary":    { "value": "#0A0A0A", "token": "var(--bg-primary)" },
+      "bg-secondary":  { "value": "#141414", "token": "var(--bg-secondary)" },
+      "text-primary":  { "value": "#EAEAE8", "token": "var(--text-primary)" },
+      "border":        { "value": "#2A2A28", "token": "var(--border)" },
+      "note": "Full dark mode token set defined in globals.css under [data-theme='dark']"
+    },
+    "status": {
+      "nominal":  { "value": "#22C55E", "token": "var(--status-nominal)",  "use": "Live / active / good" },
+      "elevated": { "value": "#EAB308", "token": "var(--status-elevated)", "use": "Attention / mild alert" },
+      "warning":  { "value": "#F97316", "token": "var(--status-warning)",  "use": "Warning" },
+      "critical": { "value": "#EF4444", "token": "var(--status-critical)", "use": "Error / critical" },
+      "offline":  { "value": "#6B7280", "token": "var(--status-offline)",  "use": "Offline / unavailable" },
+      "note": "Status colours are for visualiser/lab UI use only — not brand colours"
+    }
+  },
+
+  "typography": {
+    "families": {
+      "nhg": {
+        "name": "Neue Haas Grotesk",
+        "class": "font-nhg",
+        "weights": [400, 500, 700],
+        "use": "Headlines, navigation, body text, UI",
+        "files": "public/fonts/ — NHG Display and NHG Text variants"
+      },
+      "sabon": {
+        "name": "Sabon",
+        "class": "font-sabon",
+        "weights": [400, "400-italic"],
+        "use": "Longer prose, articles, quotes"
+      },
+      "input-mono": {
+        "name": "Input Mono",
+        "class": "font-input",
+        "weights": [400],
+        "use": "Data labels, metadata, code",
+        "rules": "Always uppercase. Letter-spacing: 0.08em. Never mixed case."
+      }
+    },
+    "scale": {
+      "5xl": { "size": "72px", "tailwind": "text-5xl font-medium", "use": "Display large" },
+      "4xl": { "size": "56px", "tailwind": "text-4xl font-medium", "use": "Hero display" },
+      "3xl": { "size": "40px", "tailwind": "text-3xl font-medium", "use": "Page titles" },
+      "2xl": { "size": "28px", "tailwind": "text-2xl font-medium", "use": "Section heads" },
+      "xl":  { "size": "20px", "tailwind": "text-xl font-medium",  "use": "Subheadings" },
+      "lg":  { "size": "18px", "tailwind": "text-lg",              "use": "Article body" },
+      "base":{ "size": "16px", "tailwind": "text-base",            "use": "Body text" },
+      "sm":  { "size": "13px", "tailwind": "font-input text-sm",   "use": "Labels (uppercase mono)" },
+      "xs":  { "size": "11px", "tailwind": "font-input text-xs",   "use": "Metadata (uppercase mono)" }
+    }
+  },
+
+  "spacing": {
+    "base": "8px",
+    "scale": {
+      "1":  { "value": "4px",   "token": "var(--space-1)" },
+      "2":  { "value": "8px",   "token": "var(--space-2)" },
+      "3":  { "value": "12px",  "token": "var(--space-3)" },
+      "4":  { "value": "16px",  "token": "var(--space-4)" },
+      "6":  { "value": "24px",  "token": "var(--space-6)" },
+      "8":  { "value": "32px",  "token": "var(--space-8)" },
+      "12": { "value": "48px",  "token": "var(--space-12)" },
+      "16": { "value": "64px",  "token": "var(--space-16)" },
+      "24": { "value": "96px",  "token": "var(--space-24)" },
+      "32": { "value": "128px", "token": "var(--space-32)" }
+    }
+  },
+
+  "breakpoints": {
+    "sm":  "640px",
+    "md":  "768px",
+    "lg":  "1024px",
+    "xl":  "1280px",
+    "2xl": "1536px"
+  },
+
+  "components": {
+    "control-panel": {
+      "note": "Always dark, even in light mode. Use dark mode tokens regardless of page theme.",
+      "bg": "#0A0A0A",
+      "border": "#2A2A28",
+      "text": "#EAEAE8"
+    },
+    "widget": {
+      "anatomy": ["header (title + status indicator)", "body (visualisation)", "footer (source + timestamp)"],
+      "note": "Every widget must have all three sections. Data source credit is mandatory."
+    }
+  },
+
+  "guardrails": {
+    "never": [
+      "Colours outside the defined palette",
+      "Drop shadows on widgets or components",
+      "Decorative gradients",
+      "Text over complex visualisations without a background treatment",
+      "Pie charts (use bar charts)",
+      "Animations that serve no informational purpose",
+      "Hardcoded values — always use CSS custom properties",
+      "Em dashes (use hyphens)",
+      "Input Mono in mixed case"
+    ],
+    "always": [
+      "British English: colour, visualisation, programme, whilst",
+      "8px spacing grid",
+      "Credit data sources in every widget",
+      "Last-updated timestamp visible on live data widgets",
+      "Input Mono uppercase for all labels and metadata",
+      "Sabon for prose passages of 3+ sentences"
+    ]
+  },
+
+  "design-system-page": {
+    "route": "/design-system",
+    "purpose": "Living reference and component test environment. Keep this page updated when tokens change.",
+    "todo": [
+      "Remove Maxwell-era 'observatory' terminology from voice/terminology section",
+      "Add visualiser UI test section for new lab components",
+      "Confirm dark mode token values match globals.css"
+    ]
+  }
+}

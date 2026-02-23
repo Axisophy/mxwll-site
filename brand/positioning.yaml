@@ -1,0 +1,75 @@
+# brand/positioning.yaml
+# MXWLL Brand Positioning
+# Source of truth for identity and messaging. Read before writing any copy.
+
+chunk_id: "positioning-core"
+version: "1.0"
+last_updated: "2026-02-23"
+status: "active"
+
+studio:
+  name: "MXWLL"
+  url: "mxwll.io"
+  email: "hello@mxwll.io"
+  location: "East Sussex, UK"
+  tagline: "Science visualisation and explanation design"
+
+category: "Science visualisation / explanation design / scientific illustration"
+
+positioning_statement: >
+  MXWLL is a science visualisation and explanation design studio.
+  We work with research institutions, publishers, science museums, and organisations
+  who need to make difficult ideas genuinely clear — not simplified, but made
+  accessible without being made wrong.
+
+what_we_do:
+  - Interactive data visualisation and scientific simulation
+  - Scientific illustration and explanation design
+  - Design systems and pictogram design for scientific communication
+
+what_we_dont_do:
+  - Business intelligence and dashboard work
+  - Quick-turnaround infographics
+  - Generic data visualisation without explanation strategy
+  - Work for clients who want aesthetics without the underlying thinking
+
+the_gap_we_occupy: >
+  Most data visualisation studios produce work that impresses. We produce work
+  that explains. The distinction matters: a viewer can leave impressive work not
+  understanding it. Our work is designed to close that gap.
+  No competitor combines science depth + illustration capability +
+  cognitive science methodology + interactive/technical execution.
+
+key_differentiators:
+  - Genuine subject matter depth — can engage with the science, not just the data
+  - Illustration ability — can represent mechanisms and structures where no data exists
+  - Explanation methodology grounded in cognitive science research
+  - Full technical stack — design and engineering developed together, not handed off
+  - Published author credentials proving explanation capability at book length
+  - Maxwell platform — evidence of complex real-time data system capability
+
+target_clients:
+  primary:
+    - Research institutions (UK REF impact requirements create strong need)
+    - Science museums and exhibition designers
+    - STEM publishers (Pearson, OUP, Cambridge, MIT Press)
+  secondary:
+    - Corporate science/tech (biotech, medtech, climate tech)
+    - Editorial (New Scientist, Wired, Nature)
+
+pricing_approach: >
+  Project-based. No public pricing. Quote based on scope.
+  Day rate equivalent: £600-900. Projects: £3k-30k depending on type.
+  Do not mention specific prices in any public-facing copy.
+
+competitive_context:
+  closest_competitors:
+    - name: "Fathom Information Design"
+      gap: "Science depth but no explanation methodology, less illustration"
+    - name: "Moritz Stefaner / Truth & Beauty"
+      gap: "Philosophically similar but solo, no methodology page, no illustration"
+    - name: "Variable.io"
+      gap: "Aesthetic quality but no explanatory intent — work impresses, doesn't explain"
+    - name: "The Pudding / Polygraph"
+      gap: "Narrative sophistication but culture-focused, no cognitive science methodology"
+  quality_benchmark: "Bartosz Ciechanowski (ciechanow.ski) — sets the standard for interactive explanation"
