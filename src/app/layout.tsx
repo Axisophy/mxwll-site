@@ -10,9 +10,20 @@ export const metadata: Metadata = {
   keywords: ["visualisation", "science", "mathematics", "explanation design", "interactive", "illustration"],
   authors: [{ name: "Simon Tyler" }],
   openGraph: {
-    title: "MXWLL",
-    description: "A digital laboratory for science, maths, and explanation design",
+    title: "MXWLL - Explanation Design Studio",
+    description: "We make complex things visible - through interactive visualisation, illustration, and systematic design.",
     type: "website",
+    locale: "en_GB",
+    siteName: "MXWLL",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MXWLL - Explanation Design Studio",
+    description: "We make complex things visible - through interactive visualisation, illustration, and systematic design.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
