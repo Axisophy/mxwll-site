@@ -51,11 +51,59 @@ Key principles:
 src/app/          - Pages (Next.js App Router)
 src/components/   - Shared components
 src/lib/          - Utilities, fonts, helpers
+src/lib/data/     - Curated datasets (cosmic objects, elements, extraction)
 
-src/visualisers/  - Interactive visualisations (migrated from Bang Industries)
+src/visualisers/  - Interactive visualisations (from Bang Industries and Maxwell)
 src/explanations/ - Video-based or scrollytelling explainers (non-interactive)
 src/widgets/      - Reusable UI components (like FlowFieldVisualiser)
 ```
+
+### Data Assets
+
+Three curated datasets extracted from Maxwell archive (2026-02-23):
+
+**`src/lib/data/cosmic-objects.ts`**
+- ~200 cosmic objects from quarks to supermassive black holes
+- Mass, radius, category, four-tier explanations (accessible → intuitive → technical → advanced)
+- Used by: The Permissible Universe visualiser
+- Can be reused for other astronomy/physics content
+
+**`src/lib/data/elements.ts`**
+- 118 chemical elements with full properties
+- Atomic data, electron configuration, discovery dates
+- Available for chemistry visualisations or periodic table
+
+**`src/lib/data/extraction.ts`**
+- ~95 extractable materials (metals, gems, industrial, energy)
+- ~100+ mine locations with lat/long and production data
+- Supply concentration by country, applications, criticality ratings
+- Used by: The Extraction Map visualiser (when migration complete)
+- Available for sustainability/systems thinking content
+
+### Reusable Components
+
+**`src/components/ExplanationModal/`**
+Generic four-tier explanation component. Presents content at four expertise levels based on cognitive science principle of expertise reversal.
+
+**Usage:**
+```typescript
+import { ExplanationModal } from '@/components/ExplanationModal'
+
+<ExplanationModal
+  title="Object Name"
+  subtitle="Optional tagline"
+  tiers={[
+    { level: 'child', label: 'Accessible', content: '...' },
+    { level: 'student', label: 'Intuitive', content: '...' },
+    { level: 'undergraduate', label: 'Technical', content: '...' },
+    { level: 'expert', label: 'Advanced', content: '...' },
+  ]}
+  isOpen={isOpen}
+  onClose={handleClose}
+/>
+```
+
+Can be used for any multi-audience content. Currently used in design-system page as example.
 
 ### Visualiser Directory Structure
 

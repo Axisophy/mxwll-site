@@ -7,6 +7,79 @@
 
 ---
 
+## Migration Status
+
+**Last Updated:** 2026-02-24
+
+### Completed Migrations
+
+✅ **Cosmic Objects Database** → `src/lib/data/cosmic-objects.ts`
+- ~200 objects from quarks to supermassive black holes
+- Four-tier explanations (accessible → intuitive → technical → advanced)
+- Migrated: 2026-02-23
+
+✅ **Element Database** → `src/lib/data/elements.ts`
+- 118 chemical elements with full properties
+- Atomic data, electron configuration, discovery dates
+- Migrated: 2026-02-23
+
+✅ **Mining/Extraction Data** → `src/lib/data/extraction.ts`
+- ~95 extractable materials with metadata
+- ~100+ mine locations with production data
+- Supply concentration by country
+- Migrated: 2026-02-23
+
+✅ **Tiered Explanation Modal** → `src/components/ExplanationModal/`
+- Generic four-tier explanation component
+- Reusable across all MXWLL content
+- Migrated: 2026-02-23
+
+✅ **The Permissible Universe** → `src/visualisers/permissible-universe/`
+- Interactive mass-radius diagram
+- ~200 cosmic objects with pan/zoom
+- Category filtering, search, boundaries
+- Page route: `/work/permissible-universe`
+- Status: Functional but needs design system update (still uses dark theme)
+- Migrated: 2026-02-24
+
+### Partially Migrated
+
+⚠️ **The Extraction Map** → `src/visualisers/extraction-map/`
+- Directory structure created
+- Documentation written
+- Data already extracted (see above)
+- **Not complete:** Component files not copied, Mapbox not installed, page route not created
+- **Reason:** Complexity (6 components, Mapbox integration, Maxwell UI dependencies)
+- **Estimated effort to complete:** 4-6 hours
+- **Status:** Scaffolded only
+
+### Not Yet Migrated
+
+The following items from the priority list have not been migrated:
+
+❌ **Periodic Table** - Medium priority
+❌ **Lunar Atlas** - Medium priority
+❌ **Strange Attractors** (Lorenz, Rossler, Aizawa) - Lower priority (may be superseded by Ptolemy)
+❌ **Game Theory Handheld** - Lower priority (needs inspection first)
+❌ **Other Data Section Pages** - Lower priority
+
+### Next Steps
+
+**Immediate:**
+1. Complete Extraction Map migration (highest priority from remaining items)
+2. Update Permissible Universe design system (dark → light theme)
+
+**Medium Term:**
+3. Migrate Periodic Table if unique enough
+4. Migrate Lunar Atlas for Lab section
+5. Inspect Game Theory Handheld
+
+**Long Term:**
+6. Evaluate Strange Attractors vs Ptolemy Creative Engine
+7. Review other Data section pages for reusable content
+
+---
+
 ## Executive Summary
 
 The Maxwell archive contains a **real-time data observatory platform** with extensive API integrations, interactive visualisations, and educational content. The site focused on observing Earth systems, space phenomena, and fundamental science in real-time.
