@@ -6,6 +6,15 @@ import WorkFilter from '@/components/WorkFilter'
 
 const allWork = [
   {
+    title: 'The Permissible Universe',
+    description: 'A map of everything that can exist - from quarks to supermassive black holes. Explore 200+ cosmic objects positioned according to fundamental physical limits. The boundaries show where nature draws the line.',
+    category: 'EXPLANATION DESIGN',
+    year: '2026',
+    slug: 'permissible-universe',
+    label: 'In Development',
+    tags: ['Astrophysics', 'Interactive', 'Systems Thinking'],
+  },
+  {
     title: 'Chart of Nuclides',
     description: 'From the familiar periodic table to the vast landscape of 3,300+ atomic species. An interactive explorer that reveals what makes atoms stable or unstable - and why it matters.',
     category: 'EXPLANATION DESIGN',
