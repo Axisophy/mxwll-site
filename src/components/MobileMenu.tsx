@@ -42,6 +42,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   return (
     <div
+      id="mobile-menu"
       className={`
         fixed inset-0 z-50 bg-white
         transition-opacity duration-300

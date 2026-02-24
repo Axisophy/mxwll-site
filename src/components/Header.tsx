@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo'
@@ -9,6 +9,9 @@ import MobileMenu from './MobileMenu'
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false)
+  }, [])
 
   const navLinks = [
     { href: '/work', label: 'Work' },
@@ -68,6 +71,8 @@ export default function Header() {
               className="md:hidden absolute top-6 right-4 flex flex-col gap-[6px] w-6 h-6 justify-center items-center z-[60]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <span
                 className={`
@@ -96,7 +101,7 @@ export default function Header() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={closeMobileMenu} />
     </>
   )
 }
