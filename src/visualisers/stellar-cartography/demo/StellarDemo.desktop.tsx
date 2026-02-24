@@ -25,7 +25,7 @@ interface CameraState {
 function skyCamera(phaseSeconds: number): CameraState {
   const progress = phaseSeconds / 15;
   return {
-    panX: lerp(0.25, 0.0, progress),
+    panX: 0,
     panY: Math.sin(progress * Math.PI * 2) * 0.02,
     zoom: 1.0,
   };
@@ -34,7 +34,7 @@ function skyCamera(phaseSeconds: number): CameraState {
 function hrCamera(phaseSeconds: number): CameraState {
   const progress = phaseSeconds / 15;
   return {
-    panX: Math.sin(progress * Math.PI * 2) * 0.01,
+    panX: 0,
     panY: Math.cos(progress * Math.PI * 2) * 0.01,
     zoom: 1.02 + Math.sin(progress * Math.PI * 2) * 0.015,
   };
@@ -93,6 +93,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const uPan = gl.getUniformLocation(program, 'u_pan');
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
+    const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -211,21 +212,26 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
+      let skyOffset = 0;
       let camera: CameraState;
 
       if (loopPhase < 15) {
         transition = 0;
+        skyOffset = (loopPhase / 15) * 0.25;
         camera = skyCamera(loopPhase);
       } else if (loopPhase < 18) {
         const t = easeInOutCubic((loopPhase - 15) / 3);
         transition = t;
+        skyOffset = 0.25;
         camera = interpolateCamera(skyCamera(15), hrCamera(0), t);
       } else if (loopPhase < 33) {
         transition = 1;
+        skyOffset = 0.25;
         camera = hrCamera(loopPhase - 18);
       } else {
         const t = easeInOutCubic((loopPhase - 33) / 3);
         transition = 1 - t;
+        skyOffset = lerp(0.25, 0, t);
         camera = interpolateCamera(hrCamera(15), skyCamera(0), t);
       }
 
@@ -236,6 +242,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       gl.uniform2f(uPan, camera.panX, camera.panY);
       gl.uniform1f(uZoom, camera.zoom);
       gl.uniform1f(uDpr, dprRef.current);
+      gl.uniform1f(uSkyOffset, skyOffset);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

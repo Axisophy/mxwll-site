@@ -68,11 +68,16 @@ uniform float u_transition;
 uniform vec2 u_pan;
 uniform float u_zoom;
 uniform float u_dpr;
+uniform float u_skyOffset;
 
 out vec3 v_colour;
 
 void main() {
-  vec2 pos = mix(a_skyPos, a_hrPos, u_transition);
+  vec2 skyPos = a_skyPos;
+  float skyRa01 = fract(((skyPos.x + 1.0) * 0.5) + u_skyOffset);
+  skyPos.x = skyRa01 * 2.0 - 1.0;
+
+  vec2 pos = mix(skyPos, a_hrPos, u_transition);
   pos = (pos + u_pan) * u_zoom;
   gl_Position = vec4(pos, 0.0, 1.0);
   gl_PointSize = a_size * u_dpr;

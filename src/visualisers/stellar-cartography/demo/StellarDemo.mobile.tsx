@@ -61,6 +61,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const uPan = gl.getUniformLocation(program, 'u_pan');
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
+    const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -197,6 +198,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       gl.uniform2f(uPan, 0, 0);
       gl.uniform1f(uZoom, 1);
       gl.uniform1f(uDpr, dprRef.current);
+      gl.uniform1f(uSkyOffset, 0);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

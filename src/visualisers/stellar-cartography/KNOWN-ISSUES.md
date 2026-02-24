@@ -7,6 +7,8 @@
 ## Resolved
 - Demo and interactive concerns are now separated for the homepage path.
 - Sky projection vertical fill issue in demo mode was a mapping bug in prior code (`dec` scaled to half-height). Demo now maps Dec -90/+90 to full canvas height.
+- Fixed black gap on left edge in initial sky view by starting RA offset at `0` and wrapping horizontal sky offset seamlessly.
+- Fixed HR dwell timing so the loop follows exact phase boundaries: sky 15s, transition 3s, HR 15s, transition 3s.
 
 ## Browser compatibility notes
 - Demo relies on WebGL2. If WebGL2 is unavailable, the component logs an error and does not render stars.

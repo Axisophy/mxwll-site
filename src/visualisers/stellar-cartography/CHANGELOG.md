@@ -8,6 +8,8 @@
 - Added autonomous desktop loop (36s) and static mobile loop (29s) with smooth sky/HR interpolation.
 - Wired homepage hero from legacy `GaiaExplorer` demo path to new `StellarDemo` wrapper.
 - Updated demo documentation and known issues with current behaviour and constraints.
+- Fixed initial sky-view horizontal offset causing left-edge black gap by introducing wrapped RA sky offset starting at zero.
+- Fixed desktop loop dwell sequencing to enforce exact 15/3/15/3 phase boundaries across the 36-second cycle.
 
 ## 2026-02-23
 - Initial migration from Bang Industries site.
