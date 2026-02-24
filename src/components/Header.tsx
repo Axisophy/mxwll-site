@@ -20,7 +20,7 @@ export default function Header() {
     { href: '/services', label: 'Services' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
-    { href: '/quote', label: 'Get a Quote', isButton: true },
+    { href: '/quote', label: 'Get a quote' },
   ]
 
   return (
@@ -53,9 +53,7 @@ export default function Header() {
                   className={`
                     text-sm font-text transition-colors whitespace-nowrap
                     ${
-                      link.isButton
-                        ? 'px-4 py-2 border border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]'
-                        : pathname === link.href
+                      pathname === link.href
                         ? 'text-[var(--text-primary)]'
                         : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }

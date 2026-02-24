@@ -37,21 +37,30 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { href: '/services', label: 'Services' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
-    { href: '/quote', label: 'Get a Quote', isButton: true },
+    { href: '/quote', label: 'Get a quote' },
   ]
 
   return (
     <div
       id="mobile-menu"
       className={`
-        fixed inset-0 z-50 bg-white
+        fixed inset-0 z-50 bg-black
         transition-opacity duration-300
         md:hidden
         ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
       `}
       style={{ top: 'var(--header-height)' }}
     >
-      <nav className="flex flex-col items-center justify-center h-full gap-8 px-4">
+      <nav className="flex flex-col items-start justify-center h-full gap-8 px-4">
+        {/* Studio Description */}
+        <p className="text-sm text-white/70 leading-relaxed max-w-md mb-4">
+          MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
+          <br />
+          <br />
+          We don't simplify. We clarify.
+        </p>
+
+        {/* Navigation Links */}
         {navLinks.map((link) => (
           <Link
             key={link.href}
@@ -59,11 +68,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             className={`
               font-display text-3xl transition-colors
               ${
-                link.isButton
-                  ? 'px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]'
-                  : pathname === link.href
-                  ? 'text-[var(--text-primary)]'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                pathname === link.href
+                  ? 'text-white'
+                  : 'text-white/70 hover:text-white'
               }
             `}
             onClick={onClose}
