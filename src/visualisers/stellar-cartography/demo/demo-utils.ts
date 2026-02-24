@@ -271,6 +271,20 @@ function toGalacticCoordinates(raDeg: number, decDeg: number): { lDeg: number; b
   return { lDeg, bDeg: b * RAD_TO_DEG };
 }
 
+function positiveModulo(value: number, modulo: number): number {
+  return ((value % modulo) + modulo) % modulo;
+}
+
+function mapGalacticToNdc(lDeg: number, bDeg: number): { x: number; y: number } {
+  const xNorm = positiveModulo(lDeg + 180, 360) / 360;
+  const yNorm = 1 - (clamp(bDeg, -90, 90) + 90) / 180;
+
+  return {
+    x: xNorm * 2 - 1,
+    y: 1 - yNorm * 2,
+  };
+}
+
 export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): RenderData {
   const count = stars.length;
   const skyPositions = new Float32Array(count * 2);
@@ -298,19 +312,17 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
     const hrXNorm = (clamp(star.bp_rp ?? 1.0, HR_X_MIN, HR_X_MAX) - HR_X_MIN) / (HR_X_MAX - HR_X_MIN);
     const hrYNorm = (clamp(absoluteMagnitude, HR_Y_MIN, HR_Y_MAX) - HR_Y_MIN) / (HR_Y_MAX - HR_Y_MIN);
     const { lDeg, bDeg } = toGalacticCoordinates(star.ra, star.dec);
-    const galacticXNorm = (((lDeg + 180) % 360) / 360);
-    const galacticY = bDeg / 90;
+    const galacticPos = mapGalacticToNdc(lDeg, bDeg);
 
     const hrX = hrXNorm * 2 - 1;
     const hrY = 1 - hrYNorm * 2;
-    const galacticX = galacticXNorm * 2 - 1;
 
     skyPositions[i * 2] = skyX;
     skyPositions[i * 2 + 1] = skyY;
     hrPositions[i * 2] = hrX;
     hrPositions[i * 2 + 1] = hrY;
-    galacticPositions[i * 2] = galacticX;
-    galacticPositions[i * 2 + 1] = galacticY;
+    galacticPositions[i * 2] = galacticPos.x;
+    galacticPositions[i * 2 + 1] = galacticPos.y;
 
     colours[i * 3] = colour[0];
     colours[i * 3 + 1] = colour[1];

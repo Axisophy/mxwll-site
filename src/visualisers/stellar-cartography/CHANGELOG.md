@@ -15,6 +15,7 @@
 - Updated mobile demo loop to include galactic view with 12s dwell phases and 2.5s transitions.
 - Fixed demo timing to short-cycle loops: desktop 19.5s and mobile 16.5s with 1.5s transitions.
 - Fixed galactic rendering path by using explicit sky/HR/galactic view weights in the vertex shader interpolation.
+- Fixed galactic canvas mapping implementation to explicit l/b canvas-formula projection so the Milky Way band appears in galactic view.
 
 ## 2026-02-23
 - Initial migration from Bang Industries site.
