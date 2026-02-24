@@ -68,6 +68,7 @@ export interface CategoryMeta {
   order: number
 }
 
+// ===== OBJECT ARRAYS (imported from Maxwell archive) =====
 
 const FUNDAMENTAL_PARTICLES: CosmicObject[] = [
   {
@@ -540,21 +541,7 @@ const SOLAR_SYSTEM: CosmicObject[] = [
   },
 ]
 
-  ...FUNDAMENTAL_PARTICLES,
-  ...ATOMS_MOLECULES,
-  ...VIRUSES_CELLS,
-  ...MACROSCOPIC_LIFE,
-  ...SOLAR_SYSTEM,
-]
-
-  COSMIC_OBJECTS.map(obj => [obj.id, obj])
-)
-
-  return OBJECTS_MAP.get(id)
-}
-
-
-export const STARS: CosmicObject[] = [
+const STARS: CosmicObject[] = [
   {
     id: 'sun',
     name: 'The Sun',
@@ -646,7 +633,7 @@ export const STARS: CosmicObject[] = [
   },
 ]
 
-export const STELLAR_REMNANTS: CosmicObject[] = [
+const STELLAR_REMNANTS: CosmicObject[] = [
   {
     id: 'white-dwarf',
     name: 'White Dwarf',
@@ -694,7 +681,7 @@ export const STELLAR_REMNANTS: CosmicObject[] = [
   },
 ]
 
-export const BLACK_HOLES: CosmicObject[] = [
+const BLACK_HOLES: CosmicObject[] = [
   {
     id: 'stellar-bh',
     name: 'Stellar Mass Black Hole',
@@ -764,7 +751,7 @@ export const BLACK_HOLES: CosmicObject[] = [
   },
 ]
 
-export const GALAXIES: CosmicObject[] = [
+const GALAXIES: CosmicObject[] = [
   {
     id: 'milky-way',
     name: 'Milky Way Galaxy',
@@ -810,7 +797,7 @@ export const GALAXIES: CosmicObject[] = [
   },
 ]
 
-export const LARGE_SCALE: CosmicObject[] = [
+const LARGE_SCALE: CosmicObject[] = [
   {
     id: 'observable-universe',
     name: 'Observable Universe',
@@ -901,7 +888,7 @@ export const LARGE_SCALE: CosmicObject[] = [
   },
 ]
 
-export const EXOTIC: CosmicObject[] = [
+const EXOTIC: CosmicObject[] = [
   {
     id: 'planck-mass',
     name: 'Planck Mass',
@@ -926,15 +913,8 @@ export const EXOTIC: CosmicObject[] = [
   },
 ]
 
-  ...STARS,
-  ...STELLAR_REMNANTS,
-  ...BLACK_HOLES,
-  ...GALAXIES,
-  ...LARGE_SCALE,
-  ...EXOTIC,
-]
+// ===== COMBINED EXPORTS =====
 
-// Combined export of all cosmic objects
 export const COSMIC_OBJECTS: CosmicObject[] = [
   ...FUNDAMENTAL_PARTICLES,
   ...ATOMS_MOLECULES,

@@ -2,9 +2,11 @@
 
 import { useState } from 'react'
 import Logo from '@/components/Logo'
+import { ExplanationModal } from '@/components/ExplanationModal'
 
 export default function DesignSystemPage() {
   const [copiedClass, setCopiedClass] = useState<string | null>(null)
+  const [isExplanationModalOpen, setIsExplanationModalOpen] = useState(false)
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
@@ -821,6 +823,101 @@ pt-24/28/32 → Page hero sections`}
             </div>
           </div>
         </section>
+
+        {/* 11. Explanation Modal */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">11</span>
+            Explanation Modal
+          </h2>
+
+          {/* Component */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Four-Tier Explanation System</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
+                  Different audiences need different explanations. This component presents content at four expertise levels based on the cognitive science principle of expertise reversal.
+                </p>
+                <button
+                  onClick={() => setIsExplanationModalOpen(true)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white text-sm font-display hover:bg-[var(--text-primary)] transition-colors rounded"
+                >
+                  Open Example Modal
+                </button>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">USAGE EXAMPLE</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`import { ExplanationModal } from '@/components/ExplanationModal'
+
+<ExplanationModal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Black Holes"
+  subtitle="Objects so dense that nothing can escape"
+  tiers={[
+    {
+      level: 'child',
+      label: 'Simple',
+      description: 'Anyone can understand',
+      content: '...'
+    },
+    {
+      level: 'student',
+      label: 'Intuitive',
+      description: 'High school level',
+      content: '...'
+    },
+    // ... undergraduate and expert tiers
+  ]}
+  defaultTier="student"
+/>
+
+// Four levels:
+// - child: Concrete analogies, no jargon
+// - student: First principles, minimal math
+// - undergraduate: Equations, technical terms
+// - expert: Full formalism, current research`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <ExplanationModal
+          isOpen={isExplanationModalOpen}
+          onClose={() => setIsExplanationModalOpen(false)}
+          title="Black Holes"
+          subtitle="Objects so dense that nothing can escape"
+          tiers={[
+            {
+              level: 'child',
+              label: 'Simple',
+              description: 'Anyone can understand',
+              content: 'A black hole is like a cosmic vacuum cleaner - it sucks in everything nearby and nothing can escape, not even light! If you got too close, you would be stretched like spaghetti and pulled in forever.'
+            },
+            {
+              level: 'student',
+              label: 'Intuitive',
+              description: 'High school level',
+              content: 'When a massive star collapses, it creates a region where gravity is so strong that the escape velocity exceeds the speed of light. Nothing can move faster than light, so nothing can escape. The boundary where this happens is called the event horizon.'
+            },
+            {
+              level: 'undergraduate',
+              label: 'Technical',
+              description: 'University level',
+              content: "The Schwarzschild radius R_s = 2GM/c² defines the event horizon for a non-rotating black hole. For a solar mass black hole, R_s ≈ 3 km. Time dilation approaches infinity at the horizon from an external observer's perspective. The singularity at r=0 represents a breakdown of general relativity."
+            },
+            {
+              level: 'expert',
+              label: 'Advanced',
+              description: 'Graduate/research level',
+              content: 'Kerr metric describes rotating black holes with angular momentum parameter a. Frame-dragging in the ergosphere allows Penrose process for energy extraction. Hawking radiation implies black holes have entropy S = A/4 in Planck units, suggesting information paradox. Recent EHT observations confirm photon ring structure predicted by GR.'
+            }
+          ]}
+          defaultTier="student"
+        />
       </div>
       </div>
     </div>
