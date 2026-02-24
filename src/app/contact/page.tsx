@@ -90,9 +90,9 @@ export default function ContactPage() {
       </section>
 
       <div className="px-4 md:px-8 lg:px-12 pb-24">
-        <div className="max-w-2xl space-y-16">
-          {/* SECTION 1: Direct Contact */}
-          <section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12">
+          {/* Column 1 - Row 1: Email */}
+          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
             <h3 className="font-input text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
               EMAIL
             </h3>
@@ -102,10 +102,10 @@ export default function ContactPage() {
             >
               hello@mxwll.io
             </a>
-          </section>
+          </div>
 
-          {/* SECTION 2: Get a Quote Callout */}
-          <section className="border border-[var(--border)] bg-[var(--bg-secondary)] p-8">
+          {/* Column 2 - Row 1: Estimate */}
+          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
             <p className="font-sabon text-base text-[var(--text-primary)] leading-relaxed mb-4">
               For a faster response with an instant estimate, use our quote tool - no call required.
             </p>
@@ -115,10 +115,10 @@ export default function ContactPage() {
             >
               Get an instant estimate →
             </Link>
-          </section>
+          </div>
 
-          {/* SECTION 3: Contact Form */}
-          <section>
+          {/* Column 1 - Row 2: Send a Message */}
+          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
             <h3 className="font-input text-xs text-[var(--text-secondary)] mb-6 uppercase tracking-wider">
               SEND A MESSAGE
             </h3>
@@ -248,10 +248,10 @@ export default function ContactPage() {
                 )}
               </form>
             )}
-          </section>
+          </div>
 
-          {/* SECTION 4: Newsletter Signup */}
-          <section>
+          {/* Column 2 - Row 2: Newsletter / The Lab */}
+          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
             <h3 className="font-nhg text-xl font-medium mb-2">The Lab</h3>
             <p className="font-sabon text-base text-[var(--text-secondary)] leading-relaxed mb-6">
               Occasional writing on explanation design, science visualisation, and the work. No noise.
@@ -262,19 +262,19 @@ export default function ContactPage() {
                 {newsletterMessage}
               </p>
             ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col md:flex-row gap-3">
+              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
                 <input
                   type="email"
                   name="newsletter-email"
                   placeholder="Your email"
                   required
                   disabled={newsletterState === 'submitting'}
-                  className="flex-1 px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors disabled:opacity-50"
+                  className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors disabled:opacity-50"
                 />
                 <button
                   type="submit"
                   disabled={newsletterState === 'submitting'}
-                  className="px-6 py-2 bg-[var(--text-primary)] text-[var(--bg-primary)] font-nhg text-sm hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  className="w-full px-6 py-2 bg-[var(--text-primary)] text-[var(--bg-primary)] font-nhg text-sm hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {newsletterState === 'submitting' ? 'Subscribing...' : 'Subscribe'}
                 </button>
@@ -286,24 +286,22 @@ export default function ContactPage() {
                 {newsletterMessage}
               </p>
             )}
-          </section>
+          </div>
 
-          {/* SECTION 5: Social */}
-          <section>
+          {/* Column 1 - Row 3: Instagram */}
+          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
             <h3 className="font-input text-xs text-[var(--text-secondary)] mb-4 uppercase tracking-wider">
               ELSEWHERE
             </h3>
-            <div className="flex flex-col gap-3">
-              <a
-                href="https://instagram.com/mxwll.studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-nhg text-sm text-[var(--text-primary)] hover:opacity-70 transition-opacity w-fit"
-              >
-                Instagram
-              </a>
-            </div>
-          </section>
+            <a
+              href="https://instagram.com/mxwll.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-nhg text-sm text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+            >
+              Instagram
+            </a>
+          </div>
         </div>
       </div>
     </div>
