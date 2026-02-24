@@ -91,8 +91,11 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const aGalPos = gl.getAttribLocation(program, 'a_galPos');
     const aMagPos = gl.getAttribLocation(program, 'a_magPos');
     const aGalLatAbs = gl.getAttribLocation(program, 'a_galLatAbs');
-    const aColour = gl.getAttribLocation(program, 'a_colour');
-    const aSize = gl.getAttribLocation(program, 'a_size');
+    const aSubtleColour = gl.getAttribLocation(program, 'a_subtleColour');
+    const aObserverColour = gl.getAttribLocation(program, 'a_observerColour');
+    const aBaseSize = gl.getAttribLocation(program, 'a_baseSize');
+    const aHrSize = gl.getAttribLocation(program, 'a_hrSize');
+    const aObserverSize = gl.getAttribLocation(program, 'a_observerSize');
 
     const uTransition = gl.getUniformLocation(program, 'u_transition');
     const uPan = gl.getUniformLocation(program, 'u_pan');
@@ -103,6 +106,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
     const uToWeights = gl.getUniformLocation(program, 'u_toWeights');
     const uGalacticMix = gl.getUniformLocation(program, 'u_galacticMix');
+    const uObserverMix = gl.getUniformLocation(program, 'u_observerMix');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -132,15 +136,30 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     gl.enableVertexAttribArray(aGalLatAbs);
     gl.vertexAttribPointer(aGalLatAbs, 1, gl.FLOAT, false, 0, 0);
 
-    const colourBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
-    gl.enableVertexAttribArray(aColour);
-    gl.vertexAttribPointer(aColour, 3, gl.FLOAT, false, 0, 0);
+    const subtleColourBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, subtleColourBuffer);
+    gl.enableVertexAttribArray(aSubtleColour);
+    gl.vertexAttribPointer(aSubtleColour, 3, gl.FLOAT, false, 0, 0);
 
-    const sizeBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
-    gl.enableVertexAttribArray(aSize);
-    gl.vertexAttribPointer(aSize, 1, gl.FLOAT, false, 0, 0);
+    const observerColourBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, observerColourBuffer);
+    gl.enableVertexAttribArray(aObserverColour);
+    gl.vertexAttribPointer(aObserverColour, 3, gl.FLOAT, false, 0, 0);
+
+    const baseSizeBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, baseSizeBuffer);
+    gl.enableVertexAttribArray(aBaseSize);
+    gl.vertexAttribPointer(aBaseSize, 1, gl.FLOAT, false, 0, 0);
+
+    const hrSizeBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, hrSizeBuffer);
+    gl.enableVertexAttribArray(aHrSize);
+    gl.vertexAttribPointer(aHrSize, 1, gl.FLOAT, false, 0, 0);
+
+    const observerSizeBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, observerSizeBuffer);
+    gl.enableVertexAttribArray(aObserverSize);
+    gl.vertexAttribPointer(aObserverSize, 1, gl.FLOAT, false, 0, 0);
 
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
@@ -185,7 +204,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
           return;
         }
 
-        const renderData = buildRenderData(data.stars, DESKTOP_POINT_STOPS);
+        const renderData = buildRenderData(data.stars, DESKTOP_POINT_STOPS, { hrUniformSize: 1.5 });
         starCount = renderData.count;
 
         gl.bindBuffer(gl.ARRAY_BUFFER, skyPosBuffer);
@@ -203,11 +222,20 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
         gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticLatitudes, gl.STATIC_DRAW);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, renderData.colours, gl.STATIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, subtleColourBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.subtleColours, gl.STATIC_DRAW);
 
-        gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, renderData.sizes, gl.STATIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, observerColourBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.observerColours, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, baseSizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.baseSizes, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, hrSizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.hrSizes, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, observerSizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.observerSizes, gl.STATIC_DRAW);
 
         const h = cssHeightRef.current || window.innerHeight;
         const mappedMin = getCanvasMappedY(renderData.minDec, h);
@@ -313,6 +341,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       }
 
       const galacticMix = fromWeights[2] * (1 - transition) + toWeights[2] * transition;
+      const observerMix = fromWeights[3] * (1 - transition) + toWeights[3] * transition;
 
       gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -326,6 +355,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       gl.uniform4f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2], fromWeights[3]);
       gl.uniform4f(uToWeights, toWeights[0], toWeights[1], toWeights[2], toWeights[3]);
       gl.uniform1f(uGalacticMix, galacticMix);
+      gl.uniform1f(uObserverMix, observerMix);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

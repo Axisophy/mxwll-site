@@ -48,9 +48,14 @@
 
 ## Magnitude view axes
 - X axis: `bp_rp` colour index, range `-0.5` to `3.5` (left blue/hot, right red/cool).
-- Y axis: `abs_mag` proxy for apparent magnitude, range `-3` to `14` (top bright, bottom faint).
+- Y axis: `abs_mag` proxy for apparent magnitude, range `-3` to `14`, inverted orientation (top faint, bottom bright).
 - Point colour: same `bp_rp` temperature mapping as other views.
-- Point size: same magnitude-based sizing as other views.
+- Point size: dramatic observer sizing (`<0: 5px`, `0-3: 3.5px`, `3-6: 2px`, `6-9: 1.2px`, `>9: 0.7px`).
+
+## HR vs Observer distinction
+- HR view (`v2`): scientific/physical diagram with subtle temperature colour and uniform small points (`1.5px` desktop, `1.0px` mobile).
+- Magnitude view (`v4`): observer-focused dramatic diagram with inverted Y orientation, saturated colour palette, and larger dynamic point-size range.
+- Saturated colour treatment is blended in only for `v4` and interpolated during transitions to and from `v4`.
 
 ## Technical notes
 - Wrapper: `StellarDemo.tsx` chooses desktop/mobile with `window.innerWidth < 768` via `useEffect` + `useState`.
