@@ -769,7 +769,7 @@ pt-24/28/32 → Page hero sections`}
         </section>
 
         {/* 10. Footer */}
-        <section>
+        <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
             <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">10</span>
             Footer
@@ -824,10 +824,211 @@ pt-24/28/32 → Page hero sections`}
           </div>
         </section>
 
-        {/* 11. Explanation Modal */}
+        {/* 11. Forms & Contact */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
             <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">11</span>
+            Forms & Contact
+          </h2>
+
+          {/* Form Inputs */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Form Inputs</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-6">
+                {/* Text Input - Default */}
+                <div>
+                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
+                    Text Input
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter text"
+                    className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
+                  />
+                </div>
+
+                {/* Select Dropdown */}
+                <div>
+                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
+                    Select
+                  </label>
+                  <select className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white focus:outline-none focus:border-[var(--text-primary)] transition-colors">
+                    <option>Select an option</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                </div>
+
+                {/* Textarea */}
+                <div>
+                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
+                    Textarea
+                  </label>
+                  <textarea
+                    rows={4}
+                    placeholder="Enter longer text"
+                    className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors resize-y"
+                  />
+                </div>
+
+                {/* Error State */}
+                <div>
+                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
+                    Error State
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-red-600 font-nhg text-sm text-[var(--text-primary)] bg-white focus:outline-none focus:border-red-600 transition-colors"
+                  />
+                  <p className="text-sm text-red-600 mt-1">This field is required</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">FORM INPUT CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Base Input Classes
+className="w-full px-3 py-2
+  border border-[var(--border)]
+  font-nhg text-sm
+  text-[var(--text-primary)]
+  bg-white
+  focus:outline-none
+  focus:border-[var(--text-primary)]
+  transition-colors"
+
+// Label Classes
+className="block font-input text-xs
+  text-[var(--text-secondary)] mb-2
+  uppercase tracking-wider"
+
+// Error State
+border-red-600 (instead of border-[var(--border)])
+<p className="text-sm text-red-600 mt-1">Error message</p>
+
+// Textarea: add resize-y
+// Select: same classes as input`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Newsletter Signup</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-6">
+                {/* Desktop: Inline */}
+                <div>
+                  <p className="font-input text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
+                    Desktop (Inline)
+                  </p>
+                  <div className="flex gap-3">
+                    <input
+                      type="email"
+                      placeholder="Your email"
+                      className="flex-1 px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
+                    />
+                    <button className="px-6 py-2 bg-[var(--text-primary)] text-[var(--bg-primary)] font-nhg text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
+                      Subscribe
+                    </button>
+                  </div>
+                </div>
+
+                {/* Mobile: Stacked */}
+                <div>
+                  <p className="font-input text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
+                    Mobile (Stacked)
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    <input
+                      type="email"
+                      placeholder="Your email"
+                      className="px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
+                    />
+                    <button className="px-6 py-2 bg-[var(--text-primary)] text-[var(--bg-primary)] font-nhg text-sm hover:opacity-90 transition-opacity">
+                      Subscribe
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">NEWSLETTER CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`// Desktop (inline)
+<div className="flex flex-col md:flex-row gap-3">
+  <input className="flex-1 px-3 py-2 ..." />
+  <button className="px-6 py-2 ... whitespace-nowrap">
+    Subscribe
+  </button>
+</div>
+
+// Mobile (stacked)
+<div className="flex flex-col gap-3">
+  <input className="px-3 py-2 ..." />
+  <button className="px-6 py-2 ...">
+    Subscribe
+  </button>
+</div>
+
+// Button styling
+bg-[var(--text-primary)]
+text-[var(--bg-primary)]
+font-nhg text-sm
+hover:opacity-90
+transition-opacity`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Callout Block */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Callout Block</h3>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+                <div className="border border-[var(--border)] bg-[var(--bg-secondary)] p-8">
+                  <p className="font-sabon text-base text-[var(--text-primary)] leading-relaxed mb-4">
+                    For a faster response with an instant estimate, use our quote tool - no call required.
+                  </p>
+                  <a
+                    href="/quote"
+                    className="inline-block px-4 py-2 text-sm font-nhg text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-colors border border-[var(--text-primary)]"
+                  >
+                    Get an instant estimate →
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CALLOUT CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+{`<div className="border border-[var(--border)]
+  bg-[var(--bg-secondary)] p-8">
+  <p className="font-sabon text-base
+    text-[var(--text-primary)]
+    leading-relaxed mb-4">
+    Callout text
+  </p>
+  <a className="inline-block px-4 py-2
+    text-sm font-nhg
+    text-[var(--text-primary)]
+    hover:bg-[var(--text-primary)]
+    hover:text-[var(--bg-primary)]
+    transition-colors
+    border border-[var(--text-primary)]">
+    Button text →
+  </a>
+</div>`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 12. Explanation Modal */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">12</span>
             Explanation Modal
           </h2>
 
