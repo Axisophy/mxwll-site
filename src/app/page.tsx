@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import WorkCard from '@/components/WorkCard'
 
-const GaiaExplorer = dynamic(() => import('./work/stellar-cartography/GaiaExplorer'), { ssr: false })
+const StellarDemo = dynamic(() => import('@/visualisers/stellar-cartography/demo/StellarDemo'), { ssr: false })
 
 const selectedWork = [
   {
@@ -72,8 +72,8 @@ export default function Home() {
 
       {/* Stellar Cartography Visualiser */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="aspect-[4/3] md:aspect-[16/10] bg-[#050508] overflow-hidden border border-[var(--border-light)]">
-          <GaiaExplorer className="w-full h-full" demoMode={true} showControls={false} disableInteraction={true} />
+        <div className="bg-[#050508] overflow-hidden border border-[var(--border-light)]">
+          <StellarDemo className="w-full h-full" />
         </div>
         <p className="font-mono text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4 uppercase tracking-wider">
           STELLAR CARTOGRAPHY - 50,000 STARS FROM THE GAIA CATALOGUE

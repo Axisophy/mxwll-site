@@ -130,3 +130,13 @@ When you learn something the hard way, add it here. Format:
 - **Solution**: What fixed it
 - **Rule**: What to do going forward
 ```
+
+### Stellar Cartography Demo Projection (2026-02-24)
+- **Problem**: Sky view vertical fill looked compressed because Dec was mapped to half NDC height (`-0.5..0.5`) instead of full height.
+- **Solution**: Map Dec directly across full range (`-90..+90` -> `-1..+1`) for equirectangular projection in demo rendering.
+- **Rule**: For full-sky equirectangular views, never scale Dec to a reduced vertical range unless intentionally letterboxing.
+
+### Homepage Demo Split (2026-02-24)
+- **Problem**: Homepage demo behaviour and interactive work-page behaviour were coupled, making mobile and performance tuning harder.
+- **Solution**: Split homepage demo into dedicated desktop/mobile components with shared utilities and explicit loop timing.
+- **Rule**: Keep homepage demos isolated from interactive visualiser code paths so performance tradeoffs can diverge safely.

@@ -1,26 +1,49 @@
-# [Name] — Demo Specification
+# Stellar Cartography - Demo Specification
 
 ## Desktop demo
-**Duration:** [seconds for one loop]
-**Camera behaviour:** [autonomous movement pattern]
-**Transitions:** [what changes during demo]
+**Duration:** 36 seconds per loop  
+**Canvas sizing:** container width from `getBoundingClientRect()`, height `100vh`, DPR cap `2.0`  
+**Data volume:** up to 50,000 stars (full dataset)  
+**Projection:** equirectangular sky mapping (RA 0-360 to full width, Dec -90/+90 to full height)  
+**Point encoding:**
+- Size from magnitude (`phot_g_mean_mag` if present, fallback to `abs_mag`)
+- Magnitude stops: `<=0: 3.5px`, `3: 2.5px`, `5: 1.8px`, `7: 1.2px`, `>8: 1.0px`
+- Colour from `bp_rp` buckets (blue-white, yellow-white, orange, red), fallback warm white
 
 ### Timeline
-```
-0:00 - [Initial state]
-0:05 - [First transition]
-0:10 - [Second transition]
-[etc.]
+```text
+0.0s-15.0s   Sky view with very slow right-to-left pan (~1/4 sky width) and subtle vertical drift
+15.0s-18.0s  Sky -> HR transition (3.0s, ease-in-out cubic)
+18.0s-33.0s  HR view with subtle zoom and drift
+33.0s-36.0s  HR -> Sky transition (3.0s, ease-in-out cubic)
 ```
 
 ## Mobile demo
-**Duration:** [seconds]
-**Differences from desktop:** [simplified/static/reduced]
+**Duration:** 29 seconds per loop  
+**Canvas sizing:** width `100vw`, height `60vh`, DPR cap `1.5`  
+**Data volume:** brightest 15,000 stars (selected by lowest magnitude)  
+**Projection:** same full-sky equirectangular mapping and same HR layout  
+**Point encoding:**
+- Size from magnitude with mobile stops: `<=0: 2.0px`, `3: 1.5px`, `5: 1.2px`, `7: 0.8px`, `>8: 0.6px`
+- Same colour mapping as desktop
+
+### Timeline
+```text
+0.0s-12.0s   Sky view (static)
+12.0s-14.5s  Sky -> HR transition (2.5s, ease-in-out cubic)
+14.5s-26.5s  HR view (static)
+26.5s-29.0s  HR -> Sky transition (2.5s, ease-in-out cubic)
+```
 
 ## Technical notes
-[How demo mode is triggered, what's automated]
+- Wrapper: `StellarDemo.tsx` chooses desktop/mobile with `window.innerWidth < 768` via `useEffect` + `useState`.
+- Desktop and mobile are separate components:
+  - `StellarDemo.desktop.tsx`
+  - `StellarDemo.mobile.tsx`
+- Shared helpers/constants are in `demo-utils.ts`.
+- Resize handling is debounced and listens to resize plus `fullscreenchange`.
+- Both paths log Dec min/max and mapped Y values for projection verification.
 
 ## Current state
-**Status:** Not yet separated from interactive code
-**Location:** Demo logic currently mixed with interactive code in core/
-**Next steps:** Extract autonomous camera/timing logic into demo/
+**Status:** Implemented and wired to homepage demo embed.
+**Scope:** Homepage demo only. Full interactive visualiser remains separate.
