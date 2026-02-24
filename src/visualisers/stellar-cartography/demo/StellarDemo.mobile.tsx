@@ -16,6 +16,8 @@ interface StellarDemoMobileProps {
   className?: string;
 }
 
+type ViewWeights = [number, number, number];
+
 export default function StellarDemoMobile({ className }: StellarDemoMobileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -63,8 +65,8 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
-    const uFromView = gl.getUniformLocation(program, 'u_fromView');
-    const uToView = gl.getUniformLocation(program, 'u_toView');
+    const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
+    const uToWeights = gl.getUniformLocation(program, 'u_toWeights');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -190,37 +192,37 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       }
 
       const elapsedSeconds = (now - startTimeRef.current) / 1000;
-      const loopSeconds = 43.5;
+      const loopSeconds = 16.5;
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
-      let fromView = 0;
-      let toView = 0;
+      let fromWeights: ViewWeights = [1, 0, 0];
+      let toWeights: ViewWeights = [1, 0, 0];
 
-      if (loopPhase < 12) {
-        fromView = 0;
-        toView = 0;
+      if (loopPhase < 4) {
+        fromWeights = [1, 0, 0];
+        toWeights = [1, 0, 0];
         transition = 0;
-      } else if (loopPhase < 14.5) {
-        fromView = 0;
-        toView = 1;
-        transition = easeInOutCubic((loopPhase - 12) / 2.5);
-      } else if (loopPhase < 26.5) {
-        fromView = 1;
-        toView = 1;
+      } else if (loopPhase < 5.5) {
+        fromWeights = [1, 0, 0];
+        toWeights = [0, 1, 0];
+        transition = easeInOutCubic((loopPhase - 4) / 1.5);
+      } else if (loopPhase < 9.5) {
+        fromWeights = [0, 1, 0];
+        toWeights = [0, 1, 0];
         transition = 0;
-      } else if (loopPhase < 29.0) {
-        fromView = 1;
-        toView = 2;
-        transition = easeInOutCubic((loopPhase - 26.5) / 2.5);
-      } else if (loopPhase < 41.0) {
-        fromView = 2;
-        toView = 2;
+      } else if (loopPhase < 11.0) {
+        fromWeights = [0, 1, 0];
+        toWeights = [0, 0, 1];
+        transition = easeInOutCubic((loopPhase - 9.5) / 1.5);
+      } else if (loopPhase < 15.0) {
+        fromWeights = [0, 0, 1];
+        toWeights = [0, 0, 1];
         transition = 0;
       } else {
-        fromView = 2;
-        toView = 0;
-        transition = easeInOutCubic((loopPhase - 41.0) / 2.5);
+        fromWeights = [0, 0, 1];
+        toWeights = [1, 0, 0];
+        transition = easeInOutCubic((loopPhase - 15.0) / 1.5);
       }
 
       gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
@@ -231,8 +233,8 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       gl.uniform1f(uZoom, 1);
       gl.uniform1f(uDpr, dprRef.current);
       gl.uniform1f(uSkyOffset, 0);
-      gl.uniform1i(uFromView, fromView);
-      gl.uniform1i(uToView, toView);
+      gl.uniform3f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2]);
+      gl.uniform3f(uToWeights, toWeights[0], toWeights[1], toWeights[2]);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

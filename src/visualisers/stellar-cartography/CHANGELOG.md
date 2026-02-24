@@ -13,6 +13,8 @@
 - Added galactic coordinates (`l/b`) as a third demo view with precomputed IAU coordinate transform at data-load time.
 - Updated desktop demo loop to a 54-second three-view sequence: sky -> HR -> galactic -> sky.
 - Updated mobile demo loop to include galactic view with 12s dwell phases and 2.5s transitions.
+- Fixed demo timing to short-cycle loops: desktop 19.5s and mobile 16.5s with 1.5s transitions.
+- Fixed galactic rendering path by using explicit sky/HR/galactic view weights in the vertex shader interpolation.
 
 ## 2026-02-23
 - Initial migration from Bang Industries site.

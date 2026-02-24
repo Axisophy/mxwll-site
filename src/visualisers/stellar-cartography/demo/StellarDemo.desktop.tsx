@@ -22,8 +22,10 @@ interface CameraState {
   zoom: number;
 }
 
+type ViewWeights = [number, number, number];
+
 function skyCamera(phaseSeconds: number): CameraState {
-  const progress = phaseSeconds / 15;
+  const progress = phaseSeconds / 5;
   return {
     panX: 0,
     panY: Math.sin(progress * Math.PI * 2) * 0.02,
@@ -32,7 +34,7 @@ function skyCamera(phaseSeconds: number): CameraState {
 }
 
 function hrCamera(phaseSeconds: number): CameraState {
-  const progress = phaseSeconds / 15;
+  const progress = phaseSeconds / 5;
   return {
     panX: 0,
     panY: Math.cos(progress * Math.PI * 2) * 0.01,
@@ -95,8 +97,8 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
-    const uFromView = gl.getUniformLocation(program, 'u_fromView');
-    const uToView = gl.getUniformLocation(program, 'u_toView');
+    const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
+    const uToWeights = gl.getUniformLocation(program, 'u_toWeights');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -222,51 +224,51 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       }
 
       const elapsedSeconds = (now - startTimeRef.current) / 1000;
-      const loopSeconds = 54;
+      const loopSeconds = 19.5;
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
       let skyOffset = 0;
       let camera: CameraState;
-      let fromView = 0;
-      let toView = 0;
+      let fromWeights: ViewWeights = [1, 0, 0];
+      let toWeights: ViewWeights = [1, 0, 0];
 
-      if (loopPhase < 15) {
-        fromView = 0;
-        toView = 0;
+      if (loopPhase < 5) {
+        fromWeights = [1, 0, 0];
+        toWeights = [1, 0, 0];
         transition = 0;
-        skyOffset = (loopPhase / 15) * 0.25;
+        skyOffset = (loopPhase / 5) * 0.25;
         camera = skyCamera(loopPhase);
-      } else if (loopPhase < 18) {
-        fromView = 0;
-        toView = 1;
-        const t = easeInOutCubic((loopPhase - 15) / 3);
+      } else if (loopPhase < 6.5) {
+        fromWeights = [1, 0, 0];
+        toWeights = [0, 1, 0];
+        const t = easeInOutCubic((loopPhase - 5) / 1.5);
         transition = t;
         skyOffset = 0.25;
-        camera = interpolateCamera(skyCamera(15), hrCamera(0), t);
-      } else if (loopPhase < 33) {
-        fromView = 1;
-        toView = 1;
+        camera = interpolateCamera(skyCamera(5), hrCamera(0), t);
+      } else if (loopPhase < 11.5) {
+        fromWeights = [0, 1, 0];
+        toWeights = [0, 1, 0];
         transition = 0;
         skyOffset = 0.25;
-        camera = hrCamera(loopPhase - 18);
-      } else if (loopPhase < 36) {
-        fromView = 1;
-        toView = 2;
-        const t = easeInOutCubic((loopPhase - 33) / 3);
+        camera = hrCamera(loopPhase - 6.5);
+      } else if (loopPhase < 13) {
+        fromWeights = [0, 1, 0];
+        toWeights = [0, 0, 1];
+        const t = easeInOutCubic((loopPhase - 11.5) / 1.5);
         transition = t;
         skyOffset = 0.25;
-        camera = interpolateCamera(hrCamera(15), { panX: 0, panY: 0, zoom: 1.0 }, t);
-      } else if (loopPhase < 51) {
-        fromView = 2;
-        toView = 2;
+        camera = interpolateCamera(hrCamera(5), { panX: 0, panY: 0, zoom: 1.0 }, t);
+      } else if (loopPhase < 18) {
+        fromWeights = [0, 0, 1];
+        toWeights = [0, 0, 1];
         transition = 0;
         skyOffset = 0.25;
         camera = { panX: 0, panY: 0, zoom: 1.0 };
       } else {
-        fromView = 2;
-        toView = 0;
-        const t = easeInOutCubic((loopPhase - 51) / 3);
+        fromWeights = [0, 0, 1];
+        toWeights = [1, 0, 0];
+        const t = easeInOutCubic((loopPhase - 18) / 1.5);
         transition = t;
         skyOffset = 0;
         camera = interpolateCamera({ panX: 0, panY: 0, zoom: 1.0 }, skyCamera(0), t);
@@ -280,8 +282,8 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       gl.uniform1f(uZoom, camera.zoom);
       gl.uniform1f(uDpr, dprRef.current);
       gl.uniform1f(uSkyOffset, skyOffset);
-      gl.uniform1i(uFromView, fromView);
-      gl.uniform1i(uToView, toView);
+      gl.uniform3f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2]);
+      gl.uniform3f(uToWeights, toWeights[0], toWeights[1], toWeights[2]);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

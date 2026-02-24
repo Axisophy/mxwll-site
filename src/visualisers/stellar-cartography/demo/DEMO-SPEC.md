@@ -1,7 +1,7 @@
 # Stellar Cartography - Demo Specification
 
 ## Desktop demo
-**Duration:** 54 seconds per loop  
+**Duration:** 19.5 seconds per loop  
 **Canvas sizing:** container width from `getBoundingClientRect()`, height `100vh`, DPR cap `2.0`  
 **Data volume:** up to 50,000 stars (full dataset)  
 **Projection:** equirectangular sky and galactic mappings (full width/height)  
@@ -13,16 +13,16 @@
 
 ### Timeline
 ```text
-0.0s-15.0s   Sky view with very slow right-to-left pan (~1/4 sky width) and subtle vertical drift
-15.0s-18.0s  Sky -> HR transition (3.0s, ease-in-out cubic)
-18.0s-33.0s  HR view with subtle zoom and drift
-33.0s-36.0s  HR -> Galactic transition (3.0s, ease-in-out cubic)
-36.0s-51.0s  Galactic view (static framing)
-51.0s-54.0s  Galactic -> Sky transition (3.0s, ease-in-out cubic)
+0.0s-5.0s    Sky view with slow right-to-left pan and subtle vertical drift
+5.0s-6.5s    Sky -> HR transition (1.5s, ease-in-out cubic)
+6.5s-11.5s   HR view with subtle zoom and drift
+11.5s-13.0s  HR -> Galactic transition (1.5s, ease-in-out cubic)
+13.0s-18.0s  Galactic view (static framing)
+18.0s-19.5s  Galactic -> Sky transition (1.5s, ease-in-out cubic)
 ```
 
 ## Mobile demo
-**Duration:** 43.5 seconds per loop  
+**Duration:** 16.5 seconds per loop  
 **Canvas sizing:** width `100vw`, height `60vh`, DPR cap `1.5`  
 **Data volume:** brightest 15,000 stars (selected by lowest magnitude)  
 **Projection:** same full-sky, HR, and galactic mappings as desktop  
@@ -32,12 +32,12 @@
 
 ### Timeline
 ```text
-0.0s-12.0s   Sky view (static)
-12.0s-14.5s  Sky -> HR transition (2.5s, ease-in-out cubic)
-14.5s-26.5s  HR view (static)
-26.5s-29.0s  HR -> Galactic transition (2.5s, ease-in-out cubic)
-29.0s-41.0s  Galactic view (static)
-41.0s-43.5s  Galactic -> Sky transition (2.5s, ease-in-out cubic)
+0.0s-4.0s    Sky view (static)
+4.0s-5.5s    Sky -> HR transition (1.5s, ease-in-out cubic)
+5.5s-9.5s    HR view (static)
+9.5s-11.0s   HR -> Galactic transition (1.5s, ease-in-out cubic)
+11.0s-15.0s  Galactic view (static)
+15.0s-16.5s  Galactic -> Sky transition (1.5s, ease-in-out cubic)
 ```
 
 ## Technical notes

@@ -73,29 +73,18 @@ uniform vec2 u_pan;
 uniform float u_zoom;
 uniform float u_dpr;
 uniform float u_skyOffset;
-uniform int u_fromView;
-uniform int u_toView;
+uniform vec3 u_fromWeights;
+uniform vec3 u_toWeights;
 
 out vec3 v_colour;
 
-vec2 getViewPos(int viewId) {
-  if (viewId == 0) {
-    vec2 skyPos = a_skyPos;
-    float skyRa01 = fract(((skyPos.x + 1.0) * 0.5) + u_skyOffset);
-    skyPos.x = skyRa01 * 2.0 - 1.0;
-    return skyPos;
-  }
-
-  if (viewId == 1) {
-    return a_hrPos;
-  }
-
-  return a_galPos;
-}
-
 void main() {
-  vec2 fromPos = getViewPos(u_fromView);
-  vec2 toPos = getViewPos(u_toView);
+  vec2 skyPos = a_skyPos;
+  float skyRa01 = fract(((skyPos.x + 1.0) * 0.5) + u_skyOffset);
+  skyPos.x = skyRa01 * 2.0 - 1.0;
+
+  vec2 fromPos = skyPos * u_fromWeights.x + a_hrPos * u_fromWeights.y + a_galPos * u_fromWeights.z;
+  vec2 toPos = skyPos * u_toWeights.x + a_hrPos * u_toWeights.y + a_galPos * u_toWeights.z;
   vec2 pos = mix(fromPos, toPos, u_transition);
   pos = (pos + u_pan) * u_zoom;
   gl_Position = vec4(pos, 0.0, 1.0);
