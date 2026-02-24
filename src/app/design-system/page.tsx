@@ -250,6 +250,7 @@ export default function DesignSystemPage() {
                 {[
                   { name: 'BG Primary', value: '#FFFFFF', var: 'var(--bg-primary)' },
                   { name: 'BG Secondary', value: '#F5F5F5', var: 'var(--bg-secondary)' },
+                  { name: 'BG Tertiary', value: '#2563EB', var: 'blue-600' },
                   { name: 'Text Primary', value: '#000000', var: 'var(--text-primary)' },
                   { name: 'Text Secondary', value: '#666666', var: 'var(--text-secondary)' },
                   { name: 'Accent', value: '#000000', var: 'var(--accent)' },
@@ -273,7 +274,6 @@ export default function DesignSystemPage() {
 {`:root {
   --bg-primary: #FFFFFF;
   --bg-secondary: #F5F5F5;
-  --bg-tertiary: #E5E5E5;
   --text-primary: #000000;
   --text-secondary: #666666;
   --text-tertiary: #999999;
@@ -281,7 +281,10 @@ export default function DesignSystemPage() {
   --border: #D4D4D4;
 }
 
-// Never hardcode hex values
+// BG Tertiary: Tailwind blue-600 (#2563EB)
+// Used for interactive accent backgrounds
+
+// Never hardcode hex values for main palette
 // Always use CSS custom properties
 // Status colours are Tailwind equivalents (green-500, etc.)`}
               </pre>

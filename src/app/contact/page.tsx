@@ -92,13 +92,13 @@ export default function ContactPage() {
       <div className="px-4 md:px-8 lg:px-12 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12">
           {/* Column 1 - Row 1: Email */}
-          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
+          <div className="bg-[var(--bg-secondary)] hover:bg-blue-600 p-8 rounded-xl transition-colors group">
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] group-hover:text-white mb-3 transition-colors">
               E-mail
             </h3>
             <a
               href="mailto:hello@mxwll.io"
-              className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-white transition-colors"
             >
               hello@mxwll.io
             </a>
