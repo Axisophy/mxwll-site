@@ -208,16 +208,13 @@ Ptolemy is a separate repo/project - not part of mxwll-site.
 
 ## Visualiser Development Queue
 
-Recommended implementation order (simplest first):
+See `docs/VISUALISER-ROADMAP.md` for full implementation order, complexity staging, and data requirements.
 
-1. **Lissajous** (Canvas 2D, low complexity) - Parametric curve and harmonograph visualiser with frequency, phase, and damping controls.
-2. **Space-filling curves** (Canvas 2D, low complexity) - Recursive Hilbert/Peano/Moore construction with locality-mapping mode.
-3. **Double pendulum** (Canvas 2D, medium) - Multi-pendulum chaos simulation with real-space and phase-space views.
-4. **Boids** (Canvas 2D/WebGL, medium) - Emergent flocking from separation, alignment, and cohesion with optional predator behaviour.
-5. **Wave tank** (WebGL shader, medium) - GPU wave equation simulation for interference, diffraction, reflection, and resonance presets.
-6. **Fourier epicycles** (Canvas 2D, medium) - DFT-based path reconstruction with rotating epicycle chains and variable playback speed.
-7. **Chladni figures** (Canvas/WebGL, medium) - Particle-based nodal pattern visualiser with frequency sweep, mode browser, and audio-reactive mode.
-8. **Exoplanet systems** (Three.js, medium-high) - TRAPPIST-1 orrery plus full exoplanet discovery timeline using NASA archive data.
-9. **Gaia proper motions** (extends existing WebGL, medium-high) - Time-scrubbable Gaia starfield showing constellation deformation over ±100,000 years.
-10. **Physarum** (WebGL compute, high) - High-agent slime mould simulation with aesthetic, pathfinding, and cosmic web modes.
-11. **CMB explorer** (Three.js + Python preprocessing, high) - Planck full-sky globe with spherical harmonic build-up and personalised sky patch interaction.
+See `docs/RENDERING-ARCHITECTURE.md` for performance standards and GPU techniques required for high-quality visualisers.
+
+Current phase ordering:
+
+- **Phase 1 (Canvas 2D, low complexity):** Phyllotaxis, Brownian motion, Penrose tiling, Lissajous, Space-filling curves, Orbital resonance.
+- **Phase 2 (Canvas 2D/Three.js, medium):** Double pendulum, Boids, Lagrange points, Neuronal firing, Fourier epicycles, Chladni figures, Exoplanet systems.
+- **Phase 3 (WebGL/Three.js, medium-high):** Wave tank, Gaia proper motions, Roche limit, Tectonic drift, Atomic orbitals.
+- **Phase 4 (Advanced GPU, high):** Physarum, CMB explorer, Black hole accretion.
