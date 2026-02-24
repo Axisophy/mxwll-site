@@ -16,7 +16,7 @@ interface StellarDemoMobileProps {
   className?: string;
 }
 
-type ViewWeights = [number, number, number];
+type ViewWeights4 = [number, number, number, number];
 
 export default function StellarDemoMobile({ className }: StellarDemoMobileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,6 +57,8 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const aSkyPos = gl.getAttribLocation(program, 'a_skyPos');
     const aHrPos = gl.getAttribLocation(program, 'a_hrPos');
     const aGalPos = gl.getAttribLocation(program, 'a_galPos');
+    const aMagPos = gl.getAttribLocation(program, 'a_magPos');
+    const aGalLatAbs = gl.getAttribLocation(program, 'a_galLatAbs');
     const aColour = gl.getAttribLocation(program, 'a_colour');
     const aSize = gl.getAttribLocation(program, 'a_size');
 
@@ -65,8 +67,10 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
+    const uGalacticOffset = gl.getUniformLocation(program, 'u_galacticOffset');
     const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
     const uToWeights = gl.getUniformLocation(program, 'u_toWeights');
+    const uGalacticMix = gl.getUniformLocation(program, 'u_galacticMix');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -85,6 +89,16 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
     gl.enableVertexAttribArray(aGalPos);
     gl.vertexAttribPointer(aGalPos, 2, gl.FLOAT, false, 0, 0);
+
+    const magPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, magPosBuffer);
+    gl.enableVertexAttribArray(aMagPos);
+    gl.vertexAttribPointer(aMagPos, 2, gl.FLOAT, false, 0, 0);
+
+    const galLatBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
+    gl.enableVertexAttribArray(aGalLatAbs);
+    gl.vertexAttribPointer(aGalLatAbs, 1, gl.FLOAT, false, 0, 0);
 
     const colourBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
@@ -151,6 +165,12 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
         gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticPositions, gl.STATIC_DRAW);
 
+        gl.bindBuffer(gl.ARRAY_BUFFER, magPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.magnitudePositions, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticLatitudes, gl.STATIC_DRAW);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.colours, gl.STATIC_DRAW);
 
@@ -192,38 +212,53 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       }
 
       const elapsedSeconds = (now - startTimeRef.current) / 1000;
-      const loopSeconds = 16.5;
+      const loopSeconds = 22;
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
-      let fromWeights: ViewWeights = [1, 0, 0];
-      let toWeights: ViewWeights = [1, 0, 0];
+      let galacticOffset = 0;
+      let fromWeights: ViewWeights4 = [1, 0, 0, 0];
+      let toWeights: ViewWeights4 = [1, 0, 0, 0];
 
       if (loopPhase < 4) {
-        fromWeights = [1, 0, 0];
-        toWeights = [1, 0, 0];
+        fromWeights = [1, 0, 0, 0];
+        toWeights = [1, 0, 0, 0];
         transition = 0;
       } else if (loopPhase < 5.5) {
-        fromWeights = [1, 0, 0];
-        toWeights = [0, 1, 0];
+        fromWeights = [1, 0, 0, 0];
+        toWeights = [0, 1, 0, 0];
         transition = easeInOutCubic((loopPhase - 4) / 1.5);
       } else if (loopPhase < 9.5) {
-        fromWeights = [0, 1, 0];
-        toWeights = [0, 1, 0];
+        fromWeights = [0, 1, 0, 0];
+        toWeights = [0, 1, 0, 0];
         transition = 0;
       } else if (loopPhase < 11.0) {
-        fromWeights = [0, 1, 0];
-        toWeights = [0, 0, 1];
+        fromWeights = [0, 1, 0, 0];
+        toWeights = [0, 0, 1, 0];
         transition = easeInOutCubic((loopPhase - 9.5) / 1.5);
       } else if (loopPhase < 15.0) {
-        fromWeights = [0, 0, 1];
-        toWeights = [0, 0, 1];
+        fromWeights = [0, 0, 1, 0];
+        toWeights = [0, 0, 1, 0];
         transition = 0;
-      } else {
-        fromWeights = [0, 0, 1];
-        toWeights = [1, 0, 0];
+        galacticOffset = -((loopPhase - 11.0) / 4) * 0.1;
+      } else if (loopPhase < 16.5) {
+        fromWeights = [0, 0, 1, 0];
+        toWeights = [0, 0, 0, 1];
         transition = easeInOutCubic((loopPhase - 15.0) / 1.5);
+        galacticOffset = -0.1;
+      } else if (loopPhase < 20.5) {
+        fromWeights = [0, 0, 0, 1];
+        toWeights = [0, 0, 0, 1];
+        transition = 0;
+        galacticOffset = -0.1;
+      } else {
+        fromWeights = [0, 0, 0, 1];
+        toWeights = [1, 0, 0, 0];
+        transition = easeInOutCubic((loopPhase - 20.5) / 1.5);
+        galacticOffset = -0.1;
       }
+
+      const galacticMix = fromWeights[2] * (1 - transition) + toWeights[2] * transition;
 
       gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -233,8 +268,10 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       gl.uniform1f(uZoom, 1);
       gl.uniform1f(uDpr, dprRef.current);
       gl.uniform1f(uSkyOffset, 0);
-      gl.uniform3f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2]);
-      gl.uniform3f(uToWeights, toWeights[0], toWeights[1], toWeights[2]);
+      gl.uniform1f(uGalacticOffset, galacticOffset);
+      gl.uniform4f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2], fromWeights[3]);
+      gl.uniform4f(uToWeights, toWeights[0], toWeights[1], toWeights[2], toWeights[3]);
+      gl.uniform1f(uGalacticMix, galacticMix);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

@@ -22,7 +22,7 @@ interface CameraState {
   zoom: number;
 }
 
-type ViewWeights = [number, number, number];
+type ViewWeights4 = [number, number, number, number];
 
 function skyCamera(phaseSeconds: number): CameraState {
   const progress = phaseSeconds / 5;
@@ -89,6 +89,8 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const aSkyPos = gl.getAttribLocation(program, 'a_skyPos');
     const aHrPos = gl.getAttribLocation(program, 'a_hrPos');
     const aGalPos = gl.getAttribLocation(program, 'a_galPos');
+    const aMagPos = gl.getAttribLocation(program, 'a_magPos');
+    const aGalLatAbs = gl.getAttribLocation(program, 'a_galLatAbs');
     const aColour = gl.getAttribLocation(program, 'a_colour');
     const aSize = gl.getAttribLocation(program, 'a_size');
 
@@ -97,8 +99,10 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
+    const uGalacticOffset = gl.getUniformLocation(program, 'u_galacticOffset');
     const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
     const uToWeights = gl.getUniformLocation(program, 'u_toWeights');
+    const uGalacticMix = gl.getUniformLocation(program, 'u_galacticMix');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -117,6 +121,16 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
     gl.enableVertexAttribArray(aGalPos);
     gl.vertexAttribPointer(aGalPos, 2, gl.FLOAT, false, 0, 0);
+
+    const magPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, magPosBuffer);
+    gl.enableVertexAttribArray(aMagPos);
+    gl.vertexAttribPointer(aMagPos, 2, gl.FLOAT, false, 0, 0);
+
+    const galLatBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
+    gl.enableVertexAttribArray(aGalLatAbs);
+    gl.vertexAttribPointer(aGalLatAbs, 1, gl.FLOAT, false, 0, 0);
 
     const colourBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
@@ -183,6 +197,12 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
         gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticPositions, gl.STATIC_DRAW);
 
+        gl.bindBuffer(gl.ARRAY_BUFFER, magPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.magnitudePositions, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticLatitudes, gl.STATIC_DRAW);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.colours, gl.STATIC_DRAW);
 
@@ -224,55 +244,75 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       }
 
       const elapsedSeconds = (now - startTimeRef.current) / 1000;
-      const loopSeconds = 19.5;
+      const loopSeconds = 26;
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
       let skyOffset = 0;
+      let galacticOffset = 0;
       let camera: CameraState;
-      let fromWeights: ViewWeights = [1, 0, 0];
-      let toWeights: ViewWeights = [1, 0, 0];
+      let fromWeights: ViewWeights4 = [1, 0, 0, 0];
+      let toWeights: ViewWeights4 = [1, 0, 0, 0];
 
       if (loopPhase < 5) {
-        fromWeights = [1, 0, 0];
-        toWeights = [1, 0, 0];
+        fromWeights = [1, 0, 0, 0];
+        toWeights = [1, 0, 0, 0];
         transition = 0;
         skyOffset = (loopPhase / 5) * 0.25;
         camera = skyCamera(loopPhase);
       } else if (loopPhase < 6.5) {
-        fromWeights = [1, 0, 0];
-        toWeights = [0, 1, 0];
+        fromWeights = [1, 0, 0, 0];
+        toWeights = [0, 1, 0, 0];
         const t = easeInOutCubic((loopPhase - 5) / 1.5);
         transition = t;
         skyOffset = 0.25;
         camera = interpolateCamera(skyCamera(5), hrCamera(0), t);
       } else if (loopPhase < 11.5) {
-        fromWeights = [0, 1, 0];
-        toWeights = [0, 1, 0];
+        fromWeights = [0, 1, 0, 0];
+        toWeights = [0, 1, 0, 0];
         transition = 0;
         skyOffset = 0.25;
         camera = hrCamera(loopPhase - 6.5);
       } else if (loopPhase < 13) {
-        fromWeights = [0, 1, 0];
-        toWeights = [0, 0, 1];
+        fromWeights = [0, 1, 0, 0];
+        toWeights = [0, 0, 1, 0];
         const t = easeInOutCubic((loopPhase - 11.5) / 1.5);
         transition = t;
         skyOffset = 0.25;
         camera = interpolateCamera(hrCamera(5), { panX: 0, panY: 0, zoom: 1.0 }, t);
       } else if (loopPhase < 18) {
-        fromWeights = [0, 0, 1];
-        toWeights = [0, 0, 1];
+        fromWeights = [0, 0, 1, 0];
+        toWeights = [0, 0, 1, 0];
         transition = 0;
         skyOffset = 0.25;
+        galacticOffset = -((loopPhase - 13) / 5) * 0.125;
         camera = { panX: 0, panY: 0, zoom: 1.0 };
-      } else {
-        fromWeights = [0, 0, 1];
-        toWeights = [1, 0, 0];
+      } else if (loopPhase < 19.5) {
+        fromWeights = [0, 0, 1, 0];
+        toWeights = [0, 0, 0, 1];
         const t = easeInOutCubic((loopPhase - 18) / 1.5);
         transition = t;
+        skyOffset = 0.25;
+        galacticOffset = -0.125;
+        camera = { panX: 0, panY: 0, zoom: 1.0 };
+      } else if (loopPhase < 24.5) {
+        fromWeights = [0, 0, 0, 1];
+        toWeights = [0, 0, 0, 1];
+        transition = 0;
+        skyOffset = 0.25;
+        galacticOffset = -0.125;
+        camera = { panX: 0, panY: 0, zoom: 1.0 };
+      } else {
+        fromWeights = [0, 0, 0, 1];
+        toWeights = [1, 0, 0, 0];
+        const t = easeInOutCubic((loopPhase - 24.5) / 1.5);
+        transition = t;
         skyOffset = 0;
+        galacticOffset = -0.125;
         camera = interpolateCamera({ panX: 0, panY: 0, zoom: 1.0 }, skyCamera(0), t);
       }
+
+      const galacticMix = fromWeights[2] * (1 - transition) + toWeights[2] * transition;
 
       gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -282,8 +322,10 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       gl.uniform1f(uZoom, camera.zoom);
       gl.uniform1f(uDpr, dprRef.current);
       gl.uniform1f(uSkyOffset, skyOffset);
-      gl.uniform3f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2]);
-      gl.uniform3f(uToWeights, toWeights[0], toWeights[1], toWeights[2]);
+      gl.uniform1f(uGalacticOffset, galacticOffset);
+      gl.uniform4f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2], fromWeights[3]);
+      gl.uniform4f(uToWeights, toWeights[0], toWeights[1], toWeights[2], toWeights[3]);
+      gl.uniform1f(uGalacticMix, galacticMix);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

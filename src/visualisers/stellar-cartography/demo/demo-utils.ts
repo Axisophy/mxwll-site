@@ -25,6 +25,8 @@ export interface RenderData {
   skyPositions: Float32Array;
   hrPositions: Float32Array;
   galacticPositions: Float32Array;
+  magnitudePositions: Float32Array;
+  galacticLatitudes: Float32Array;
   colours: Float32Array;
   sizes: Float32Array;
   count: number;
@@ -58,6 +60,10 @@ export const HR_X_MIN = -0.5;
 export const HR_X_MAX = 3.5;
 export const HR_Y_MIN = -5;
 export const HR_Y_MAX = 15;
+export const MAG_X_MIN = -0.5;
+export const MAG_X_MAX = 3.5;
+export const MAG_Y_MIN = -3;
+export const MAG_Y_MAX = 14;
 
 export const vertexShaderSource = `#version 300 es
 precision highp float;
@@ -65,6 +71,8 @@ precision highp float;
 in vec2 a_skyPos;
 in vec2 a_hrPos;
 in vec2 a_galPos;
+in vec2 a_magPos;
+in float a_galLatAbs;
 in vec3 a_colour;
 in float a_size;
 
@@ -73,23 +81,62 @@ uniform vec2 u_pan;
 uniform float u_zoom;
 uniform float u_dpr;
 uniform float u_skyOffset;
-uniform vec3 u_fromWeights;
-uniform vec3 u_toWeights;
+uniform float u_galacticOffset;
+uniform vec4 u_fromWeights;
+uniform vec4 u_toWeights;
+uniform float u_galacticMix;
 
 out vec3 v_colour;
+out float v_alphaScale;
 
 void main() {
   vec2 skyPos = a_skyPos;
   float skyRa01 = fract(((skyPos.x + 1.0) * 0.5) + u_skyOffset);
   skyPos.x = skyRa01 * 2.0 - 1.0;
 
-  vec2 fromPos = skyPos * u_fromWeights.x + a_hrPos * u_fromWeights.y + a_galPos * u_fromWeights.z;
-  vec2 toPos = skyPos * u_toWeights.x + a_hrPos * u_toWeights.y + a_galPos * u_toWeights.z;
+  vec2 galPos = a_galPos;
+  float galLon01 = fract(((galPos.x + 1.0) * 0.5) + u_galacticOffset);
+  galPos.x = galLon01 * 2.0 - 1.0;
+
+  vec2 fromPos =
+    skyPos * u_fromWeights.x +
+    a_hrPos * u_fromWeights.y +
+    galPos * u_fromWeights.z +
+    a_magPos * u_fromWeights.w;
+  vec2 toPos =
+    skyPos * u_toWeights.x +
+    a_hrPos * u_toWeights.y +
+    galPos * u_toWeights.z +
+    a_magPos * u_toWeights.w;
   vec2 pos = mix(fromPos, toPos, u_transition);
+
+  vec3 color = a_colour;
+  float alphaScale = 1.0;
+
+  float planeAlpha = 1.0;
+  if (a_galLatAbs > 5.0 && a_galLatAbs <= 20.0) {
+    planeAlpha = mix(1.0, 0.7, (a_galLatAbs - 5.0) / 15.0);
+  } else if (a_galLatAbs > 20.0) {
+    planeAlpha = 0.4;
+  }
+
+  vec3 warmTint = vec3(1.05, 1.0, 0.95);
+  vec3 coolTint = vec3(0.95, 0.97, 1.05);
+  float warmMix = 1.0 - smoothstep(10.0, 30.0, a_galLatAbs);
+  float coolMix = smoothstep(30.0, 90.0, a_galLatAbs);
+  vec3 tint = mix(vec3(1.0), warmTint, warmMix);
+  tint = mix(tint, coolTint, coolMix);
+
+  color *= tint;
+  alphaScale = planeAlpha;
+  color = mix(a_colour, color, u_galacticMix);
+  alphaScale = mix(1.0, alphaScale, u_galacticMix);
+
   pos = (pos + u_pan) * u_zoom;
   gl_Position = vec4(pos, 0.0, 1.0);
   gl_PointSize = a_size * u_dpr;
-  v_colour = a_colour;
+  v_colour = color;
+  v_alphaScale = alphaScale;
 }
 `;
 
@@ -97,6 +144,7 @@ export const fragmentShaderSource = `#version 300 es
 precision highp float;
 
 in vec3 v_colour;
+in float v_alphaScale;
 out vec4 fragColor;
 
 void main() {
@@ -104,7 +152,7 @@ void main() {
   float dist = length(coord);
   if (dist > 1.0) discard;
 
-  float alpha = 1.0 - smoothstep(0.1, 1.0, dist);
+  float alpha = (1.0 - smoothstep(0.1, 1.0, dist)) * v_alphaScale;
   fragColor = vec4(v_colour, alpha);
 }
 `;
@@ -290,6 +338,8 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
   const skyPositions = new Float32Array(count * 2);
   const hrPositions = new Float32Array(count * 2);
   const galacticPositions = new Float32Array(count * 2);
+  const magnitudePositions = new Float32Array(count * 2);
+  const galacticLatitudes = new Float32Array(count);
   const colours = new Float32Array(count * 3);
   const sizes = new Float32Array(count);
 
@@ -313,9 +363,13 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
     const hrYNorm = (clamp(absoluteMagnitude, HR_Y_MIN, HR_Y_MAX) - HR_Y_MIN) / (HR_Y_MAX - HR_Y_MIN);
     const { lDeg, bDeg } = toGalacticCoordinates(star.ra, star.dec);
     const galacticPos = mapGalacticToNdc(lDeg, bDeg);
+    const magXNorm = (clamp(star.bp_rp ?? 1.0, MAG_X_MIN, MAG_X_MAX) - MAG_X_MIN) / (MAG_X_MAX - MAG_X_MIN);
+    const magYNorm = (clamp(absoluteMagnitude, MAG_Y_MIN, MAG_Y_MAX) - MAG_Y_MIN) / (MAG_Y_MAX - MAG_Y_MIN);
 
     const hrX = hrXNorm * 2 - 1;
     const hrY = 1 - hrYNorm * 2;
+    const magX = magXNorm * 2 - 1;
+    const magY = 1 - magYNorm * 2;
 
     skyPositions[i * 2] = skyX;
     skyPositions[i * 2 + 1] = skyY;
@@ -323,6 +377,9 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
     hrPositions[i * 2 + 1] = hrY;
     galacticPositions[i * 2] = galacticPos.x;
     galacticPositions[i * 2 + 1] = galacticPos.y;
+    magnitudePositions[i * 2] = magX;
+    magnitudePositions[i * 2 + 1] = magY;
+    galacticLatitudes[i] = Math.abs(bDeg);
 
     colours[i * 3] = colour[0];
     colours[i * 3 + 1] = colour[1];
@@ -342,6 +399,8 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
     skyPositions,
     hrPositions,
     galacticPositions,
+    magnitudePositions,
+    galacticLatitudes,
     colours,
     sizes,
     count,
