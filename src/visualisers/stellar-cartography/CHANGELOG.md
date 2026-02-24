@@ -21,6 +21,7 @@
 - Updated demo loops to four-view timing: desktop 26s and mobile 22s.
 - Differentiated HR (`v2`) and observer (`v4`) diagrams by using uniform small HR point sizes and inverted-y dramatic observer sizing.
 - Added v4-only saturated `bp_rp` colour palette, blended in and out during transitions to and from observer view.
+- Fixed v2/v4 clipping by computing padded magnitude and `bp_rp` ranges from loaded data instead of hardcoded axis ranges.
 
 ## 2026-02-23
 - Initial migration from Bang Industries site.

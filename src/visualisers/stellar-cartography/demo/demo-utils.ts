@@ -63,14 +63,7 @@ export const MOBILE_POINT_STOPS: PointSizeStops = {
   faint: 0.6,
 };
 
-export const HR_X_MIN = -0.5;
-export const HR_X_MAX = 3.5;
-export const HR_Y_MIN = -5;
-export const HR_Y_MAX = 15;
-export const MAG_X_MIN = -0.5;
-export const MAG_X_MAX = 3.5;
-export const MAG_Y_MIN = -3;
-export const MAG_Y_MAX = 14;
+const RANGE_PADDING_RATIO = 0.05;
 
 export const vertexShaderSource = `#version 300 es
 precision highp float;
@@ -343,6 +336,30 @@ function mapObserverSize(absMag: number): number {
   return 0.7;
 }
 
+function computePaddedRange(values: number[], fallbackMin: number, fallbackMax: number): { min: number; max: number } {
+  if (values.length === 0) {
+    return { min: fallbackMin, max: fallbackMax };
+  }
+
+  let min = Number.POSITIVE_INFINITY;
+  let max = Number.NEGATIVE_INFINITY;
+  for (const value of values) {
+    if (value < min) min = value;
+    if (value > max) max = value;
+  }
+
+  if (!Number.isFinite(min) || !Number.isFinite(max)) {
+    return { min: fallbackMin, max: fallbackMax };
+  }
+
+  const span = max - min;
+  const padding = span > 0 ? span * RANGE_PADDING_RATIO : 1;
+  return {
+    min: min - padding,
+    max: max + padding,
+  };
+}
+
 export function selectBrightestStars(stars: GaiaStar[], maxCount: number): GaiaStar[] {
   if (stars.length <= maxCount) {
     return stars;
@@ -416,6 +433,16 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops, option
   let minMagnitude = Number.POSITIVE_INFINITY;
   let maxMagnitude = Number.NEGATIVE_INFINITY;
 
+  const absMags = stars
+    .map((star) => getAbsoluteMagnitude(star))
+    .filter((value) => Number.isFinite(value));
+  const bpRps = stars
+    .map((star) => star.bp_rp)
+    .filter((value): value is number => typeof value === 'number' && Number.isFinite(value));
+
+  const magRange = computePaddedRange(absMags, -3, 14);
+  const bpRpRange = computePaddedRange(bpRps, -0.5, 3.5);
+
   for (let i = 0; i < count; i += 1) {
     const star = stars[i];
     const magnitude = getMagnitude(star);
@@ -426,12 +453,16 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops, option
     const skyX = (star.ra / 360) * 2 - 1;
     const skyY = star.dec / 90;
 
-    const hrXNorm = (clamp(star.bp_rp ?? 1.0, HR_X_MIN, HR_X_MAX) - HR_X_MIN) / (HR_X_MAX - HR_X_MIN);
-    const hrYNorm = (clamp(absoluteMagnitude, HR_Y_MIN, HR_Y_MAX) - HR_Y_MIN) / (HR_Y_MAX - HR_Y_MIN);
+    const hrXNorm =
+      (clamp(star.bp_rp ?? 1.0, bpRpRange.min, bpRpRange.max) - bpRpRange.min) / (bpRpRange.max - bpRpRange.min);
+    const hrYNorm =
+      (clamp(absoluteMagnitude, magRange.min, magRange.max) - magRange.min) / (magRange.max - magRange.min);
     const { lDeg, bDeg } = toGalacticCoordinates(star.ra, star.dec);
     const galacticPos = mapGalacticToNdc(lDeg, bDeg);
-    const magXNorm = (clamp(star.bp_rp ?? 1.0, MAG_X_MIN, MAG_X_MAX) - MAG_X_MIN) / (MAG_X_MAX - MAG_X_MIN);
-    const magYNorm = (clamp(absoluteMagnitude, MAG_Y_MIN, MAG_Y_MAX) - MAG_Y_MIN) / (MAG_Y_MAX - MAG_Y_MIN);
+    const magXNorm =
+      (clamp(star.bp_rp ?? 1.0, bpRpRange.min, bpRpRange.max) - bpRpRange.min) / (bpRpRange.max - bpRpRange.min);
+    const magYNorm =
+      (clamp(absoluteMagnitude, magRange.min, magRange.max) - magRange.min) / (magRange.max - magRange.min);
 
     const hrX = hrXNorm * 2 - 1;
     const hrY = 1 - hrYNorm * 2;
