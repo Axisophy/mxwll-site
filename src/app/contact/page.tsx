@@ -93,34 +93,31 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12">
           {/* Column 1 - Row 1: Email */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-input text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
-              EMAIL
+            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-3">
+              E-Mail
             </h3>
             <a
               href="mailto:hello@mxwll.io"
-              className="font-nhg text-2xl md:text-3xl text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="font-nhg font-bold text-2xl md:text-3xl text-[var(--text-primary)] hover:opacity-70 transition-opacity"
             >
               hello@mxwll.io
             </a>
           </div>
 
-          {/* Column 2 - Row 1: Estimate */}
+          {/* Column 2 - Row 1: Get a quote */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <p className="font-sabon text-base text-[var(--text-primary)] leading-relaxed mb-4">
+            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-3">
+              Get a quote
+            </h3>
+            <p className="font-nhg font-bold text-base text-[var(--text-primary)] leading-relaxed">
               For a faster response with an instant estimate, use our quote tool - no call required.
             </p>
-            <Link
-              href="/quote"
-              className="inline-block px-4 py-2 text-sm font-nhg text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-colors border border-[var(--text-primary)]"
-            >
-              Get an instant estimate →
-            </Link>
           </div>
 
-          {/* Column 1 - Row 2: Send a Message */}
+          {/* Column 1 - Row 2: Get in touch */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-input text-xs text-[var(--text-secondary)] mb-6 uppercase tracking-wider">
-              SEND A MESSAGE
+            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-6">
+              Get in touch
             </h3>
 
             {formState === 'success' ? (
@@ -250,11 +247,11 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Column 2 - Row 2: Newsletter / The Lab */}
+          {/* Column 2 - Row 2: Newsletter */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-xl font-medium mb-2">The Lab</h3>
-            <p className="font-sabon text-base text-[var(--text-secondary)] leading-relaxed mb-6">
-              Occasional writing on explanation design, science visualisation, and the work. No noise.
+            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-3">Newsletter</h3>
+            <p className="font-nhg font-bold text-base text-[var(--text-primary)] leading-relaxed mb-6">
+              Sign up to our newsletter The Lab for occasional writing on explanation design, science visualisation, and the work. No noise.
             </p>
 
             {newsletterState === 'success' || newsletterState === 'subscribed' ? (
@@ -290,16 +287,13 @@ export default function ContactPage() {
 
           {/* Column 1 - Row 3: Instagram */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-input text-xs text-[var(--text-secondary)] mb-4 uppercase tracking-wider">
-              ELSEWHERE
-            </h3>
             <a
               href="https://instagram.com/mxwll.studio"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-nhg text-sm text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="font-nhg font-bold text-base text-[var(--text-primary)] hover:opacity-70 transition-opacity"
             >
-              Instagram
+              Instagram ↗
             </a>
           </div>
         </div>
