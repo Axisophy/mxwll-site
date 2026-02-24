@@ -2,8 +2,6 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface ContactFormData {
   name: string
   email: string
@@ -15,6 +13,17 @@ interface ContactFormData {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact hello@mxwll.io directly.' },
+        { status: 500 }
+      )
+    }
+
+    // Initialize Resend client with API key (lazy initialization to avoid build-time errors)
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
     const body: ContactFormData = await request.json()
 
     // Validation
