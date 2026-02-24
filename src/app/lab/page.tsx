@@ -107,7 +107,7 @@ export default function LabPage() {
       {/* Intro */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium mb-6">Lab</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Lab</h1>
           <p className="font-sabon text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed">
             Experiments, tools, and generative work. Some of these are research projects exploring new ways to visualise data. Some are purely aesthetic. All of them are built with the same care as our client work.
           </p>

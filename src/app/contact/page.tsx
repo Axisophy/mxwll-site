@@ -85,7 +85,7 @@ export default function ContactPage() {
       {/* Page Title */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium">Contact</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Contact</h1>
         </div>
       </section>
 
@@ -93,12 +93,12 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12">
           {/* Column 1 - Row 1: Email */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-3">
-              E-Mail
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
+              E-mail
             </h3>
             <a
               href="mailto:hello@mxwll.io"
-              className="font-nhg font-bold text-2xl md:text-3xl text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
             >
               hello@mxwll.io
             </a>
@@ -106,17 +106,17 @@ export default function ContactPage() {
 
           {/* Column 2 - Row 1: Get a quote */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-3">
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
               Get a quote
             </h3>
-            <p className="font-nhg font-bold text-base text-[var(--text-primary)] leading-relaxed">
+            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1]">
               For a faster response with an instant estimate, use our quote tool - no call required.
             </p>
           </div>
 
           {/* Column 1 - Row 2: Get in touch */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-6">
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-6">
               Get in touch
             </h3>
 
@@ -249,8 +249,8 @@ export default function ContactPage() {
 
           {/* Column 2 - Row 2: Newsletter */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base text-[var(--text-primary)] mb-3">Newsletter</h3>
-            <p className="font-nhg font-bold text-base text-[var(--text-primary)] leading-relaxed mb-6">
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">Newsletter</h3>
+            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1] mb-6">
               Sign up to our newsletter The Lab for occasional writing on explanation design, science visualisation, and the work. No noise.
             </p>
 
@@ -285,13 +285,16 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Column 1 - Row 3: Instagram */}
+          {/* Column 1 - Row 3: Socials */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
+              Socials
+            </h3>
             <a
               href="https://instagram.com/mxwll.studio"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-nhg font-bold text-base text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
             >
               Instagram ↗
             </a>

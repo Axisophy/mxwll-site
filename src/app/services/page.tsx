@@ -4,7 +4,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium mb-6">Services</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Services</h1>
         </div>
       </section>
 

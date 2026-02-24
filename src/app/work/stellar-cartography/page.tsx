@@ -9,7 +9,7 @@ export default function StellarCartographyPage() {
     <main className='min-h-screen'>
       {/* Header */}
       <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20'>
-        <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium mb-4'>
+        <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-4'>
           Stellar Cartography
         </h1>
         <p className='text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-4'>

@@ -65,7 +65,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
       {/* Hero Section */}
       <section className="container py-16">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium mb-4">{work.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">{work.title}</h1>
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8">
             {work.subtitle}
           </p>

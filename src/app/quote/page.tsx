@@ -4,7 +4,7 @@ export default function QuotePage() {
       {/* Hero */}
       <section className="container py-16">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium mb-6">Get a Quote</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Get a Quote</h1>
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed">
             Answer a few questions about your project and we will send you an instant estimate. No obligation, no call required.
           </p>

@@ -20,7 +20,7 @@ export default function DesignSystemPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-24 pb-8 border-b border-[var(--border)]">
-          <h1 className="text-4xl md:text-5xl font-medium mb-4">Design System</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Design System</h1>
           <p className="text-lg text-[var(--text-secondary)] mb-2">
             Living reference for MXWLL visual language.
           </p>
@@ -393,7 +393,7 @@ export default function DesignSystemPage() {
                   <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">72PX</p>
                 </div>
                 <div className="py-3 border-b border-[var(--border-light)]">
-                  <p className="text-3xl font-medium">Page Titles</p>
+                  <p className="text-3xl font-bold tracking-tight">Page Titles</p>
                   <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">40PX</p>
                 </div>
                 <div className="py-3 border-b border-[var(--border-light)]">
@@ -415,8 +415,8 @@ export default function DesignSystemPage() {
               <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
 {`// Tailwind classes
 text-5xl font-medium → Display Large (72px)
-text-4xl font-medium → Hero Display (56px)
-text-3xl font-medium → Page Titles (40px)
+text-4xl font-bold tracking-tight → Page Titles (56px)
+text-3xl font-bold tracking-tight → Page Titles (40px)
 text-2xl font-medium → Section Heads (28px)
 text-xl font-medium → Subheadings (20px)
 text-lg → Article Body (18px)
@@ -425,7 +425,8 @@ font-input text-sm → LABELS (13px)
 font-input text-xs → METADATA (11px)
 
 // Mobile adjustments in globals.css
-// Type scale: xs 11px → 5xl 72px`}
+// Type scale: xs 11px → 5xl 72px
+// Page titles: font-bold tracking-tight`}
               </pre>
             </div>
           </div>
