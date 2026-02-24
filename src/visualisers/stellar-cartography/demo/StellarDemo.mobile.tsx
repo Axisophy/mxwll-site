@@ -54,6 +54,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
 
     const aSkyPos = gl.getAttribLocation(program, 'a_skyPos');
     const aHrPos = gl.getAttribLocation(program, 'a_hrPos');
+    const aGalPos = gl.getAttribLocation(program, 'a_galPos');
     const aColour = gl.getAttribLocation(program, 'a_colour');
     const aSize = gl.getAttribLocation(program, 'a_size');
 
@@ -62,6 +63,8 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
+    const uFromView = gl.getUniformLocation(program, 'u_fromView');
+    const uToView = gl.getUniformLocation(program, 'u_toView');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -75,6 +78,11 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     gl.bindBuffer(gl.ARRAY_BUFFER, hrPosBuffer);
     gl.enableVertexAttribArray(aHrPos);
     gl.vertexAttribPointer(aHrPos, 2, gl.FLOAT, false, 0, 0);
+
+    const galPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
+    gl.enableVertexAttribArray(aGalPos);
+    gl.vertexAttribPointer(aGalPos, 2, gl.FLOAT, false, 0, 0);
 
     const colourBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
@@ -138,6 +146,9 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
         gl.bindBuffer(gl.ARRAY_BUFFER, hrPosBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.hrPositions, gl.STATIC_DRAW);
 
+        gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticPositions, gl.STATIC_DRAW);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.colours, gl.STATIC_DRAW);
 
@@ -156,6 +167,9 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
 
         console.log(
           `[StellarDemoMobile] magnitude range ${renderData.minMagnitude.toFixed(2)}..${renderData.maxMagnitude.toFixed(2)} | stars=${renderData.count}`,
+        );
+        console.log(
+          `[StellarDemoMobile] galactic lat range ${renderData.minGalacticLat.toFixed(2)}..${renderData.maxGalacticLat.toFixed(2)}`,
         );
 
         setIsLoading(false);
@@ -176,19 +190,37 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       }
 
       const elapsedSeconds = (now - startTimeRef.current) / 1000;
-      const loopSeconds = 29;
+      const loopSeconds = 43.5;
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
+      let fromView = 0;
+      let toView = 0;
 
       if (loopPhase < 12) {
+        fromView = 0;
+        toView = 0;
         transition = 0;
       } else if (loopPhase < 14.5) {
+        fromView = 0;
+        toView = 1;
         transition = easeInOutCubic((loopPhase - 12) / 2.5);
       } else if (loopPhase < 26.5) {
-        transition = 1;
+        fromView = 1;
+        toView = 1;
+        transition = 0;
+      } else if (loopPhase < 29.0) {
+        fromView = 1;
+        toView = 2;
+        transition = easeInOutCubic((loopPhase - 26.5) / 2.5);
+      } else if (loopPhase < 41.0) {
+        fromView = 2;
+        toView = 2;
+        transition = 0;
       } else {
-        transition = 1 - easeInOutCubic((loopPhase - 26.5) / 2.5);
+        fromView = 2;
+        toView = 0;
+        transition = easeInOutCubic((loopPhase - 41.0) / 2.5);
       }
 
       gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
@@ -199,6 +231,8 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       gl.uniform1f(uZoom, 1);
       gl.uniform1f(uDpr, dprRef.current);
       gl.uniform1f(uSkyOffset, 0);
+      gl.uniform1i(uFromView, fromView);
+      gl.uniform1i(uToView, toView);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

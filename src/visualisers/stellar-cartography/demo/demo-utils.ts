@@ -24,11 +24,14 @@ export interface PointSizeStops {
 export interface RenderData {
   skyPositions: Float32Array;
   hrPositions: Float32Array;
+  galacticPositions: Float32Array;
   colours: Float32Array;
   sizes: Float32Array;
   count: number;
   minDec: number;
   maxDec: number;
+  minGalacticLat: number;
+  maxGalacticLat: number;
   minMagnitude: number;
   maxMagnitude: number;
 }
@@ -61,6 +64,7 @@ precision highp float;
 
 in vec2 a_skyPos;
 in vec2 a_hrPos;
+in vec2 a_galPos;
 in vec3 a_colour;
 in float a_size;
 
@@ -69,15 +73,30 @@ uniform vec2 u_pan;
 uniform float u_zoom;
 uniform float u_dpr;
 uniform float u_skyOffset;
+uniform int u_fromView;
+uniform int u_toView;
 
 out vec3 v_colour;
 
-void main() {
-  vec2 skyPos = a_skyPos;
-  float skyRa01 = fract(((skyPos.x + 1.0) * 0.5) + u_skyOffset);
-  skyPos.x = skyRa01 * 2.0 - 1.0;
+vec2 getViewPos(int viewId) {
+  if (viewId == 0) {
+    vec2 skyPos = a_skyPos;
+    float skyRa01 = fract(((skyPos.x + 1.0) * 0.5) + u_skyOffset);
+    skyPos.x = skyRa01 * 2.0 - 1.0;
+    return skyPos;
+  }
 
-  vec2 pos = mix(skyPos, a_hrPos, u_transition);
+  if (viewId == 1) {
+    return a_hrPos;
+  }
+
+  return a_galPos;
+}
+
+void main() {
+  vec2 fromPos = getViewPos(u_fromView);
+  vec2 toPos = getViewPos(u_toView);
+  vec2 pos = mix(fromPos, toPos, u_transition);
   pos = (pos + u_pan) * u_zoom;
   gl_Position = vec4(pos, 0.0, 1.0);
   gl_PointSize = a_size * u_dpr;
@@ -233,15 +252,48 @@ export function selectBrightestStars(stars: GaiaStar[], maxCount: number): GaiaS
   return sorted.slice(0, maxCount);
 }
 
+const RA_NGP_RAD = (192.85948 * Math.PI) / 180;
+const DEC_NGP_RAD = (27.12825 * Math.PI) / 180;
+const L_NCP_RAD = (122.93192 * Math.PI) / 180;
+const RAD_TO_DEG = 180 / Math.PI;
+
+function toGalacticCoordinates(raDeg: number, decDeg: number): { lDeg: number; bDeg: number } {
+  const ra = (raDeg * Math.PI) / 180;
+  const dec = (decDeg * Math.PI) / 180;
+
+  const sinDec = Math.sin(dec);
+  const cosDec = Math.cos(dec);
+  const deltaRa = ra - RA_NGP_RAD;
+
+  const b = Math.asin(
+    sinDec * Math.sin(DEC_NGP_RAD) + cosDec * Math.cos(DEC_NGP_RAD) * Math.cos(deltaRa),
+  );
+
+  const y = cosDec * Math.sin(deltaRa);
+  const x = sinDec * Math.cos(DEC_NGP_RAD) - cosDec * Math.sin(DEC_NGP_RAD) * Math.cos(deltaRa);
+  const lRaw = L_NCP_RAD - Math.atan2(y, x);
+
+  let lDeg = lRaw * RAD_TO_DEG;
+  lDeg %= 360;
+  if (lDeg < 0) {
+    lDeg += 360;
+  }
+
+  return { lDeg, bDeg: b * RAD_TO_DEG };
+}
+
 export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): RenderData {
   const count = stars.length;
   const skyPositions = new Float32Array(count * 2);
   const hrPositions = new Float32Array(count * 2);
+  const galacticPositions = new Float32Array(count * 2);
   const colours = new Float32Array(count * 3);
   const sizes = new Float32Array(count);
 
   let minDec = Number.POSITIVE_INFINITY;
   let maxDec = Number.NEGATIVE_INFINITY;
+  let minGalacticLat = Number.POSITIVE_INFINITY;
+  let maxGalacticLat = Number.NEGATIVE_INFINITY;
   let minMagnitude = Number.POSITIVE_INFINITY;
   let maxMagnitude = Number.NEGATIVE_INFINITY;
 
@@ -256,14 +308,20 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
 
     const hrXNorm = (clamp(star.bp_rp ?? 1.0, HR_X_MIN, HR_X_MAX) - HR_X_MIN) / (HR_X_MAX - HR_X_MIN);
     const hrYNorm = (clamp(absoluteMagnitude, HR_Y_MIN, HR_Y_MAX) - HR_Y_MIN) / (HR_Y_MAX - HR_Y_MIN);
+    const { lDeg, bDeg } = toGalacticCoordinates(star.ra, star.dec);
+    const galacticXNorm = (((lDeg + 180) % 360) / 360);
+    const galacticY = bDeg / 90;
 
     const hrX = hrXNorm * 2 - 1;
     const hrY = 1 - hrYNorm * 2;
+    const galacticX = galacticXNorm * 2 - 1;
 
     skyPositions[i * 2] = skyX;
     skyPositions[i * 2 + 1] = skyY;
     hrPositions[i * 2] = hrX;
     hrPositions[i * 2 + 1] = hrY;
+    galacticPositions[i * 2] = galacticX;
+    galacticPositions[i * 2 + 1] = galacticY;
 
     colours[i * 3] = colour[0];
     colours[i * 3 + 1] = colour[1];
@@ -273,6 +331,8 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
 
     if (star.dec < minDec) minDec = star.dec;
     if (star.dec > maxDec) maxDec = star.dec;
+    if (bDeg < minGalacticLat) minGalacticLat = bDeg;
+    if (bDeg > maxGalacticLat) maxGalacticLat = bDeg;
     if (magnitude < minMagnitude) minMagnitude = magnitude;
     if (magnitude > maxMagnitude) maxMagnitude = magnitude;
   }
@@ -280,11 +340,14 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops): Rende
   return {
     skyPositions,
     hrPositions,
+    galacticPositions,
     colours,
     sizes,
     count,
     minDec,
     maxDec,
+    minGalacticLat,
+    maxGalacticLat,
     minMagnitude,
     maxMagnitude,
   };

@@ -86,6 +86,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
 
     const aSkyPos = gl.getAttribLocation(program, 'a_skyPos');
     const aHrPos = gl.getAttribLocation(program, 'a_hrPos');
+    const aGalPos = gl.getAttribLocation(program, 'a_galPos');
     const aColour = gl.getAttribLocation(program, 'a_colour');
     const aSize = gl.getAttribLocation(program, 'a_size');
 
@@ -94,6 +95,8 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
+    const uFromView = gl.getUniformLocation(program, 'u_fromView');
+    const uToView = gl.getUniformLocation(program, 'u_toView');
 
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -107,6 +110,11 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     gl.bindBuffer(gl.ARRAY_BUFFER, hrPosBuffer);
     gl.enableVertexAttribArray(aHrPos);
     gl.vertexAttribPointer(aHrPos, 2, gl.FLOAT, false, 0, 0);
+
+    const galPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
+    gl.enableVertexAttribArray(aGalPos);
+    gl.vertexAttribPointer(aGalPos, 2, gl.FLOAT, false, 0, 0);
 
     const colourBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
@@ -170,6 +178,9 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
         gl.bindBuffer(gl.ARRAY_BUFFER, hrPosBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.hrPositions, gl.STATIC_DRAW);
 
+        gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticPositions, gl.STATIC_DRAW);
+
         gl.bindBuffer(gl.ARRAY_BUFFER, colourBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, renderData.colours, gl.STATIC_DRAW);
 
@@ -188,6 +199,9 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
 
         console.log(
           `[StellarDemoDesktop] magnitude range ${renderData.minMagnitude.toFixed(2)}..${renderData.maxMagnitude.toFixed(2)} | stars=${renderData.count}`,
+        );
+        console.log(
+          `[StellarDemoDesktop] galactic lat range ${renderData.minGalacticLat.toFixed(2)}..${renderData.maxGalacticLat.toFixed(2)}`,
         );
 
         setIsLoading(false);
@@ -208,31 +222,54 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       }
 
       const elapsedSeconds = (now - startTimeRef.current) / 1000;
-      const loopSeconds = 36;
+      const loopSeconds = 54;
       const loopPhase = elapsedSeconds % loopSeconds;
 
       let transition = 0;
       let skyOffset = 0;
       let camera: CameraState;
+      let fromView = 0;
+      let toView = 0;
 
       if (loopPhase < 15) {
+        fromView = 0;
+        toView = 0;
         transition = 0;
         skyOffset = (loopPhase / 15) * 0.25;
         camera = skyCamera(loopPhase);
       } else if (loopPhase < 18) {
+        fromView = 0;
+        toView = 1;
         const t = easeInOutCubic((loopPhase - 15) / 3);
         transition = t;
         skyOffset = 0.25;
         camera = interpolateCamera(skyCamera(15), hrCamera(0), t);
       } else if (loopPhase < 33) {
-        transition = 1;
+        fromView = 1;
+        toView = 1;
+        transition = 0;
         skyOffset = 0.25;
         camera = hrCamera(loopPhase - 18);
-      } else {
+      } else if (loopPhase < 36) {
+        fromView = 1;
+        toView = 2;
         const t = easeInOutCubic((loopPhase - 33) / 3);
-        transition = 1 - t;
-        skyOffset = lerp(0.25, 0, t);
-        camera = interpolateCamera(hrCamera(15), skyCamera(0), t);
+        transition = t;
+        skyOffset = 0.25;
+        camera = interpolateCamera(hrCamera(15), { panX: 0, panY: 0, zoom: 1.0 }, t);
+      } else if (loopPhase < 51) {
+        fromView = 2;
+        toView = 2;
+        transition = 0;
+        skyOffset = 0.25;
+        camera = { panX: 0, panY: 0, zoom: 1.0 };
+      } else {
+        fromView = 2;
+        toView = 0;
+        const t = easeInOutCubic((loopPhase - 51) / 3);
+        transition = t;
+        skyOffset = 0;
+        camera = interpolateCamera({ panX: 0, panY: 0, zoom: 1.0 }, skyCamera(0), t);
       }
 
       gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
@@ -243,6 +280,8 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       gl.uniform1f(uZoom, camera.zoom);
       gl.uniform1f(uDpr, dprRef.current);
       gl.uniform1f(uSkyOffset, skyOffset);
+      gl.uniform1i(uFromView, fromView);
+      gl.uniform1i(uToView, toView);
 
       gl.drawArrays(gl.POINTS, 0, starCount);
     };

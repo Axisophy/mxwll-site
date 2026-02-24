@@ -10,6 +10,9 @@
 - Updated demo documentation and known issues with current behaviour and constraints.
 - Fixed initial sky-view horizontal offset causing left-edge black gap by introducing wrapped RA sky offset starting at zero.
 - Fixed desktop loop dwell sequencing to enforce exact 15/3/15/3 phase boundaries across the 36-second cycle.
+- Added galactic coordinates (`l/b`) as a third demo view with precomputed IAU coordinate transform at data-load time.
+- Updated desktop demo loop to a 54-second three-view sequence: sky -> HR -> galactic -> sky.
+- Updated mobile demo loop to include galactic view with 12s dwell phases and 2.5s transitions.
 
 ## 2026-02-23
 - Initial migration from Bang Industries site.
