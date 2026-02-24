@@ -13,14 +13,91 @@ const labItems = [
     description: 'Particles tracing a divergence-free noise field. Curl noise produces organic, fluid-like motion - particles flowing through it never converge or diverge. An interactive visualiser for exploring how layered fractal noise shapes emergent flow patterns.',
     tags: ['WebGL', 'Generative', 'Curl Noise'],
     slug: '#',
-    status: 'In development',
+    status: 'In Development',
   },
   {
     title: 'Lorenz Attractor',
     description: 'The butterfly effect made visible. A deterministic system that produces chaos - two trajectories starting a hair\'s breadth apart diverge completely. Real-time 3D rendering of the attractor with adjustable parameters.',
     tags: ['WebGL', 'Chaos Theory', 'Dynamical Systems'],
     slug: '#',
-    status: 'In development',
+    status: 'In Development',
+  },
+  {
+    title: 'Lissajous',
+    description: 'Parametric harmonics made visible. Frequency ratios and phase offsets generate elegant curve families, while harmonograph damping reveals how physical drawing systems decay over time.',
+    tags: ['Canvas 2D', 'Parametric Curves', 'Harmonics'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Space-Filling Curves',
+    description: 'Hilbert, Peano, and Moore constructions animated level by level. Shows how a 1D path can fill 2D space and why locality-preserving mappings matter for data layouts.',
+    tags: ['Canvas 2D', 'Recursion', 'Geometry'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Double Pendulum',
+    description: 'Many near-identical pendulums begin synchronised, then diverge chaotically. A paired phase-space view reveals the deeper dynamical structure behind sensitive dependence on initial conditions.',
+    tags: ['Canvas 2D', 'Chaos Theory', 'Physics'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Boids',
+    description: 'Emergent flocking from three local rules - separation, alignment, and cohesion. Real-time controls reveal how complex group motion appears without central coordination.',
+    tags: ['Canvas/WebGL', 'Emergence', 'Agent Simulation'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Wave Tank',
+    description: 'Interactive wave equation simulation for interference, diffraction, and reflection. Includes canonical presets such as double slit and resonant cavity.',
+    tags: ['WebGL2', 'Wave Physics', 'Superposition'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Fourier Epicycles',
+    description: 'A drawing machine built from rotating circles. Any path can be decomposed into Fourier components and reconstructed by epicycles in real time.',
+    tags: ['Canvas/WebGL', 'Fourier', 'Signal Decomposition'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Chladni Figures',
+    description: 'Nodal vibration patterns where virtual sand accumulates at standing-wave nodes. Includes mode browser, frequency sweep, and optional microphone-reactive mode.',
+    tags: ['Canvas/WebGL', 'Acoustics', 'Pattern Formation'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Exoplanet Systems',
+    description: 'Interactive orrery of real exoplanetary systems using NASA archive data, with TRAPPIST-1 as the primary showcase and a full discovery timeline browser.',
+    tags: ['Three.js', 'Astronomy', 'NASA Data'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Gaia Proper Motions',
+    description: 'A Stellar Cartography extension that fast-forwards the sky by ±100,000 years using Gaia proper-motion vectors, showing how constellations deform over time.',
+    tags: ['WebGL', 'Gaia DR3', 'Astrometry'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Physarum',
+    description: 'High-density slime mould simulation where agents deposit and follow chemical trails. Emergent networks resemble veins, rivers, and cosmic web structure.',
+    tags: ['WebGL Compute', 'Emergence', 'Biological Simulation'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'CMB Explorer',
+    description: 'Planck Legacy CMB map rendered as an interactive sky globe with harmonic decomposition. Includes a personal sky-patch feature mapped from date input.',
+    tags: ['Three.js', 'Cosmology', 'Planck Data'],
+    slug: '#',
+    status: 'In Development',
   },
 ]
 
@@ -57,7 +134,7 @@ export default function LabPage() {
                         item.title
                       )}
                     </h2>
-                    {item.status === 'In development' && (
+                    {item.status === 'In Development' && (
                       <span className="font-input text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider border border-[var(--border)] px-2 py-0.5">
                         {item.status}
                       </span>

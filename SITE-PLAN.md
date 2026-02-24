@@ -65,6 +65,7 @@ sm: 640px / md: 768px / lg: 1024px / xl: 1280px / 2xl: 1536px
 - [x] Gaia data fetched (50K stars full-sky via async TAP queries)
 - [x] OG/Twitter meta tags
 - [x] Robots directive
+- [x] Scaffolding for 11 new Lab visualisers with docs (Fourier Epicycles, Physarum, Double Pendulum, Chladni Figures, Wave Tank, Exoplanet Systems, CMB Explorer, Lissajous, Space-filling Curves, Gaia Proper Motions, Boids)
 
 ### MVP Remaining 🔴
 - [ ] Static work cards with images (need project images from Simon)
