@@ -85,10 +85,7 @@ export default function ContactPage() {
       {/* Page Title */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-medium mb-4">Contact</h1>
-          <h2 className="font-sabon text-xl md:text-2xl text-[var(--text-secondary)]">
-            Get in touch
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-medium">Contact</h1>
         </div>
       </section>
 
