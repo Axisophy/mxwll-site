@@ -17,23 +17,18 @@ export default function Footer() {
   return (
     <footer className="w-full bg-black mt-24">
       <div className="px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
-        <div className="grid grid-cols-5 gap-8">
-          {/* Column 1-2: Large MXWLL Logo (spans 2 columns) */}
-          <div className="col-span-2 flex flex-col justify-between">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          {/* Logo - spans 2 columns on mobile and desktop */}
+          <div className="col-span-2 flex flex-col">
             <Link href="/" aria-label="MXWLL Home">
               <Logo className="h-20 md:h-24 lg:h-32 w-auto text-white transition-opacity hover:opacity-70" />
             </Link>
-
-            {/* Copyright at bottom of column 1 */}
-            <p className="text-xs text-white/50 mt-auto pt-12">
-              © {currentYear} MXWLL
-            </p>
           </div>
 
-          {/* Column 3: Gap (empty) */}
-          <div className="col-span-1"></div>
+          {/* Desktop only: Gap (empty column 3) */}
+          <div className="hidden md:block md:col-span-1"></div>
 
-          {/* Column 4: Navigation Menu */}
+          {/* Navigation Menu - column 1 on mobile, column 4 on desktop */}
           <nav className="col-span-1 flex flex-col gap-3">
             {navLinks.map((link) => (
               <Link
@@ -46,7 +41,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          {/* Column 5: Instagram and Email */}
+          {/* Instagram and Email - column 2 on mobile, column 5 on desktop */}
           <div className="col-span-1 flex flex-col gap-3">
             <a
               href="https://instagram.com/mxwll.studio"
@@ -63,6 +58,11 @@ export default function Footer() {
               hello@mxwll.io
             </a>
           </div>
+
+          {/* Copyright - bottom of footer, spans 2 columns on mobile */}
+          <p className="col-span-2 md:col-span-1 text-xs text-white/50 mt-8 md:mt-0">
+            © {currentYear} MXWLL
+          </p>
         </div>
       </div>
     </footer>
