@@ -66,11 +66,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             key={link.href}
             href={link.href}
             className={`
-              font-display text-3xl transition-colors
+              font-display text-3xl text-white
               ${
                 pathname === link.href
-                  ? 'text-white'
-                  : 'text-white/70 hover:text-white'
+                  ? 'underline'
+                  : 'hover:underline'
               }
             `}
             onClick={onClose}

@@ -107,16 +107,16 @@ export default function DesignSystemPage() {
               <h3 className="text-xl font-medium mb-6">Desktop Navigation</h3>
               <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
                 <div className="flex flex-wrap gap-6 text-sm">
-                  <span className="text-[var(--text-primary)]">Work</span>
-                  <span className="text-[var(--text-secondary)]">Lab</span>
-                  <span className="text-[var(--text-secondary)]">Method</span>
-                  <span className="text-[var(--text-secondary)]">Services</span>
-                  <span className="text-[var(--text-secondary)]">About</span>
-                  <span className="text-[var(--text-secondary)]">Contact</span>
+                  <span className="text-[var(--text-primary)] underline">Work</span>
+                  <span className="text-[var(--text-primary)]">Lab</span>
+                  <span className="text-[var(--text-primary)]">Method</span>
+                  <span className="text-[var(--text-primary)]">Services</span>
+                  <span className="text-[var(--text-primary)]">About</span>
+                  <span className="text-[var(--text-primary)]">Contact</span>
                   <span className="px-3 py-1 border border-[var(--text-primary)] text-[var(--text-primary)] text-sm">Get a Quote</span>
                 </div>
                 <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
-                  ACTIVE: PRIMARY · INACTIVE: SECONDARY · BUTTON TREATMENT
+                  ACTIVE: UNDERLINE · HOVER: UNDERLINE · ALL BLACK
                 </p>
               </div>
             </div>
@@ -126,17 +126,17 @@ export default function DesignSystemPage() {
 {`<nav className="hidden md:flex items-center gap-8">
   {navLinks.map(link => (
     <Link className={\`
-      text-sm font-text transition-colors whitespace-nowrap
-      \${link.isButton
-        ? 'px-4 py-2 border border-[var(--text-primary)]'
-        : pathname === link.href
-        ? 'text-[var(--text-primary)]'
-        : 'text-[var(--text-secondary)]'}
+      text-sm font-text text-[var(--text-primary)] whitespace-nowrap
+      \${pathname === link.href ? 'underline' : 'hover:underline'}
     \`}>
       {link.label}
     </Link>
   ))}
-</nav>`}
+</nav>
+
+// All links are black (text-primary)
+// Active page: underline
+// Hover: underline`}
               </pre>
             </div>
           </div>
@@ -192,17 +192,15 @@ export default function DesignSystemPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Mobile Menu Overlay</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <div className="space-y-4 text-center text-lg">
-                  <div className="text-[var(--text-primary)]">Work</div>
-                  <div className="text-[var(--text-secondary)]">Lab</div>
-                  <div className="text-[var(--text-secondary)]">Method</div>
-                  <div className="text-[var(--text-secondary)]">Services</div>
-                  <div className="text-[var(--text-secondary)]">About</div>
-                  <div className="text-[var(--text-secondary)]">Contact</div>
-                  <div className="inline-block px-4 py-2 border-2 border-[var(--text-primary)] text-[var(--text-primary)]">
-                    Get a Quote
-                  </div>
+              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-black">
+                <div className="space-y-4 text-left text-3xl">
+                  <div className="text-white underline">Work</div>
+                  <div className="text-white">Lab</div>
+                  <div className="text-white">Method</div>
+                  <div className="text-white">Services</div>
+                  <div className="text-white">About</div>
+                  <div className="text-white">Contact</div>
+                  <div className="text-white">Get a Quote</div>
                 </div>
               </div>
             </div>
@@ -210,17 +208,15 @@ export default function DesignSystemPage() {
               <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
               <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
 {`<div className={\`
-  fixed inset-0 z-40 bg-white md:hidden
+  fixed inset-0 z-50 bg-black md:hidden
   transition-opacity duration-300
   \${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
 \`}>
-  <nav className="flex flex-col items-center justify-center h-full gap-8">
+  <nav className="flex flex-col items-start justify-center h-full gap-8 px-4">
     {navLinks.map(link => (
       <Link className={\`
-        font-display text-3xl
-        \${link.isButton
-          ? 'px-6 py-3 border-2 border-[var(--text-primary)]'
-          : ''}
+        font-display text-3xl text-white
+        \${pathname === link.href ? 'underline' : 'hover:underline'}
       \`}>
         {link.label}
       </Link>
@@ -228,6 +224,9 @@ export default function DesignSystemPage() {
   </nav>
 </div>
 
+// Black background, white text
+// Active page: underline
+// Hover: underline
 // Closes on route change
 // Locks body scroll when open`}
               </pre>

@@ -38,7 +38,7 @@ export default function Header() {
             </Link>
 
             {/* Description (hidden on mobile/tablet) */}
-            <div className="hidden lg:block text-sm text-[var(--text-secondary)] leading-relaxed max-w-md">
+            <div className="hidden lg:block text-sm text-[var(--text-primary)] leading-relaxed max-w-md">
               MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
               <br />
               We don't simplify. We clarify.
@@ -51,11 +51,11 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`
-                    text-sm font-text transition-colors whitespace-nowrap
+                    text-sm font-text text-[var(--text-primary)] whitespace-nowrap
                     ${
                       pathname === link.href
-                        ? 'text-[var(--text-primary)]'
-                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                        ? 'underline'
+                        : 'hover:underline'
                     }
                   `}
                 >
