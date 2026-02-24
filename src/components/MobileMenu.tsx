@@ -51,7 +51,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       `}
       style={{ top: 'var(--header-height)' }}
     >
-      <nav className="flex flex-col items-start justify-center h-full gap-8 px-4">
+      <nav className="flex flex-col items-start justify-center h-full gap-4 px-4">
         {/* Studio Description */}
         <p className="text-sm text-white/70 leading-relaxed max-w-md mb-4">
           MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
@@ -66,7 +66,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             key={link.href}
             href={link.href}
             className={`
-              font-display text-3xl text-white
+              font-display text-4xl text-white
               ${
                 pathname === link.href
                   ? 'underline'

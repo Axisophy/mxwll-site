@@ -193,7 +193,7 @@ export default function DesignSystemPage() {
             <div>
               <h3 className="text-xl font-medium mb-6">Mobile Menu Overlay</h3>
               <div className="p-8 border border-[var(--border-light)] rounded-lg bg-black">
-                <div className="space-y-4 text-left text-3xl">
+                <div className="space-y-4 text-left text-4xl">
                   <div className="text-white underline">Work</div>
                   <div className="text-white">Lab</div>
                   <div className="text-white">Method</div>
@@ -212,10 +212,10 @@ export default function DesignSystemPage() {
   transition-opacity duration-300
   \${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
 \`}>
-  <nav className="flex flex-col items-start justify-center h-full gap-8 px-4">
+  <nav className="flex flex-col items-start justify-center h-full gap-4 px-4">
     {navLinks.map(link => (
       <Link className={\`
-        font-display text-3xl text-white
+        font-display text-4xl text-white
         \${pathname === link.href ? 'underline' : 'hover:underline'}
       \`}>
         {link.label}
