@@ -34,7 +34,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/70 hover:text-white transition-colors w-fit"
+                className="text-sm text-white hover:underline w-fit"
               >
                 {link.label}
               </Link>
@@ -47,13 +47,13 @@ export default function Footer() {
               href="https://instagram.com/mxwll.studio"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-white/70 hover:text-white transition-colors w-fit"
+              className="text-sm text-white hover:underline w-fit"
             >
               Instagram
             </a>
             <a
               href="mailto:hello@mxwll.io"
-              className="text-sm text-white/70 hover:text-white transition-colors w-fit"
+              className="text-sm text-white hover:underline w-fit"
             >
               hello@mxwll.io
             </a>

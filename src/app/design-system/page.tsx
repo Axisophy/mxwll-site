@@ -73,7 +73,7 @@ export default function DesignSystemPage() {
             <div>
               <h3 className="text-xl font-medium mb-6">Studio Description</h3>
               <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+                <p className="text-sm text-[var(--text-primary)] leading-relaxed max-w-2xl">
                   MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
                   <br />
                   We don't simplify. We clarify.
@@ -83,10 +83,11 @@ export default function DesignSystemPage() {
             <div>
               <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
               <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+{`<p className="text-sm text-[var(--text-primary)] leading-relaxed">
   Studio description text
 </p>
 
+// Black text (text-primary), not grey
 // Hidden below lg breakpoint in header
 // Max-width: 28rem`}
               </pre>
@@ -784,14 +785,15 @@ pt-24/28/32 → Page hero sections`}
                     <Logo className="h-10 w-auto text-white" />
                   </div>
                   <div className="flex flex-col gap-2 text-xs">
-                    <span className="text-white/70">Work</span>
-                    <span className="text-white/70">Lab</span>
-                    <span className="text-white/70">Method</span>
-                    <span className="text-white/70">Services</span>
-                    <span className="text-white/70">About</span>
-                    <span className="text-white/70">Contact</span>
-                    <span className="px-2 py-1 border border-white text-white text-xs">Get a Quote</span>
-                    <span className="text-white/70 mt-2">hello@mxwll.io</span>
+                    <span className="text-white underline">Work</span>
+                    <span className="text-white">Lab</span>
+                    <span className="text-white">Method</span>
+                    <span className="text-white">Services</span>
+                    <span className="text-white">About</span>
+                    <span className="text-white">Contact</span>
+                    <span className="text-white">Get a Quote</span>
+                    <span className="text-white mt-2">Instagram</span>
+                    <span className="text-white">hello@mxwll.io</span>
                     <span className="text-white/50 text-[10px] mt-1">© 2026 MXWLL</span>
                   </div>
                 </div>
@@ -802,23 +804,35 @@ pt-24/28/32 → Page hero sections`}
               <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
 {`<footer className="w-full bg-black mt-24">
   <div className="px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8">
-      {/* Left: Logo (50% width) */}
-      <Logo className="h-10 w-auto text-white" />
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+      {/* Logo - spans 2 columns */}
+      <div className="col-span-2">
+        <Logo className="h-20 md:h-24 lg:h-32 w-auto text-white" />
+      </div>
 
-      {/* Right: Navigation + Email + Copyright */}
-      <nav className="flex flex-col gap-3">
-        {/* Nav links (white/70 → white on hover) */}
-        {/* Get a Quote button (white border) */}
-        {/* hello@mxwll.io */}
-        {/* © 2026 MXWLL (white/50) */}
+      {/* Gap column on desktop */}
+      <div className="hidden md:block md:col-span-1"></div>
+
+      {/* Navigation links */}
+      <nav className="col-span-1 flex flex-col gap-3">
+        <Link className="text-sm text-white hover:underline w-fit">
+          Work
+        </Link>
+        {/* ... more nav links */}
       </nav>
+
+      {/* Instagram + Email */}
+      <div className="col-span-1 flex flex-col gap-3">
+        <a className="text-sm text-white hover:underline">Instagram</a>
+        <a className="text-sm text-white hover:underline">hello@mxwll.io</a>
+      </div>
     </div>
   </div>
 </footer>
 
-// Black background, white text throughout
-// No border lines, no social links, no location`}
+// All links: white with underline on hover
+// Copyright: white/50
+// No colour changes, underline only`}
               </pre>
             </div>
           </div>
@@ -838,8 +852,8 @@ pt-24/28/32 → Page hero sections`}
               <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-6">
                 {/* Text Input - Default */}
                 <div>
-                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
-                    Text Input
+                  <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                    Text input
                   </label>
                   <input
                     type="text"
@@ -850,7 +864,7 @@ pt-24/28/32 → Page hero sections`}
 
                 {/* Select Dropdown */}
                 <div>
-                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
+                  <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
                     Select
                   </label>
                   <select className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white focus:outline-none focus:border-[var(--text-primary)] transition-colors">
@@ -862,7 +876,7 @@ pt-24/28/32 → Page hero sections`}
 
                 {/* Textarea */}
                 <div>
-                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
+                  <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
                     Textarea
                   </label>
                   <textarea
@@ -874,8 +888,8 @@ pt-24/28/32 → Page hero sections`}
 
                 {/* Error State */}
                 <div>
-                  <label className="block font-input text-xs text-[var(--text-secondary)] mb-2 uppercase tracking-wider">
-                    Error State
+                  <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                    Error state
                   </label>
                   <input
                     type="text"
@@ -898,10 +912,12 @@ className="w-full px-3 py-2
   focus:border-[var(--text-primary)]
   transition-colors"
 
-// Label Classes
-className="block font-input text-xs
-  text-[var(--text-secondary)] mb-2
-  uppercase tracking-wider"
+// Label Classes (NHG, not Input Mono)
+className="block font-nhg text-xs
+  text-[var(--text-secondary)] mb-2"
+
+// Normal case, not uppercase
+// Use NHG for all form text (labels, inputs, buttons)
 
 // Error State
 border-red-600 (instead of border-[var(--border)])
