@@ -2,11 +2,14 @@
 
 ## Open
 - Mobile performance untested
-- Demo/interactive separation not yet implemented
-- Documentation incomplete (README, SPEC need details)
+- Helioviewer `takeScreenshot` latency can be high (roughly 2-5s per image), so demo preloading is required before playback
+- `HMI_IC` may fail with the current AIA-layer route format; demo attempts fallback to `6173`
+- Route validation on `2014-09-10T00:00:00Z` returns Helioviewer `500` for `HMI_IC` and `6173` with the copied route format.
+- Route validation on `2014-09-10T00:00:00Z` returns Helioviewer `500` for `094`, but fallback `94` succeeds and is used by the demo.
 
 ## Resolved
-None yet
+- Demo/interactive separation implemented for homepage demo mode in `demo/`
+- Object URL lifecycle handled in demo preload path (revoked on unmount)
 
 ## Notes for future development
 [Add notes about code structure, dependencies, complexity as discovered]

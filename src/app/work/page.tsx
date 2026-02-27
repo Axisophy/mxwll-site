@@ -6,6 +6,15 @@ import WorkFilter from '@/components/WorkFilter'
 
 const allWork = [
   {
+    title: 'Solar Wavelength',
+    description: 'The same solar moment across multiple wavelengths. A demo loop that crossfades between extreme ultraviolet channels to reveal changing solar structure and temperature layers.',
+    category: 'EXPLANATION DESIGN',
+    year: '2026',
+    slug: 'solar-wavelength',
+    label: 'In Development',
+    tags: ['Astronomy', 'Data Visualisation', 'Canvas'],
+  },
+  {
     title: 'The Permissible Universe',
     description: 'A map of everything that can exist - from quarks to supermassive black holes. Explore 200+ cosmic objects positioned according to fundamental physical limits. The boundaries show where nature draws the line.',
     category: 'EXPLANATION DESIGN',
