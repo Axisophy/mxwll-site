@@ -140,3 +140,8 @@ When you learn something the hard way, add it here. Format:
 - **Problem**: Homepage demo behaviour and interactive work-page behaviour were coupled, making mobile and performance tuning harder.
 - **Solution**: Split homepage demo into dedicated desktop/mobile components with shared utilities and explicit loop timing.
 - **Rule**: Keep homepage demos isolated from interactive visualiser code paths so performance tradeoffs can diverge safely.
+
+### Gaia Export Field Schema (2026-02-27)
+- **Problem**: It is easy to assume the regenerated Gaia JSON keeps source photometry fields from the TAP query.
+- **Solution**: Verify field presence directly in `public/data/gaia-stars.json` before wiring shader logic. Current export stores `ra`, `dec`, `bp_rp`, `abs_mag`, `teff` only.
+- **Rule**: Treat `phot_g_mean_mag` as unavailable at runtime unless explicitly added to the export script and JSON schema.

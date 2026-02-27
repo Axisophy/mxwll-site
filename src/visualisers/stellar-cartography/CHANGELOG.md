@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-02-27
+- Regenerated Gaia DR3 dataset with full-sky RA coverage and verified `public/data/gaia-stars.json` spans the full longitude range (`minRa ~ 0.0`, `maxRa ~ 360.0`) across 50,000 stars.
+- Verified stellar field coverage in the shipped JSON for demo rendering: all 50,000 stars include `bp_rp` and `abs_mag`, with current ranges `bp_rp -0.229..4.253` and `abs_mag -2.12..13.34`.
+- Confirmed the exported runtime dataset does not currently retain `phot_g_mean_mag`; only derived `abs_mag` is stored for sizing.
+
 ## 2026-02-24
 - Implemented homepage-only demo split with separate desktop and mobile components under `demo/`.
 - Added `StellarDemo.tsx` wrapper with SSR-safe mobile detection (`window.innerWidth < 768`).
