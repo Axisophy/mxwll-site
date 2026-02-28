@@ -23,6 +23,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
   const frameRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
   const dprRef = useRef<number>(1);
+  const cssWidthRef = useRef<number>(0);
   const cssHeightRef = useRef<number>(0);
   const canvasDimensionsRef = useRef({ width: 0, height: 0 });
   const animationRunningRef = useRef(false);
@@ -71,6 +72,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const uPan = gl.getUniformLocation(program, 'u_pan');
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
+    const uResolution = gl.getUniformLocation(program, 'u_resolution');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
     const uGalacticOffset = gl.getUniformLocation(program, 'u_galacticOffset');
     const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
@@ -153,6 +155,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       canvas.style.height = `${rect.height}px`;
 
       dprRef.current = dpr;
+      cssWidthRef.current = rect.width;
       cssHeightRef.current = rect.height;
       canvasDimensionsRef.current = { width, height };
       setCanvasDimensions({ width, height });
@@ -297,6 +300,9 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       gl.uniform2f(uPan, 0, 0);
       gl.uniform1f(uZoom, 1);
       gl.uniform1f(uDpr, dprRef.current);
+      if (uResolution) {
+        gl.uniform2f(uResolution, cssWidthRef.current, cssHeightRef.current);
+      }
       gl.uniform1f(uSkyOffset, 0);
       gl.uniform1f(uGalacticOffset, galacticOffset);
       gl.uniform4f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2], fromWeights[3]);

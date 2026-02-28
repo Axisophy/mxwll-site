@@ -56,6 +56,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
   const frameRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
   const dprRef = useRef<number>(1);
+  const cssWidthRef = useRef<number>(0);
   const cssHeightRef = useRef<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -101,6 +102,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
     const uPan = gl.getUniformLocation(program, 'u_pan');
     const uZoom = gl.getUniformLocation(program, 'u_zoom');
     const uDpr = gl.getUniformLocation(program, 'u_dpr');
+    const uResolution = gl.getUniformLocation(program, 'u_resolution');
     const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
     const uGalacticOffset = gl.getUniformLocation(program, 'u_galacticOffset');
     const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
@@ -179,6 +181,7 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       canvas.style.height = `${cssHeight}px`;
 
       dprRef.current = dpr;
+      cssWidthRef.current = cssWidth;
       cssHeightRef.current = cssHeight;
 
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -350,6 +353,9 @@ export default function StellarDemoDesktop({ className }: StellarDemoDesktopProp
       gl.uniform2f(uPan, camera.panX, camera.panY);
       gl.uniform1f(uZoom, camera.zoom);
       gl.uniform1f(uDpr, dprRef.current);
+      if (uResolution) {
+        gl.uniform2f(uResolution, cssWidthRef.current, cssHeightRef.current);
+      }
       gl.uniform1f(uSkyOffset, skyOffset);
       gl.uniform1f(uGalacticOffset, galacticOffset);
       gl.uniform4f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2], fromWeights[3]);

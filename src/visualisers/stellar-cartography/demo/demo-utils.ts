@@ -84,6 +84,7 @@ uniform float u_transition;
 uniform vec2 u_pan;
 uniform float u_zoom;
 uniform float u_dpr;
+uniform vec2 u_resolution;
 uniform float u_skyOffset;
 uniform float u_galacticOffset;
 uniform vec4 u_fromWeights;

@@ -1,6 +1,9 @@
 # Changelog
 
 ## 2026-02-28
+- Fixed double-DPR resolution uniform wiring in Stellar Cartography demo paths by passing CSS canvas dimensions (`getBoundingClientRect`) to `u_resolution` while keeping the pixel buffer at DPR-scaled `canvas.width`/`canvas.height`.
+
+## 2026-02-28
 - Fixed horizontal banding in HR (`v2`) and observer (`v4`) plots by applying one-time load-time vertical jitter to magnitude-derived Y normalised positions before buffer upload.
 - Fixed mobile star selection to explicitly sort by `abs_mag` and render the brightest 15,000 stars.
 - Fixed mobile canvas sizing race by resolving dimensions from `canvas.getBoundingClientRect()` after mount, gating animation start until dimensions are non-zero, and resizing via `ResizeObserver` on the canvas.
