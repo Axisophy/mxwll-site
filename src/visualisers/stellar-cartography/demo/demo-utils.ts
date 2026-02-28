@@ -64,6 +64,7 @@ export const MOBILE_POINT_STOPS: PointSizeStops = {
 };
 
 const RANGE_PADDING_RATIO = 0.05;
+const MAGNITUDE_Y_JITTER = 0.008;
 
 export const vertexShaderSource = `#version 300 es
 precision highp float;
@@ -450,8 +451,8 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops, option
     const subtleColour = mapBpRpToColour(star.bp_rp);
     const observerColour = mapBpRpToObserverColour(star.bp_rp);
 
-    const skyX = (star.ra / 360) * 2 - 1;
-    const skyY = star.dec / 90;
+    const skyXNorm = clamp(star.ra / 360, 0, 1);
+    const skyYNorm = clamp((star.dec + 90) / 180, 0, 1);
 
     const hrXNorm =
       (clamp(star.bp_rp ?? 1.0, bpRpRange.min, bpRpRange.max) - bpRpRange.min) / (bpRpRange.max - bpRpRange.min);
@@ -464,17 +465,28 @@ export function buildRenderData(stars: GaiaStar[], stops: PointSizeStops, option
     const magYNorm =
       (clamp(absoluteMagnitude, magRange.min, magRange.max) - magRange.min) / (magRange.max - magRange.min);
 
-    const hrX = hrXNorm * 2 - 1;
-    const hrY = 1 - hrYNorm * 2;
-    const magX = magXNorm * 2 - 1;
-    const magY = magYNorm * 2 - 1;
+    const hrXNormClamped = clamp(hrXNorm, 0, 1);
+    const hrYNormJittered = clamp(hrYNorm + (Math.random() - 0.5) * MAGNITUDE_Y_JITTER, 0, 1);
+    const magXNormClamped = clamp(magXNorm, 0, 1);
+    const magYNormJittered = clamp(magYNorm + (Math.random() - 0.5) * MAGNITUDE_Y_JITTER, 0, 1);
+    const galXNorm = clamp((galacticPos.x + 1) * 0.5, 0, 1);
+    const galYNorm = clamp((galacticPos.y + 1) * 0.5, 0, 1);
+
+    const skyX = skyXNorm * 2 - 1;
+    const skyY = skyYNorm * 2 - 1;
+    const hrX = hrXNormClamped * 2 - 1;
+    const hrY = 1 - hrYNormJittered * 2;
+    const magX = magXNormClamped * 2 - 1;
+    const magY = magYNormJittered * 2 - 1;
+    const galX = galXNorm * 2 - 1;
+    const galY = galYNorm * 2 - 1;
 
     skyPositions[i * 2] = skyX;
     skyPositions[i * 2 + 1] = skyY;
     hrPositions[i * 2] = hrX;
     hrPositions[i * 2 + 1] = hrY;
-    galacticPositions[i * 2] = galacticPos.x;
-    galacticPositions[i * 2 + 1] = galacticPos.y;
+    galacticPositions[i * 2] = galX;
+    galacticPositions[i * 2 + 1] = galY;
     magnitudePositions[i * 2] = magX;
     magnitudePositions[i * 2 + 1] = magY;
     galacticLatitudes[i] = Math.abs(bDeg);

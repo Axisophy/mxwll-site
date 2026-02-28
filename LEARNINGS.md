@@ -145,3 +145,8 @@ When you learn something the hard way, add it here. Format:
 - **Problem**: It is easy to assume the regenerated Gaia JSON keeps source photometry fields from the TAP query.
 - **Solution**: Verify field presence directly in `public/data/gaia-stars.json` before wiring shader logic. Current export stores `ra`, `dec`, `bp_rp`, `abs_mag`, `teff` only.
 - **Rule**: Treat `phot_g_mean_mag` as unavailable at runtime unless explicitly added to the export script and JSON schema.
+
+### Mobile Canvas Dimension Timing (2026-02-28)
+- **Problem**: Mobile visualiser views can render cropped or offset if canvas pixel size is resolved before layout is complete.
+- **Solution**: Resolve dimensions from `canvas.getBoundingClientRect()` after mount, set backing width/height with capped DPR, and gate animation start until dimensions are non-zero.
+- **Rule**: For canvas demos, do not use window size as the rendering source of truth - use measured canvas rect and update via `ResizeObserver`.

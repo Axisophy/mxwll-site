@@ -9,7 +9,6 @@ import {
   easeInOutCubic,
   getCanvasMappedY,
   loadGaiaData,
-  selectBrightestStars,
 } from './demo-utils';
 
 interface StellarDemoMobileProps {
@@ -25,7 +24,10 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
   const startTimeRef = useRef<number>(0);
   const dprRef = useRef<number>(1);
   const cssHeightRef = useRef<number>(0);
+  const canvasDimensionsRef = useRef({ width: 0, height: 0 });
+  const animationRunningRef = useRef(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [canvasDimensions, setCanvasDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -135,35 +137,29 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     let starCount = 0;
     let disposed = false;
 
-    const resize = () => {
-      const cssWidth = Math.max(1, window.innerWidth);
-      const cssHeight = Math.max(1, Math.floor(window.innerHeight * 0.6));
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const updateCanvasDimensions = (): boolean => {
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) {
+        return false;
+      }
 
-      canvas.width = Math.floor(cssWidth * dpr);
-      canvas.height = Math.floor(cssHeight * dpr);
-      canvas.style.width = `${cssWidth}px`;
-      canvas.style.height = `${cssHeight}px`;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const width = Math.floor(rect.width * dpr);
+      const height = Math.floor(rect.height * dpr);
+
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
 
       dprRef.current = dpr;
-      cssHeightRef.current = cssHeight;
+      cssHeightRef.current = rect.height;
+      canvasDimensionsRef.current = { width, height };
+      setCanvasDimensions({ width, height });
 
-      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.viewport(0, 0, width, height);
+      return true;
     };
-
-    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
-    const onResize = () => {
-      if (resizeTimeout) {
-        clearTimeout(resizeTimeout);
-      }
-      resizeTimeout = setTimeout(resize, 120);
-    };
-
-    const resizeObserver = new ResizeObserver(onResize);
-    resizeObserver.observe(container);
-    window.addEventListener('resize', onResize);
-    document.addEventListener('fullscreenchange', onResize);
-    resize();
 
     loadGaiaData()
       .then((data) => {
@@ -171,8 +167,12 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
           return;
         }
 
-        const stars = selectBrightestStars(data.stars, 15000);
-        const renderData = buildRenderData(stars, MOBILE_POINT_STOPS, { hrUniformSize: 1.0 });
+        const mobileStars = [...data.stars]
+          .sort((a, b) => (a.abs_mag ?? Number.POSITIVE_INFINITY) - (b.abs_mag ?? Number.POSITIVE_INFINITY))
+          .slice(0, 15000);
+        console.log('Mobile star count:', mobileStars.length);
+
+        const renderData = buildRenderData(mobileStars, MOBILE_POINT_STOPS, { hrUniformSize: 1.0 });
         starCount = renderData.count;
 
         gl.bindBuffer(gl.ARRAY_BUFFER, skyPosBuffer);
@@ -223,6 +223,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
         );
 
         setIsLoading(false);
+        startAnimationLoop();
       })
       .catch((error: unknown) => {
         console.error('Failed to load stellar demo data', error);
@@ -231,7 +232,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
     const renderFrame = (now: number) => {
       frameRef.current = window.requestAnimationFrame(renderFrame);
 
-      if (starCount === 0) {
+      if (starCount === 0 || canvasDimensionsRef.current.width === 0 || canvasDimensionsRef.current.height === 0) {
         return;
       }
 
@@ -306,24 +307,78 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       gl.drawArrays(gl.POINTS, 0, starCount);
     };
 
-    frameRef.current = window.requestAnimationFrame(renderFrame);
+    const startAnimationLoop = () => {
+      if (disposed || animationRunningRef.current) {
+        return;
+      }
+
+      if (starCount === 0) {
+        return;
+      }
+
+      if (canvasDimensionsRef.current.width === 0 || canvasDimensionsRef.current.height === 0) {
+        return;
+      }
+
+      animationRunningRef.current = true;
+      frameRef.current = window.requestAnimationFrame(renderFrame);
+    };
+
+    const restartAnimationLoop = () => {
+      if (!animationRunningRef.current) {
+        startAnimationLoop();
+        return;
+      }
+
+      window.cancelAnimationFrame(frameRef.current);
+      animationRunningRef.current = false;
+      startTimeRef.current = 0;
+      startAnimationLoop();
+    };
+
+    let resizeRaf = 0;
+    const onResize = () => {
+      if (resizeRaf) {
+        window.cancelAnimationFrame(resizeRaf);
+      }
+
+      resizeRaf = window.requestAnimationFrame(() => {
+        if (updateCanvasDimensions()) {
+          restartAnimationLoop();
+        }
+      });
+    };
+
+    const resizeObserver = new ResizeObserver(onResize);
+    resizeObserver.observe(canvas);
+    window.addEventListener('resize', onResize);
+    document.addEventListener('fullscreenchange', onResize);
+
+    window.requestAnimationFrame(() => {
+      if (updateCanvasDimensions()) {
+        startAnimationLoop();
+      }
+    });
 
     return () => {
       disposed = true;
       window.cancelAnimationFrame(frameRef.current);
+      animationRunningRef.current = false;
       resizeObserver.disconnect();
       window.removeEventListener('resize', onResize);
       document.removeEventListener('fullscreenchange', onResize);
-      if (resizeTimeout) {
-        clearTimeout(resizeTimeout);
+      if (resizeRaf) {
+        window.cancelAnimationFrame(resizeRaf);
       }
     };
   }, []);
 
+  const isCanvasReady = canvasDimensions.width > 0 && canvasDimensions.height > 0;
+
   return (
     <div ref={containerRef} className={`relative overflow-hidden bg-[#050508] ${className ?? ''}`} style={{ width: '100vw', height: '60vh' }}>
       <canvas ref={canvasRef} className='block h-full w-full' />
-      {isLoading && (
+      {(isLoading || !isCanvasReady) && (
         <div className='absolute inset-0 flex items-center justify-center'>
           <span className='font-input text-xs uppercase tracking-[0.12em] text-white/45'>Loading stars...</span>
         </div>

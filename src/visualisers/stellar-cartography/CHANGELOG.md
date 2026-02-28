@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-02-28
+- Fixed horizontal banding in HR (`v2`) and observer (`v4`) plots by applying one-time load-time vertical jitter to magnitude-derived Y normalised positions before buffer upload.
+- Fixed mobile star selection to explicitly sort by `abs_mag` and render the brightest 15,000 stars.
+- Fixed mobile canvas sizing race by resolving dimensions from `canvas.getBoundingClientRect()` after mount, gating animation start until dimensions are non-zero, and resizing via `ResizeObserver` on the canvas.
+- Fixed loop-reset out-of-bounds risk by clamping all precomputed normalised coordinates to `0..1` before mapping to NDC, including sky, HR, galactic, and observer positions.
+
 ## 2026-02-27
 - Regenerated Gaia DR3 dataset with full-sky RA coverage and verified `public/data/gaia-stars.json` spans the full longitude range (`minRa ~ 0.0`, `maxRa ~ 360.0`) across 50,000 stars.
 - Verified stellar field coverage in the shipped JSON for demo rendering: all 50,000 stars include `bp_rp` and `abs_mag`, with current ranges `bp_rp -0.229..4.253` and `abs_mag -2.12..13.34`.
