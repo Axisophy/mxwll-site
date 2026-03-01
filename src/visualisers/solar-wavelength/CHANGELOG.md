@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-03-01
+- Updated `demo/SolarDemo.tsx` container styling with a dark blue-black viewport treatment (`#03060f`) and responsive padding (24px desktop, 16px mobile).
+- Centered the solar disc inside the viewport and constrained circle diameter to available padded width.
+- Added a wavelength indicator panel below the disc with:
+- current wavelength and human-readable channel description row.
+- full spectrum tick bar (`094`, `131`, `171`, `193`, `211`, `304`, `1600`, visible).
+- animated dot/tick highlight that interpolates during image crossfades.
+- Updated demo channel cycle order to: `171 -> 304 -> 193 -> 094 -> visible(HMI)` with fallback ending at `094` when visible-light data is unavailable.
+- Added explicit human-readable channel naming for all displayed spectrum labels.
+
 ## 2026-02-24
 - Added `src/app/api/solar/route.ts` proxy route (MXWLL copy of Bang Industries route) returning PNG bytes from Helioviewer
 - Added autonomous demo component at `demo/SolarDemo.tsx` with:

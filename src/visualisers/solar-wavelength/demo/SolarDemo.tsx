@@ -8,32 +8,47 @@ interface SolarDemoProps {
 }
 
 interface LoadedChannel {
-  key: string;
-  label: string;
+  key: SpectrumKey;
+  wavelengthLabel: string;
+  channelName: string;
   image: HTMLImageElement;
   objectUrl: string;
 }
 
 interface ChannelConfig {
-  key: string;
-  label: string;
+  key: SpectrumKey;
   candidates: string[];
 }
+
+type SpectrumKey = '094' | '131' | '171' | '193' | '211' | '304' | '1600' | 'visible';
 
 const DEMO_DATE = '2014-09-10T00:00:00Z';
 const CROSSFADE_SECONDS = 1.5;
 
-const CHANNELS: ChannelConfig[] = [
-  { key: '171', label: '171 \u00c5', candidates: ['171'] },
-  { key: '304', label: '304 \u00c5', candidates: ['304'] },
-  { key: '193', label: '193 \u00c5', candidates: ['193'] },
-  { key: '094', label: '094 \u00c5', candidates: ['094', '94'] },
-  { key: 'HMI', label: 'HMI', candidates: ['HMI_IC', '6173'] },
+const CHANNEL_DISPLAY: Record<SpectrumKey, { wavelength: string; name: string }> = {
+  '094': { wavelength: '094 Å', name: 'X-ray - Flare Regions' },
+  '131': { wavelength: '131 Å', name: 'Extreme UV - Hot Plasma' },
+  '171': { wavelength: '171 Å', name: 'Extreme UV - Coronal Loops' },
+  '193': { wavelength: '193 Å', name: 'UV - Hot Corona' },
+  '211': { wavelength: '211 Å', name: 'UV - Active Regions' },
+  '304': { wavelength: '304 Å', name: 'UV - Chromosphere' },
+  '1600': { wavelength: '1600 Å', name: 'UV - Transition Region' },
+  visible: { wavelength: 'Visible', name: 'Visible Light - Surface' },
+};
+
+const SPECTRUM_ORDER: SpectrumKey[] = ['094', '131', '171', '193', '211', '304', '1600', 'visible'];
+
+const CYCLE_CHANNELS: ChannelConfig[] = [
+  { key: '171', candidates: ['171'] },
+  { key: '304', candidates: ['304'] },
+  { key: '193', candidates: ['193'] },
+  { key: '094', candidates: ['094', '94'] },
+  { key: 'visible', candidates: ['HMI_IC', '6173'] },
 ];
 
 async function fetchSolarImage(wavelength: string): Promise<{ image: HTMLImageElement; objectUrl: string }> {
   const response = await fetch(
-    `/api/solar?wavelength=${encodeURIComponent(wavelength)}&date=${encodeURIComponent(DEMO_DATE)}&size=512`
+    `/api/solar?wavelength=${encodeURIComponent(wavelength)}&date=${encodeURIComponent(DEMO_DATE)}&size=768`
   );
 
   if (!response.ok) {
@@ -57,25 +72,40 @@ async function loadChannel(config: ChannelConfig): Promise<LoadedChannel | null>
   for (const candidate of config.candidates) {
     try {
       const { image, objectUrl } = await fetchSolarImage(candidate);
-      const label = config.key === 'HMI' ? `${candidate} \u00c5` : config.label;
-      return { key: config.key, label, image, objectUrl };
+      const display = CHANNEL_DISPLAY[config.key];
+      return {
+        key: config.key,
+        wavelengthLabel: display.wavelength,
+        channelName: display.name,
+        image,
+        objectUrl,
+      };
     } catch {
-      // Try next candidate silently.
+      // Continue through fallbacks.
     }
   }
 
   return null;
 }
 
-export default function SolarDemo({ className, showLabel = false }: SolarDemoProps) {
+const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
+
+export default function SolarDemo({ className, showLabel = true }: SolarDemoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const objectUrlsRef = useRef<string[]>([]);
+
   const [isMobile, setIsMobile] = useState(false);
-  const [canvasSize, setCanvasSize] = useState(320);
+  const [circleSize, setCircleSize] = useState(280);
   const [channels, setChannels] = useState<LoadedChannel[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [indicator, setIndicator] = useState({
+    position: 0,
+    wavelengthLabel: CHANNEL_DISPLAY['171'].wavelength,
+    channelName: CHANNEL_DISPLAY['171'].name,
+    activeKey: '171' as SpectrumKey,
+  });
 
   const displaySeconds = isMobile ? 3 : 4;
 
@@ -99,11 +129,24 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
         return;
       }
 
+      const padding = window.innerWidth < 768 ? 16 : 24;
+      const panelHeight = 86;
+      const verticalGap = 12;
+
       const rect = container.getBoundingClientRect();
-      const width = rect.width || 320;
-      const height = rect.height || width;
-      const maxSize = window.innerWidth < 768 ? 320 : 600;
-      setCanvasSize(Math.max(1, Math.floor(Math.min(width, height, maxSize))));
+      const parentRect = container.parentElement?.getBoundingClientRect();
+
+      const widthLimit = Math.max(120, Math.floor(rect.width - 2 * padding));
+
+      let diameter = widthLimit;
+      if (parentRect && parentRect.height > 0) {
+        const heightLimit = Math.floor(parentRect.height - 2 * padding - panelHeight - verticalGap);
+        if (heightLimit > 120) {
+          diameter = Math.min(widthLimit, heightLimit);
+        }
+      }
+
+      setCircleSize(Math.max(120, diameter));
     };
 
     updateSize();
@@ -125,8 +168,7 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
 
     const preload = async () => {
       setIsLoading(true);
-      const startedAt = performance.now();
-      const loaded = await Promise.all(CHANNELS.map((channel) => loadChannel(channel)));
+      const loaded = await Promise.all(CYCLE_CHANNELS.map((channel) => loadChannel(channel)));
 
       if (!isMounted) {
         loaded.forEach((entry) => {
@@ -140,10 +182,18 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
       const successful = loaded.filter((entry): entry is LoadedChannel => entry !== null);
       objectUrlsRef.current = successful.map((entry) => entry.objectUrl);
       setChannels(successful);
-      setIsLoading(false);
 
-      const loadMs = Math.round(performance.now() - startedAt);
-      console.info(`[SolarDemo] Loaded ${successful.length}/${CHANNELS.length} channels in ${loadMs}ms`);
+      if (successful.length > 0) {
+        const first = successful[0];
+        setIndicator({
+          position: SPECTRUM_ORDER.indexOf(first.key),
+          wavelengthLabel: first.wavelengthLabel,
+          channelName: first.channelName,
+          activeKey: first.key,
+        });
+      }
+
+      setIsLoading(false);
     };
 
     preload();
@@ -174,10 +224,10 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
     }
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.floor(canvasSize * dpr);
-    canvas.height = Math.floor(canvasSize * dpr);
-    canvas.style.width = `${canvasSize}px`;
-    canvas.style.height = `${canvasSize}px`;
+    canvas.width = Math.floor(circleSize * dpr);
+    canvas.height = Math.floor(circleSize * dpr);
+    canvas.style.width = `${circleSize}px`;
+    canvas.style.height = `${circleSize}px`;
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     const cycleSeconds = displaySeconds + CROSSFADE_SECONDS;
@@ -188,7 +238,7 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
       const sx = (image.width - sourceSize) * 0.5;
       const sy = (image.height - sourceSize) * 0.5;
       context.globalAlpha = alpha;
-      context.drawImage(image, sx, sy, sourceSize, sourceSize, 0, 0, canvasSize, canvasSize);
+      context.drawImage(image, sx, sy, sourceSize, sourceSize, 0, 0, circleSize, circleSize);
     };
 
     const render = (now: number) => {
@@ -199,40 +249,42 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
       const current = channels[phaseIndex % channels.length];
       const next = channels[(phaseIndex + 1) % channels.length];
       const isTransition = phaseTime >= displaySeconds;
-      const transitionProgress = isTransition ? Math.min((phaseTime - displaySeconds) / CROSSFADE_SECONDS, 1) : 0;
+      const transitionProgress = isTransition ? clamp01((phaseTime - displaySeconds) / CROSSFADE_SECONDS) : 0;
 
-      context.clearRect(0, 0, canvasSize, canvasSize);
+      const currentSpectrumIndex = SPECTRUM_ORDER.indexOf(current.key);
+      const nextSpectrumIndex = SPECTRUM_ORDER.indexOf(next.key);
+      const indicatorPosition = currentSpectrumIndex + (nextSpectrumIndex - currentSpectrumIndex) * transitionProgress;
+
+      const active = transitionProgress > 0.5 ? next : current;
+      setIndicator((prev) => {
+        if (
+          Math.abs(prev.position - indicatorPosition) < 0.002 &&
+          prev.activeKey === active.key &&
+          prev.wavelengthLabel === active.wavelengthLabel
+        ) {
+          return prev;
+        }
+
+        return {
+          position: indicatorPosition,
+          wavelengthLabel: active.wavelengthLabel,
+          channelName: active.channelName,
+          activeKey: active.key,
+        };
+      });
+
+      context.clearRect(0, 0, circleSize, circleSize);
       context.save();
       context.beginPath();
-      context.arc(canvasSize * 0.5, canvasSize * 0.5, canvasSize * 0.5, 0, Math.PI * 2);
+      context.arc(circleSize * 0.5, circleSize * 0.5, circleSize * 0.5, 0, Math.PI * 2);
       context.clip();
 
       drawCoverImage(current.image, 1);
       if (channels.length > 1 && isTransition) {
         drawCoverImage(next.image, transitionProgress);
       }
+
       context.restore();
-
-      if (showLabel) {
-        let labelAlpha = 0;
-        if (!isTransition) {
-          const fadeDuration = 0.35;
-          const fadeIn = Math.min(phaseTime / fadeDuration, 1);
-          const fadeOut = phaseTime > displaySeconds - fadeDuration
-            ? Math.max((displaySeconds - phaseTime) / fadeDuration, 0)
-            : 1;
-          labelAlpha = Math.min(fadeIn, fadeOut);
-        }
-
-        if (labelAlpha > 0.01) {
-          context.globalAlpha = labelAlpha;
-          context.font = '11px var(--font-input), monospace';
-          context.fillStyle = 'rgba(255, 255, 255, 0.6)';
-          context.textBaseline = 'bottom';
-          context.fillText(current.label.toUpperCase(), 12, canvasSize - 12);
-        }
-      }
-
       context.globalAlpha = 1;
       animationRef.current = requestAnimationFrame(render);
     };
@@ -245,22 +297,71 @@ export default function SolarDemo({ className, showLabel = false }: SolarDemoPro
       }
       animationRef.current = null;
     };
-  }, [canvasSize, channels, displaySeconds, loopSeconds, showLabel]);
+  }, [circleSize, channels, displaySeconds, loopSeconds]);
+
+  const dotLeftPercent = useMemo(() => {
+    if (SPECTRUM_ORDER.length < 2) {
+      return 0;
+    }
+    const norm = clamp01(indicator.position / (SPECTRUM_ORDER.length - 1));
+    return norm * 100;
+  }, [indicator.position]);
 
   return (
-    <div ref={containerRef} className={className}>
-      <div className='relative w-full h-full flex items-center justify-center'>
-        <canvas ref={canvasRef} className='block' />
-        {isLoading && (
-          <div
-            className='absolute inset-0 flex items-center justify-center'
-            aria-live='polite'
-          >
+    <div ref={containerRef} className={`w-full h-full bg-[#03060f] p-4 md:p-6 ${className ?? ''}`}>
+      <div className='h-full w-full flex flex-col items-center justify-center gap-3'>
+        <div
+          className='relative flex items-center justify-center'
+          style={{ width: `${circleSize}px`, height: `${circleSize}px` }}
+        >
+          <canvas ref={canvasRef} className='block' />
+          {isLoading && (
             <div
-              className='rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/60 font-input uppercase tracking-wide'
-              style={{ width: canvasSize, height: canvasSize, fontSize: 11 }}
+              className='absolute inset-0 flex items-center justify-center rounded-full border border-white/20 bg-white/5'
+              aria-live='polite'
             >
-              Loading...
+              <p className='font-input text-[10px] uppercase tracking-[0.08em] text-white/60'>Loading</p>
+            </div>
+          )}
+        </div>
+
+        {showLabel && (
+          <div className='w-full max-w-[720px] bg-white/[0.04] px-4 py-3'>
+            <div className='flex items-baseline justify-between gap-4'>
+              <p className='font-input text-[12px] text-white'>{indicator.wavelengthLabel}</p>
+              <p className='font-nhg text-[12px] text-white/60 text-right'>{indicator.channelName}</p>
+            </div>
+
+            <div className='relative mt-3 pb-5'>
+              <div className='absolute left-0 right-0 top-[7px] h-px bg-white/20' />
+
+              <div
+                className='absolute top-0 -translate-x-1/2 transition-none'
+                style={{ left: `${dotLeftPercent}%` }}
+              >
+                <span className='block h-[7px] w-[7px] rounded-full bg-white' />
+              </div>
+
+              {SPECTRUM_ORDER.map((key, index) => {
+                const norm = (index / (SPECTRUM_ORDER.length - 1)) * 100;
+                const isActive = key === indicator.activeKey;
+                const label = CHANNEL_DISPLAY[key].wavelength;
+
+                return (
+                  <div
+                    key={key}
+                    className='absolute -translate-x-1/2'
+                    style={{ left: `${norm}%`, top: 0 }}
+                  >
+                    <span className={`block h-[8px] w-px ${isActive ? 'bg-white' : 'bg-white/30'}`} />
+                    <span
+                      className={`mt-[6px] block whitespace-nowrap font-input text-[9px] ${isActive ? 'text-white' : 'text-white/40'}`}
+                    >
+                      {label}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
