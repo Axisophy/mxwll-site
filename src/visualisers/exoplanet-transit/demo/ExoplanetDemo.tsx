@@ -11,11 +11,11 @@ interface ExoplanetRecord {
   discoverymethod: string | null;
 }
 
+type DiscoveryLabel = 'Transit' | 'Radial Velocity' | 'Other';
+
 interface DemoPoint {
   discoveryYear: number;
-  orbitalPeriod: number;
-  radiusEarth: number;
-  method: string;
+  method: DiscoveryLabel;
   skyX: number;
   skyY: number;
   scatterX: number;
@@ -56,16 +56,27 @@ const easeInOutCubic = (t: number) => {
 
 const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
 
-const colourForMethod = (method: string) => {
+const mapDiscoveryMethod = (method: string | null): DiscoveryLabel => {
+  if (method === 'Transit') {
+    return 'Transit';
+  }
+
+  if (method === 'Radial Velocity') {
+    return 'Radial Velocity';
+  }
+
+  return 'Other';
+};
+
+const colourForMethod = (method: DiscoveryLabel) => {
   if (method === 'Transit') {
     return '#0055FF';
   }
+
   if (method === 'Radial Velocity') {
     return '#FF0055';
   }
-  if (method === 'Direct Imaging') {
-    return '#CCFF00';
-  }
+
   return 'rgba(255,255,255,0.6)';
 };
 
@@ -76,14 +87,16 @@ const seededRandom = (seed: number) => {
 
 const getSkyPosition = (record: ExoplanetRecord, index: number) => {
   if (typeof record.ra === 'number' && typeof record.dec === 'number') {
-    const x = clamp01(record.ra / 360);
-    const y = clamp01(1 - (record.dec + 90) / 180);
-    return { x, y };
+    return {
+      x: clamp01(record.ra / 360),
+      y: clamp01(1 - (record.dec + 90) / 180),
+    };
   }
 
-  const x = seededRandom(index + 1);
-  const y = seededRandom(index + 10007);
-  return { x, y };
+  return {
+    x: seededRandom(index + 1),
+    y: seededRandom(index + 10007),
+  };
 };
 
 const getScatterPosition = (record: ExoplanetRecord) => {
@@ -100,16 +113,33 @@ const getScatterPosition = (record: ExoplanetRecord) => {
   }
 
   const normYRaw = 1 - (radius - RADIUS_MIN) / (RADIUS_MAX - RADIUS_MIN);
-  const normY = clamp01(normYRaw);
 
-  return { x: clamp01(normX), y: normY };
+  return {
+    x: clamp01(normX),
+    y: clamp01(normYRaw),
+  };
 };
 
 const getYearNorm = (year: number) => clamp01((year - YEAR_MIN) / YEAR_RANGE);
 
+const getPhaseOpacity = (elapsed: number, start: number, end: number, fadeIn = 0.5, fadeOutLead = 0.5) => {
+  if (elapsed < start || elapsed >= end) {
+    return 0;
+  }
+
+  const fadeInOpacity = clamp01((elapsed - start) / fadeIn);
+  const fadeOutStart = Math.max(start, end - fadeOutLead);
+  const fadeOutOpacity = elapsed > fadeOutStart ? clamp01((end - elapsed) / fadeOutLead) : 1;
+  return Math.min(fadeInOpacity, fadeOutOpacity);
+};
+
 export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const scatterBottomLabelRef = useRef<HTMLDivElement>(null);
+  const scatterLeftLabelRef = useRef<HTMLDivElement>(null);
+  const skyAnnotationRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -132,7 +162,15 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
   }, [isMobile]);
 
   const loopSeconds = useMemo(() => {
-    return durations.timelineSweep + durations.timelineHold + durations.transitionOne + durations.scatterHold + durations.transitionTwo + durations.skyHold + durations.reset;
+    return (
+      durations.timelineSweep +
+      durations.timelineHold +
+      durations.transitionOne +
+      durations.scatterHold +
+      durations.transitionTwo +
+      durations.skyHold +
+      durations.reset
+    );
   }, [durations]);
 
   useEffect(() => {
@@ -150,21 +188,23 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
 
   useEffect(() => {
     const updateCanvasSize = () => {
-      const container = containerRef.current;
-      if (!container) {
+      const outer = outerRef.current;
+      if (!outer) {
         return;
       }
 
-      const rect = container.getBoundingClientRect();
-      const height = window.innerWidth < 768 ? 320 : 500;
-      setCanvasSize({ width: Math.max(1, Math.floor(rect.width)), height });
+      const rect = outer.getBoundingClientRect();
+      setCanvasSize({
+        width: Math.max(1, Math.floor(rect.width)),
+        height: window.innerWidth < 768 ? 320 : 500,
+      });
     };
 
     updateCanvasSize();
 
     const observer = new ResizeObserver(updateCanvasSize);
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (outerRef.current) {
+      observer.observe(outerRef.current);
     }
 
     window.addEventListener('resize', updateCanvasSize);
@@ -194,15 +234,11 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
         const mapped = filtered.map((record, index) => {
           const sky = getSkyPosition(record, index);
           const scatter = getScatterPosition(record);
-
           const rawYear = typeof record.disc_year === 'number' ? record.disc_year : YEAR_MAX;
-          const discoveryYear = Math.min(YEAR_MAX, Math.max(YEAR_MIN, rawYear));
 
           return {
-            discoveryYear,
-            orbitalPeriod: record.pl_orbper ?? PERIOD_MIN,
-            radiusEarth: record.pl_rade ?? RADIUS_MIN,
-            method: record.discoverymethod ?? 'Other',
+            discoveryYear: Math.min(YEAR_MAX, Math.max(YEAR_MIN, rawYear)),
+            method: mapDiscoveryMethod(record.discoverymethod),
             skyX: sky.x,
             skyY: sky.y,
             scatterX: scatter.x,
@@ -214,7 +250,7 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
           setPoints(mapped);
           setIsLoading(false);
         }
-      } catch (err) {
+      } catch {
         if (!isDisposed) {
           setError('Failed to load exoplanet demo data');
           setIsLoading(false);
@@ -231,9 +267,6 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
 
   const timelineAxisHeight = 40;
   const timelineSkyHeight = Math.max(0, canvasSize.height - timelineAxisHeight);
-
-  const timelineSweepDuration = durations.timelineSweep;
-  const timelineFlashDuration = Math.max(0.3 * (isMobile ? 0.75 : 1), 0.225);
 
   const timelineEnd = durations.timelineSweep + durations.timelineHold;
   const transitionOneEnd = timelineEnd + durations.transitionOne;
@@ -260,12 +293,17 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     const pointSize = isMobile ? 1.5 : 2;
+    const timelineFlashDuration = Math.max(0.3 * (isMobile ? 0.75 : 1), 0.225);
     const startTime = performance.now();
+
+    const keplerSkyX = clamp01(300 / 360);
+    const keplerSkyY = clamp01(1 - (45 + 90) / 180);
 
     const drawPoint = (x: number, y: number, colour: string, opacity: number) => {
       if (opacity <= 0) {
         return;
       }
+
       context.globalAlpha = opacity;
       context.fillStyle = colour;
       context.beginPath();
@@ -288,87 +326,144 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
 
         if (elapsed < timelineEnd) {
           showTimelineAxis = true;
-          const timelineElapsed = Math.min(elapsed, timelineSweepDuration);
-          timelineProgress = clamp01(timelineElapsed / timelineSweepDuration);
-
-          const currentYear = YEAR_MIN + YEAR_RANGE * timelineProgress;
+          const timelineElapsed = Math.min(elapsed, durations.timelineSweep);
+          timelineProgress = clamp01(timelineElapsed / durations.timelineSweep);
 
           xNorm = point.skyX;
           yNorm = point.skyY;
 
-          if (elapsed <= timelineSweepDuration) {
-            const discoveryNorm = getYearNorm(point.discoveryYear);
-            const discoveryTime = discoveryNorm * timelineSweepDuration;
+          if (elapsed <= durations.timelineSweep) {
+            const discoveryTime = getYearNorm(point.discoveryYear) * durations.timelineSweep;
             if (timelineElapsed < discoveryTime) {
               opacity = 0;
             } else {
               opacity = clamp01((timelineElapsed - discoveryTime) / timelineFlashDuration);
             }
-          } else {
-            opacity = 1;
           }
 
-          const xPx = xNorm * canvasSize.width;
-          const yPx = yNorm * timelineSkyHeight;
-          drawPoint(xPx, yPx, colourForMethod(point.method), opacity);
-
-          if (point.discoveryYear > currentYear) {
-            return;
-          }
-
+          drawPoint(
+            xNorm * canvasSize.width,
+            yNorm * timelineSkyHeight,
+            colourForMethod(point.method),
+            opacity
+          );
           return;
         }
 
         if (elapsed < transitionOneEnd) {
-          const t = clamp01((elapsed - timelineEnd) / durations.transitionOne);
-          const eased = easeInOutCubic(t);
+          const eased = easeInOutCubic(clamp01((elapsed - timelineEnd) / durations.transitionOne));
           xNorm = point.skyX + (point.scatterX - point.skyX) * eased;
           yNorm = point.skyY + (point.scatterY - point.skyY) * eased;
         } else if (elapsed < scatterEnd) {
           xNorm = point.scatterX;
           yNorm = point.scatterY;
         } else if (elapsed < transitionTwoEnd) {
-          const t = clamp01((elapsed - scatterEnd) / durations.transitionTwo);
-          const eased = easeInOutCubic(t);
+          const eased = easeInOutCubic(clamp01((elapsed - scatterEnd) / durations.transitionTwo));
           xNorm = point.scatterX + (point.skyX - point.scatterX) * eased;
           yNorm = point.scatterY + (point.skyY - point.scatterY) * eased;
         } else if (elapsed < skyEnd) {
           xNorm = point.skyX;
           yNorm = point.skyY;
         } else {
-          const t = clamp01((elapsed - skyEnd) / durations.reset);
-          const eased = easeInOutCubic(t);
+          const eased = easeInOutCubic(clamp01((elapsed - skyEnd) / durations.reset));
+          phaseOpacity = 1 - eased;
           xNorm = point.skyX;
           yNorm = point.skyY;
-          phaseOpacity = 1 - eased;
         }
 
-        const xPx = xNorm * canvasSize.width;
-        const yPx = yNorm * canvasSize.height;
-        drawPoint(xPx, yPx, colourForMethod(point.method), opacity * phaseOpacity);
+        drawPoint(
+          xNorm * canvasSize.width,
+          yNorm * canvasSize.height,
+          colourForMethod(point.method),
+          opacity * phaseOpacity
+        );
       });
 
       if (showTimelineAxis) {
-        const axisY = canvasSize.height - timelineAxisHeight;
-        const lineY = axisY + 12;
+        const axisTop = canvasSize.height - timelineAxisHeight;
+        const axisY = axisTop + 12;
 
         context.globalAlpha = 1;
         context.strokeStyle = 'rgba(255,255,255,0.24)';
         context.lineWidth = 1;
         context.beginPath();
-        context.moveTo(0, lineY);
-        context.lineTo(canvasSize.width, lineY);
+        context.moveTo(0, axisY);
+        context.lineTo(canvasSize.width, axisY);
         context.stroke();
 
         const currentYear = YEAR_MIN + YEAR_RANGE * timelineProgress;
-        const sweepNorm = getYearNorm(currentYear);
-        const sweepX = sweepNorm * canvasSize.width;
+        const sweepX = getYearNorm(currentYear) * canvasSize.width;
 
         context.strokeStyle = 'rgba(255,255,255,0.65)';
         context.beginPath();
         context.moveTo(sweepX, 0);
-        context.lineTo(sweepX, lineY + 6);
+        context.lineTo(sweepX, axisY + 6);
         context.stroke();
+
+        context.textAlign = 'center';
+        context.textBaseline = 'top';
+        context.fillStyle = 'rgba(255,255,255,0.4)';
+        context.font = '9px monospace';
+
+        AXIS_YEARS.forEach((year) => {
+          const x = getYearNorm(year) * canvasSize.width;
+          context.fillText(String(year), x, axisY + 8);
+        });
+
+        const keplerX = getYearNorm(2009) * canvasSize.width;
+        context.strokeStyle = 'rgba(255,255,255,0.55)';
+        context.beginPath();
+        context.moveTo(keplerX, axisY - 6);
+        context.lineTo(keplerX, axisY);
+        context.stroke();
+
+        context.fillStyle = 'rgba(255,255,255,0.55)';
+        context.font = '9px monospace';
+        context.fillText('Kepler 2009', keplerX, axisY - 18);
+        context.font = '8px monospace';
+        context.fillText('discoveries accelerate', keplerX, axisY + 20);
+      }
+
+      const timelineTitleOpacity = getPhaseOpacity(elapsed, 0, timelineEnd);
+      const scatterOpacity = getPhaseOpacity(elapsed, transitionOneEnd, scatterEnd);
+      const skyTitleOpacity = getPhaseOpacity(elapsed, transitionTwoEnd, skyEnd);
+
+      let titleText = '';
+      let titleOpacity = 0;
+
+      if (timelineTitleOpacity > 0) {
+        titleText = 'DISCOVERY TIMELINE';
+        titleOpacity = timelineTitleOpacity;
+      } else if (scatterOpacity > 0) {
+        titleText = 'SIZE & ORBIT';
+        titleOpacity = scatterOpacity;
+      } else if (skyTitleOpacity > 0) {
+        titleText = 'WHERE IN THE SKY';
+        titleOpacity = skyTitleOpacity;
+      }
+
+      if (titleRef.current) {
+        titleRef.current.textContent = titleText;
+        titleRef.current.style.opacity = titleOpacity.toFixed(3);
+      }
+
+      if (scatterBottomLabelRef.current) {
+        scatterBottomLabelRef.current.style.opacity = scatterOpacity.toFixed(3);
+      }
+
+      if (scatterLeftLabelRef.current) {
+        scatterLeftLabelRef.current.style.opacity = scatterOpacity.toFixed(3);
+      }
+
+      const skyAnnotationFadeInStart = transitionTwoEnd + 1;
+      const skyAnnotationBaseOpacity = getPhaseOpacity(elapsed, transitionTwoEnd, skyEnd);
+      const skyAnnotationFade = clamp01((elapsed - skyAnnotationFadeInStart) / 0.6);
+      const skyAnnotationOpacity = skyAnnotationBaseOpacity * skyAnnotationFade;
+
+      if (skyAnnotationRef.current) {
+        skyAnnotationRef.current.style.opacity = skyAnnotationOpacity.toFixed(3);
+        skyAnnotationRef.current.style.left = `${keplerSkyX * canvasSize.width}px`;
+        skyAnnotationRef.current.style.top = `${keplerSkyY * canvasSize.height}px`;
       }
 
       rafRef.current = window.requestAnimationFrame(drawFrame);
@@ -386,6 +481,10 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
     canvasSize.height,
     canvasSize.width,
     durations.reset,
+    durations.scatterHold,
+    durations.skyHold,
+    durations.timelineHold,
+    durations.timelineSweep,
     durations.transitionOne,
     durations.transitionTwo,
     isMobile,
@@ -394,76 +493,84 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
     scatterEnd,
     skyEnd,
     timelineEnd,
-    timelineFlashDuration,
     timelineSkyHeight,
-    timelineSweepDuration,
     transitionOneEnd,
     transitionTwoEnd,
   ]);
 
-  const methodLegend = useMemo(() => {
-    const methods = new Set(points.map((point) => point.method));
-    return Array.from(methods).sort();
-  }, [points]);
-
   return (
-    <div ref={containerRef} className={className}>
-      <div className='relative w-full' style={{ height: `${isMobile ? 320 : 500}px` }}>
-        <canvas
-          ref={canvasRef}
-          className='block w-full h-full bg-[#050508]'
-          aria-label='Exoplanet discovery demo'
-        />
+    <div className={className}>
+      <div className='w-full bg-[#03060f] p-4 md:p-6'>
+        <div ref={outerRef} className='relative w-full' style={{ height: `${isMobile ? 320 : 500}px` }}>
+          <canvas
+            ref={canvasRef}
+            className='block h-full w-full bg-[#050508]'
+            aria-label='Exoplanet discovery demo'
+          />
 
-        {isLoading && (
-          <div className='absolute inset-0 flex items-center justify-center bg-black/40'>
-            <p className='font-input text-[11px] uppercase tracking-[0.08em] text-white/60'>
-              Loading exoplanet data
-            </p>
-          </div>
-        )}
+          <div
+            ref={titleRef}
+            className='pointer-events-none absolute left-3 top-3 font-nhg text-[11px] uppercase tracking-[0.08em] text-white/50 opacity-0'
+          />
 
-        {error && (
-          <div className='absolute inset-0 flex items-center justify-center bg-black/70'>
-            <p className='font-input text-[11px] uppercase tracking-[0.08em] text-white/70'>{error}</p>
-          </div>
-        )}
-
-        <div className='pointer-events-none absolute left-0 right-0 bottom-0 h-10'>
-          <div className='relative h-full'>
-            {AXIS_YEARS.map((year) => {
-              const left = `${getYearNorm(year) * 100}%`;
-              return (
-                <span
-                  key={year}
-                  className='absolute bottom-1 -translate-x-1/2 font-input text-[9px] text-white/40'
-                  style={{ left }}
-                >
-                  {year}
-                </span>
-              );
-            })}
-
-            <span
-              className='absolute bottom-5 -translate-x-1/2 font-input text-[9px] text-white/60'
-              style={{ left: `${getYearNorm(2009) * 100}%` }}
-            >
-              Kepler -&gt;
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className='mt-3 flex flex-wrap gap-2'>
-        {methodLegend.map((method) => (
-          <span
-            key={method}
-            className='font-input text-[9px] uppercase tracking-[0.08em]'
-            style={{ color: colourForMethod(method) }}
+          <div
+            ref={scatterBottomLabelRef}
+            className='pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap font-input text-[9px] text-white/[0.35] opacity-0'
           >
-            {method}
-          </span>
-        ))}
+            ← shorter orbit · orbital period · longer orbit →
+          </div>
+
+          <div
+            ref={scatterLeftLabelRef}
+            className='pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap font-input text-[9px] text-white/[0.35] opacity-0 origin-left'
+          >
+            ↑ larger · planet size · smaller ↓
+          </div>
+
+          <div
+            ref={skyAnnotationRef}
+            className='pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 opacity-0'
+          >
+            <div className='flex items-center gap-2'>
+              <span className='relative block h-2 w-2 rounded-full border border-white/45'>
+                <span className='absolute left-1/2 top-[-4px] h-[3px] w-px -translate-x-1/2 bg-white/45' />
+                <span className='absolute left-1/2 bottom-[-4px] h-[3px] w-px -translate-x-1/2 bg-white/45' />
+                <span className='absolute top-1/2 left-[-4px] h-px w-[3px] -translate-y-1/2 bg-white/45' />
+                <span className='absolute top-1/2 right-[-4px] h-px w-[3px] -translate-y-1/2 bg-white/45' />
+              </span>
+              <span className='whitespace-nowrap font-input text-[9px] text-white/45'>Kepler field</span>
+            </div>
+          </div>
+
+          <div className='pointer-events-none absolute right-3 top-3 bg-black/40 p-2'>
+            <div className='flex items-center gap-2 font-input text-[10px] text-white/70'>
+              <span className='h-[6px] w-[6px] rounded-full bg-[#0055FF]' />
+              <span>Transit</span>
+            </div>
+            <div className='mt-1 flex items-center gap-2 font-input text-[10px] text-white/70'>
+              <span className='h-[6px] w-[6px] rounded-full bg-[#FF0055]' />
+              <span>Radial Velocity</span>
+            </div>
+            <div className='mt-1 flex items-center gap-2 font-input text-[10px] text-white/70'>
+              <span className='h-[6px] w-[6px] rounded-full bg-white/60' />
+              <span>Other</span>
+            </div>
+          </div>
+
+          {isLoading && (
+            <div className='absolute inset-0 flex items-center justify-center bg-black/40'>
+              <p className='font-input text-[11px] uppercase tracking-[0.08em] text-white/60'>
+                Loading exoplanet data
+              </p>
+            </div>
+          )}
+
+          {error && (
+            <div className='absolute inset-0 flex items-center justify-center bg-black/70'>
+              <p className='font-input text-[11px] uppercase tracking-[0.08em] text-white/70'>{error}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

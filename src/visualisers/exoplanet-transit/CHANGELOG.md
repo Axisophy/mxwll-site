@@ -1,6 +1,15 @@
 # Changelog
 
 ## 2026-03-01
+- Refined `demo/ExoplanetDemo.tsx` presentation with a padded viewport container (`#03060f`) to frame the animation.
+- Added persistent top-right method legend with mapped categories: `Transit`, `Radial Velocity`, and `Other`.
+- Added top-left phase title overlays for all three views with fade-in/fade-out timing tied to view activation.
+- Added scatter-view-only axis copy overlays for orbital period and planet size.
+- Replaced timeline Kepler annotation with `Kepler 2009` and `discoveries accelerate`, including a dedicated 2009 axis tick.
+- Added sky-view Kepler field marker/label at mapped coordinates (`ra ~300`, `dec ~45`) with delayed fade-in after sky transition.
+- Updated discovery-method mapping for demo rendering so only `Transit` and `Radial Velocity` keep named categories; all other methods render and label as `Other`.
+
+## 2026-03-01
 - Copied `planets.json` and `featured.json` from `bang_industries_site/public/data/exoplanets/` into `public/data/exoplanets/` for runtime loading in MXWLL.
 - Added autonomous demo component at `demo/ExoplanetDemo.tsx` with a three-view loop:
 - discovery timeline with year sweep (1992-2025), reveal flash, axis labels, and Kepler marker.
