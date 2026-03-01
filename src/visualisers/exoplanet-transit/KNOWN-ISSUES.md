@@ -4,6 +4,9 @@
 - Mobile performance untested
 - Demo/interactive separation not yet implemented
 - Documentation incomplete (README, SPEC need details)
+- Kepler field concentration visibility depends on `ra/dec` quality in source records.
+- Records with null `ra/dec` are assigned deterministic seeded random sky positions.
+- Demo loop timings are reduced by 25% on mobile to improve pacing and performance.
 
 ## Resolved
 None yet

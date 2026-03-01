@@ -6,6 +6,15 @@ import WorkFilter from '@/components/WorkFilter'
 
 const allWork = [
   {
+    title: 'Exoplanet Systems',
+    description: 'An autonomous three-view demo showing how exoplanet discovery accelerates over time, how orbital period relates to size, and where discoveries cluster on the sky.',
+    category: 'EXPLANATION DESIGN',
+    year: '2026',
+    slug: 'exoplanet-systems',
+    label: 'In Development',
+    tags: ['Astronomy', 'Data Visualisation', 'Canvas'],
+  },
+  {
     title: 'Solar Wavelength',
     description: 'The same solar moment across multiple wavelengths. A demo loop that crossfades between extreme ultraviolet channels to reveal changing solar structure and temperature layers.',
     category: 'EXPLANATION DESIGN',

@@ -1,6 +1,6 @@
 # SITE-PLAN.md - Master Plan for MXWLL
 
-Last updated: 2026-02-24
+Last updated: 2026-03-01
 
 ## Vision
 
@@ -64,6 +64,7 @@ sm: 640px / md: 768px / lg: 1024px / xl: 1280px / 2xl: 1536px
 - [x] Stellar Cartography visualiser (Gaia DR3, 50K stars, sky/HR transition)
 - [x] Gaia data fetched (50K stars full-sky via async TAP queries)
 - [x] Stellar Cartography homepage demo split (separate desktop/mobile demo components)
+- [x] Exoplanet Systems demo route and data migration (three-view autonomous canvas demo)
 - [x] OG/Twitter meta tags
 - [x] Robots directive
 - [x] Scaffolding for 11 new Lab visualisers with docs (Fourier Epicycles, Physarum, Double Pendulum, Chladni Figures, Wave Tank, Exoplanet Systems, CMB Explorer, Lissajous, Space-filling Curves, Gaia Proper Motions, Boids)
