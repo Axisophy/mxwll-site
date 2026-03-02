@@ -62,11 +62,11 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
-        <h1 className="font-display text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-          A digital laboratory for science, maths, and explanation design
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] mb-6">
+          A studio for explanation design.
         </h1>
-        <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl">
-          We make complex things visible - through interactive visualisation, illustration, and systematic design.
+        <p className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] md:max-w-5xl">
+          We make complex things comprehensible - through interactive visualisation, illustration, and systematic design.
         </p>
       </section>
 
