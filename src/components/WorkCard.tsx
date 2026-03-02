@@ -30,17 +30,17 @@ export default function WorkCard({
   return (
     <Link
       href={`/work/${slug}`}
-      className="block group border border-black/10 overflow-hidden transition-colors hover:border-black/20"
+      className="block group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Media Container */}
-      <div className="relative w-full bg-[var(--bg-secondary)] overflow-hidden">
+      {/* Media Container with Overlay */}
+      <div className="relative w-full bg-[#050508] overflow-hidden border border-[var(--border-light)]">
         {videoUrl ? (
           <video
             src={videoUrl}
             className="w-full h-full object-cover"
-            style={{ aspectRatio: featured ? '16/9' : '16/10' }}
+            style={{ aspectRatio: '16/9' }}
             autoPlay={isHovered}
             loop
             muted
@@ -51,29 +51,29 @@ export default function WorkCard({
             src={thumbnail}
             alt={title}
             width={800}
-            height={featured ? 450 : 500}
+            height={450}
             className="w-full h-full object-cover"
-            style={{ aspectRatio: featured ? '16/9' : '16/10' }}
+            style={{ aspectRatio: '16/9' }}
           />
         ) : (
           <div
-            className="w-full bg-[var(--bg-tertiary)]"
-            style={{ aspectRatio: featured ? '16/9' : '16/10' }}
+            className="w-full bg-[#050508]"
+            style={{ aspectRatio: '16/9' }}
           />
         )}
-      </div>
 
-      {/* Content */}
-      <div className="p-6">
-        <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight mb-2 group-hover:text-[var(--accent-hover)] transition-colors">
-          {title}
-        </h3>
-        <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-3">
-          {description}
-        </p>
-        <p className="font-mono text-xs text-[var(--text-tertiary)]">
-          {category} · {year}
-        </p>
+        {/* Overlay Content */}
+        <div className="absolute top-6 left-6 right-6">
+          <h3 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-white/80 transition-colors">
+            {title}
+          </h3>
+          <p className="font-nhg text-sm md:text-base text-white/70 mb-2">
+            {description}
+          </p>
+          <p className="font-mono text-xs text-white/50 uppercase tracking-wider">
+            {category} · {year}
+          </p>
+        </div>
       </div>
     </Link>
   )
