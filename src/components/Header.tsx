@@ -27,7 +27,7 @@ export default function Header() {
     <>
       <header className="w-full bg-white">
         <div className="px-4 md:px-8 lg:px-12 py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-20 items-start">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               href="/"
@@ -37,15 +37,8 @@ export default function Header() {
               <Logo className="h-10 w-auto text-[var(--text-primary)]" />
             </Link>
 
-            {/* Description (hidden on mobile/tablet) */}
-            <div className="hidden lg:block text-sm text-[var(--text-primary)] leading-relaxed max-w-md">
-              MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
-              <br />
-              We don't simplify. We clarify.
-            </div>
-
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8 lg:justify-self-end">
+            <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

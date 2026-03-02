@@ -62,12 +62,10 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] mb-6">
-          A studio for explanation design.
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] lg:max-w-[75%]">
+          MXWLL makes complex things comprehensible.
+          We&apos;re an independent design studio working at the intersection of data, science, and visual storytelling - building interactive visualisations, illustrations, and design systems for the ideas that are hardest to explain.
         </h1>
-        <p className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] md:max-w-5xl">
-          We make complex things comprehensible - through interactive visualisation, illustration, and systematic design.
-        </p>
       </section>
 
       {/* Stellar Cartography Visualiser */}
