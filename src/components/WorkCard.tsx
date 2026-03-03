@@ -13,6 +13,7 @@ export interface WorkCardProps {
   thumbnail?: string
   videoUrl?: string
   featured?: boolean
+  demoElement?: React.ReactNode
 }
 
 export default function WorkCard({
@@ -24,6 +25,7 @@ export default function WorkCard({
   thumbnail,
   videoUrl,
   featured = false,
+  demoElement,
 }: WorkCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -36,7 +38,11 @@ export default function WorkCard({
     >
       {/* Media Container with Overlay */}
       <div className="relative w-full bg-[#050508] overflow-hidden rounded-xl">
-        {videoUrl ? (
+        {demoElement ? (
+          <div className="w-full" style={{ aspectRatio: '16/9' }}>
+            {demoElement}
+          </div>
+        ) : videoUrl ? (
           <video
             src={videoUrl}
             className="w-full h-full object-cover"

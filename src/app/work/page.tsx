@@ -1,8 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import WorkCard from '@/components/WorkCard'
 import WorkFilter from '@/components/WorkFilter'
+
+const StellarDemo = dynamic(
+  () => import('@/visualisers/stellar-cartography/demo/StellarDemo'),
+  { ssr: false }
+)
+
+const SolarDemo = dynamic(
+  () => import('@/visualisers/solar-wavelength/demo/SolarDemo'),
+  { ssr: false }
+)
 
 const allWork = [
   {
@@ -59,16 +70,14 @@ const allWork = [
     label: 'One moment, eight wavelengths',
     tags: ['Astronomy', 'Data Visualisation', 'Canvas'],
   },
-  {
-    title: 'What\'s Inside Your Console?',
-    description: 'You use it every day to play games. But what\'s actually happening inside that box? An explanation designed to make computing hardware genuinely interesting to kids.',
-    category: 'EXPLANATION DESIGN',
-    year: '2025',
-    slug: 'whats-inside-your-console',
-    label: 'A guide for gamers aged 8-12',
-    tags: ['Technology', 'Interactive', 'Kids (8-12)'],
-  },
 ]
+
+// Map slugs to demo components for animated card backgrounds
+const DEMO_CARDS: Record<string, React.ReactNode> = {
+  'stellar-cartography': <StellarDemo className="w-full h-full" />,
+  'stellar-evolution': <StellarDemo className="w-full h-full" />,
+  'solar-wavelength': <SolarDemo className="w-full h-full" />,
+}
 
 const categories = ['ALL', 'EXPLANATION DESIGN', 'STRATEGY']
 
@@ -105,7 +114,7 @@ export default function WorkPage() {
         {filteredWork.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {filteredWork.map((work) => (
-              <WorkCard key={work.slug} {...work} />
+              <WorkCard key={work.slug} {...work} demoElement={DEMO_CARDS[work.slug]} />
             ))}
           </div>
         ) : (

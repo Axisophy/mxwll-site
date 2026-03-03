@@ -123,6 +123,13 @@ const labItems = [
   },
   // --- In Development ---
   {
+    title: 'What\'s Inside Your Console?',
+    description: 'You use it every day to play games. But what\'s actually happening inside that box? An explanation designed to make computing hardware genuinely interesting to kids aged 8-12.',
+    tags: ['Interactive', 'Technology', 'Kids (8-12)'],
+    slug: '#',
+    status: 'In Development',
+  },
+  {
     title: 'Stellar Cartography',
     description: '50,000 stars from the ESA Gaia catalogue in four coordinated views. The transitions between sky, HR diagram, galactic, and observer views are the explanatory moment.',
     tags: ['WebGL', 'Gaia DR3', 'Astronomy'],
