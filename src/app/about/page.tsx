@@ -1,102 +1,154 @@
+import Link from 'next/link'
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
+      <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">About</h1>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">
+            About
+          </h1>
+          <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
+            MXWLL is an explanation design studio for science, data, and the complex. We make difficult ideas genuinely clear - through interactive visualisation, scientific illustration, and systematic design. We don&apos;t simplify. We clarify.
+          </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="px-4 md:px-8 lg:px-12 py-8">
-        <div className="max-w-3xl">
-          <div className="font-sabon text-lg text-[var(--text-secondary)] leading-relaxed space-y-12">
+      {/* Two-column bento */}
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
-            {/* Studio */}
-            <div>
-              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                Studio
-              </h2>
+          {/* Simon Tyler */}
+          <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
+              FOUNDER
+            </p>
+            <h2 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-4">
+              Simon Tyler
+            </h2>
+            <div className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed space-y-4">
               <p>
-                MXWLL is a science visualisation and explanation design studio. We work with research institutions, publishers, science museums, and organisations who need to make difficult ideas genuinely clear - not simplified, but made accessible without being made wrong.
+                Designer, illustrator, and author. Biochemistry degree from Imperial College London, with further study in the History and Philosophy of Science at University College London.
               </p>
-              <p className="mt-4">
+              <p>
+                That combination of scientific training and design practice shapes everything MXWLL does. Understanding the subject matter - not just the brief - changes what questions get asked. A designer who understands the physics can tell when a simplification has become a distortion.
+              </p>
+              <p>
+                Based in St Leonards on Sea, East Sussex.
+              </p>
+            </div>
+          </div>
+
+          {/* What we do */}
+          <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
+              THE WORK
+            </p>
+            <h2 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-4">
+              Visualisation, illustration, explanation
+            </h2>
+            <div className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed space-y-4">
+              <p>
+                We work with research institutions, publishers, science museums, and organisations who need to communicate complex ideas to non-specialist audiences.
+              </p>
+              <p>
                 The work spans interactive data visualisation, scientific illustration, and structured explanation design. Sometimes these are combined in a single project. Often the most effective work integrates all three.
               </p>
-            </div>
-
-            {/* The studio */}
-            <div>
-              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                The studio
-              </h2>
               <p>
-                Simon Tyler founded MXWLL after a decade working at the intersection of scientific illustration, data visualisation, systems design, and writing. The studio is based in East Sussex, UK.
-              </p>
-              <p className="mt-4">
-                The background is unusual, and deliberately so. Most data visualisation studios are built from design or engineering. MXWLL is built from both, plus a genuine interest in science and a decade of practice in explaining complex things to general audiences through books.
-              </p>
-              <p className="mt-4">
-                The books matter because explanation is a craft that requires iteration and feedback over time, not a style applied to a brief. Writing - and specifically writing about technical subjects for non-specialist readers - builds a different kind of understanding than design practice alone. It forces the question: what does this audience actually need to know? What can be left out? What is the essential structure of this idea? These are the same questions that drive good explanation design.
-              </p>
-              <p className="mt-4">
-                The technical depth matters because subject understanding shapes what questions get asked. A designer who understands the physics can ask whether the chart is actually representing the phenomenon correctly. A designer who understands genetics can identify when a simplification has become a distortion. This changes the conversation with scientists and researchers considerably.
+                We are a small studio. We take on a limited number of projects each year and work directly with the people who commission us. If you are working with MXWLL, you are working with Simon.
               </p>
             </div>
-
-            {/* Selected credentials */}
-            <div>
-              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                Selected credentials
-              </h2>
-              <p>
-                Scientific illustration and information design for national and international publishers, science museums, and research institutions.
-              </p>
-              <p className="mt-4">
-                Author of five books on science, technology, and design subjects, including <em>Gizmo: A Visual History of Ingenious Machines</em> (Thames & Hudson), published in multiple languages.
-              </p>
-              <p className="mt-4">
-                Systems design: Network Rail passenger information pictogram system; scientific poster and publication design systems; Maxwell design system for real-time scientific data visualisation.
-              </p>
-              <p className="mt-4">
-                Interactive work includes WebGL-based visualisers for stellar cartography (50,000 stars from the Gaia catalogue), gravitational wave detection, atomic structure, orbital mechanics, reaction-diffusion morphogenesis, and flow field dynamics.
-              </p>
-            </div>
-
-            {/* How we work */}
-            <div>
-              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                How we work
-              </h2>
-              <p>
-                Projects begin with a conversation about the explanation problem, not the visual output. We ask what the audience currently understands, what the most important thing is that they need to leave with, and what the misconceptions are that stand between their current understanding and the one you need them to have.
-              </p>
-              <p className="mt-4">
-                From that conversation we develop an explanation strategy - a structured document that maps the information architecture before any design decisions are made. This is not a deliverable in the traditional agency sense. It is the thinking that makes the subsequent design work faster, sharper, and more likely to do what it needs to do.
-              </p>
-              <p className="mt-4">
-                We are a small studio. We take on a limited number of projects each year, and we work directly with the people who commission us rather than through account management layers. If you are working with MXWLL, you are working with Simon.
-              </p>
-            </div>
-
-            {/* What we don't do */}
-            <div>
-              <h2 className="font-nhg text-2xl font-medium mb-4 text-[var(--text-primary)]">
-                What we don&apos;t do
-              </h2>
-              <p>
-                We don&apos;t do dashboards, business intelligence, or data analytics visualisation. Those are important disciplines; they are simply not ours.
-              </p>
-              <p className="mt-4">
-                We don&apos;t produce quick-turnaround infographics. Our method requires time at the strategy stage, and skipping that stage produces work we would not stand behind.
-              </p>
-              <p className="mt-4">
-                We don&apos;t simplify. We clarify. These are different things. Simplification removes complexity; clarification makes complexity navigable. The science stays accurate.
-              </p>
-            </div>
-
           </div>
+
+        </div>
+      </section>
+
+      {/* Credentials */}
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em] mb-8">
+          Selected credentials
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+          {/* Books */}
+          <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
+              BOOKS
+            </p>
+            <div className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed space-y-3">
+              <p>
+                Author and illustrator of four books on science and technology, published by Laurence King, Faber &amp; Faber, and Pavilion:
+              </p>
+              <ul className="space-y-2">
+                <li><em>Gizmo</em> - Laurence King</li>
+                <li><em>Bugs</em> - Pavilion</li>
+                <li><em>Adventures in Space</em> - Pavilion</li>
+                <li><em>Emergency Vehicles</em> - Faber &amp; Faber</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Systems design */}
+          <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
+              SYSTEMS DESIGN
+            </p>
+            <div className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed space-y-3">
+              <p>
+                Pictogram system for Network Rail&apos;s UK station wayfinding, in collaboration with Margaret Calvert.
+              </p>
+              <p>
+                Scientific poster and publication design systems. The MXWLL design system for real-time scientific data visualisation.
+              </p>
+            </div>
+          </div>
+
+          {/* Interactive */}
+          <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
+              INTERACTIVE
+            </p>
+            <div className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed">
+              <p>
+                WebGL-based visualisers for stellar cartography (50,000 stars from the ESA Gaia catalogue), gravitational wave detection, nuclear physics, orbital mechanics, reaction-diffusion morphogenesis, and flow field dynamics.
+              </p>
+            </div>
+          </div>
+
+          {/* Recognition */}
+          <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
+              EXHIBITED &amp; FEATURED
+            </p>
+            <div className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed space-y-3">
+              <p>
+                Work exhibited at the Design Museum, Science Museum (London), and National Gallery of Singapore.
+              </p>
+              <p>
+                Featured in The Guardian, The Times, Elle Decoration, It&apos;s Nice That, The Telegraph, and The Independent.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24">
+        <div className="bg-[var(--bg-secondary)] rounded-xl p-8 md:p-12 text-center max-w-3xl mx-auto">
+          <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
+            Have something complex that needs explaining?
+          </h2>
+          <p className="font-nhg text-base md:text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
+            We&apos;d like to hear about it.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block font-display text-sm font-medium px-6 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-90 transition-opacity"
+          >
+            Get in touch
+          </Link>
         </div>
       </section>
     </div>
