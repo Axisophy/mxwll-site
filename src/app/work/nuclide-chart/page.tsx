@@ -423,7 +423,7 @@ export default function NuclideChartPage() {
                   </li>
                   <li>
                     <a
-                      href="/work/permissible-universe"
+                      href="/lab/permissible-universe"
                       className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                     >
                       The Permissible Universe →
