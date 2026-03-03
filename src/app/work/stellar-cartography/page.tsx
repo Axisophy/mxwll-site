@@ -78,7 +78,7 @@ export default function StellarCartographyPage() {
 
       {/* Interactive Visualiser */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="border border-[var(--border)] bg-[#050508] overflow-hidden">
+        <div className="rounded-xl overflow-hidden">
           <StellarCartographyExplorer />
         </div>
         <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mt-4">

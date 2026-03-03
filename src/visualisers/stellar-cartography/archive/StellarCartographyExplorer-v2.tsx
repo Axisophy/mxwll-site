@@ -40,18 +40,20 @@ const HR_ANNOTATIONS: AnnotationData[] = [
   { label: 'Blue Stragglers', x: -0.4, y: 0.2 },
 ];
 
-// Named stars for Observer view - positioned by real bp_rp and abs_mag values
-// NDC coordinates computed from dataset ranges (bp_rp: -0.45..4.48, abs_mag: -2.89..14.11)
-// Stars chosen for good spacing across the chart and recognisability
+// Named stars for Observer view - approximate positions based on known properties
+// These are positioned in magnitude/colour space (same as HR diagram but with observer colour map)
+// Positions are approximate NDC coordinates
 const OBSERVER_ANNOTATIONS: AnnotationData[] = [
-  { label: 'Sirius', x: -0.82, y: 0.49 },         // A-type, abs_mag 1.42, brightest star
-  { label: 'Capella', x: -0.49, y: 0.65 },         // Yellow giant, abs_mag 0.08
-  { label: 'Aldebaran', x: -0.25, y: 0.74 },       // Orange giant, abs_mag -0.65
-  { label: 'Procyon', x: -0.63, y: 0.35 },         // F-type, abs_mag 2.66
-  { label: 'Sun', x: -0.48, y: 0.09 },             // G-type main sequence reference
-  { label: '61 Cygni', x: -0.15, y: -0.22 },       // K-type dwarf, first parallax star
-  { label: 'Mira', x: 0.40, y: 0.31 },             // Red giant variable, bp_rp 1.5
-  { label: "Barnard's Star", x: 0.28, y: -0.89 },  // Red dwarf, bp_rp 2.7, abs_mag 13.2
+  { label: 'Sirius', x: -0.05, y: -0.85 }, // Bright, white (A-type)
+  { label: 'Betelgeuse', x: 0.65, y: 0.75 }, // Red supergiant, very bright
+  { label: 'Rigel', x: -0.5, y: 0.65 }, // Blue supergiant, very bright
+  { label: 'Vega', x: -0.15, y: -0.7 }, // Bright, white (A-type)
+  { label: 'Arcturus', x: 0.45, y: 0.45 }, // Orange giant, bright
+  { label: 'Aldebaran', x: 0.55, y: 0.3 }, // Orange giant
+  { label: 'Antares', x: 0.7, y: 0.7 }, // Red supergiant
+  { label: 'Deneb', x: -0.3, y: 0.8 }, // Blue supergiant, extremely bright
+  { label: 'Procyon', x: 0.2, y: -0.6 }, // Yellow-white, bright
+  { label: 'Spica', x: -0.45, y: 0.35 }, // Blue, bright
 ];
 
 export default function StellarCartographyExplorer({ className }: StellarCartographyExplorerProps) {
@@ -383,7 +385,8 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
     <div className={`relative ${className ?? ''}`}>
       <div ref={containerRef} className="relative overflow-hidden bg-[#03060f]" style={{ aspectRatio: '16 / 10' }}>
         <canvas ref={canvasRef} className="block w-full h-full" />
-        {renderAnnotations()}
+        {/* Annotations hidden for now - uncomment to restore */}
+        {/* {renderAnnotations()} */}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="font-nhg text-xs uppercase tracking-[0.05em] text-white/45">Loading stars...</span>
@@ -441,7 +444,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
 
       {/* Mobile note */}
       <div className="md:hidden mt-4 text-center">
-        <p className="font-nhg text-xs italic text-[var(--text-tertiary)]">
+        <p className="font-nhg text-sm italic text-[var(--text-secondary)]">
           This visualiser renders 50,000 stars in real-time and is best experienced on a larger screen.
         </p>
       </div>
