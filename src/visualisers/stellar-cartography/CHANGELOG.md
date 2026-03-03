@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-03-03
+- Restyled view buttons to MXWLL UI control system: rounded-xl, bg-secondary/bg-tertiary hover, electric blue active state, font-label typography. Buttons now sit clearly outside the visualiser container as page UI.
+
 ## 2026-02-28
 - Fixed double-DPR resolution uniform wiring in Stellar Cartography demo paths by passing CSS canvas dimensions (`getBoundingClientRect`) to `u_resolution` while keeping the pixel buffer at DPR-scaled `canvas.width`/`canvas.height`.
 

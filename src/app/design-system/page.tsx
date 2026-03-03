@@ -736,6 +736,102 @@ p-8 md:p-10 → Large container (CTA)`}
             </div>
           </div>
 
+          {/* Visualiser Controls */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Visualiser Controls</h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
+                View buttons, sliders, and toggles for interactive visualisers. These sit outside the visualiser canvas, below or beside it, and feel like page UI rather than part of the visualiser itself.
+              </p>
+
+              {/* View buttons example */}
+              <div className="space-y-6">
+                <div>
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">VIEW BUTTONS</p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[#0055FF] text-white">Sky</span>
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-primary)]">HR Diagram</span>
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-primary)]">Galactic</span>
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-primary)]">Observer</span>
+                  </div>
+                </div>
+
+                {/* States */}
+                <div>
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">STATES</p>
+                  <div className="flex gap-2 flex-wrap items-center">
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-primary)]">Default</span>
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-tertiary)] text-[var(--text-primary)]">Hover</span>
+                    <span className="font-label text-xs px-4 py-2 rounded-xl bg-[#0055FF] text-white">Active</span>
+                  </div>
+                </div>
+
+                {/* Slider example */}
+                <div>
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">SLIDER CONTROL</p>
+                  <div className="bg-[var(--bg-secondary)] rounded-xl p-4">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <span className="font-label text-xs text-[var(--text-secondary)]">Speed</span>
+                      <span className="font-label text-xs text-[var(--text-secondary)] tabular-nums">1.0x</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={0}
+                      max={100}
+                      defaultValue={50}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
+                REFERENCE: STELLAR CARTOGRAPHY WORK PAGE
+              </p>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">PATTERN</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// View buttons (outside visualiser container)
+<button className="font-label text-xs
+  px-4 py-2 rounded-xl transition-colors
+  bg-[var(--bg-secondary)]
+  text-[var(--text-primary)]
+  hover:bg-[var(--bg-tertiary)]">
+  Label
+</button>
+
+// Active state
+className="bg-[#0055FF] text-white"
+
+// Slider container
+<div className="bg-[var(--bg-secondary)]
+  rounded-xl p-4">
+  <span className="font-label text-xs">
+    Label
+  </span>
+  <input type="range" />
+</div>
+
+// Layout: controls sit BELOW the
+// visualiser container, not inside it
+<div className="rounded-xl overflow-hidden">
+  <VisualiserComponent />
+</div>
+<div className="flex gap-2 mt-6">
+  {/* view buttons here */}
+</div>
+
+// KEY RULES:
+// - rounded-xl on control elements
+// - bg-secondary default, bg-tertiary hover
+// - Electric blue #0055FF for active state
+// - font-label (NHG 500, uppercase, 0.05em)
+// - Controls outside visualiser canvas`}
+              </pre>
+            </div>
+          </div>
+
           {/* Forms */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>

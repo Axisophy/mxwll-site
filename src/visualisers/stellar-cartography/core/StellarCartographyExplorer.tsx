@@ -392,51 +392,21 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
       </div>
 
       {/* View buttons */}
-      <div className="flex gap-2 mt-6 justify-center">
-        <button
-          onClick={() => handleViewChange('sky')}
-          disabled={isLoading}
-          className={`font-nhg px-4 py-2 text-sm transition-colors ${
-            currentView === 'sky'
-              ? 'bg-[#0055FF] text-white'
-              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
-          }`}
-        >
-          Sky
-        </button>
-        <button
-          onClick={() => handleViewChange('hr')}
-          disabled={isLoading}
-          className={`font-nhg px-4 py-2 text-sm transition-colors ${
-            currentView === 'hr'
-              ? 'bg-[#0055FF] text-white'
-              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
-          }`}
-        >
-          HR Diagram
-        </button>
-        <button
-          onClick={() => handleViewChange('galactic')}
-          disabled={isLoading}
-          className={`font-nhg px-4 py-2 text-sm transition-colors ${
-            currentView === 'galactic'
-              ? 'bg-[#0055FF] text-white'
-              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
-          }`}
-        >
-          Galactic
-        </button>
-        <button
-          onClick={() => handleViewChange('observer')}
-          disabled={isLoading}
-          className={`font-nhg px-4 py-2 text-sm transition-colors ${
-            currentView === 'observer'
-              ? 'bg-[#0055FF] text-white'
-              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
-          }`}
-        >
-          Observer
-        </button>
+      <div className="flex gap-2 mt-6 justify-center flex-wrap">
+        {(['sky', 'hr', 'galactic', 'observer'] as const).map((view) => (
+          <button
+            key={view}
+            onClick={() => handleViewChange(view)}
+            disabled={isLoading}
+            className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
+              currentView === view
+                ? 'bg-[#0055FF] text-white'
+                : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]'
+            }`}
+          >
+            {view === 'hr' ? 'HR Diagram' : view === 'sky' ? 'Sky' : view === 'galactic' ? 'Galactic' : 'Observer'}
+          </button>
+        ))}
       </div>
 
       {/* Mobile note */}
