@@ -1,13 +1,13 @@
 # Space-Filling Curves
-**Status:** Not started
-**Last Updated:** 2026-02-24
-**Location in site:** Lab
+**Status:** Live
+**Last Updated:** 2026-03-03
+**Location in site:** `/lab/space-filling-curves`
 
 ## What it is
-Animated construction of Hilbert, Peano, and Moore space-filling curves, showing recursive subdivision and how a 1D path can progressively fill a 2D region.
+Hilbert and Peano curve construction with animated recursive growth, plus locality-preservation colour mapping demo. 55-second autonomous demo cycle showing both curve families and a rainbow-mapped locality visualisation.
 
 ## How to run / develop
-Planned as a recursion-driven Canvas 2D or SVG visualiser with generators in `core/`, autonomous recursion showcase in `demo/`, and user controls in `interactive/`.
+Canvas 2D visualiser. Component at `core/SpaceFillingCurvesVisualiser.tsx`. No dependencies beyond React. L-system based curve generation.
 
 ## Current state
-Scaffold complete. No curve generator, recursion animator, or mapping mode implementation yet.
+Demo mode complete. Hilbert levels 1-7 (desktop) / 1-5 (mobile), Peano levels 1-4 (desktop) / 1-3 (mobile). Locality demo with rainbow colour mapping.

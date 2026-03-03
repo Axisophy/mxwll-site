@@ -1,13 +1,13 @@
 # Lissajous
-**Status:** Not started
-**Last Updated:** 2026-02-24
-**Location in site:** Lab
+**Status:** Live
+**Last Updated:** 2026-03-03
+**Location in site:** `/lab/lissajous`
 
 ## What it is
-Lissajous curves and harmonograph simulation. Parametric curves emerge from combining sinusoidal motions at different frequency ratios and phase offsets, with optional damping to mimic physical harmonograph behaviour.
+Three-view Lissajous visualiser: frequency ratio table (8 canonical ratios), animated 3:2 trace with component oscillator projections, and damped harmonograph mode. 50-second autonomous demo cycle.
 
 ## How to run / develop
-Planned as a Canvas 2D visualiser with curve generation in `core/`, autonomous showcase in `demo/`, and live controls in `interactive/`.
+Canvas 2D visualiser. Component at `core/LissajousVisualiser.tsx`. No dependencies beyond React.
 
 ## Current state
-Scaffold complete. No curve renderer, parameter controls, or harmonograph damping implementation yet.
+Demo mode complete. Ratio table, animated trace with axis projections, harmonograph with exponential damping. Mobile-responsive layout.

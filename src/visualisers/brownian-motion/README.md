@@ -1,13 +1,13 @@
 # Brownian Motion
-**Status:** Not started
-**Last Updated:** 2026-02-24
-**Location in site:** Lab
+**Status:** Live
+**Last Updated:** 2026-03-03
+**Location in site:** `/lab/brownian-motion`
 
 ## What it is
-Simulation of Brownian motion showing random thermal collisions and resulting random-walk trajectories. Includes historical framing around Einstein's 1905 atomic-theory evidence.
+Dual-scale simulation of Brownian motion. Left panel: microscale molecular collisions with tracer particle. Right panel: zoomed-out random walk trajectory and live MSD graph. 40-second autonomous demo with ensemble spread at t=24s.
 
 ## How to run / develop
-Planned as a Canvas 2D dual-view simulation with microscale collisions in `core/`, autoplay narrative in `demo/`, and parameter controls in `interactive/`.
+Canvas 2D visualiser. Component at `core/BrownianMotionVisualiser.tsx`. No dependencies beyond React.
 
 ## Current state
-Scaffold complete. No simulation implementation yet.
+Demo mode complete. Split-panel layout (stacked on mobile). Shows collision field, random walk path, ensemble spread, and linear MSD verification.

@@ -1,16 +1,13 @@
 # Orbital Resonance
-**Status:** Not started
-**Last Updated:** 2026-02-24
-**Location in site:** Lab
+**Status:** Live
+**Last Updated:** 2026-03-03
+**Location in site:** `/lab/orbital-resonance`
 
 ## What it is
-Visualisation of orbital resonance where simple integer period ratios produce stable configurations and geometric patterns. Primary anchor is the Galilean 1:2:4 chain.
-
-## Focus
-Jupiter's Galilean moons: Io, Europa, and Ganymede.
+Three-scene orbital resonance visualiser: Galilean 1:2:4 Laplace resonance, ratio explorer (1:2, 2:3, 3:5), and TRAPPIST-1 seven-planet near-resonance chain. 60-second autonomous demo cycle with trace accumulation and connector lines.
 
 ## How to run / develop
-Planned as a Canvas 2D system with orbital timing maths in `core/`, autoplay showcases in `demo/`, and ratio controls in `interactive/`.
+Canvas 2D visualiser. Component at `core/OrbitalResonanceVisualiser.tsx`. No dependencies beyond React.
 
 ## Current state
-Scaffold complete. No renderer or controls implemented yet.
+Demo mode complete. Three scenes with real period ratios. Orbital traces, body glow effects, inter-body connectors. Mobile-responsive with reduced label density.

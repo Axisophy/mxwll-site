@@ -1,13 +1,13 @@
 # Penrose Tiling
-**Status:** Not started
-**Last Updated:** 2026-02-24
-**Location in site:** Lab
+**Status:** Live
+**Last Updated:** 2026-03-03
+**Location in site:** `/lab/penrose-tiling`
 
 ## What it is
-Aperiodic Penrose tiling generator showing non-repeating planar coverage from simple local tile rules.
+P2 Penrose tiling (kites and darts) via Robinson triangle subdivision. Autonomous 55-second demo showing recursive deflation from seed decagon through 7 levels, with fivefold symmetry overlay.
 
 ## How to run / develop
-Planned as Canvas 2D or SVG with deflation rules in `core/`, autoplay growth in `demo/`, and navigation controls in `interactive/`.
+Canvas 2D visualiser. Component at `core/PenroseTilingVisualiser.tsx`. No dependencies beyond React.
 
 ## Current state
-Scaffold complete. No tiling engine implementation yet.
+Demo mode complete. 7 deflation levels on desktop, 5 on mobile. Precomputed triangle arrays for instant level switching. Golden ratio pentagonal overlay at final level.

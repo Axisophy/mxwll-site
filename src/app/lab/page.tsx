@@ -79,6 +79,48 @@ const labItems = [
     slug: '/lab/network-effects',
     status: 'Live',
   },
+  {
+    title: 'Phyllotaxis',
+    description: 'Golden angle seed packing - watch 1,200 seeds arrange themselves into the same spiral patterns found in sunflowers, pine cones, and succulents. Fibonacci spiral arms emerge naturally.',
+    tags: ['Canvas 2D', 'Mathematics', 'Generative'],
+    slug: '/lab/phyllotaxis',
+    status: 'Live',
+  },
+  {
+    title: 'Brownian Motion',
+    description: 'The random walk that proved atoms exist. Dual-scale simulation showing microscale molecular collisions producing macroscale random walks, with live mean squared displacement verification.',
+    tags: ['Canvas 2D', 'Physics', 'Simulation'],
+    slug: '/lab/brownian-motion',
+    status: 'Live',
+  },
+  {
+    title: 'Penrose Tiling',
+    description: 'Aperiodic order from two tiles. Watch recursive deflation build a pattern that has fivefold symmetry but never repeats - the same structure found in quasicrystals.',
+    tags: ['Canvas 2D', 'Mathematics', 'Aperiodic'],
+    slug: '/lab/penrose-tiling',
+    status: 'Live',
+  },
+  {
+    title: 'Lissajous',
+    description: 'Harmonograph and parametric curves. Two perpendicular oscillations trace geometric figures determined by their frequency ratio, from simple ratios to damped harmonograph decay.',
+    tags: ['Canvas 2D', 'Mathematics', 'Generative'],
+    slug: '/lab/lissajous',
+    status: 'Live',
+  },
+  {
+    title: 'Space-filling Curves',
+    description: 'Hilbert and Peano curves - one-dimensional paths that visit every point in two-dimensional space. Watch recursive construction and see why they preserve locality.',
+    tags: ['Canvas 2D', 'Mathematics', 'Recursive'],
+    slug: '/lab/space-filling-curves',
+    status: 'Live',
+  },
+  {
+    title: 'Orbital Resonance',
+    description: 'When orbits lock into harmony. From Jupiter\'s Galilean moons in 1:2:4 resonance to TRAPPIST-1\'s seven-planet chain - see how simple period ratios create stable, repeating geometric patterns.',
+    tags: ['Canvas 2D', 'Astronomy', 'Simulation'],
+    slug: '/lab/orbital-resonance',
+    status: 'Live',
+  },
   // --- In Development ---
   {
     title: 'Stellar Cartography',
