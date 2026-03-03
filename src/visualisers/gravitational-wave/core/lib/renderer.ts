@@ -89,9 +89,9 @@ export function drawWaveform(
 
   // Label
   if (options?.label) {
-    ctx.font = '9px monospace';
+    ctx.font = '12px monospace';
     ctx.fillStyle = COLOURS.TEXT_SECONDARY;
-    ctx.fillText(options.label, x + 8, y + 14);
+    ctx.fillText(options.label, x + 8, y + 18);
   }
 
   // Map time range to pixel range
@@ -162,9 +162,9 @@ export function drawSpectrogram(
   ctx.fillRect(x, y, width, height);
 
   // Label
-  ctx.font = '9px monospace';
+  ctx.font = '12px monospace';
   ctx.fillStyle = COLOURS.TEXT_SECONDARY;
-  ctx.fillText('Time-Frequency Map (Q-Transform)', x + 8, y + 14);
+  ctx.fillText('Time-Frequency Map (Q-Transform)', x + 8, y + 18);
 
   // Draw spectrogram as pixel grid
   const tBins = specData.timeBins;
@@ -196,10 +196,10 @@ export function drawSpectrogram(
   ctx.globalAlpha = 1;
 
   // Frequency axis labels
-  ctx.font = '8px monospace';
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-  ctx.fillText(`${Math.round(specData.freqRange[1])} Hz`, x + 2, y + 28);
-  ctx.fillText(`${Math.round(specData.freqRange[0])} Hz`, x + 2, y + height - 4);
+  ctx.font = '11px monospace';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+  ctx.fillText(`${Math.round(specData.freqRange[1])} Hz`, x + 4, y + 32);
+  ctx.fillText(`${Math.round(specData.freqRange[0])} Hz`, x + 4, y + height - 6);
 
   // Playhead
   const tFrac = (playheadTime - specData.timeRange[0]) /
@@ -334,17 +334,17 @@ export function drawOrbitalDiagram(
   ctx.stroke();
 
   // Mass labels
-  ctx.font = '8px monospace';
+  ctx.font = '11px monospace';
   ctx.fillStyle = COLOURS.TEXT_SECONDARY;
-  ctx.fillText(`${event.mass1.toFixed(0)} M\u2609`, bh1x + bh1r + 4, bh1y + 3);
-  ctx.fillText(`${event.mass2.toFixed(0)} M\u2609`, bh2x + bh2r + 4, bh2y + 3);
+  ctx.fillText(`${event.mass1.toFixed(0)} M\u2609`, bh1x + bh1r + 6, bh1y + 4);
+  ctx.fillText(`${event.mass2.toFixed(0)} M\u2609`, bh2x + bh2r + 6, bh2y + 4);
 
   // Separation / merged indicator
   ctx.fillStyle = COLOURS.TEXT_DIM;
-  ctx.font = '9px monospace';
+  ctx.font = '12px monospace';
   const sepText = separation < 1.5 ? 'MERGED' : `${separation.toFixed(0)} Rs`;
-  ctx.fillText(sepText, x + 8, y + height - 8);
+  ctx.fillText(sepText, x + 10, y + height - 10);
 
   // Frequency
-  ctx.fillText(`${freq.toFixed(0)} Hz`, x + 8, y + height - 20);
+  ctx.fillText(`${freq.toFixed(0)} Hz`, x + 10, y + height - 26);
 }

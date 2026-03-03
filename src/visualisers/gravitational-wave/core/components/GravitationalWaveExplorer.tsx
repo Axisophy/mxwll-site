@@ -378,11 +378,11 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
       {/* Stage text overlay */}
       {!isLoading && (
         <div className="absolute top-3 left-4 right-4 z-10">
-          <p className="text-[11px] md:text-xs text-white/60 leading-relaxed max-w-2xl">
+          <p className="text-sm md:text-base text-white/60 leading-relaxed max-w-2xl">
             {STAGE_TEXT[stage].main}
           </p>
           {STAGE_TEXT[stage].sub && (
-            <p className="text-[9px] md:text-[10px] text-white/30 mt-1">
+            <p className="text-xs md:text-sm text-white/30 mt-1">
               {STAGE_TEXT[stage].sub}
             </p>
           )}
@@ -392,7 +392,7 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
       {/* SNR display (stage 3+) */}
       {stage >= 3 && displayedSNR > 0 && (
         <div className="absolute top-14 right-4 z-10 text-right">
-          <div className="text-[9px] font-nhg text-white/30 uppercase tracking-wider">
+          <div className="text-xs font-nhg text-white/30 uppercase tracking-wider">
             Signal-to-Noise
           </div>
           <div className="text-2xl font-nhg text-white/80 tabular-nums">
@@ -424,7 +424,7 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
                        [&::-moz-range-thumb]:border-0
                        [&::-moz-range-thumb]:cursor-pointer"
           />
-          <div className="flex justify-between text-[8px] font-nhg text-white/20 mt-1">
+          <div className="flex justify-between text-[10px] font-nhg text-white/20 mt-1">
             <span>{(TIME_RANGE[0] * 1000).toFixed(0)} ms</span>
             <span className="text-white/40">{(playheadTime * 1000).toFixed(1)} ms</span>
             <span>{(TIME_RANGE[1] * 1000).toFixed(0)} ms</span>
@@ -439,7 +439,7 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
           className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20
                      px-5 py-2 bg-white/5 hover:bg-white/10
                      border border-white/10 hover:border-white/20
-                     rounded-full text-[11px] text-white/70 hover:text-white/90
+                     rounded-full text-sm text-white/70 hover:text-white/90
                      transition-all duration-300
                      flex items-center gap-2"
         >
@@ -474,7 +474,7 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
           <div className="w-px h-4 bg-white/10" />
           <button
             onClick={resetToStage1}
-            className="text-[9px] text-white/30 hover:text-white/50 px-2 transition-colors"
+            className="text-xs text-white/30 hover:text-white/50 px-2 transition-colors"
           >
             \u21BB Reset
           </button>
