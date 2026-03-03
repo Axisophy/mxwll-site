@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-03-03
+- Restyled work page controls to Phase 7 UI system: view toggle buttons (font-label, text-xs, rounded-xl, #0055FF active), sort/filter dropdowns (rounded-xl, bg-secondary, no borders), retry button
+
 ## 2026-03-01
 - Refined `demo/ExoplanetDemo.tsx` presentation with a padded viewport container (`#03060f`) to frame the animation.
 - Added persistent top-right method legend with mapped categories: `Transit`, `Radial Velocity`, and `Other`.

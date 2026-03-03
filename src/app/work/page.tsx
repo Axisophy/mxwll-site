@@ -10,8 +10,8 @@ const StellarDemo = dynamic(
   { ssr: false }
 )
 
-const SolarDemo = dynamic(
-  () => import('@/visualisers/solar-wavelength/demo/SolarDemo'),
+const SolarWorkDemo = dynamic(
+  () => import('@/visualisers/solar-wavelength/demo/SolarWorkDemo'),
   { ssr: false }
 )
 
@@ -40,7 +40,7 @@ const allWork = [
     category: 'EXPLANATION DESIGN',
     year: '2026',
     slug: 'nuclide-chart',
-    label: 'A Beginner\'s Guide',
+    label: '3,352 ways to build an atom',
     tags: ['Nuclear Physics', 'Interactive', 'Explanation Design'],
   },
   {
@@ -76,7 +76,7 @@ const allWork = [
 const DEMO_CARDS: Record<string, React.ReactNode> = {
   'stellar-cartography': <StellarDemo className="w-full h-full" />,
   'stellar-evolution': <StellarDemo className="w-full h-full" />,
-  'solar-wavelength': <SolarDemo className="w-full h-full" />,
+  'solar-wavelength': <SolarWorkDemo className="w-full h-full" />,
 }
 
 const categories = ['ALL', 'EXPLANATION DESIGN', 'STRATEGY']

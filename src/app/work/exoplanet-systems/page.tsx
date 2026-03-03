@@ -173,20 +173,20 @@ export default function ExoplanetSystemsPage() {
         <div className="flex gap-2 mb-4">
           <button
             onClick={() => setView('sky')}
-            className={`font-nhg px-4 py-2 text-sm rounded transition-colors ${
+            className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
               view === 'sky'
-                ? 'bg-[var(--text-primary)] text-white'
-                : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                ? 'bg-[#0055FF] text-white'
+                : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
             }`}
           >
             Sky Map (1)
           </button>
           <button
             onClick={() => setView('scatter')}
-            className={`font-nhg px-4 py-2 text-sm rounded transition-colors ${
+            className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
               view === 'scatter'
-                ? 'bg-[var(--text-primary)] text-white'
-                : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                ? 'bg-[#0055FF] text-white'
+                : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
             }`}
           >
             Radius vs Period (2)
@@ -219,7 +219,7 @@ export default function ExoplanetSystemsPage() {
                   <p className="text-white/70 mb-4 font-nhg">{error}</p>
                   <button
                     onClick={() => window.location.reload()}
-                    className="px-4 py-2 border border-white/20 hover:bg-white/10 transition-colors font-nhg text-sm"
+                    className="font-label text-xs px-4 py-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
                   >
                     Retry
                   </button>
@@ -256,11 +256,11 @@ export default function ExoplanetSystemsPage() {
           <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Transit Gallery
           </h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2">
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="font-nhg bg-[var(--bg-secondary)] border border-[var(--border)] text-sm px-3 py-1.5 text-[var(--text-secondary)] rounded focus:outline-none"
+              className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-tertiary)] focus:outline-none"
             >
               <option value="depth">Sort by Depth</option>
               <option value="radius">Sort by Radius</option>
@@ -271,7 +271,7 @@ export default function ExoplanetSystemsPage() {
             <select
               value={filter.facility ?? ''}
               onChange={(e) => setFilter(f => ({ ...f, facility: e.target.value || null }))}
-              className="font-nhg bg-[var(--bg-secondary)] border border-[var(--border)] text-sm px-3 py-1.5 text-[var(--text-secondary)] rounded focus:outline-none"
+              className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-tertiary)] focus:outline-none"
             >
               <option value="">All Facilities</option>
               <option value="kepler">Kepler</option>
@@ -281,7 +281,7 @@ export default function ExoplanetSystemsPage() {
             <select
               value={filter.type ?? ''}
               onChange={(e) => setFilter(f => ({ ...f, type: e.target.value || null }))}
-              className="font-nhg bg-[var(--bg-secondary)] border border-[var(--border)] text-sm px-3 py-1.5 text-[var(--text-secondary)] rounded focus:outline-none"
+              className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-tertiary)] focus:outline-none"
             >
               <option value="">All Types</option>
               <option value="Gas Giant">Gas Giants</option>

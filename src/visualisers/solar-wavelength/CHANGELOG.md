@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-03
+- Restructured SolarWavelengthExplorer layout: dark rounded-xl container with side-by-side canvas + info panel (stacked on mobile)
+- Restyled all controls to Phase 7 UI system: sweep button (electric blue active), range slider, channel quick-select buttons with colour dots
+- Controls now render below the visualiser container (outside dark bg)
+- Capped devicePixelRatio at 2 for mobile performance
+- Created SolarWorkDemo component for work index card: rectangular (cover-fit), crossfading, no UI controls or annotations
+- Work detail page now shows interactive SolarWavelengthExplorer instead of autonomous SolarDemo
+- Wrote descriptive content: SDO, temperature layers, wavelength channels, solar features, multi-wavelength astronomy
+- Updated subtitle to "One star, ten wavelengths, ten different stories"
+- Removed full-width bg-tertiary from "Beyond Visible Light" section
+
 ## 2026-03-01
 - Updated `demo/SolarDemo.tsx` container styling with a dark blue-black viewport treatment (`#03060f`) and responsive padding (24px desktop, 16px mobile).
 - Centered the solar disc inside the viewport and constrained circle diameter to available padded width.
