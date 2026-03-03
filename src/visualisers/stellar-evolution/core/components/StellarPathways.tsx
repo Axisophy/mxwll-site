@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { InteractiveFrame } from '@/components/InteractiveFrame';
 import { HR_EVOLUTION_CONFIG, SPECTRAL_CLASSES } from '../lib/stars-data';
-import { ALL_PATHS, EvolutionPath } from '../lib/pathways-data';
+import { ALL_PATHS } from '../lib/pathways-data';
 
 const TEMP_TICKS = [40000, 20000, 10000, 5000, 3000];
 const LUM_TICKS = [100000, 1000, 10, 1, 0.01, 0.0001];
@@ -90,102 +89,9 @@ export function StellarPathways() {
     ? ALL_PATHS.find(p => activePaths.has(p.id))
     : null;
 
-  const sidebar = (
-    <div className='space-y-4'>
-      {/* Path toggles */}
-      <div>
-        <h3 className='text-xs text-black/40 uppercase tracking-wider mb-3'>Stellar Mass</h3>
-        <div className='space-y-2'>
-          {ALL_PATHS.map(path => (
-            <button
-              key={path.id}
-              onClick={() => togglePath(path.id)}
-              onMouseEnter={() => setHoveredPath(path.id)}
-              onMouseLeave={() => setHoveredPath(null)}
-              className={`flex items-center gap-2 text-sm w-full text-left transition-colors ${
-                activePaths.has(path.id) ? 'text-black' : 'text-black/30'
-              }`}
-            >
-              <span
-                className='w-3 h-0.5 inline-block shrink-0'
-                style={{
-                  backgroundColor: path.color,
-                  opacity: activePaths.has(path.id) ? 1 : 0.3,
-                }}
-              />
-              <span>{path.mass}</span>
-              <span className='text-xs text-black/40 ml-auto'>{path.name}</span>
-            </button>
-          ))}
-        </div>
-        <button
-          onClick={showAll}
-          className='text-xs text-[var(--color-blue)] hover:text-black transition-colors mt-3'
-        >
-          Show all paths
-        </button>
-      </div>
-
-      {/* Selected path info */}
-      {selectedPathInfo && (
-        <div className='pt-4 border-t border-black/10'>
-          <h4 className='font-bold text-sm mb-1'>{selectedPathInfo.name}</h4>
-          <span className='text-sm text-black/60 block mb-2'>
-            Mass: {selectedPathInfo.mass}
-          </span>
-          <div className='space-y-2 text-xs text-black/60'>
-            <div>
-              <span className='text-black/40'>Lifetime:</span>{' '}
-              {selectedPathInfo.lifetime}
-            </div>
-            <div className='flex items-center gap-2'>
-              <span className='text-black/40'>End state:</span>
-              <span
-                className='inline-block'
-                style={{ color: ENDPOINT_ICONS[selectedPathInfo.endpoint].color }}
-              >
-                {ENDPOINT_ICONS[selectedPathInfo.endpoint].symbol}
-              </span>
-              {selectedPathInfo.endpointLabel}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Legend */}
-      <div className='pt-4 border-t border-black/10'>
-        <h3 className='text-xs text-black/40 uppercase tracking-wider mb-3'>End States</h3>
-        <div className='space-y-2 text-xs'>
-          <div className='flex items-center gap-2'>
-            <span style={{ color: ENDPOINT_ICONS.white_dwarf.color }}>{ENDPOINT_ICONS.white_dwarf.symbol}</span>
-            <span className='text-black/60'>White Dwarf</span>
-          </div>
-          <div className='flex items-center gap-2'>
-            <span style={{ color: ENDPOINT_ICONS.neutron_star.color }}>{ENDPOINT_ICONS.neutron_star.symbol}</span>
-            <span className='text-black/60'>Neutron Star</span>
-          </div>
-          <div className='flex items-center gap-2'>
-            <span style={{ color: ENDPOINT_ICONS.black_hole.color }}>{ENDPOINT_ICONS.black_hole.symbol}</span>
-            <span className='text-black/60'>Black Hole</span>
-          </div>
-        </div>
-      </div>
-
-      <div className='pt-4 border-t border-black/10'>
-        <p className='text-xs text-black/50 leading-relaxed'>
-          More massive stars burn brighter but die younger. The most massive stars live only millions of years before exploding as supernovae.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <InteractiveFrame
-      layout='sidebar'
-      sidebar={sidebar}
-      caption='Different stellar masses follow different evolutionary paths. Toggle paths to compare how mass determines destiny.'
-    >
-      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px]'>
+    <div>
+      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden'>
         {dims && (
           <svg
             viewBox={`0 0 ${vw} ${vh}`}
@@ -418,6 +324,43 @@ export function StellarPathways() {
           </svg>
         )}
       </div>
-    </InteractiveFrame>
+      {/* Controls */}
+      <div className='flex flex-wrap gap-2 mt-4'>
+        {ALL_PATHS.map(path => (
+          <button
+            key={path.id}
+            onClick={() => togglePath(path.id)}
+            onMouseEnter={() => setHoveredPath(path.id)}
+            onMouseLeave={() => setHoveredPath(null)}
+            className={`font-label text-xs px-4 py-2 rounded-xl transition-colors flex items-center gap-2 ${
+              activePaths.has(path.id)
+                ? 'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
+                : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
+            }`}
+          >
+            <span
+              className='w-3 h-0.5 inline-block shrink-0'
+              style={{ backgroundColor: path.color }}
+            />
+            {path.mass}
+          </button>
+        ))}
+        <button
+          onClick={showAll}
+          className='font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)] transition-colors'
+        >
+          Show all
+        </button>
+      </div>
+      {/* Path info */}
+      {selectedPathInfo && (
+        <div className='mt-3 font-nhg text-sm text-[var(--text-secondary)]'>
+          <span className='font-medium text-[var(--text-primary)]'>{selectedPathInfo.name}</span>
+          <span className='text-[var(--text-tertiary)] ml-2'>{selectedPathInfo.mass}</span>
+          <span className='text-[var(--text-tertiary)] ml-2'>{selectedPathInfo.lifetime}</span>
+          <span className='text-[var(--text-tertiary)] ml-2'>{selectedPathInfo.endpointLabel}</span>
+        </div>
+      )}
+    </div>
   );
 }

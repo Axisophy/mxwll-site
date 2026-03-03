@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { InteractiveFrame } from '@/components/InteractiveFrame';
 import { HR_EVOLUTION_CONFIG, SPECTRAL_CLASSES } from '../lib/stars-data';
 import { SOLAR_EVOLUTION, SOLAR_NOW_INDEX } from '../lib/pathways-data';
 
@@ -130,98 +129,9 @@ export function SolarEvolutionPathway() {
     setIsPlaying(!isPlaying);
   };
 
-  const sidebar = (
-    <div className='space-y-4'>
-      {/* Controls */}
-      <div>
-        <button
-          onClick={togglePlay}
-          className='inline-flex items-center gap-2 px-4 py-2 bg-black text-white text-sm hover:bg-[var(--color-blue)] transition-colors w-full justify-center'
-        >
-          {isPlaying ? (
-            <>
-              <svg className='w-4 h-4' fill='currentColor' viewBox='0 0 24 24'>
-                <rect x='6' y='4' width='4' height='16' />
-                <rect x='14' y='4' width='4' height='16' />
-              </svg>
-              Pause
-            </>
-          ) : (
-            <>
-              <svg className='w-4 h-4' fill='currentColor' viewBox='0 0 24 24'>
-                <polygon points='5,3 19,12 5,21' />
-              </svg>
-              {currentIndex >= SOLAR_EVOLUTION.length - 1 ? 'Replay' : 'Play'}
-            </>
-          )}
-        </button>
-      </div>
-
-      {/* Timeline slider */}
-      <div>
-        <label className='text-xs text-black/40 uppercase tracking-wider block mb-2'>
-          Timeline
-        </label>
-        <input
-          type='range'
-          min={0}
-          max={SOLAR_EVOLUTION.length - 1}
-          value={currentIndex}
-          onChange={(e) => {
-            setIsPlaying(false);
-            setCurrentIndex(parseInt(e.target.value));
-          }}
-          className='w-full'
-        />
-        <div className='flex justify-between text-xs text-black/40 mt-1'>
-          <span>0 Gyr</span>
-          <span>15+ Gyr</span>
-        </div>
-      </div>
-
-      {/* Current phase info */}
-      <div className='pt-4 border-t border-black/10'>
-        <span className='text-xs text-black/40 uppercase tracking-wider block mb-2'>
-          Current Phase
-        </span>
-        <h4 className='font-bold text-sm mb-1'>{currentData.label}</h4>
-        <span className='text-xs font-nhg text-black/40 block mb-2'>
-          Age: {currentData.age}
-        </span>
-        {currentData.description && (
-          <p className='text-xs text-black/60 leading-relaxed'>
-            {currentData.description}
-          </p>
-        )}
-      </div>
-
-      {/* Size indicator */}
-      <div className='pt-4 border-t border-black/10'>
-        <span className='text-xs text-black/40 uppercase tracking-wider block mb-2'>
-          Relative Size
-        </span>
-        <div className='flex items-center gap-3'>
-          <div
-            className='bg-[var(--color-blue)] transition-all duration-300'
-            style={{
-              width: Math.min(Math.max(sizeRatio * 8, 4), 60),
-              height: Math.min(Math.max(sizeRatio * 8, 4), 60),
-              borderRadius: '50%',
-            }}
-          />
-          <span className='text-sm text-black/60'>{sizeDescription}</span>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <InteractiveFrame
-      layout='sidebar'
-      sidebar={sidebar}
-      caption="The Sun's evolutionary path through the HR diagram. Press play to watch 12+ billion years unfold, or drag the slider to explore different phases."
-    >
-      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px]'>
+    <div>
+      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden'>
         {dims && (
           <svg
             viewBox={`0 0 ${vw} ${vh}`}
@@ -423,6 +333,51 @@ export function SolarEvolutionPathway() {
           </svg>
         )}
       </div>
-    </InteractiveFrame>
+      {/* Controls */}
+      <div className='flex items-center gap-3 mt-4'>
+        <button
+          onClick={togglePlay}
+          className='font-label text-xs px-4 py-2 rounded-xl bg-[#0055FF] text-white hover:bg-[#0044cc] transition-colors flex items-center gap-2 shrink-0'
+        >
+          {isPlaying ? (
+            <>
+              <svg className='w-3 h-3' fill='currentColor' viewBox='0 0 24 24'>
+                <rect x='6' y='4' width='4' height='16' />
+                <rect x='14' y='4' width='4' height='16' />
+              </svg>
+              Pause
+            </>
+          ) : (
+            <>
+              <svg className='w-3 h-3' fill='currentColor' viewBox='0 0 24 24'>
+                <polygon points='5,3 19,12 5,21' />
+              </svg>
+              {currentIndex >= SOLAR_EVOLUTION.length - 1 ? 'Replay' : 'Play'}
+            </>
+          )}
+        </button>
+        <input
+          type='range'
+          min={0}
+          max={SOLAR_EVOLUTION.length - 1}
+          value={currentIndex}
+          onChange={(e) => {
+            setIsPlaying(false);
+            setCurrentIndex(parseInt(e.target.value));
+          }}
+          className='flex-1'
+        />
+        <div className='font-label text-[10px] text-[var(--text-tertiary)] shrink-0'>
+          {currentData.age}
+        </div>
+      </div>
+      {/* Phase info */}
+      <div className='mt-3 font-nhg text-sm text-[var(--text-secondary)]'>
+        <span className='font-medium text-[var(--text-primary)]'>{currentData.label}</span>
+        {currentData.description && (
+          <span> - {currentData.description}</span>
+        )}
+      </div>
+    </div>
   );
 }

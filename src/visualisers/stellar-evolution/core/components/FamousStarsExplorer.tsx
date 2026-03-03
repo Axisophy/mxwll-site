@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { InteractiveFrame } from '@/components/InteractiveFrame';
 import { FAMOUS_STARS, CATEGORY_CONFIG, HR_CONFIG, SPECTRAL_CLASSES, Star, StarCategory } from '../lib/stars-data';
 
 const TEMP_TICKS = [40000, 20000, 10000, 5000, 3000];
@@ -68,71 +67,9 @@ export function FamousStarsExplorer() {
     [activeCategories]
   );
 
-  const sidebar = (
-    <div className='space-y-4'>
-      {/* Category toggles */}
-      <div>
-        <h3 className='text-xs text-black/40 uppercase tracking-wider mb-3'>Categories</h3>
-        <div className='space-y-2'>
-          {(Object.entries(CATEGORY_CONFIG) as [StarCategory, typeof CATEGORY_CONFIG[StarCategory]][]).map(([key, config]) => (
-            <button
-              key={key}
-              onClick={() => toggleCategory(key)}
-              className={`flex items-center gap-2 text-sm w-full text-left transition-colors ${
-                activeCategories.has(key) ? 'text-black' : 'text-black/30'
-              }`}
-            >
-              <span
-                className='w-3 h-3 inline-block shrink-0'
-                style={{
-                  backgroundColor: config.color,
-                  opacity: activeCategories.has(key) ? 1 : 0.3,
-                }}
-              />
-              {config.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Selected star info */}
-      {selected ? (
-        <div className='pt-4 border-t border-black/10'>
-          <div className='flex items-center gap-2 mb-2'>
-            <span
-              className='w-3 h-3 inline-block shrink-0'
-              style={{ backgroundColor: CATEGORY_CONFIG[selected.type].color }}
-            />
-            <span className='font-bold text-sm'>{selected.name}</span>
-          </div>
-          <span className='text-xs font-nhg text-black/40 block mb-2'>{selected.spectralType}</span>
-          <p className='text-xs text-black/60 leading-relaxed mb-3'>
-            {selected.facts}
-          </p>
-          <div className='space-y-1 text-xs font-nhg text-black/40'>
-            <div>T = {selected.temperature.toLocaleString()} K</div>
-            <div>L = {selected.luminosity.toLocaleString()} L☉</div>
-            {selected.distance && <div>Distance: {selected.distance}</div>}
-            {selected.constellation && <div>Constellation: {selected.constellation}</div>}
-          </div>
-        </div>
-      ) : (
-        <div className='pt-4 border-t border-black/10'>
-          <p className='text-xs text-black/50 leading-relaxed'>
-            Click any star to see its details. Try finding the Sun, Betelgeuse, or Sirius.
-          </p>
-        </div>
-      )}
-    </div>
-  );
-
   return (
-    <InteractiveFrame
-      layout='sidebar'
-      sidebar={sidebar}
-      caption='Famous stars plotted on the HR diagram. Click any star for details. Toggle categories to isolate different stellar types.'
-    >
-      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px]'>
+    <div>
+      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden'>
         {dims && (
           <svg
             viewBox={`0 0 ${vw} ${vh}`}
@@ -364,6 +301,40 @@ export function FamousStarsExplorer() {
           </svg>
         )}
       </div>
-    </InteractiveFrame>
+      {/* Controls */}
+      <div className='flex flex-wrap gap-2 mt-4'>
+        {(Object.entries(CATEGORY_CONFIG) as [StarCategory, typeof CATEGORY_CONFIG[StarCategory]][]).map(([key, config]) => (
+          <button
+            key={key}
+            onClick={() => toggleCategory(key)}
+            className={`font-label text-xs px-4 py-2 rounded-xl transition-colors flex items-center gap-2 ${
+              activeCategories.has(key)
+                ? 'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
+                : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
+            }`}
+          >
+            <span
+              className='w-2 h-2 inline-block shrink-0 rounded-full'
+              style={{ backgroundColor: config.color }}
+            />
+            {config.label}
+          </button>
+        ))}
+      </div>
+      {/* Selected star info */}
+      {selected && (
+        <div className='mt-3 font-nhg text-sm text-[var(--text-secondary)]'>
+          <div className='flex items-center gap-2'>
+            <span
+              className='w-2 h-2 inline-block shrink-0 rounded-full'
+              style={{ backgroundColor: CATEGORY_CONFIG[selected.type].color }}
+            />
+            <span className='font-medium text-[var(--text-primary)]'>{selected.name}</span>
+            <span className='text-[var(--text-tertiary)]'>{selected.spectralType}</span>
+          </div>
+          <p className='mt-1'>{selected.facts}</p>
+        </div>
+      )}
+    </div>
   );
 }

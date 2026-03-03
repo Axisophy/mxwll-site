@@ -6,7 +6,7 @@
 - Documentation incomplete (README, SPEC need details)
 
 ## Resolved
-None yet
+- Black-on-black UI: sidebar controls were invisible when InteractiveFrame (designed for light backgrounds) was rendered inside dark bg-[#03060f] wrappers. Fixed by removing InteractiveFrame and rendering controls below diagrams with proper text colours.
 
 ## Notes for future development
 [Add notes about code structure, dependencies, complexity as discovered]

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { InteractiveFrame } from '@/components/InteractiveFrame';
 import { HR_CONFIG, SPECTRAL_CLASSES } from '../lib/stars-data';
 
 interface Region {
@@ -106,56 +105,9 @@ export function AnnotatedHRDiagram() {
 
   const selectedRegion = REGIONS.find(r => r.id === hoveredRegion);
 
-  const sidebar = (
-    <div className='space-y-4'>
-      <div>
-        <h3 className='text-sm font-bold mb-2'>Regions</h3>
-        <div className='space-y-2'>
-          {REGIONS.map(region => (
-            <button
-              key={region.id}
-              onMouseEnter={() => setHoveredRegion(region.id)}
-              onMouseLeave={() => setHoveredRegion(null)}
-              className={`block w-full text-left px-3 py-2 text-sm transition-colors ${
-                hoveredRegion === region.id
-                  ? 'bg-[var(--color-blue)]/10 text-black'
-                  : 'text-black/60 hover:text-black hover:bg-black/5'
-              }`}
-            >
-              {region.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {selectedRegion && (
-        <div className='pt-4 border-t border-black/10'>
-          <h4 className='font-bold text-sm mb-1'>{selectedRegion.name}</h4>
-          <p className='text-xs text-black/60 leading-relaxed'>
-            {selectedRegion.description}
-          </p>
-        </div>
-      )}
-
-      <div className='pt-4 border-t border-black/10'>
-        <h4 className='text-xs text-black/40 uppercase tracking-wider mb-2'>How to read it</h4>
-        <p className='text-xs text-black/60 leading-relaxed'>
-          <strong>Left to right:</strong> Temperature (hot blue stars on left, cool red stars on right)
-        </p>
-        <p className='text-xs text-black/60 leading-relaxed mt-2'>
-          <strong>Bottom to top:</strong> Brightness (dim stars at bottom, luminous stars at top)
-        </p>
-      </div>
-    </div>
-  );
-
   return (
-    <InteractiveFrame
-      layout='sidebar'
-      sidebar={sidebar}
-      caption='The Hertzsprung-Russell diagram plots stars by temperature and brightness. Hover over regions to learn what different positions mean.'
-    >
-      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px]'>
+    <div>
+      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden'>
         {dims && (
           <svg
             viewBox={`0 0 ${vw} ${vh}`}
@@ -425,6 +377,29 @@ export function AnnotatedHRDiagram() {
           </svg>
         )}
       </div>
-    </InteractiveFrame>
+      {/* Controls */}
+      <div className='flex flex-wrap gap-2 mt-4'>
+        {REGIONS.map(region => (
+          <button
+            key={region.id}
+            onMouseEnter={() => setHoveredRegion(region.id)}
+            onMouseLeave={() => setHoveredRegion(null)}
+            className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
+              hoveredRegion === region.id
+                ? 'bg-[#0055FF] text-white'
+                : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]'
+            }`}
+          >
+            {region.name}
+          </button>
+        ))}
+      </div>
+      {selectedRegion && (
+        <p className='font-nhg text-sm text-[var(--text-secondary)] mt-3'>
+          <span className='font-medium text-[var(--text-primary)]'>{selectedRegion.name}:</span>{' '}
+          {selectedRegion.description}
+        </p>
+      )}
+    </div>
   );
 }

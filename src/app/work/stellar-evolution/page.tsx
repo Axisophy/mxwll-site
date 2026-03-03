@@ -27,14 +27,9 @@ const StellarPathways = dynamic(
 export default function StellarEvolutionPage() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isVideoReady, setIsVideoReady] = useState(false)
-  const [showOverlay, setShowOverlay] = useState(false)
-
   const handleCanPlayThrough = () => {
     setIsVideoReady(true)
     videoRef.current?.play()
-    setTimeout(() => {
-      setShowOverlay(true)
-    }, 2500)
   }
 
   return (
@@ -103,27 +98,20 @@ export default function StellarEvolutionPage() {
       </section>
 
       {/* Video Hook */}
-      <section className="relative h-[70vh] min-h-[500px] bg-black overflow-hidden">
-        <video
-          ref={videoRef}
-          preload="auto"
-          muted
-          playsInline
-          onCanPlayThrough={handleCanPlayThrough}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
-        >
-          <source src="https://bangindustries.co/video/hr_animation.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/30" />
-        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${showOverlay ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="text-center text-white px-4">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-4">
-              Stellar Evolution
-            </h2>
-            <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.03em] text-white/80">
-              A map of how stars live and die
-            </p>
-          </div>
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <div className="rounded-xl overflow-hidden bg-black">
+          <video
+            ref={videoRef}
+            preload="auto"
+            muted
+            playsInline
+            loop
+            onCanPlayThrough={handleCanPlayThrough}
+            className={`w-full h-auto transition-opacity duration-500 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
+            style={{ aspectRatio: '16/9' }}
+          >
+            <source src="https://bangindustries.co/video/hr_animation.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
 
@@ -174,9 +162,7 @@ export default function StellarEvolutionPage() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl bg-[#03060f] overflow-hidden">
-          <AnnotatedHRDiagram />
-        </div>
+        <AnnotatedHRDiagram />
       </section>
 
       {/* Three Million Stars */}
@@ -230,9 +216,7 @@ export default function StellarEvolutionPage() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl bg-[#03060f] overflow-hidden">
-          <FamousStarsExplorer />
-        </div>
+        <FamousStarsExplorer />
       </section>
 
       {/* The Sun's Future - Solar Evolution Pathway */}
@@ -262,9 +246,7 @@ export default function StellarEvolutionPage() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl bg-[#03060f] overflow-hidden">
-          <SolarEvolutionPathway />
-        </div>
+        <SolarEvolutionPathway />
       </section>
 
       {/* Mass Is Destiny - Stellar Pathways */}
@@ -291,9 +273,7 @@ export default function StellarEvolutionPage() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl bg-[#03060f] overflow-hidden">
-          <StellarPathways />
-        </div>
+        <StellarPathways />
       </section>
 
       {/* Reading the Night Sky */}
