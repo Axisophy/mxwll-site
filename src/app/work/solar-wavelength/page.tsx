@@ -76,7 +76,7 @@ export default function SolarWavelengthPage() {
 
       {/* Interactive Demo */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="border border-[var(--border)] bg-[#050508] overflow-hidden flex items-center justify-center">
+        <div className="rounded-xl bg-[#03060f] overflow-hidden flex items-center justify-center">
           <div className="w-full max-w-[600px] aspect-square">
             <SolarDemo className="w-full h-full" showLabel />
           </div>

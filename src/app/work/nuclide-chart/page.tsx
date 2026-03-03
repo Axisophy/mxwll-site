@@ -165,7 +165,7 @@ export default function NuclideChartPage() {
             </p>
           </div>
         </div>
-        <div className="border border-[var(--border)] bg-black overflow-hidden">
+        <div className="rounded-xl bg-[#03060f] overflow-hidden">
           <div className="h-[500px] md:h-[750px] lg:h-[875px]">
             <NuclideChart className="h-full" />
           </div>
