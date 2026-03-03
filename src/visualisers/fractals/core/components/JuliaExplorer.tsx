@@ -216,7 +216,7 @@ export function JuliaExplorer() {
               setC({ ...c, re: parseFloat(e.target.value) || 0 });
               setPreset('');
             }}
-            className='w-full px-2 py-1 border border-black/20 bg-transparent focus:border-black focus:outline-none text-sm font-mono'
+            className='w-full px-2 py-1 border border-black/20 bg-transparent focus:border-black focus:outline-none text-sm font-nhg'
           />
         </div>
         <div>
@@ -229,7 +229,7 @@ export function JuliaExplorer() {
               setC({ ...c, im: parseFloat(e.target.value) || 0 });
               setPreset('');
             }}
-            className='w-full px-2 py-1 border border-black/20 bg-transparent focus:border-black focus:outline-none text-sm font-mono'
+            className='w-full px-2 py-1 border border-black/20 bg-transparent focus:border-black focus:outline-none text-sm font-nhg'
           />
         </div>
       </div>

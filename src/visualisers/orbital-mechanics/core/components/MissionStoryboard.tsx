@@ -41,7 +41,7 @@ export function MissionStoryboard() {
           <button
             key={p.id}
             onClick={() => setActivePhase(i)}
-            className={`flex-shrink-0 px-4 py-2 text-xs font-mono transition-colors ${
+            className={`flex-shrink-0 px-4 py-2 text-xs font-nhg transition-colors ${
               activePhase === i
                 ? 'bg-[var(--color-blue)] text-white'
                 : activePhase > i
@@ -65,7 +65,7 @@ export function MissionStoryboard() {
         <div className='space-y-4'>
           <div>
             <h3 className='text-xl font-bold'>{phase.name}</h3>
-            <div className='text-sm text-black/50 font-mono mt-1'>
+            <div className='text-sm text-black/50 font-nhg mt-1'>
               Duration: {phase.duration}
               {phase.deltaV && ` \u2022 \u0394v \u2248 ${phase.deltaV} km/s`}
             </div>

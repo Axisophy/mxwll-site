@@ -39,7 +39,7 @@ export default function MorphogenesisPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
           {/* Left column - Title and description */}
           <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               Morphogenesis
             </h1>
             <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
@@ -60,13 +60,13 @@ export default function MorphogenesisPage() {
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Generative Art</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='Science communicators'>
@@ -74,7 +74,7 @@ export default function MorphogenesisPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -83,7 +83,7 @@ export default function MorphogenesisPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>React, WebGL2, GLSL</span>
@@ -100,7 +100,7 @@ export default function MorphogenesisPage() {
       {/* Interactive Visualiser Placeholder */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='w-full aspect-video bg-black border border-white/10 flex items-center justify-center'>
-          <span className='text-white/30 text-sm font-mono'>[Reaction-Diffusion Visualiser]</span>
+          <span className='text-white/30 text-sm font-nhg'>[Reaction-Diffusion Visualiser]</span>
         </div>
       </section>
 
@@ -111,7 +111,7 @@ export default function MorphogenesisPage() {
           <div className='space-y-12'>
             {/* The Challenge */}
             <div>
-              <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-6'>
+              <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.03em] mb-6'>
                 The Challenge
               </h2>
               <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -123,7 +123,7 @@ export default function MorphogenesisPage() {
 
             {/* Background */}
             <div>
-              <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-6'>
+              <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.03em] mb-6'>
                 Background
               </h2>
               <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -138,7 +138,7 @@ export default function MorphogenesisPage() {
 
             {/* Approach */}
             <div>
-              <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-6'>
+              <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.03em] mb-6'>
                 Approach
               </h2>
               <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -156,7 +156,7 @@ export default function MorphogenesisPage() {
           <div className='space-y-12'>
             {/* Technology */}
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Technology
               </h3>
               <ul className='space-y-2 text-sm text-white/70'>
@@ -169,7 +169,7 @@ export default function MorphogenesisPage() {
 
             {/* Related Projects */}
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Related Projects
               </h3>
               <ul className='space-y-2 text-sm'>

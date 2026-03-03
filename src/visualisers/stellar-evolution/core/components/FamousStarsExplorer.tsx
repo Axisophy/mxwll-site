@@ -105,11 +105,11 @@ export function FamousStarsExplorer() {
             />
             <span className='font-bold text-sm'>{selected.name}</span>
           </div>
-          <span className='text-xs font-mono text-black/40 block mb-2'>{selected.spectralType}</span>
+          <span className='text-xs font-nhg text-black/40 block mb-2'>{selected.spectralType}</span>
           <p className='text-xs text-black/60 leading-relaxed mb-3'>
             {selected.facts}
           </p>
-          <div className='space-y-1 text-xs font-mono text-black/40'>
+          <div className='space-y-1 text-xs font-nhg text-black/40'>
             <div>T = {selected.temperature.toLocaleString()} K</div>
             <div>L = {selected.luminosity.toLocaleString()} L☉</div>
             {selected.distance && <div>Distance: {selected.distance}</div>}

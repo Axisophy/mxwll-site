@@ -362,7 +362,7 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
       {/* Loading overlay */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="text-white/50 text-sm font-mono animate-pulse">
+          <div className="text-white/50 text-sm font-nhg animate-pulse">
             Loading gravitational wave data...
           </div>
         </div>
@@ -392,10 +392,10 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
       {/* SNR display (stage 3+) */}
       {stage >= 3 && displayedSNR > 0 && (
         <div className="absolute top-14 right-4 z-10 text-right">
-          <div className="text-[9px] font-mono text-white/30 uppercase tracking-wider">
+          <div className="text-[9px] font-nhg text-white/30 uppercase tracking-wider">
             Signal-to-Noise
           </div>
-          <div className="text-2xl font-mono text-white/80 tabular-nums">
+          <div className="text-2xl font-nhg text-white/80 tabular-nums">
             {displayedSNR}
           </div>
         </div>
@@ -424,7 +424,7 @@ export default function GravitationalWaveExplorer({ className = '' }: Gravitatio
                        [&::-moz-range-thumb]:border-0
                        [&::-moz-range-thumb]:cursor-pointer"
           />
-          <div className="flex justify-between text-[8px] font-mono text-white/20 mt-1">
+          <div className="flex justify-between text-[8px] font-nhg text-white/20 mt-1">
             <span>{(TIME_RANGE[0] * 1000).toFixed(0)} ms</span>
             <span className="text-white/40">{(playheadTime * 1000).toFixed(1)} ms</span>
             <span>{(TIME_RANGE[1] * 1000).toFixed(0)} ms</span>

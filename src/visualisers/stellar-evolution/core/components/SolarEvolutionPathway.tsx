@@ -185,7 +185,7 @@ export function SolarEvolutionPathway() {
           Current Phase
         </span>
         <h4 className='font-bold text-sm mb-1'>{currentData.label}</h4>
-        <span className='text-xs font-mono text-black/40 block mb-2'>
+        <span className='text-xs font-nhg text-black/40 block mb-2'>
           Age: {currentData.age}
         </span>
         {currentData.description && (

@@ -65,7 +65,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
       {/* Hero Section */}
       <section className="container py-16">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">{work.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-4">{work.title}</h1>
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8">
             {work.subtitle}
           </p>
@@ -82,35 +82,35 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           <aside className="lg:col-span-1">
             <div className="space-y-6 lg:sticky lg:top-24">
               <div>
-                <h3 className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
+                <h3 className="font-nhg text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
                   CATEGORY
                 </h3>
                 <p className="text-base text-[var(--text-primary)]">{work.category}</p>
               </div>
 
               <div>
-                <h3 className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
+                <h3 className="font-nhg text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
                   AUDIENCE
                 </h3>
                 <p className="text-base text-[var(--text-primary)]">{work.audience}</p>
               </div>
 
               <div>
-                <h3 className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
+                <h3 className="font-nhg text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
                   APPROACH
                 </h3>
                 <p className="text-base text-[var(--text-primary)]">{work.approach}</p>
               </div>
 
               <div>
-                <h3 className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
+                <h3 className="font-nhg text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
                   TECHNOLOGY
                 </h3>
                 <p className="text-base text-[var(--text-primary)]">{work.technology}</p>
               </div>
 
               <div>
-                <h3 className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
+                <h3 className="font-nhg text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">
                   YEAR
                 </h3>
                 <p className="text-base text-[var(--text-primary)]">{work.year}</p>
@@ -121,8 +121,8 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           {/* Main Content */}
           <div className="lg:col-span-3">
             {/* Visualiser/Media Area Placeholder */}
-            <div className="w-full aspect-video bg-[var(--bg-secondary)] rounded-lg mb-12 flex items-center justify-center">
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">
+            <div className="w-full aspect-video bg-[var(--bg-secondary)] rounded-xl mb-12 flex items-center justify-center">
+              <p className="font-nhg text-[var(--text-xs)] text-[var(--text-tertiary)]">
                 [VISUALISER / MEDIA AREA]
               </p>
             </div>
@@ -132,7 +132,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
               {work.sections.map((section: any, index: number) => (
                 <div key={index}>
                   <h2 className="text-2xl font-medium mb-4">{section.title}</h2>
-                  <p className="font-sabon text-lg text-[var(--text-secondary)] leading-relaxed">
+                  <p className="font-nhg text-lg text-[var(--text-secondary)] leading-relaxed">
                     {section.content}
                   </p>
                 </div>

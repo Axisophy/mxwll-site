@@ -17,13 +17,13 @@ export default function StellarCartographyPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
           {/* Left column - Title and description */}
           <div className="lg:col-span-2">
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
               Stellar Cartography
             </h1>
-            <p className="font-sabon text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
+            <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
               Four ways to see the same 50,000 stars
             </p>
-            <p className="font-sabon text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
+            <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
               The European Space Agency&apos;s Gaia satellite has measured the positions, distances, and colours of over a billion stars. This interactive explores 50,000 nearby stars - presenting them in four views that reveal different aspects of stellar structure and evolution.
             </p>
             {/* Tags */}
@@ -38,13 +38,13 @@ export default function StellarCartographyPage() {
           {/* Right column - Portfolio Metadata */}
           <div className="space-y-6">
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Category
               </span>
-              <span className="font-sabon text-sm">Scientific Data Visualisation</span>
+              <span className="font-nhg text-sm">Scientific Data Visualisation</span>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Audience
               </span>
               <MetadataDropdown title="General / Science-curious">
@@ -52,7 +52,7 @@ export default function StellarCartographyPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Approach
               </span>
               <MetadataDropdown>
@@ -61,16 +61,16 @@ export default function StellarCartographyPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Technology
               </span>
-              <span className="font-sabon text-sm">React, WebGL2, TypeScript</span>
+              <span className="font-nhg text-sm">React, WebGL2, TypeScript</span>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Data
               </span>
-              <span className="font-sabon text-sm text-[var(--text-secondary)]">Gaia DR3 (50,000 stars within 200 parsecs)</span>
+              <span className="font-nhg text-sm text-[var(--text-secondary)]">Gaia DR3 (50,000 stars within 200 parsecs)</span>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function StellarCartographyPage() {
         <div className="border border-[var(--border)] bg-[#050508] overflow-hidden">
           <StellarCartographyExplorer />
         </div>
-        <p className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mt-4">
+        <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mt-4">
           INTERACTIVE STELLAR CARTOGRAPHY - FOUR VIEWS OF 50,000 STARS FROM GAIA DR3
         </p>
       </section>
@@ -89,10 +89,10 @@ export default function StellarCartographyPage() {
       {/* The Challenge */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Challenge
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               How do you make a billion-star catalogue comprehensible? Gaia DR3 contains precise measurements of 1.8 billion stars, but raw data at this scale is meaningless without structure. We needed to find the visual arrangements that reveal the hidden physics.
             </p>
@@ -106,10 +106,10 @@ export default function StellarCartographyPage() {
       {/* The HR Diagram */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The HR Diagram
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               The Hertzsprung-Russell diagram is astronomy&apos;s most powerful classification tool. It plots stars by temperature (colour index) against brightness (absolute magnitude). When you do this, stars don&apos;t scatter randomly - they fall into distinct regions.
             </p>
@@ -126,10 +126,10 @@ export default function StellarCartographyPage() {
       {/* Approach */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Approach
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               We query 50,000 nearby stars from the Gaia archive, compute their absolute magnitudes from parallax measurements, and present them in four coordinated views. Each star is coloured by temperature - blue-white for the hottest, yellow for Sun-like stars, orange and red for cooler stars.
             </p>
@@ -146,10 +146,10 @@ export default function StellarCartographyPage() {
       {/* The Data */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Data
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Gaia is an ESA space observatory launched in 2013. It measures stellar positions with microarcsecond precision, along with distances (via parallax), proper motions, radial velocities, and photometry. The mission&apos;s goal is to create the most accurate 3D map of the Milky Way.
             </p>
@@ -166,10 +166,10 @@ export default function StellarCartographyPage() {
       {/* Going Deeper */}
       <section className="px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Going Deeper
           </h2>
-          <p className="font-sabon text-[var(--text-tertiary)] text-sm">
+          <p className="font-nhg text-[var(--text-tertiary)] text-sm">
             For the curious - you&apos;ve got the main idea, this is extra.
           </p>
         </div>
@@ -178,10 +178,10 @@ export default function StellarCartographyPage() {
       {/* Why Four Views? */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Why Four Views?
           </h3>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Each view emphasises a different aspect of stellar properties. The sky view shows apparent position - where stars sit on the celestial sphere as seen from Earth. This is the view familiar to naked-eye observers.
             </p>
@@ -201,10 +201,10 @@ export default function StellarCartographyPage() {
       {/* Colour Mapping */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Colour Mapping
           </h3>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Star colours are derived from Gaia&apos;s BP-RP colour index - the difference between blue and red photometry. This is a proxy for temperature: hot stars have negative BP-RP (more blue than red), cool stars have positive BP-RP (more red than blue).
             </p>
@@ -221,16 +221,16 @@ export default function StellarCartographyPage() {
       {/* Further Exploration */}
       <section className="px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Further Exploration
           </h2>
           <div>
             <div className="space-y-8">
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Data Source
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="https://www.cosmos.esa.int/web/gaia/data-release-3"
@@ -246,10 +246,10 @@ export default function StellarCartographyPage() {
               </div>
 
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Related Work
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="/work/gravitational-wave"

@@ -274,7 +274,7 @@ export default function ExpandedCard({
             <button
               onClick={() => setShowRawData(!showRawData)}
               className={`
-                px-4 py-2 text-sm font-mono border transition-colors
+                px-4 py-2 text-sm font-nhg border transition-colors
                 ${showRawData
                   ? 'bg-white/10 border-white/30 text-white'
                   : 'border-white/20 text-white/60 hover:border-white/40 hover:text-white'
@@ -300,7 +300,7 @@ export default function ExpandedCard({
                     [&::-webkit-slider-thumb]:rounded-full
                     [&::-webkit-slider-thumb]:bg-white'
                 />
-                <span className='text-xs font-mono text-white/70 w-6'>{numTransits}</span>
+                <span className='text-xs font-nhg text-white/70 w-6'>{numTransits}</span>
               </div>
             )}
           </div>
@@ -361,7 +361,7 @@ export default function ExpandedCard({
 
           {/* Size comparison */}
           <div className='mt-6 pt-6 border-t border-white/10'>
-            <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+            <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
               Size Comparison
             </h3>
             <SizeComparison radius={planet.pl_rade} />
@@ -385,7 +385,7 @@ function InfoItem({
 }) {
   return (
     <div>
-      <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-1'>
+      <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-1'>
         {label}
       </span>
       <span className={`text-sm ${highlight ? 'text-[#5ECE7B]' : 'text-white/90'}`}>

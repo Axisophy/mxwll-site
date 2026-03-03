@@ -237,13 +237,13 @@ export function MandelbrotExplorer() {
       <div className='space-y-2 pt-4 border-t border-black/10'>
         <div className='flex justify-between text-xs'>
           <span className='text-black/40'>Center</span>
-          <span className='font-mono'>
+          <span className='font-nhg'>
             {formatCoord(view.centerX)} {view.centerY >= 0 ? '+' : ''}{formatCoord(view.centerY)}i
           </span>
         </div>
         <div className='flex justify-between text-xs'>
           <span className='text-black/40'>Zoom</span>
-          <span className='font-mono'>{(1 / view.zoom).toFixed(1)}x</span>
+          <span className='font-nhg'>{(1 / view.zoom).toFixed(1)}x</span>
         </div>
       </div>
 

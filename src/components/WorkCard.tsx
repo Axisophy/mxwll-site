@@ -35,7 +35,7 @@ export default function WorkCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Media Container with Overlay */}
-      <div className="relative w-full bg-[#050508] overflow-hidden border border-[var(--border-light)]">
+      <div className="relative w-full bg-[#050508] overflow-hidden rounded-xl">
         {videoUrl ? (
           <video
             src={videoUrl}
@@ -70,7 +70,7 @@ export default function WorkCard({
           <p className="font-nhg text-sm md:text-base text-white/70 mb-2">
             {description}
           </p>
-          <p className="font-mono text-xs text-white/50 uppercase tracking-wider">
+          <p className="font-nhg text-xs text-white/50 uppercase tracking-wider">
             {category} · {year}
           </p>
         </div>

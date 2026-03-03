@@ -104,7 +104,7 @@ export default function LogTimeScrubber({
     <div ref={containerRef} className='w-full py-4'>
       {/* Time display */}
       <div className='text-center mb-4'>
-        <div className='text-2xl font-bold font-mono text-white'>
+        <div className='text-2xl font-bold font-nhg text-white'>
           {formatTime(currentTimeSeconds)}
         </div>
         <div className='text-xs text-white/50 mt-1'>

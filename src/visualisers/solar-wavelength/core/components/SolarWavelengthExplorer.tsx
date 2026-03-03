@@ -263,7 +263,7 @@ export default function SolarWavelengthExplorer({ className = '' }: SolarWavelen
 
         {/* Wavelength indicator overlay */}
         {!isLoading && (
-          <div className='absolute top-4 left-4 text-xs font-mono'>
+          <div className='absolute top-4 left-4 text-xs font-nhg'>
             <span
               className='px-2 py-1'
               style={{ backgroundColor: currentChannel.colour + '40' }}
@@ -278,7 +278,7 @@ export default function SolarWavelengthExplorer({ className = '' }: SolarWavelen
       <div className='w-full lg:w-80 xl:w-96 p-4 lg:p-6 flex flex-col gap-6 border-t lg:border-t-0 lg:border-l border-white/10'>
         {/* Temperature bar */}
         <div>
-          <div className='flex justify-between text-xs font-mono text-white/40 mb-2'>
+          <div className='flex justify-between text-xs font-nhg text-white/40 mb-2'>
             <span>5,700°C</span>
             <span>10,000,000°C</span>
           </div>
@@ -297,7 +297,7 @@ export default function SolarWavelengthExplorer({ className = '' }: SolarWavelen
         <div className='space-y-4'>
           <div>
             <span
-              className='inline-block px-3 py-1 text-sm font-mono'
+              className='inline-block px-3 py-1 text-sm font-nhg'
               style={{ backgroundColor: currentChannel.colour, color: '#000' }}
             >
               {currentChannel.name}
@@ -306,38 +306,38 @@ export default function SolarWavelengthExplorer({ className = '' }: SolarWavelen
 
           <div className='space-y-3'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-1'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-1'>
                 Temperature
               </span>
               <span className='text-lg font-bold'>{currentChannel.temperature}</span>
             </div>
 
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-1'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-1'>
                 Region
               </span>
               <span className='text-sm text-white/80'>{currentChannel.region}</span>
             </div>
 
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-1'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-1'>
                 What You See
               </span>
               <p className='text-sm text-white/70 leading-relaxed'>{currentChannel.description}</p>
             </div>
 
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-1'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-1'>
                 Reveals
               </span>
               <p className='text-sm text-white/60'>{currentChannel.reveals}</p>
             </div>
 
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-1'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-1'>
                 Ion
               </span>
-              <p className='text-sm text-white/60 font-mono'>{currentChannel.ion}</p>
+              <p className='text-sm text-white/60 font-nhg'>{currentChannel.ion}</p>
             </div>
           </div>
         </div>
@@ -405,7 +405,7 @@ export default function SolarWavelengthExplorer({ className = '' }: SolarWavelen
           {/* Play/Pause button */}
           <button
             onClick={() => setIsSweeping(prev => !prev)}
-            className='w-full py-2 text-sm font-mono uppercase tracking-wider border border-white/20 hover:bg-white/10 transition-colors flex items-center justify-center gap-2'
+            className='w-full py-2 text-sm font-nhg uppercase tracking-wider border border-white/20 hover:bg-white/10 transition-colors flex items-center justify-center gap-2'
           >
             {isSweeping ? (
               <>

@@ -270,7 +270,7 @@ export default function PermissibleUniversePage() {
               </div>
 
                 {/* Object count */}
-                <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg px-3 py-2 text-xs text-white/40 font-mono">
+                <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg px-3 py-2 text-xs text-white/40 font-nhg">
                   {visibleObjects.length} objects
                 </div>
               </div>
@@ -295,7 +295,7 @@ export default function PermissibleUniversePage() {
                     `}
                   >
                     <div className="flex items-start gap-3">
-                      <span className="text-white/30 font-mono text-sm">{question.number}</span>
+                      <span className="text-white/30 font-nhg text-sm">{question.number}</span>
                       <div className="flex-1">
                         <h3 className="text-white font-medium mb-2">{question.title}</h3>
                         <p className="text-white/60 text-sm">{question.hook}</p>

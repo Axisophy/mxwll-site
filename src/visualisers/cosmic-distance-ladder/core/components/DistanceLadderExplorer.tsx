@@ -252,7 +252,7 @@ export default function DistanceLadderExplorer() {
                 {rung.number}
               </div>
               <span
-                className={`text-xs font-mono uppercase tracking-wider transition-opacity ${
+                className={`text-xs font-nhg uppercase tracking-wider transition-opacity ${
                   activeRung === rung.number ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
                 }`}
                 style={{ color: rung.color }}
@@ -285,7 +285,7 @@ export default function DistanceLadderExplorer() {
                 {rung.number}
               </div>
               <div>
-                <h2 className='text-xl md:text-2xl font-bold tracking-tight'>
+                <h2 className='text-xl md:text-2xl font-bold tracking-[-0.03em]'>
                   Rung {rung.number}: {rung.title}
                 </h2>
                 <p className='text-sm text-white/50'>{rung.subtitle}</p>
@@ -344,12 +344,12 @@ export default function DistanceLadderExplorer() {
                     }`}
                   >
                     <span
-                      className='text-xs font-mono uppercase tracking-wider mb-2 block'
+                      className='text-xs font-nhg uppercase tracking-wider mb-2 block'
                       style={{ color: rung.color }}
                     >
                       {index + 1} / {rung.steps.length}
                     </span>
-                    <h3 className='text-2xl md:text-3xl font-bold tracking-tight mb-4'>
+                    <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4'>
                       {step.title}
                     </h3>
                     <p className='text-white/70 leading-relaxed text-lg'>
@@ -383,7 +383,7 @@ export default function DistanceLadderExplorer() {
 
       {/* Distance scale summary */}
       <section className='py-16 px-4 md:px-8 lg:px-12 bg-[#0A0A0F]'>
-        <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-8 text-center'>
+        <h2 className='text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-8 text-center'>
           The Complete Ladder
         </h2>
         <div className='flex flex-col md:flex-row items-stretch justify-center gap-4 max-w-4xl mx-auto'>

@@ -555,7 +555,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
       {/* TEMPORARY DEBUG - remove when fixed */}
       {propShowControls && (
-        <div className='absolute top-0 left-0 text-[10px] font-mono text-red-500 z-50 bg-black/80 p-2 pointer-events-none'>
+        <div className='absolute top-0 left-0 text-[10px] font-nhg text-red-500 z-50 bg-black/80 p-2 pointer-events-none'>
           <div>canvas: {debugInfo.canvasW}×{debugInfo.canvasH}</div>
           <div>dpr: {debugInfo.dpr.toFixed(2)}</div>
           <div>zoom: {zoomRef.current.toFixed(2)}</div>
@@ -569,7 +569,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
       {/* Loading indicator */}
       {isLoading && (
         <div className='absolute inset-0 flex items-center justify-center'>
-          <span className='text-[var(--text-tertiary)] text-sm font-mono'>LOADING STARS...</span>
+          <span className='text-[var(--text-tertiary)] text-sm font-nhg'>LOADING STARS...</span>
         </div>
       )}
 
@@ -591,7 +591,7 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
             >
               <div className='text-center'>
                 <div
-                  className='font-mono text-[11px] md:text-[10px] uppercase tracking-[0.08em]'
+                  className='font-nhg text-[11px] md:text-[10px] uppercase tracking-[0.05em]'
                   style={{ color: 'rgba(255, 255, 255, 0.55)' }}
                 >
                   {ann.label}
@@ -610,19 +610,19 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
 
           {/* Axis labels - hidden on mobile */}
           <div
-            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-nhg text-[10px] uppercase tracking-[0.05em]'
             style={{ left: '10%', bottom: '4%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             HOT (BLUE)
           </div>
           <div
-            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-nhg text-[10px] uppercase tracking-[0.05em]'
             style={{ right: '10%', bottom: '4%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             COOL (RED)
           </div>
           <div
-            className='hidden md:block absolute font-mono text-[10px] tracking-[0.08em]'
+            className='hidden md:block absolute font-nhg text-[10px] tracking-[0.05em]'
             style={{
               left: '50%',
               bottom: '4%',
@@ -633,13 +633,13 @@ export default function GaiaExplorer({ className, demoMode: propDemoMode = false
             SURFACE TEMPERATURE
           </div>
           <div
-            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-nhg text-[10px] uppercase tracking-[0.05em]'
             style={{ left: '3%', top: '10%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             BRIGHTER
           </div>
           <div
-            className='hidden md:block absolute font-mono text-[10px] uppercase tracking-[0.08em]'
+            className='hidden md:block absolute font-nhg text-[10px] uppercase tracking-[0.05em]'
             style={{ left: '3%', bottom: '10%', color: 'rgba(255, 255, 255, 0.35)' }}
           >
             DIMMER

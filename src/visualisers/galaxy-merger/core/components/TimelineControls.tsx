@@ -98,7 +98,7 @@ export default function TimelineControls({
         </div>
 
         <div className='text-right'>
-          <div className='text-lg font-mono text-white'>
+          <div className='text-lg font-nhg text-white'>
             T + {timeToGyr(currentTime).toFixed(2)} Gyr
           </div>
           <div className='text-xs text-white/50'>

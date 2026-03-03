@@ -33,7 +33,7 @@ function MetadataDropdown({ title, children }: { title?: string; children: React
 function TimelineItem({ year, first, winner }: { year: string; first: string; winner: string }) {
   return (
     <div className='flex items-center gap-4 py-4 border-b border-white/10'>
-      <span className='text-xs font-mono text-white/40 w-16'>{year}</span>
+      <span className='text-xs font-nhg text-white/40 w-16'>{year}</span>
       <span className='text-white/50 flex-1'>{first}</span>
       <span className='text-white/40'>→</span>
       <span className='font-bold flex-1'>{winner}</span>
@@ -49,7 +49,7 @@ export default function NetworkEffectsPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
           {/* Left column - Title and description */}
           <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               Why Your Competitor&apos;s Head Start Doesn&apos;t Matter
             </h1>
             <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
@@ -70,13 +70,13 @@ export default function NetworkEffectsPage() {
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Explanation Design</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='Business Leaders'>
@@ -84,7 +84,7 @@ export default function NetworkEffectsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -93,7 +93,7 @@ export default function NetworkEffectsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Adaptability
               </span>
               <MetadataDropdown>
@@ -101,7 +101,7 @@ export default function NetworkEffectsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>React, D3.js, SVG</span>
@@ -116,7 +116,7 @@ export default function NetworkEffectsPage() {
           background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)'
         }} />
         <div className='relative text-center text-white px-4 max-w-4xl'>
-          <p className='font-mono text-sm text-[var(--color-lime)] mb-8 tracking-wider'>
+          <p className='font-nhg text-sm text-[var(--color-lime)] mb-8 tracking-wider'>
             FIRST MOVER → MARKET LEADER
           </p>
           <div className='space-y-4 mb-8'>
@@ -124,10 +124,10 @@ export default function NetworkEffectsPage() {
             <p className='text-xl md:text-2xl text-white/60'>MySpace → <span className='text-white font-bold'>Facebook</span></p>
             <p className='text-xl md:text-2xl text-white/60'>Nokia → <span className='text-white font-bold'>iPhone</span></p>
           </div>
-          <h2 className='font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-4'>
+          <h2 className='font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] leading-[1.1] mb-4'>
             First Doesn&apos;t Mean Winner
           </h2>
-          <p className='font-display text-xl md:text-2xl font-bold tracking-tight text-white/80'>
+          <p className='font-display text-xl md:text-2xl font-bold tracking-[-0.03em] text-white/80'>
             Here&apos;s what does.
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 2: ANCHOR - "The Myth of First-Mover Advantage" */}
       <section className='px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Myth of First-Mover Advantage
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -157,7 +157,7 @@ export default function NetworkEffectsPage() {
 
         {/* Timeline visual */}
         <div className='mt-12 max-w-3xl'>
-          <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+          <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
             First Mover vs Market Winner
           </h3>
           <TimelineItem year='1995' first='AltaVista (Search)' winner='Google (1998)' />
@@ -171,7 +171,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 3: FOUNDATION - "Network Effects" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             What Are Network Effects?
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -195,7 +195,7 @@ export default function NetworkEffectsPage() {
         {/* S-curve placeholder */}
         <div className='border border-white/10 bg-white/10 p-12 flex items-center justify-center'>
           <div className='text-center'>
-            <p className='text-white/40 font-mono text-sm mb-2'>[Interactive S-Curve]</p>
+            <p className='text-white/40 font-nhg text-sm mb-2'>[Interactive S-Curve]</p>
             <p className='text-white/50 text-sm max-w-md'>
               Adjust user growth rate and see value curve respond. Before tipping point: slow. After: explosive.
             </p>
@@ -209,7 +209,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 4a: BUILD - "Types of Network Effects" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Three Types of Network Effects
           </h2>
           <div className='space-y-6 text-white/70 leading-relaxed'>
@@ -238,7 +238,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 4b: BUILD - "The Tipping Point" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Tipping Point
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -263,7 +263,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 4c: BUILD - "When First-Mover Does Matter" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             When First-Mover Does Matter
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -315,7 +315,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 4d: BUILD - "Diagnostic Questions" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Does Your Market Have Network Effects?
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -347,7 +347,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 5: REWARD */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-black text-white'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Strategic Implication
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -370,7 +370,7 @@ export default function NetworkEffectsPage() {
       {/* Stage 6: EXTEND - Going Deeper */}
       <section className='px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Going Deeper
           </h2>
           <p className='text-white/50 text-sm'>
@@ -382,7 +382,7 @@ export default function NetworkEffectsPage() {
       {/* 6a: The Math */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             The Mathematics
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -402,7 +402,7 @@ export default function NetworkEffectsPage() {
       {/* 6b: Case Studies */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             Case Studies
           </h3>
           <div className='space-y-6 text-white/70 leading-relaxed'>
@@ -425,13 +425,13 @@ export default function NetworkEffectsPage() {
       {/* Stage 7: LAUNCH - Further Exploration */}
       <section className='px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Further Exploration
           </h2>
           <div>
             <div className='space-y-8'>
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Recommended Reading
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -461,7 +461,7 @@ export default function NetworkEffectsPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Reference
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -489,7 +489,7 @@ export default function NetworkEffectsPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Related Explainers
                 </h3>
                 <ul className='space-y-2 text-sm'>

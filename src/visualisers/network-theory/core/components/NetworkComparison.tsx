@@ -75,7 +75,7 @@ export function NetworkComparison({ nodeCount = 80 }: Props) {
             <div key={key} className='space-y-2'>
               <div className='text-center'>
                 <div className='text-sm font-bold'>{label}</div>
-                <div className='text-xs text-black/50 font-mono'>{subtitle}</div>
+                <div className='text-xs text-black/50 font-nhg'>{subtitle}</div>
               </div>
 
               <div className='border border-black/10 bg-white aspect-square'>

@@ -42,7 +42,7 @@ export default function OrbitalMechanicsPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
           {/* Left column - Title and description */}
           <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               Orbital Mechanics
             </h1>
             <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
@@ -62,13 +62,13 @@ export default function OrbitalMechanicsPage() {
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Explanation Design</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='Generally interested adults'>
@@ -76,7 +76,7 @@ export default function OrbitalMechanicsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -85,7 +85,7 @@ export default function OrbitalMechanicsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Adaptability
               </span>
               <MetadataDropdown>
@@ -94,13 +94,13 @@ export default function OrbitalMechanicsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>React, TypeScript, SVG</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Data
               </span>
               <span className='text-sm text-white/70'>NASA mission profiles, JPL Horizons</span>
@@ -124,10 +124,10 @@ export default function OrbitalMechanicsPage() {
           </svg>
         </div>
         <div className='relative text-center text-white px-4'>
-          <h2 className='font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-4'>
+          <h2 className='font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-4'>
             Orbital Mechanics
           </h2>
-          <p className='font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-white/80'>
+          <p className='font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.03em] text-white/80'>
             The geometry of falling forever
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 2: ANCHOR - "Space Travel Isn't Like Driving" */}
       <section className='px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Space Travel Isn&apos;t Like Driving
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -162,7 +162,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 3: FOUNDATION - "Orbits Are Just Falling" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Orbits Are Just Falling
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -185,7 +185,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 4a: BUILD - "The Shape of Orbits" + Mission Map */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Shape of Orbits
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -211,7 +211,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 4b: BUILD - "The Hohmann Transfer" + Animation */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Hohmann Transfer
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -243,7 +243,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 4c: BUILD - "The Oberth Effect" + Designer */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Oberth Effect
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -272,7 +272,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 4d: BUILD - "Real Missions" + Storyboard */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Real Missions
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -298,7 +298,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 5: REWARD - "The Geometry of Getting There" */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-black text-white'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Geometry of Getting There
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -321,7 +321,7 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 6: EXTEND - Going Deeper */}
       <section className='px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Going Deeper
           </h2>
           <p className='text-white/50 text-sm'>
@@ -333,7 +333,7 @@ export default function OrbitalMechanicsPage() {
       {/* 6a: Orbital Elements */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             Orbital Elements
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -350,7 +350,7 @@ export default function OrbitalMechanicsPage() {
       {/* 6b: Gravity Assists */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             Gravity Assists
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -370,7 +370,7 @@ export default function OrbitalMechanicsPage() {
       {/* 6c: The Three-Body Problem */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             The Three-Body Problem
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -390,13 +390,13 @@ export default function OrbitalMechanicsPage() {
       {/* Stage 7: LAUNCH - Further Exploration */}
       <section className='px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Further Exploration
           </h2>
           <div>
             <div className='space-y-8'>
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Recommended Reading
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -426,7 +426,7 @@ export default function OrbitalMechanicsPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Watch
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -445,7 +445,7 @@ export default function OrbitalMechanicsPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Play
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -464,7 +464,7 @@ export default function OrbitalMechanicsPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Reference
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -502,7 +502,7 @@ export default function OrbitalMechanicsPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Related Explainers
                 </h3>
                 <ul className='space-y-2 text-sm'>

@@ -70,7 +70,7 @@ export function LogicToMLBridge() {
                   : 'border-black/10 hover:border-black/20'
               }`}
             >
-              <div className='text-xs font-mono text-black/40 mb-1'>Step {i + 1}</div>
+              <div className='text-xs font-nhg text-black/40 mb-1'>Step {i + 1}</div>
               <div className='font-bold text-sm'>{s.title}</div>
               <div className='text-xs text-black/50 mt-1'>{s.subtitle}</div>
             </button>

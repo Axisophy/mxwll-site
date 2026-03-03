@@ -1,13 +1,13 @@
 /**
  * MXWLL Typography Configuration
  *
- * Font Stack:
- * - Neue Haas Grotesk: Primary sans (headlines, navigation, body, UI)
- * - Sabon: Serif accent (longer prose, articles, quotes)
- * - Input Mono: Monospace (data labels, metadata, code, control panels)
+ * Font Stack: Neue Haas Grotesk only
+ * - NHG 400 (regular): body text, prose, descriptions
+ * - NHG 500 (medium): labels, metadata, data readouts (uppercase, 0.05em tracking)
+ * - NHG 700 (bold): headings, display text (letter-spacing: -0.03em)
  *
- * Note: Using system fallbacks until font files are added
- * TODO: Add actual font files to public/fonts/ directory
+ * Sabon and Input Mono have been removed (March 2026).
+ * Legacy class names (font-sabon, font-input) redirect to NHG via globals.css.
  */
 
 /**
@@ -18,15 +18,12 @@ export const fontClassNames = ''
 
 /**
  * Font variables for direct use
- * These will be populated once actual font files are added
  */
 export const fontVars = {
   nhg: '--font-nhg',
-  sabon: '--font-sabon',
-  input: '--font-input',
+  display: '--font-display',
+  text: '--font-text',
 }
 
-// Placeholder exports to maintain compatibility
+// Exports
 export const neueHaasGrotesk = { variable: '--font-nhg' }
-export const sabon = { variable: '--font-sabon' }
-export const inputMono = { variable: '--font-input' }

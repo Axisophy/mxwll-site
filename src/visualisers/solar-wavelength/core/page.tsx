@@ -44,7 +44,7 @@ export default function SolarWavelengthPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
           {/* Left column - Title and description */}
           <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               Peeling Back the Sun
             </h1>
             <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
@@ -67,13 +67,13 @@ export default function SolarWavelengthPage() {
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Scientific Data Visualisation</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='General / Science-curious'>
@@ -81,7 +81,7 @@ export default function SolarWavelengthPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -89,13 +89,13 @@ export default function SolarWavelengthPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>Canvas2D, Helioviewer API, NASA SDO/AIA</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Data Source
               </span>
               <span className='text-sm'>
@@ -138,7 +138,7 @@ export default function SolarWavelengthPage() {
           {/* Main content */}
           <div className='space-y-12'>
             <div>
-              <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-6'>
+              <h2 className='text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6'>
                 Why Does the Sun Look Different?
               </h2>
               <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -158,7 +158,7 @@ export default function SolarWavelengthPage() {
             </div>
 
             <div>
-              <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-6'>
+              <h2 className='text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6'>
                 The Coronal Heating Mystery
               </h2>
               <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -177,7 +177,7 @@ export default function SolarWavelengthPage() {
             </div>
 
             <div>
-              <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-6'>
+              <h2 className='text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6'>
                 What the Channels Reveal
               </h2>
               <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -202,7 +202,7 @@ export default function SolarWavelengthPage() {
           {/* Sidebar */}
           <div className='space-y-8'>
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 About SDO
               </h3>
               <p className='text-sm text-white/60 leading-relaxed'>
@@ -212,7 +212,7 @@ export default function SolarWavelengthPage() {
               </p>
             </div>
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Resources
               </h3>
               <ul className='space-y-2 text-sm'>

@@ -33,10 +33,10 @@ export default function CosmicDistanceLadderPage() {
         </div>
 
         <div className='relative z-10 text-center px-4'>
-          <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-6'>
+          <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-6'>
             How Far is Far?
           </h1>
-          <p className='text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-white/80 mb-8'>
+          <p className='text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.03em] text-white/80 mb-8'>
             Climbing the Cosmic Distance Ladder
           </p>
           <p className='text-base md:text-lg text-white/60 max-w-2xl mx-auto'>
@@ -55,7 +55,7 @@ export default function CosmicDistanceLadderPage() {
       {/* Intro */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-24'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Problem
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -84,7 +84,7 @@ export default function CosmicDistanceLadderPage() {
       {/* Conclusion */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-24 bg-black'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             What We&apos;ve Learned
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -124,12 +124,12 @@ export default function CosmicDistanceLadderPage() {
       {/* Further Exploration */}
       <section className='px-4 md:px-8 lg:px-12 pb-16 md:pb-24 pt-8'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Further Exploration
           </h2>
           <div className='space-y-8'>
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Learn More
               </h3>
               <ul className='space-y-2 text-sm'>
@@ -148,7 +148,7 @@ export default function CosmicDistanceLadderPage() {
               </ul>
             </div>
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Related Explainers
               </h3>
               <ul className='space-y-2 text-sm'>

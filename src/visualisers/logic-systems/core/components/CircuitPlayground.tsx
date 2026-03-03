@@ -70,7 +70,7 @@ export function CircuitPlayground() {
 
       <ControlGroup title='Truth Table'>
         <div className='overflow-x-auto'>
-          <table className='w-full text-xs font-mono'>
+          <table className='w-full text-xs font-nhg'>
             <thead>
               <tr className='border-b border-black/10'>
                 {inputGates.map((_, i) => (

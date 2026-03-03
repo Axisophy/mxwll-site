@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { neueHaasGrotesk, sabon, inputMono, fontClassNames } from "@/lib/fonts";
+import { fontClassNames } from "@/lib/fonts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";

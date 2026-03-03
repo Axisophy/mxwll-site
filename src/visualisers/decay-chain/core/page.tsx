@@ -22,10 +22,10 @@ export default function DecayChainPage() {
         </div>
 
         <div className='relative z-10 text-center px-4 max-w-3xl'>
-          <div className='text-xs font-mono uppercase tracking-widest text-white/40 mb-4'>
+          <div className='text-xs font-nhg uppercase tracking-widest text-white/40 mb-4'>
             U-238 → Pb-206
           </div>
-          <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-6'>
+          <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-6'>
             4.5 Billion Years<br />in 14 Steps
           </h1>
           <p className='text-xl md:text-2xl text-white/70 mb-8'>
@@ -49,7 +49,7 @@ export default function DecayChainPage() {
       {/* Introduction */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-24'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 max-w-6xl mx-auto'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             What is Nuclear Decay?
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -82,7 +82,7 @@ export default function DecayChainPage() {
       {/* The extraordinary time scales */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-24 bg-white/5'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 max-w-6xl mx-auto'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             21 Orders of Magnitude
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -116,7 +116,7 @@ export default function DecayChainPage() {
       {/* Real-world connections */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-24 bg-black'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 max-w-6xl mx-auto'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Why This Matters
           </h2>
           <div className='space-y-8'>
@@ -153,12 +153,12 @@ export default function DecayChainPage() {
       {/* Further exploration */}
       <section className='px-4 md:px-8 lg:px-12 pb-16 md:pb-24 pt-8'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 max-w-6xl mx-auto'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Further Exploration
           </h2>
           <div className='space-y-8'>
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Related Explainers
               </h3>
               <ul className='space-y-2 text-sm'>
@@ -177,7 +177,7 @@ export default function DecayChainPage() {
               </ul>
             </div>
             <div>
-              <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+              <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                 Key Figures
               </h3>
               <ul className='space-y-2 text-sm text-white/70'>

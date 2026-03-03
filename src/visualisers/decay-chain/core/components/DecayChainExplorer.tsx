@@ -270,7 +270,7 @@ export default function DecayChainExplorer({
                         {i + 1}
                       </div>
                       <div>
-                        <span className='text-xs font-mono uppercase tracking-wider text-white/50'>
+                        <span className='text-xs font-nhg uppercase tracking-wider text-white/50'>
                           {isotope.decay_type === 'alpha' && 'α decay'}
                           {isotope.decay_type === 'beta_minus' && 'β⁻ decay'}
                           {isotope.is_stable && 'Stable'}
@@ -279,7 +279,7 @@ export default function DecayChainExplorer({
                     </div>
 
                     {/* Isotope name */}
-                    <h3 className='text-3xl md:text-4xl font-bold tracking-tight mb-2'>
+                    <h3 className='text-3xl md:text-4xl font-bold tracking-[-0.03em] mb-2'>
                       <sup className='text-lg'>{isotope.A}</sup>{isotope.symbol}
                       {isotope.is_metastable && <sup>m</sup>}
                       <span className='text-white/50 ml-3'>{isotope.element}</span>

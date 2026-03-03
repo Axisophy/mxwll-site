@@ -200,7 +200,7 @@ export function EpidemicSimulation() {
             <div key={key} className='space-y-2'>
               <div className='flex justify-between items-center'>
                 <div className='text-sm font-bold'>{label}</div>
-                <div className='text-xs font-mono' style={{ color }}>
+                <div className='text-xs font-nhg' style={{ color }}>
                   {getInfectionRate(networks[key])}% affected
                 </div>
               </div>

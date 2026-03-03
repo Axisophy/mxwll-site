@@ -382,7 +382,7 @@ export function CosmicDiagram({
             <span className="font-medium text-sm">{tooltip.object.name}</span>
           </div>
           <p className="text-xs text-white/60 mb-2">{tooltip.object.tagline}</p>
-          <div className="flex gap-4 text-xs font-mono text-white/50">
+          <div className="flex gap-4 text-xs font-nhg text-white/50">
             <span>R: {tooltip.object.radius.formatted}</span>
             <span>M: {tooltip.object.mass.formatted}</span>
           </div>

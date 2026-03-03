@@ -16,7 +16,7 @@ export function ControlGroup({ title, children, className = '' }: ControlGroupPr
   return (
     <div className={`space-y-2 ${className}`}>
       {title && (
-        <div className="text-xs font-mono uppercase tracking-wider text-black/40">
+        <div className="text-xs font-nhg uppercase tracking-wider text-black/40">
           {title}
         </div>
       )}
@@ -55,8 +55,8 @@ export function Slider({
   return (
     <div className={className}>
       <div className="flex justify-between items-baseline mb-1">
-        <label className="text-[11px] md:text-xs font-mono text-black/50">{label}</label>
-        <span className="text-[11px] md:text-xs font-mono text-black/80">{displayValue}</span>
+        <label className="text-[11px] md:text-xs font-nhg text-black/50">{label}</label>
+        <span className="text-[11px] md:text-xs font-nhg text-black/80">{displayValue}</span>
       </div>
       <input
         type="range"
@@ -128,7 +128,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       className={`
-        inline-flex items-center justify-center font-mono transition-colors
+        inline-flex items-center justify-center font-nhg transition-colors
         disabled:opacity-30 disabled:cursor-not-allowed
         ${sizeStyles[size]}
         ${active ? styles.active : styles.base}
@@ -171,7 +171,7 @@ export function ButtonGroup<T extends string>({
           key={option.value}
           onClick={() => onChange(option.value)}
           className={`
-            ${sizeStyles[size]} font-mono transition-colors
+            ${sizeStyles[size]} font-nhg transition-colors
             ${i > 0 ? 'border-l border-black/10' : ''}
             ${value === option.value
               ? 'bg-[var(--color-blue)] text-white'
@@ -213,14 +213,14 @@ export function Select<T extends string>({
   return (
     <div className={className}>
       {label && (
-        <label className="text-[11px] md:text-xs font-mono text-black/50 block mb-1">
+        <label className="text-[11px] md:text-xs font-nhg text-black/50 block mb-1">
           {label}
         </label>
       )}
       <select
         value={value}
         onChange={e => onChange(e.target.value as T)}
-        className="w-full px-4 py-2 text-xs font-mono border border-black/10 bg-white focus:outline-none focus:border-black"
+        className="w-full px-4 py-2 text-xs font-nhg border border-black/10 bg-white focus:outline-none focus:border-black"
       >
         {options.map(option => (
           <option key={option.value} value={option.value}>
@@ -299,10 +299,10 @@ export function Readout({
   if (variant === 'dark') {
     return (
       <div className={`bg-black p-4 ${className}`}>
-        <div className="text-[10px] font-mono text-white/50 uppercase tracking-wider mb-1">
+        <div className="text-[10px] font-nhg text-white/50 uppercase tracking-wider mb-1">
           {label}
         </div>
-        <div className={`font-mono font-bold text-white ${readoutSizes[size]}`}>
+        <div className={`font-nhg font-bold text-white ${readoutSizes[size]}`}>
           {value}
           {unit && <span className="text-white/40 font-normal ml-1 text-xs">{unit}</span>}
         </div>
@@ -313,7 +313,7 @@ export function Readout({
   return (
     <div className={`bg-black/5 p-4 ${className}`}>
       <div className="text-xs text-black/40">{label}</div>
-      <div className={`font-mono font-bold ${readoutSizes[size]}`}>
+      <div className={`font-nhg font-bold ${readoutSizes[size]}`}>
         {value}
         {unit && <span className="text-black/40 font-normal ml-1 text-xs">{unit}</span>}
       </div>
@@ -380,12 +380,12 @@ const infoPanelStyles = {
   },
   highlight: {
     bg: 'bg-[var(--color-blue)] text-white',
-    title: 'text-[10px] font-mono text-white/60 uppercase tracking-wider mb-1',
+    title: 'text-[10px] font-nhg text-white/60 uppercase tracking-wider mb-1',
     body: 'text-sm text-white leading-relaxed',
   },
   success: {
     bg: 'bg-[var(--color-lime)]',
-    title: 'text-[10px] font-mono text-black/60 uppercase tracking-wider mb-1',
+    title: 'text-[10px] font-nhg text-black/60 uppercase tracking-wider mb-1',
     body: 'text-sm text-black leading-relaxed',
   },
 };

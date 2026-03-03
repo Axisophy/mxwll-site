@@ -4,7 +4,10 @@
   MXWLL DESIGN SYSTEM
   A digital laboratory for science, maths, and explanation design
 
-  Typography: Neue Haas Grotesk (Display, Text) + Sabon + Input Mono
+  Typography: Neue Haas Grotesk only (Display + Text)
+  - NHG 400 (regular): body text, prose, descriptions
+  - NHG 500 (medium): labels, metadata, data readouts (uppercase, 0.05em tracking)
+  - NHG 700 (bold): headings, display text (MUST have letter-spacing: -0.03em)
   Via Adobe Typekit: https://use.typekit.net/qka5zju.css
 */
 
@@ -34,11 +37,11 @@
   --status-critical: #EF4444;
   --status-offline: #6B7280;
 
-  /* Typography */
+  /* Typography - NHG only */
   --font-display: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-text: "neue-haas-grotesk-text", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: "sabon-next", Georgia, "Times New Roman", serif;
-  --font-mono: "input-mono", "SF Mono", Monaco, monospace;
+  --font-serif: var(--font-text); /* Sabon removed - redirected to NHG */
+  --font-mono: var(--font-text);  /* Input Mono removed - redirected to NHG */
 
   /* Spacing Scale */
   --space-xs: 0.25rem;   /* 4px */
@@ -85,7 +88,6 @@
   --color-border: var(--border);
 
   --font-sans: var(--font-text);
-  --font-mono: var(--font-mono);
 }
 
 @layer base {
@@ -183,28 +185,57 @@
   font-family: var(--font-text);
 }
 
+/*
+  Label/Data Typography System (replaces Input Mono)
+  ─────────────────────────────────────────────────
+  Use for: category labels, metadata headings, status badges,
+  axis labels, data readouts, technical annotations.
+
+  Pattern: .font-label + text-xs + text-[var(--text-tertiary)]
+  The class sets: NHG Text 500, uppercase, 0.05em tracking.
+  Size and colour are set per-instance via Tailwind.
+*/
+
+.font-label {
+  font-family: var(--font-text);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Legacy aliases - all redirect to NHG */
 .font-serif {
-  font-family: var(--font-serif);
+  font-family: var(--font-text);
   line-height: 1.6;
 }
 
 .font-mono {
-  font-family: var(--font-mono);
+  font-family: var(--font-text);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 
-/* Font utility class aliases (used in components) */
 .font-nhg {
   font-family: var(--font-display);
 }
 
+/* Bold NHG must always have -0.03em tracking */
+.font-nhg.font-bold,
+.font-nhg.font-semibold,
+.font-nhg.font-extrabold {
+  letter-spacing: -0.03em;
+}
+
 .font-sabon {
-  font-family: var(--font-serif);
+  font-family: var(--font-text);
 }
 
 .font-input {
-  font-family: var(--font-mono);
+  font-family: var(--font-text);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Button Base Style */
@@ -232,13 +263,8 @@
 
 /* Work Card */
 .work-card {
-  border: 1px solid var(--border-light);
   overflow: hidden;
-  transition: border-color 0.15s ease;
-}
-
-.work-card:hover {
-  border-color: var(--border);
+  border-radius: 0.75rem; /* rounded-xl */
 }
 
 .work-card video,
@@ -254,17 +280,18 @@
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-text);
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 
 .control-panel label {
   font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.7);
 }
 

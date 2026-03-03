@@ -386,7 +386,7 @@ export default function StellarDemoMobile({ className }: StellarDemoMobileProps)
       <canvas ref={canvasRef} className='block h-full w-full' />
       {(isLoading || !isCanvasReady) && (
         <div className='absolute inset-0 flex items-center justify-center'>
-          <span className='font-input text-xs uppercase tracking-[0.12em] text-white/45'>Loading stars...</span>
+          <span className='font-nhg text-xs uppercase tracking-[0.05em] text-white/45'>Loading stars...</span>
         </div>
       )}
     </div>

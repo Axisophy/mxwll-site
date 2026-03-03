@@ -52,7 +52,7 @@ export function ObjectModal({
           <div>
             <div className="flex items-center gap-2 mb-1">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }} />
-              <span className="text-xs font-mono text-white/40 uppercase tracking-wider">{category.name}</span>
+              <span className="text-xs font-nhg text-white/40 uppercase tracking-wider">{category.name}</span>
             </div>
             <h2 className="text-2xl font-light text-white">{object.name}</h2>
             <p className="text-white/60 text-sm mt-1">{object.tagline}</p>
@@ -65,18 +65,18 @@ export function ObjectModal({
         <div className="overflow-y-auto max-h-[calc(90vh-140px)] px-6 py-6">
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-white/5 rounded-xl p-4">
-              <div className="text-xs font-mono text-white/40 uppercase tracking-wider mb-1">Radius</div>
-              <div className="text-xl font-mono text-white">{object.radius.formatted}</div>
+              <div className="text-xs font-nhg text-white/40 uppercase tracking-wider mb-1">Radius</div>
+              <div className="text-xl font-nhg text-white">{object.radius.formatted}</div>
             </div>
             <div className="bg-white/5 rounded-xl p-4">
-              <div className="text-xs font-mono text-white/40 uppercase tracking-wider mb-1">Mass</div>
-              <div className="text-xl font-mono text-white">{object.mass.formatted}</div>
+              <div className="text-xs font-nhg text-white/40 uppercase tracking-wider mb-1">Mass</div>
+              <div className="text-xl font-nhg text-white">{object.mass.formatted}</div>
             </div>
           </div>
           
           {object.discovered && (
             <div className="bg-white/5 rounded-xl p-4 mb-6">
-              <div className="text-xs font-mono text-white/40 uppercase tracking-wider mb-2">Discovery</div>
+              <div className="text-xs font-nhg text-white/40 uppercase tracking-wider mb-2">Discovery</div>
               <p className="text-white/80 text-sm">
                 Discovered in <span className="text-white font-medium">{object.discovered.year}</span> by{' '}
                 <span className="text-white font-medium">{object.discovered.by}</span>

@@ -10,7 +10,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] lg:max-w-[75%]">
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.03em] leading-[1.1] lg:max-w-[75%]">
           MXWLL makes complex things comprehensible.
           We&apos;re an independent design studio working at the intersection of data, science, and visual storytelling - building interactive visualisations, illustrations, and design systems for the ideas that are hardest to explain.
         </h1>
@@ -83,13 +83,18 @@ export default function Home() {
 
       {/* Phylogenetic Trees */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="relative bg-[#050508] overflow-hidden border border-[var(--border-light)] aspect-[16/9]">
+        <div className="relative bg-white overflow-hidden border border-[var(--border-light)] aspect-[16/9]">
+          <img
+            src="/images/work/dinosauria-phylogenetic.png"
+            alt="Phylogenetic tree of Dinosauria"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <div className="absolute top-6 left-6">
-            <h2 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1">
+            <h2 className="font-nhg text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-1">
               Phylogenetic Trees
             </h2>
-            <p className="font-nhg text-sm md:text-base text-white/70">
-              Placeholder secondary text for phylogenetic trees visualisation
+            <p className="font-nhg text-sm md:text-base text-[var(--text-secondary)]">
+              The evolutionary relationships of Dinosauria, mapped from cladistic data
             </p>
           </div>
         </div>

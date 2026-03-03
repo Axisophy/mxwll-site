@@ -85,7 +85,7 @@ export default function ContactPage() {
       {/* Page Title */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Contact</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.03em]">Contact</h1>
         </div>
       </section>
 
@@ -98,7 +98,7 @@ export default function ContactPage() {
             </h3>
             <a
               href="mailto:hello@mxwll.io"
-              className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-white transition-colors"
+              className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] group-hover:text-white transition-colors"
             >
               hello@mxwll.io
             </a>
@@ -109,7 +109,7 @@ export default function ContactPage() {
             <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
               Get a quote
             </h3>
-            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1]">
+            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] leading-[1.1]">
               For a faster response with an instant estimate, use our quote tool - no call required.
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function ContactPage() {
 
             {formState === 'success' ? (
               <div className="space-y-4">
-                <p className="font-sabon text-base text-[var(--text-primary)] leading-relaxed">
+                <p className="font-nhg text-base text-[var(--text-primary)] leading-relaxed">
                   Message sent. We'll be in touch within 2-3 working days.
                 </p>
                 <Link
@@ -250,12 +250,12 @@ export default function ContactPage() {
           {/* Column 2 - Row 2: Newsletter */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
             <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">Newsletter</h3>
-            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1] mb-6">
+            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] leading-[1.1] mb-6">
               Sign up to our newsletter The Lab for occasional writing on explanation design, science visualisation, and the work. No noise.
             </p>
 
             {newsletterState === 'success' || newsletterState === 'subscribed' ? (
-              <p className="font-sabon text-sm text-[var(--text-primary)]">
+              <p className="font-nhg text-sm text-[var(--text-primary)]">
                 {newsletterMessage}
               </p>
             ) : (
@@ -294,7 +294,7 @@ export default function ContactPage() {
               href="https://instagram.com/mxwll.studio"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-nhg text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] hover:opacity-70 transition-opacity"
             >
               Instagram ↗
             </a>

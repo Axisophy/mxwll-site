@@ -22,10 +22,11 @@ Work / Lab / Method / About / Contact
 
 ## Design System
 
-### Typography
-- **Neue Haas Grotesk**: Primary sans (400, 500, 700) - headlines, nav, body, UI
-- **Sabon**: Serif accent (400, 400i) - longer prose, editorial moments
-- **Input Mono**: Monospace (400) - metadata, labels, technical annotations. Uppercase + letter-spacing: 0.08em
+### Typography (NHG-Only System)
+- **Neue Haas Grotesk Display 700**: Headlines, headings. Always with letter-spacing: -0.03em
+- **Neue Haas Grotesk Text 400**: Body text, prose, descriptions. Default weight.
+- **Neue Haas Grotesk Text 500**: Labels, metadata, data readouts. Uppercase, 0.05em tracking. Use `.font-label` class.
+- Sabon and Input Mono have been removed (March 2026). Legacy CSS classes redirect to NHG.
 - No em dashes anywhere - hyphens only
 - British English throughout
 
@@ -81,7 +82,7 @@ sm: 640px / md: 768px / lg: 1024px / xl: 1280px / 2xl: 1536px
 - [ ] Make GitHub repo private again
 
 ### V2 (After MVP) 🔜
-- [ ] Font files (actual Neue Haas Grotesk, Sabon, Input Mono - currently system fallbacks)
+- [ ] Font files (actual Neue Haas Grotesk via Typekit - currently system fallbacks)
 - [ ] Dark mode toggle
 - [ ] Individual work pages with real content
 - [ ] Gravitational Wave visualiser (port from Bang Industries)

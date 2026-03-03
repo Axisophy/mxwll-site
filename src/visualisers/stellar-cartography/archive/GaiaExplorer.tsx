@@ -531,7 +531,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
       {/* Loading indicator */}
       {isLoading && (
         <div className='absolute inset-0 flex items-center justify-center'>
-          <span className='text-white/40 text-sm font-mono'>Loading stars...</span>
+          <span className='text-white/40 text-sm font-nhg'>Loading stars...</span>
         </div>
       )}
 
@@ -599,7 +599,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
             Cool (Red)
           </div>
           <div
-            className='absolute text-[10px] tracking-[0.08em]'
+            className='absolute text-[10px] tracking-[0.05em]'
             style={{
               left: '50%',
               bottom: '4%',
@@ -652,7 +652,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
             border: '1px solid rgba(255, 255, 255, 0.06)',
           }}
         >
-          <h2 className='text-[10px] font-medium tracking-[0.12em] uppercase text-white/40 mb-4'>
+          <h2 className='text-[10px] font-medium tracking-[0.05em] uppercase text-white/40 mb-4'>
             Stellar Cartography
           </h2>
 
@@ -660,14 +660,14 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
           <div className='text-[8px] font-medium tracking-[0.1em] uppercase text-white/25 mb-1.5'>View</div>
           <div className='flex gap-1 mb-3'>
             <button
-              className={`flex-1 px-2 py-1.5 text-[9px] font-medium tracking-[0.08em] uppercase border rounded-sm transition-all duration-200
+              className={`flex-1 px-2 py-1.5 text-[9px] font-medium tracking-[0.05em] uppercase border rounded-sm transition-all duration-200
                 ${view === 'sky' ? 'border-white/40 text-white/80' : 'border-white/10 text-white/40 hover:border-white/20 hover:text-white/60'}`}
               onClick={() => setViewDirect('sky')}
             >
               Sky
             </button>
             <button
-              className={`flex-1 px-2 py-1.5 text-[9px] font-medium tracking-[0.08em] uppercase border rounded-sm transition-all duration-200
+              className={`flex-1 px-2 py-1.5 text-[9px] font-medium tracking-[0.05em] uppercase border rounded-sm transition-all duration-200
                 ${view === 'hr' ? 'border-white/40 text-white/80' : 'border-white/10 text-white/40 hover:border-white/20 hover:text-white/60'}`}
               onClick={() => setViewDirect('hr')}
             >
@@ -677,7 +677,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
 
           {/* Transition button */}
           <button
-            className={`w-full px-2 py-2 text-[9px] font-medium tracking-[0.08em] uppercase border rounded-sm transition-all duration-200 mb-4
+            className={`w-full px-2 py-2 text-[9px] font-medium tracking-[0.05em] uppercase border rounded-sm transition-all duration-200 mb-4
               ${isTransitioning ? 'border-white/30 text-white/50' : 'border-[#0055FF]/50 text-[#0055FF] hover:bg-[#0055FF]/10'}`}
             onClick={playFullTransition}
             disabled={isTransitioning}
@@ -687,8 +687,8 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
 
           {/* Speed slider */}
           <div className='flex justify-between items-baseline mb-0.5'>
-            <span className='text-[9px] font-medium tracking-[0.08em] uppercase text-white/65'>Speed</span>
-            <span className='text-[10px] tabular-nums text-white/45 font-mono'>{transitionSpeed.toFixed(1)}×</span>
+            <span className='text-[9px] font-medium tracking-[0.05em] uppercase text-white/65'>Speed</span>
+            <span className='text-[10px] tabular-nums text-white/45 font-nhg'>{transitionSpeed.toFixed(1)}×</span>
           </div>
           <input
             type='range'
@@ -703,8 +703,8 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
 
           {/* Point size slider */}
           <div className='flex justify-between items-baseline mb-0.5'>
-            <span className='text-[9px] font-medium tracking-[0.08em] uppercase text-white/65'>Point Size</span>
-            <span className='text-[10px] tabular-nums text-white/45 font-mono'>{pointScale.toFixed(1)}×</span>
+            <span className='text-[9px] font-medium tracking-[0.05em] uppercase text-white/65'>Point Size</span>
+            <span className='text-[10px] tabular-nums text-white/45 font-nhg'>{pointScale.toFixed(1)}×</span>
           </div>
           <input
             type='range'
@@ -719,7 +719,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
 
           {/* Annotations toggle */}
           <button
-            className={`w-full px-2 py-1.5 text-[9px] font-medium tracking-[0.08em] uppercase border rounded-sm transition-all duration-200 mb-3
+            className={`w-full px-2 py-1.5 text-[9px] font-medium tracking-[0.05em] uppercase border rounded-sm transition-all duration-200 mb-3
               ${showAnnotations ? 'border-white/30 text-white/60' : 'border-white/10 text-white/30'}`}
             onClick={() => setShowAnnotations(!showAnnotations)}
           >
@@ -728,7 +728,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
 
           {/* Demo mode button */}
           <button
-            className='w-full px-2 py-1.5 text-[9px] font-medium tracking-[0.08em] uppercase border border-white/10 text-white/40 rounded-sm hover:border-white/20 hover:text-white/60 transition-all duration-200 mb-4'
+            className='w-full px-2 py-1.5 text-[9px] font-medium tracking-[0.05em] uppercase border border-white/10 text-white/40 rounded-sm hover:border-white/20 hover:text-white/60 transition-all duration-200 mb-4'
             onClick={toggleDemoMode}
           >
             ⏵ Demo Mode
@@ -736,7 +736,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
 
           {/* Stats */}
           <div
-            className='p-2 rounded-sm font-mono text-[9px] leading-relaxed text-white/30'
+            className='p-2 rounded-sm font-nhg text-[9px] leading-relaxed text-white/30'
             style={{ background: 'rgba(255,255,255,0.03)' }}
           >
             stars: {starCount.toLocaleString()}
@@ -756,7 +756,7 @@ export default function GaiaExplorer({ className }: GaiaExplorerProps) {
               ['D', 'demo'],
             ].map(([k, label]) => (
               <span key={k} className='text-[9px] text-white/30 flex items-center gap-1'>
-                <code className='px-1 py-px border border-white/10 rounded-sm font-mono text-[9px] text-white/35'>
+                <code className='px-1 py-px border border-white/10 rounded-sm font-nhg text-[9px] text-white/35'>
                   {k}
                 </code>
                 {label}

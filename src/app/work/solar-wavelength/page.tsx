@@ -16,13 +16,13 @@ export default function SolarWavelengthPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
           {/* Left column - Title and description */}
           <div className="lg:col-span-2">
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
               Solar Wavelength
             </h1>
-            <p className="font-sabon text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
+            <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
               One solar moment across the electromagnetic spectrum
             </p>
-            <p className="font-sabon text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
+            <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
               The same solar moment seen through different wavelengths reveals changing structure and temperature layers across the Sun. A crossfading demo loop showing extreme ultraviolet channels from NASA&apos;s Solar Dynamics Observatory, with wavelength indicator showing where each view sits on the spectrum.
             </p>
             {/* Tags */}
@@ -36,13 +36,13 @@ export default function SolarWavelengthPage() {
           {/* Right column - Portfolio Metadata */}
           <div className="space-y-6">
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Category
               </span>
-              <span className="font-sabon text-sm">Data Visualisation</span>
+              <span className="font-nhg text-sm">Data Visualisation</span>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Audience
               </span>
               <MetadataDropdown title="Educators, science communicators">
@@ -50,7 +50,7 @@ export default function SolarWavelengthPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Approach
               </span>
               <MetadataDropdown>
@@ -59,16 +59,16 @@ export default function SolarWavelengthPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Technology
               </span>
-              <span className="font-sabon text-sm">React, Canvas 2D, TypeScript</span>
+              <span className="font-nhg text-sm">React, Canvas 2D, TypeScript</span>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Data
               </span>
-              <span className="font-sabon text-sm text-[var(--text-secondary)]">NASA Solar Dynamics Observatory (SDO) imagery</span>
+              <span className="font-nhg text-sm text-[var(--text-secondary)]">NASA Solar Dynamics Observatory (SDO) imagery</span>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function SolarWavelengthPage() {
             <SolarDemo className="w-full h-full" showLabel />
           </div>
         </div>
-        <p className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mt-4">
+        <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mt-4">
           AUTONOMOUS DEMO - CROSSFADING SOLAR WAVELENGTH CHANNELS WITH SPECTRUM INDICATOR
         </p>
       </section>
@@ -89,10 +89,10 @@ export default function SolarWavelengthPage() {
       {/* Stage 2: ANCHOR */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             [Placeholder: The Same Moment, Different Views]
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               [Content pending: Explain why the same solar moment looks completely different at different wavelengths - each wavelength reveals a different temperature layer, different structures become visible.]
             </p>
@@ -106,10 +106,10 @@ export default function SolarWavelengthPage() {
       {/* Stage 3: FOUNDATION */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             [Placeholder: Temperature Layers]
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               [Content pending: Explain how different wavelengths correspond to different temperatures - EUV channels reveal coronal structures at millions of degrees, while other channels show cooler chromospheric features.]
             </p>
@@ -120,10 +120,10 @@ export default function SolarWavelengthPage() {
       {/* Stage 4: BUILD */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             [Placeholder: What SDO Reveals]
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               [Content pending: Explain why SDO observes in multiple wavelengths simultaneously - tracking solar activity, flare prediction, space weather monitoring. Why multi-wavelength observation matters for understanding solar dynamics.]
             </p>
@@ -134,10 +134,10 @@ export default function SolarWavelengthPage() {
       {/* Stage 5: REWARD */}
       <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[var(--bg-tertiary)]">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             [Placeholder: Beyond Visible Light]
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               [Content pending: Consolidate the lesson - the Sun (and universe) reveals different information at different wavelengths. Visible light is just one narrow slice. Multi-wavelength astronomy is essential for complete understanding.]
             </p>
@@ -148,16 +148,16 @@ export default function SolarWavelengthPage() {
       {/* Stage 7: LAUNCH */}
       <section className="px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Further Exploration
           </h2>
           <div>
             <div className="space-y-8">
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Data Source
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="https://sdo.gsfc.nasa.gov/"
@@ -172,10 +172,10 @@ export default function SolarWavelengthPage() {
               </div>
 
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Related Work
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="/work/stellar-cartography"

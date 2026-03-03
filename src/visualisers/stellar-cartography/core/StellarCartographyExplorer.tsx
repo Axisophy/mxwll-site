@@ -349,7 +349,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <span className="font-input text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
+            <span className="font-nhg text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
               {annotation.label}
             </span>
           </div>
@@ -370,7 +370,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <span className="font-input text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
+            <span className="font-nhg text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
               {annotation.label}
             </span>
           </div>
@@ -389,7 +389,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
         {/* {renderAnnotations()} */}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-input text-xs uppercase tracking-[0.12em] text-white/45">Loading stars...</span>
+            <span className="font-nhg text-xs uppercase tracking-[0.05em] text-white/45">Loading stars...</span>
           </div>
         )}
       </div>
@@ -444,7 +444,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
 
       {/* Mobile note */}
       <div className="md:hidden mt-4 text-center">
-        <p className="font-sabon text-sm italic text-[var(--text-secondary)]">
+        <p className="font-nhg text-sm italic text-[var(--text-secondary)]">
           This visualiser renders 50,000 stars in real-time and is best experienced on a larger screen.
         </p>
       </div>

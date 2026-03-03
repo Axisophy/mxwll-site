@@ -16,7 +16,7 @@ MXWLL is an explanation design studio website for Simon Tyler. It showcases inte
 2. **No em dashes** - use hyphens.
 3. **Preserve HTML structure** - don't rewrite component hierarchies without reason.
 4. **CSS custom properties** - use the design tokens in globals.css, don't hardcode colours or spacing.
-5. **Font classes** - use `font-nhg`, `font-sabon`, `font-input`, `font-display` as defined in the codebase.
+5. **Font classes** - use `font-nhg`/`font-display` for headings, default NHG for body, `font-label` for metadata/labels. NHG-only system (Sabon and Input Mono removed March 2026).
 6. **Commit messages** - be descriptive. Say what changed and why.
 
 ## Before You Change Anything
@@ -185,10 +185,24 @@ Example: `src/widgets/flow-field-visualiser/FlowFieldVisualiser.tsx`
 - Padding: `px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20`
 - No border lines, no social links, no location
 
-**Typography:**
-- `font-nhg` or `font-display` - Neue Haas Grotesk for headings/UI
-- `font-sabon` or `font-serif` - Sabon for prose
-- `font-input` or `font-mono` - Input Mono for data/metadata (always uppercase)
+**Typography (NHG-Only):**
+- `font-nhg` or `font-display` - NHG Display 700 for headings (always with tracking-[-0.03em])
+- Default NHG Text 400 - body text, prose, descriptions
+- `font-label` - NHG Text 500, uppercase, 0.05em tracking (for metadata, labels, data readouts)
+- Legacy classes `font-sabon`, `font-input`, `font-mono` all redirect to NHG (safe but avoid using)
+
+**Container System:**
+- Content containers: `bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8`
+- Nested containers: `bg-[var(--bg-tertiary)] rounded-xl`
+- Interactive hover: `hover:bg-[var(--bg-tertiary)]`
+- No border-radius on buttons (square corners only)
+- No border-based containers
+
+**MXWLL Brand Colours:**
+- Electric Blue: `#0055FF`
+- Hot Pink: `#FF0055`
+- Acid Lime: `#CCFF00`
+- Visualiser background: `#03060f`
 
 ## Brand Voice (for any copy changes)
 

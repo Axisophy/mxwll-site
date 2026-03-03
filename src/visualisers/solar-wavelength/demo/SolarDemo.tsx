@@ -320,7 +320,7 @@ export default function SolarDemo({ className, showLabel = true }: SolarDemoProp
               className='absolute inset-0 flex items-center justify-center rounded-full border border-white/20 bg-white/5'
               aria-live='polite'
             >
-              <p className='font-input text-[10px] uppercase tracking-[0.08em] text-white/60'>Loading</p>
+              <p className='font-nhg text-[10px] uppercase tracking-[0.05em] text-white/60'>Loading</p>
             </div>
           )}
         </div>
@@ -328,7 +328,7 @@ export default function SolarDemo({ className, showLabel = true }: SolarDemoProp
         {showLabel && (
           <div className='w-full max-w-[720px] bg-white/[0.04] px-4 py-3'>
             <div className='flex items-baseline justify-between gap-4'>
-              <p className='font-input text-[12px] text-white'>{indicator.wavelengthLabel}</p>
+              <p className='font-nhg text-[12px] text-white'>{indicator.wavelengthLabel}</p>
               <p className='font-nhg text-[12px] text-white/60 text-right'>{indicator.channelName}</p>
             </div>
 
@@ -355,7 +355,7 @@ export default function SolarDemo({ className, showLabel = true }: SolarDemoProp
                   >
                     <span className={`block h-[8px] w-px ${isActive ? 'bg-white' : 'bg-white/30'}`} />
                     <span
-                      className={`mt-[6px] block whitespace-nowrap font-input text-[9px] ${isActive ? 'text-white' : 'text-white/40'}`}
+                      className={`mt-[6px] block whitespace-nowrap font-nhg text-[9px] ${isActive ? 'text-white' : 'text-white/40'}`}
                     >
                       {label}
                     </span>

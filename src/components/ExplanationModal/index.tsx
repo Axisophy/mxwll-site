@@ -73,7 +73,7 @@ export function ExplanationModal({
           <div>
             <h2
               id="explanation-modal-title"
-              className="text-2xl font-display font-bold tracking-tight text-black"
+              className="text-2xl font-display font-bold tracking-[-0.03em] text-black"
             >
               {title}
             </h2>
@@ -101,7 +101,7 @@ export function ExplanationModal({
         <div className="overflow-y-auto max-h-[calc(90vh-140px)] px-6 py-6">
           {/* Tier Selector */}
           <div className="mb-4">
-            <h3 className="text-xs font-input font-medium text-black/50 uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-nhg font-medium text-black/50 uppercase tracking-wider mb-3">
               Explanation Level
             </h3>
             <div
@@ -147,7 +147,7 @@ export function ExplanationModal({
               role="tabpanel"
               className="bg-black/5 rounded-xl p-5"
             >
-              <div className="text-black/80 leading-relaxed font-sabon prose prose-sm max-w-none">
+              <div className="text-black/80 leading-relaxed font-nhg prose prose-sm max-w-none">
                 {typeof currentTier.content === 'string' ? (
                   <p className="whitespace-pre-line">{currentTier.content}</p>
                 ) : (

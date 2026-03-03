@@ -135,7 +135,7 @@ export default function TransitCard({ planet, onClick, isHighlighted }: TransitC
         <span className='text-sm font-medium text-white/90 truncate flex-1 mr-2'>
           {planet.pl_name}
         </span>
-        <span className='text-xs font-mono text-white/50'>
+        <span className='text-xs font-nhg text-white/50'>
           {depth.toFixed(depth < 0.1 ? 3 : 2)}%
         </span>
       </div>
@@ -151,7 +151,7 @@ export default function TransitCard({ planet, onClick, isHighlighted }: TransitC
 
       {/* Stats row */}
       <div className='flex items-center justify-between text-xs'>
-        <span className='text-white/50 font-mono'>
+        <span className='text-white/50 font-nhg'>
           {radiusStr} · {periodStr}
         </span>
         <div className='flex items-center gap-1'>

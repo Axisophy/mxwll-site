@@ -17,13 +17,13 @@ export default function NuclideChartPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
           {/* Left column - Title and description */}
           <div className="lg:col-span-2">
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
               Chart of Nuclides
             </h1>
-            <p className="font-sabon text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
+            <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
               A Beginner&apos;s Guide
             </p>
-            <p className="font-sabon text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
+            <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
               An accessible introduction to nuclear physics through the chart of nuclides - from the familiar periodic table to the vast landscape of 3,300+ atomic species. Designed to explain what makes atoms stable or unstable without requiring any physics background.
             </p>
             {/* Tags */}
@@ -37,13 +37,13 @@ export default function NuclideChartPage() {
           {/* Right column - Portfolio Metadata */}
           <div className="space-y-6">
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Category
               </span>
-              <span className="font-sabon text-sm">Explanation Design</span>
+              <span className="font-nhg text-sm">Explanation Design</span>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Audience
               </span>
               <MetadataDropdown title="Generally interested adults">
@@ -51,7 +51,7 @@ export default function NuclideChartPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Approach
               </span>
               <MetadataDropdown>
@@ -60,7 +60,7 @@ export default function NuclideChartPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Adaptability
               </span>
               <MetadataDropdown>
@@ -69,16 +69,16 @@ export default function NuclideChartPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Technology
               </span>
-              <span className="font-sabon text-sm">React, Canvas, TypeScript</span>
+              <span className="font-nhg text-sm">React, Canvas, TypeScript</span>
             </div>
             <div>
-              <span className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
                 Data
               </span>
-              <span className="font-sabon text-sm text-[var(--text-secondary)]">IAEA Nuclear Data Services (3,352 nuclides)</span>
+              <span className="font-nhg text-sm text-[var(--text-secondary)]">IAEA Nuclear Data Services (3,352 nuclides)</span>
             </div>
           </div>
         </div>
@@ -92,10 +92,10 @@ export default function NuclideChartPage() {
           }} />
         </div>
         <div className="relative text-center text-white px-4">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-4">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-4">
             Chart of Nuclides
           </h2>
-          <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-white/80">
+          <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.03em] text-white/80">
             3,352 ways to build an atom
           </p>
         </div>
@@ -104,10 +104,10 @@ export default function NuclideChartPage() {
       {/* Stage 2: ANCHOR - You Know the Periodic Table */}
       <section className="px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             You Know the Periodic Table
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Everyone learns the periodic table. 118 elements, organised by proton count. Hydrogen has 1 proton, helium has 2, carbon has 6, uranium has 92. It&apos;s one of the most successful organising schemes in science.
             </p>
@@ -127,10 +127,10 @@ export default function NuclideChartPage() {
       {/* Stage 3: FOUNDATION - Beyond the Elements */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Beyond the Elements
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               A <strong>nuclide</strong> is a specific combination of protons and neutrons. While the periodic table shows 118 elements, there are over 3,300 known nuclides - different versions of those elements with varying neutron counts.
             </p>
@@ -147,10 +147,10 @@ export default function NuclideChartPage() {
       {/* Stage 4a: BUILD - The Valley of Stability + Interactive */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Valley of Stability
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Look at the chart and you&apos;ll see a pattern: stable nuclides (shown in black) cluster along a diagonal path. This is the <strong>valley of stability</strong>.
             </p>
@@ -175,10 +175,10 @@ export default function NuclideChartPage() {
       {/* Stage 4b: BUILD - Magic Numbers */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Magic Numbers
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Certain numbers of protons or neutrons create especially stable nuclei: 2, 8, 20, 28, 50, 82, and 126. These are the <strong>magic numbers</strong>.
             </p>
@@ -195,10 +195,10 @@ export default function NuclideChartPage() {
       {/* Stage 4c: BUILD - Decay and Time */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Decay and Time
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Every unstable nuclide has a half-life - the time it takes for half of any sample to decay. These range from fractions of a second to billions of years.
             </p>
@@ -218,10 +218,10 @@ export default function NuclideChartPage() {
       {/* Stage 5: REWARD - The Landscape of Matter */}
       <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[var(--bg-tertiary)]">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Landscape of Matter
           </h2>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Look at the chart of nuclides now, and you see something different than you did ten minutes ago.
             </p>
@@ -241,10 +241,10 @@ export default function NuclideChartPage() {
       {/* Stage 6: EXTEND - Going Deeper */}
       <section className="px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Going Deeper
           </h2>
-          <p className="font-sabon text-[var(--text-tertiary)] text-sm">
+          <p className="font-nhg text-[var(--text-tertiary)] text-sm">
             For the curious - you&apos;ve got the main idea, this is extra.
           </p>
         </div>
@@ -253,10 +253,10 @@ export default function NuclideChartPage() {
       {/* 6a: Types of Decay */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Types of Decay
           </h3>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               <strong>Beta-minus decay:</strong> A neutron converts to a proton, emitting an electron and an antineutrino. The atom moves one square up and one left on the chart. Common for neutron-rich nuclides.
             </p>
@@ -276,10 +276,10 @@ export default function NuclideChartPage() {
       {/* 6b: The Island of Stability */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             The Island of Stability
           </h3>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               Theory predicts that around 114 protons and 184 neutrons, there should be another region of enhanced stability - an &quot;island&quot; beyond the sea of short-lived superheavy elements.
             </p>
@@ -296,10 +296,10 @@ export default function NuclideChartPage() {
       {/* 6c: Stellar Nucleosynthesis */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Where Elements Come From
           </h3>
-          <div className="space-y-4 font-sabon text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
             <p>
               The chart of nuclides is also a map of cosmic chemistry. Hydrogen and helium came from the Big Bang. Carbon, nitrogen, and oxygen are forged in stellar cores. Iron is the endpoint of fusion in massive stars.
             </p>
@@ -316,16 +316,16 @@ export default function NuclideChartPage() {
       {/* Stage 7: LAUNCH - Further Exploration */}
       <section className="px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Further Exploration
           </h2>
           <div>
             <div className="space-y-8">
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Recommended Reading
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="https://www.amazon.co.uk/Periodic-Table-Primo-Levi/dp/0141185147"
@@ -352,10 +352,10 @@ export default function NuclideChartPage() {
               </div>
 
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Watch
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="https://www.youtube.com/watch?v=rcOFV4y5z8c"
@@ -371,10 +371,10 @@ export default function NuclideChartPage() {
               </div>
 
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Reference
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html"
@@ -409,10 +409,10 @@ export default function NuclideChartPage() {
               </div>
 
               <div>
-                <h3 className="font-input text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
+                <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
                   Related Work
                 </h3>
-                <ul className="space-y-2 text-sm font-sabon">
+                <ul className="space-y-2 text-sm font-nhg">
                   <li>
                     <a
                       href="/work/stellar-cartography"

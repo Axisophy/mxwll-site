@@ -15,15 +15,6 @@ const allWork = [
     tags: ['Astronomy', 'Data Visualisation', 'WebGL'],
   },
   {
-    title: 'Exoplanet Systems',
-    description: 'An autonomous three-view demo showing how exoplanet discovery accelerates over time, how orbital period relates to size, and where discoveries cluster on the sky.',
-    category: 'EXPLANATION DESIGN',
-    year: '2026',
-    slug: 'exoplanet-systems',
-    label: 'In Development',
-    tags: ['Astronomy', 'Data Visualisation', 'Canvas'],
-  },
-  {
     title: 'Solar Wavelength',
     description: 'The same solar moment across multiple wavelengths. A demo loop that crossfades between extreme ultraviolet channels to reveal changing solar structure and temperature layers.',
     category: 'EXPLANATION DESIGN',
@@ -46,7 +37,7 @@ const allWork = [
     description: 'From the familiar periodic table to the vast landscape of 3,300+ atomic species. An interactive explorer that reveals what makes atoms stable or unstable - and why it matters.',
     category: 'EXPLANATION DESIGN',
     year: '2026',
-    slug: 'chart-of-nuclides',
+    slug: 'nuclide-chart',
     label: 'A Beginner\'s Guide',
     tags: ['Nuclear Physics', 'Interactive', 'Explanation Design'],
   },
@@ -112,7 +103,7 @@ export default function WorkPage() {
       {/* Intro */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8">
         <div className="max-w-3xl">
-          <p className="font-sabon text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
+          <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
             Work across explanation design, data visualisation, interactive systems, and scientific illustration. Each project starts with the same question: what does the audience need to understand, and what&apos;s the clearest path to get them there?
           </p>
         </div>

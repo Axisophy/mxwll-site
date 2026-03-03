@@ -510,19 +510,19 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
 
           <div
             ref={titleRef}
-            className='pointer-events-none absolute left-3 top-3 font-nhg text-[11px] uppercase tracking-[0.08em] text-white/50 opacity-0'
+            className='pointer-events-none absolute left-3 top-3 font-nhg text-[11px] uppercase tracking-[0.05em] text-white/50 opacity-0'
           />
 
           <div
             ref={scatterBottomLabelRef}
-            className='pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap font-input text-[9px] text-white/[0.35] opacity-0'
+            className='pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap font-nhg text-[9px] text-white/[0.35] opacity-0'
           >
             ← shorter orbit · orbital period · longer orbit →
           </div>
 
           <div
             ref={scatterLeftLabelRef}
-            className='pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap font-input text-[9px] text-white/[0.35] opacity-0 origin-left'
+            className='pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap font-nhg text-[9px] text-white/[0.35] opacity-0 origin-left'
           >
             ↑ larger · planet size · smaller ↓
           </div>
@@ -538,20 +538,20 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
                 <span className='absolute top-1/2 left-[-4px] h-px w-[3px] -translate-y-1/2 bg-white/45' />
                 <span className='absolute top-1/2 right-[-4px] h-px w-[3px] -translate-y-1/2 bg-white/45' />
               </span>
-              <span className='whitespace-nowrap font-input text-[9px] text-white/45'>Kepler field</span>
+              <span className='whitespace-nowrap font-nhg text-[9px] text-white/45'>Kepler field</span>
             </div>
           </div>
 
           <div className='pointer-events-none absolute right-3 top-3 bg-black/40 p-2'>
-            <div className='flex items-center gap-2 font-input text-[10px] text-white/70'>
+            <div className='flex items-center gap-2 font-nhg text-[10px] text-white/70'>
               <span className='h-[6px] w-[6px] rounded-full bg-[#0055FF]' />
               <span>Transit</span>
             </div>
-            <div className='mt-1 flex items-center gap-2 font-input text-[10px] text-white/70'>
+            <div className='mt-1 flex items-center gap-2 font-nhg text-[10px] text-white/70'>
               <span className='h-[6px] w-[6px] rounded-full bg-[#FF0055]' />
               <span>Radial Velocity</span>
             </div>
-            <div className='mt-1 flex items-center gap-2 font-input text-[10px] text-white/70'>
+            <div className='mt-1 flex items-center gap-2 font-nhg text-[10px] text-white/70'>
               <span className='h-[6px] w-[6px] rounded-full bg-white/60' />
               <span>Other</span>
             </div>
@@ -559,7 +559,7 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
 
           {isLoading && (
             <div className='absolute inset-0 flex items-center justify-center bg-black/40'>
-              <p className='font-input text-[11px] uppercase tracking-[0.08em] text-white/60'>
+              <p className='font-nhg text-[11px] uppercase tracking-[0.05em] text-white/60'>
                 Loading exoplanet data
               </p>
             </div>
@@ -567,7 +567,7 @@ export default function ExoplanetDemo({ className }: ExoplanetDemoProps) {
 
           {error && (
             <div className='absolute inset-0 flex items-center justify-center bg-black/70'>
-              <p className='font-input text-[11px] uppercase tracking-[0.08em] text-white/70'>{error}</p>
+              <p className='font-nhg text-[11px] uppercase tracking-[0.05em] text-white/70'>{error}</p>
             </div>
           )}
         </div>

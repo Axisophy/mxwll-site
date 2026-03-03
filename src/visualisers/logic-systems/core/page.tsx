@@ -41,7 +41,7 @@ export default function LogicSystemsPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
           {/* Left column - Title and description */}
           <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               From Gates to Gradients
             </h1>
             <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
@@ -66,13 +66,13 @@ export default function LogicSystemsPage() {
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/50 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Interactive Design</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/50 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='Curious non-specialists'>
@@ -80,7 +80,7 @@ export default function LogicSystemsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/50 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -88,7 +88,7 @@ export default function LogicSystemsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/50 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
                 Adaptability
               </span>
               <MetadataDropdown>
@@ -96,13 +96,13 @@ export default function LogicSystemsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/50 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>React, TypeScript, SVG</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/50 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
                 Data
               </span>
               <span className='text-sm text-white/70'>Procedurally generated datasets</span>
@@ -114,7 +114,7 @@ export default function LogicSystemsPage() {
       {/* Static image placeholder */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='border border-white/10 bg-white/10 aspect-[2/1] flex items-center justify-center'>
-          <span className='text-black/30 text-sm font-mono'>logic_to_ml_progression.png</span>
+          <span className='text-black/30 text-sm font-nhg'>logic_to_ml_progression.png</span>
         </div>
         <p className='text-xs md:text-sm text-white/50 mt-4 max-w-2xl'>
           The same classification problem solved three ways: Boolean logic (sharp quadrants),
@@ -146,7 +146,7 @@ export default function LogicSystemsPage() {
       {/* Content sections */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight'>
+          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.03em]'>
             The Challenge
           </h2>
           <p className='text-white/70 leading-relaxed'>
@@ -157,7 +157,7 @@ export default function LogicSystemsPage() {
 
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight'>
+          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.03em]'>
             Background
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -176,7 +176,7 @@ export default function LogicSystemsPage() {
 
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight'>
+          <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.03em]'>
             Related Projects
           </h2>
           <ul className='space-y-2 text-sm'>

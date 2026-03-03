@@ -107,8 +107,8 @@ export default function LabPage() {
       {/* Intro */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Lab</h1>
-          <p className="font-sabon text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-6">Lab</h1>
+          <p className="font-nhg text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed">
             Experiments, tools, and generative work. Some of these are research projects exploring new ways to visualise data. Some are purely aesthetic. All of them are built with the same care as our client work.
           </p>
         </div>
@@ -116,11 +116,11 @@ export default function LabPage() {
 
       {/* Lab Items */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="space-y-0">
+        <div className="space-y-4">
           {labItems.map((item) => (
             <div
               key={item.title}
-              className="border-t border-[var(--border)] py-8 md:py-10"
+              className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8"
             >
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-12">
                 <div>
@@ -134,37 +134,41 @@ export default function LabPage() {
                         item.title
                       )}
                     </h2>
-                    {item.status === 'In Development' && (
-                      <span className="font-input text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider border border-[var(--border)] px-2 py-0.5">
-                        {item.status}
-                      </span>
-                    )}
                   </div>
                   <div className="flex flex-wrap gap-2 mt-3">
+                    {item.status === 'In Development' && (
+                      <span className="font-nhg text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded">
+                        In Development
+                      </span>
+                    )}
+                    {item.status === 'Live' && (
+                      <span className="font-nhg text-[10px] text-[var(--status-nominal)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded">
+                        Live
+                      </span>
+                    )}
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] uppercase tracking-wider"
+                        className="font-nhg text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-                <p className="font-sabon text-lg text-[var(--text-secondary)] leading-relaxed">
+                <p className="font-nhg text-lg text-[var(--text-secondary)] leading-relaxed">
                   {item.description}
                 </p>
               </div>
             </div>
           ))}
-          <div className="border-t border-[var(--border)]" />
         </div>
       </section>
 
       {/* Note */}
       <section className="px-4 md:px-8 lg:px-12 pb-16">
         <div className="max-w-3xl">
-          <p className="font-sabon text-base text-[var(--text-tertiary)] leading-relaxed">
+          <p className="font-nhg text-base text-[var(--text-tertiary)] leading-relaxed">
             Lab projects are works in progress. Some will become client-ready tools. Some will remain experiments. All are built with real data and real science.
           </p>
         </div>

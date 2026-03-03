@@ -54,7 +54,7 @@ export default function StellarEvolutionPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
           {/* Left column - Title and description */}
           <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]'>
+            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               Stellar Evolution
             </h1>
             <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
@@ -74,13 +74,13 @@ export default function StellarEvolutionPage() {
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Explanation Design</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='Generally interested adults'>
@@ -88,7 +88,7 @@ export default function StellarEvolutionPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -97,7 +97,7 @@ export default function StellarEvolutionPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Adaptability
               </span>
               <MetadataDropdown>
@@ -106,13 +106,13 @@ export default function StellarEvolutionPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>React, Canvas, D3.js</span>
             </div>
             <div>
-              <span className='text-xs font-mono uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
                 Data
               </span>
               <span className='text-sm text-white/70'>GAIA DR3 (3 million stars)</span>
@@ -137,10 +137,10 @@ export default function StellarEvolutionPage() {
         <div className='absolute inset-0 bg-black/30' />
         <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${showOverlay ? 'opacity-100' : 'opacity-0'}`}>
           <div className='text-center text-white px-4'>
-            <h2 className='font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-4'>
+            <h2 className='font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-4'>
               Stellar Evolution
             </h2>
-            <p className='font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-white/80'>
+            <p className='font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.03em] text-white/80'>
               A map of how stars live and die
             </p>
           </div>
@@ -150,7 +150,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 2: ANCHOR - "Stars Don't Last Forever" */}
       <section className='px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Stars Don&apos;t Last Forever
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -176,7 +176,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 3: FOUNDATION - "The Map" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Map
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -200,7 +200,7 @@ export default function StellarEvolutionPage() {
       {/* THREE MILLION STARS */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Three Million Stars
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -228,7 +228,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 4a: BUILD - "Stars You Know" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Stars You Know
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -252,7 +252,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 4b: BUILD - "The Sun's Future" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Sun&apos;s Future
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -282,7 +282,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 4c: BUILD - "Mass Is Destiny" */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Mass Is Destiny
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -309,7 +309,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 5: REWARD - "Reading the Night Sky" */}
       <section className='px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-black text-white'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Reading the Night Sky
           </h2>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -332,7 +332,7 @@ export default function StellarEvolutionPage() {
       {/* Stage 6: EXTEND - Going Deeper */}
       <section className='px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Going Deeper
           </h2>
           <p className='text-white/50 text-sm'>
@@ -344,7 +344,7 @@ export default function StellarEvolutionPage() {
       {/* 6a: Spectral Classification */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             Spectral Classification
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -364,7 +364,7 @@ export default function StellarEvolutionPage() {
       {/* 6b: The Gaia Mission */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             The Gaia Mission
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -381,7 +381,7 @@ export default function StellarEvolutionPage() {
       {/* 6c: Stellar Nucleosynthesis */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h3 className='text-2xl md:text-3xl font-bold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             We Are Star Stuff
           </h3>
           <div className='space-y-4 text-white/70 leading-relaxed'>
@@ -401,13 +401,13 @@ export default function StellarEvolutionPage() {
       {/* Stage 7: LAUNCH - Further Exploration */}
       <section className='px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20'>
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
+          <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Further Exploration
           </h2>
           <div>
             <div className='space-y-8'>
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Recommended Reading
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -426,7 +426,7 @@ export default function StellarEvolutionPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Watch
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -445,7 +445,7 @@ export default function StellarEvolutionPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Reference
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -483,7 +483,7 @@ export default function StellarEvolutionPage() {
               </div>
 
               <div>
-                <h3 className='text-xs font-mono uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
                   Related Explainers
                 </h3>
                 <ul className='space-y-2 text-sm'>

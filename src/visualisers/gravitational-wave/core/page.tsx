@@ -14,7 +14,7 @@ export default function GravitationalWavePage() {
     <main className="min-h-screen bg-black text-white">
       {/* Hero section */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1]">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
           The Chirp
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-4">
@@ -56,31 +56,31 @@ export default function GravitationalWavePage() {
           {/* Metadata sidebar */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white/30 mb-2">
+              <h3 className="text-xs font-nhg uppercase tracking-wider text-white/30 mb-2">
                 Category
               </h3>
               <p className="text-sm text-white/70">Scientific Data Visualisation</p>
             </div>
             <div>
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white/30 mb-2">
+              <h3 className="text-xs font-nhg uppercase tracking-wider text-white/30 mb-2">
                 Audience
               </h3>
               <p className="text-sm text-white/70">General / Science-curious</p>
             </div>
             <div>
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white/30 mb-2">
+              <h3 className="text-xs font-nhg uppercase tracking-wider text-white/30 mb-2">
                 Approach
               </h3>
               <p className="text-sm text-white/70">Progressive revelation, multi-representation</p>
             </div>
             <div>
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white/30 mb-2">
+              <h3 className="text-xs font-nhg uppercase tracking-wider text-white/30 mb-2">
                 Technology
               </h3>
               <p className="text-sm text-white/70">Canvas2D, WebAudio API, GWOSC Data</p>
             </div>
             <div>
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white/30 mb-2">
+              <h3 className="text-xs font-nhg uppercase tracking-wider text-white/30 mb-2">
                 Data Source
               </h3>
               <p className="text-sm text-white/70">
@@ -94,7 +94,7 @@ export default function GravitationalWavePage() {
           {/* Main content */}
           <div className="space-y-12">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6">
                 The Challenge
               </h2>
               <div className="space-y-4 text-white/70 leading-relaxed">
@@ -111,7 +111,7 @@ export default function GravitationalWavePage() {
             </div>
 
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6">
                 Matched Filtering
               </h2>
               <div className="space-y-4 text-white/70 leading-relaxed">
@@ -130,7 +130,7 @@ export default function GravitationalWavePage() {
             </div>
 
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6">
                 The Event
               </h2>
               <div className="space-y-4 text-white/70 leading-relaxed">
@@ -153,7 +153,7 @@ export default function GravitationalWavePage() {
             </div>
 
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-6">
                 Further Exploration
               </h2>
               <div className="space-y-4 text-white/70 leading-relaxed">

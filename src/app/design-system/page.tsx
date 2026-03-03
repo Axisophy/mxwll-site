@@ -20,12 +20,12 @@ export default function DesignSystemPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-24 pb-8 border-b border-[var(--border)]">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Design System</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-4">Design System</h1>
           <p className="text-lg text-[var(--text-secondary)] mb-2">
             Living reference for MXWLL visual language.
           </p>
-          <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">
-            VERSION 1.0 · UPDATED FEBRUARY 2026
+          <p className="font-label text-xs text-[var(--text-tertiary)]">
+            VERSION 2.0 · UPDATED MARCH 2026
           </p>
           {copiedClass && (
             <p className="mt-4 text-sm text-[var(--status-nominal)]">
@@ -37,7 +37,7 @@ export default function DesignSystemPage() {
         {/* 1. Identity */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">01</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">01</span>
             Identity
           </h2>
 
@@ -45,20 +45,20 @@ export default function DesignSystemPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Logo</h3>
-              <div className="space-y-8 p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-8 space-y-8">
                 <div className="space-y-4">
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">HEADER SIZE</p>
+                  <p className="font-label text-xs text-[var(--text-tertiary)]">HEADER SIZE</p>
                   <Logo className="h-10 w-auto text-[var(--text-primary)]" />
                 </div>
                 <div className="space-y-4">
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)]">MOBILE SIZE</p>
+                  <p className="font-label text-xs text-[var(--text-tertiary)]">MOBILE SIZE</p>
                   <Logo className="h-6 w-auto text-[var(--text-primary)]" />
                 </div>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">USAGE</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
 {`<Logo className="h-10 w-auto text-[var(--text-primary)]" />
 
 // Uses currentColor - inherits from parent text colour
@@ -72,22 +72,18 @@ export default function DesignSystemPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Studio Description</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-8">
                 <p className="text-sm text-[var(--text-primary)] leading-relaxed max-w-2xl">
                   MXWLL is an explanation design studio for science, data, and the complex. We build work that is rigorous, elegant, and alive - through visualisation, illustration, and systematic design.
                   <br />
-                  We don't simplify. We clarify.
+                  We don&apos;t simplify. We clarify.
                 </p>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<p className="text-sm text-[var(--text-primary)] leading-relaxed">
-  Studio description text
-</p>
-
-// Black text (text-primary), not grey
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">NOTES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Black text (text-primary), not grey
 // Hidden below lg breakpoint in header
 // Max-width: 28rem`}
               </pre>
@@ -98,7 +94,7 @@ export default function DesignSystemPage() {
         {/* 2. Navigation */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">02</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">02</span>
             Navigation
           </h2>
 
@@ -106,7 +102,7 @@ export default function DesignSystemPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Desktop Navigation</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-8">
                 <div className="flex flex-wrap gap-6 text-sm">
                   <span className="text-[var(--text-primary)] underline">Work</span>
                   <span className="text-[var(--text-primary)]">Lab</span>
@@ -116,84 +112,35 @@ export default function DesignSystemPage() {
                   <span className="text-[var(--text-primary)]">Contact</span>
                   <span className="px-3 py-1 border border-[var(--text-primary)] text-[var(--text-primary)] text-sm">Get a Quote</span>
                 </div>
-                <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mt-4">
+                <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
                   ACTIVE: UNDERLINE · HOVER: UNDERLINE · ALL BLACK
                 </p>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
 {`<nav className="hidden md:flex items-center gap-8">
   {navLinks.map(link => (
-    <Link className={\`
-      text-sm font-text text-[var(--text-primary)] whitespace-nowrap
-      \${pathname === link.href ? 'underline' : 'hover:underline'}
-    \`}>
+    <Link className="text-sm font-text
+      text-[var(--text-primary)]
+      \${pathname === link.href
+        ? 'underline'
+        : 'hover:underline'
+      }">
       {link.label}
     </Link>
   ))}
-</nav>
-
-// All links are black (text-primary)
-// Active page: underline
-// Hover: underline`}
+</nav>`}
               </pre>
             </div>
           </div>
 
-          {/* Mobile Hamburger */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Mobile Hamburger</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-8">
-                <div>
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">CLOSED STATE</p>
-                  <div className="flex flex-col gap-[6px] w-6 h-6 justify-center">
-                    <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-                    <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-                    <span className="w-6 h-[2px] bg-[var(--text-primary)]" />
-                  </div>
-                </div>
-                <div>
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-4">OPEN STATE (×)</p>
-                  <div className="flex flex-col gap-[6px] w-6 h-6 justify-center items-center relative">
-                    <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] rotate-45" />
-                    <span className="absolute w-6 h-[2px] bg-[var(--text-primary)] -rotate-45" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<button className="md:hidden flex flex-col gap-[6px] w-6 h-6">
-  <span className={\`
-    w-6 h-[2px] bg-[var(--text-primary)]
-    transition-all duration-300
-    \${open ? 'rotate-45 translate-y-[8px]' : ''}
-  \`} />
-  <span className={\`
-    w-6 h-[2px] bg-[var(--text-primary)]
-    \${open ? 'opacity-0' : 'opacity-100'}
-  \`} />
-  <span className={\`
-    w-6 h-[2px] bg-[var(--text-primary)]
-    \${open ? '-rotate-45 -translate-y-[8px]' : ''}
-  \`} />
-</button>
-
-// State: useState(false)
-// Absolute positioned top-6 right-4`}
-              </pre>
-            </div>
-          </div>
-
-          {/* Mobile Menu Overlay */}
+          {/* Mobile Menu */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Mobile Menu Overlay</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-black">
+              <div className="bg-black rounded-xl p-8">
                 <div className="space-y-4 text-left text-4xl">
                   <div className="text-white underline">Work</div>
                   <div className="text-white">Lab</div>
@@ -206,26 +153,9 @@ export default function DesignSystemPage() {
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<div className={\`
-  fixed inset-0 z-50 bg-black md:hidden
-  transition-opacity duration-300
-  \${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-\`}>
-  <nav className="flex flex-col items-start justify-center h-full gap-4 px-4">
-    {navLinks.map(link => (
-      <Link className={\`
-        font-display text-4xl text-white
-        \${pathname === link.href ? 'underline' : 'hover:underline'}
-      \`}>
-        {link.label}
-      </Link>
-    ))}
-  </nav>
-</div>
-
-// Black background, white text
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">NOTES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Black background, white text
 // Active page: underline
 // Hover: underline
 // Closes on route change
@@ -238,55 +168,130 @@ export default function DesignSystemPage() {
         {/* 3. Colours */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">03</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">03</span>
             Colours
           </h2>
 
-          {/* Light Mode */}
+          {/* Brand Colours */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
-              <h3 className="text-xl font-medium mb-6">Light Mode</h3>
-              <div className="grid grid-cols-2 gap-4">
+              <h3 className="text-xl font-medium mb-6">MXWLL Brand Colours</h3>
+              <div className="grid grid-cols-3 gap-4">
                 {[
-                  { name: 'BG Primary', value: '#FFFFFF', var: 'var(--bg-primary)' },
-                  { name: 'BG Secondary', value: '#F5F5F5', var: 'var(--bg-secondary)' },
-                  { name: 'BG Tertiary', value: '#2563EB', var: 'blue-600' },
-                  { name: 'Text Primary', value: '#000000', var: 'var(--text-primary)' },
-                  { name: 'Text Secondary', value: '#666666', var: 'var(--text-secondary)' },
-                  { name: 'Accent', value: '#000000', var: 'var(--accent)' },
-                  { name: 'Border', value: '#D4D4D4', var: 'var(--border)' },
+                  { name: 'Electric Blue', value: '#0055FF', var: '--color-blue' },
+                  { name: 'Hot Pink', value: '#FF0055', var: '--color-pink' },
+                  { name: 'Acid Lime', value: '#CCFF00', var: '--color-lime' },
                 ].map(color => (
                   <div key={color.name} className="space-y-2">
                     <div
-                      className="h-16 rounded border border-[var(--border)] cursor-pointer"
+                      className="h-20 rounded-xl cursor-pointer"
                       style={{ backgroundColor: color.value }}
                       onClick={() => copyToClipboard(color.var)}
                     />
                     <p className="font-medium text-sm">{color.name}</p>
-                    <code className="font-input text-[10px] text-[var(--text-tertiary)]">{color.value}</code>
+                    <code className="font-label text-[10px] text-[var(--text-tertiary)]">{color.value}</code>
+                  </div>
+                ))}
+              </div>
+              <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
+                CLICK TO COPY CSS VARIABLE
+              </p>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">USAGE</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// MXWLL brand triad
+--color-blue: #0055FF;  // Primary accent
+--color-pink: #FF0055;  // Secondary accent
+--color-lime: #CCFF00;  // Tertiary accent
+
+// Usage in Tailwind
+bg-[var(--color-blue)]
+text-[var(--color-pink)]
+
+// Active states, buttons, highlights
+// Use sparingly - most UI is black/white`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Light Mode */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Light Mode Palette</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: 'BG Primary', value: '#FFFFFF', var: 'var(--bg-primary)' },
+                  { name: 'BG Secondary', value: '#F5F5F5', var: 'var(--bg-secondary)' },
+                  { name: 'BG Tertiary', value: '#E5E5E5', var: 'var(--bg-tertiary)' },
+                  { name: 'Text Primary', value: '#000000', var: 'var(--text-primary)' },
+                  { name: 'Text Secondary', value: '#666666', var: 'var(--text-secondary)' },
+                  { name: 'Text Tertiary', value: '#999999', var: 'var(--text-tertiary)' },
+                  { name: 'Border', value: '#D4D4D4', var: 'var(--border)' },
+                  { name: 'Border Light', value: '#E5E5E5', var: 'var(--border-light)' },
+                ].map(color => (
+                  <div key={color.name} className="space-y-2">
+                    <div
+                      className="h-16 rounded-xl border border-[var(--border)] cursor-pointer"
+                      style={{ backgroundColor: color.value }}
+                      onClick={() => copyToClipboard(color.var)}
+                    />
+                    <p className="font-medium text-sm">{color.name}</p>
+                    <code className="font-label text-[10px] text-[var(--text-tertiary)]">{color.value}</code>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CSS CUSTOM PROPERTIES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
 {`:root {
   --bg-primary: #FFFFFF;
   --bg-secondary: #F5F5F5;
+  --bg-tertiary: #E5E5E5;
+
   --text-primary: #000000;
   --text-secondary: #666666;
   --text-tertiary: #999999;
-  --accent: #000000;
+
   --border: #D4D4D4;
+  --border-light: #E5E5E5;
 }
 
-// BG Tertiary: Tailwind blue-600 (#2563EB)
-// Used for interactive accent backgrounds
-
 // Never hardcode hex values for main palette
-// Always use CSS custom properties
-// Status colours are Tailwind equivalents (green-500, etc.)`}
+// Always use CSS custom properties`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Visualiser Background */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Visualiser Background</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div
+                    className="h-20 rounded-xl cursor-pointer"
+                    style={{ backgroundColor: '#03060f' }}
+                    onClick={() => copyToClipboard('#03060f')}
+                  />
+                  <p className="font-medium text-sm">Vis Background</p>
+                  <code className="font-label text-[10px] text-[var(--text-tertiary)]">#03060f</code>
+                </div>
+              </div>
+              <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
+                STANDARD DARK BACKGROUND FOR ALL VISUALISERS
+              </p>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">USAGE</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Visualiser canvas background
+bg-[#03060f]
+
+// Used for all WebGL, Canvas, and
+// Three.js visualiser backgrounds
+// Near-black with slight blue cast`}
               </pre>
             </div>
           </div>
@@ -305,7 +310,7 @@ export default function DesignSystemPage() {
                 ].map(color => (
                   <div key={color.name} className="space-y-2">
                     <div
-                      className="h-12 rounded border border-[var(--border)] cursor-pointer"
+                      className="h-12 rounded-xl cursor-pointer"
                       style={{ backgroundColor: color.value }}
                       onClick={() => copyToClipboard(color.var)}
                     />
@@ -313,23 +318,22 @@ export default function DesignSystemPage() {
                   </div>
                 ))}
               </div>
-              <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-4">
+              <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
                 FOR VISUALISER UI ONLY - NOT BRAND COLOURS
-                <br />
-                TAILWIND EQUIVALENTS: green-500, yellow-500, orange-500, red-500, gray-500
               </p>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`--status-nominal: #22C55E;   /* Tailwind green-500 */
---status-elevated: #EAB308;  /* Tailwind yellow-500 */
---status-warning: #F97316;   /* Tailwind orange-500 */
---status-critical: #EF4444;  /* Tailwind red-500 */
---status-offline: #6B7280;   /* Tailwind gray-500 */
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CSS VARIABLES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`--status-nominal: #22C55E;
+--status-elevated: #EAB308;
+--status-warning: #F97316;
+--status-critical: #EF4444;
+--status-offline: #6B7280;
 
-// Use for lab/visualiser UI indicators
-// Not for brand/marketing contexts`}
+// Tailwind equivalents:
+// green-500, yellow-500, orange-500,
+// red-500, gray-500`}
               </pre>
             </div>
           </div>
@@ -338,50 +342,103 @@ export default function DesignSystemPage() {
         {/* 4. Typography */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">04</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">04</span>
             Typography
           </h2>
 
-          {/* Font Families */}
+          {/* NHG-Only System */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
-              <h3 className="text-xl font-medium mb-6">Font Families</h3>
+              <h3 className="text-xl font-medium mb-6">NHG-Only System</h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
+                The entire site uses Neue Haas Grotesk in two weights. No other typefaces. This simplification creates visual coherence while reducing load times.
+              </p>
               <div className="space-y-6">
-                <div>
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">NEUE HAAS GROTESK</p>
-                  <p className="text-2xl">Headlines, navigation, body text, UI</p>
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">Weights: 400, 500, 700</p>
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-6">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">NHG DISPLAY 700 (BOLD)</p>
+                  <p className="font-display text-3xl font-bold tracking-[-0.03em]">Headlines & Headings</p>
+                  <p className="text-sm text-[var(--text-tertiary)] mt-2">Always with letter-spacing: -0.03em</p>
                 </div>
-                <div>
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">SABON</p>
-                  <p className="font-sabon text-2xl">Longer prose, articles, quotes</p>
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">Weights: 400, 400 italic</p>
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-6">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">NHG TEXT 400 (REGULAR)</p>
+                  <p className="text-lg">Body text, prose, descriptions. The default weight for all readable content across the site.</p>
                 </div>
-                <div>
-                  <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">INPUT MONO</p>
-                  <p className="font-input text-base">DATA LABELS, METADATA, CODE</p>
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">Weight: 400 only</p>
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-6">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">NHG TEXT 500 (MEDIUM) - LABEL SYSTEM</p>
+                  <p className="font-label text-sm">CATEGORY LABELS · METADATA · STATUS BADGES · DATA READOUTS</p>
+                  <p className="text-sm text-[var(--text-tertiary)] mt-2">Uppercase, 0.05em tracking. Replaces Input Mono.</p>
                 </div>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CSS CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
 {`// Via Adobe Typekit
-<link rel="stylesheet" href="https://use.typekit.net/qka5zju.css" />
+<link rel="stylesheet"
+  href="https://use.typekit.net/qka5zju.css" />
 
 // CSS Variables
---font-display: "neue-haas-grotesk-display", sans-serif;
---font-text: "neue-haas-grotesk-text", sans-serif;
---font-serif: "sabon-next", Georgia, serif;
---font-mono: "input-mono", monospace;
+--font-display: "neue-haas-grotesk-display";
+--font-text: "neue-haas-grotesk-text";
 
 // Utility Classes
-.font-nhg → var(--font-display)
-.font-sabon → var(--font-serif)
-.font-input → var(--font-mono) + uppercase + tracking
+.font-display  → NHG Display, 700, -0.03em
+.font-nhg      → NHG Display (alias)
+.font-label    → NHG Text, 500, uppercase, 0.05em
 
-// Input Mono ALWAYS uppercase with letter-spacing: 0.08em`}
+// Bold NHG rule (automatic)
+.font-nhg.font-bold { letter-spacing: -0.03em; }
+
+// Legacy aliases (all redirect to NHG)
+.font-sabon → NHG Text 400
+.font-input → NHG Text 500 + uppercase
+.font-mono  → NHG Text 500 + uppercase`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Label System */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Label/Data Typography</h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
+                A consistent system for metadata, labels, and data readouts. Uses NHG Text 500 (medium weight), uppercase, with 0.05em letter-spacing.
+              </p>
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-6 space-y-4">
+                <div>
+                  <p className="font-label text-xs text-[var(--text-tertiary)]">CATEGORY LABEL</p>
+                </div>
+                <div>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)]">STATUS BADGE · IN DEVELOPMENT</p>
+                </div>
+                <div>
+                  <p className="font-label text-xs text-[var(--text-primary)]">SECTION HEADER</p>
+                </div>
+                <div>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)]">VERSION 2.0 · UPDATED MARCH 2026</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">PATTERN</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// The .font-label class provides:
+.font-label {
+  font-family: var(--font-text);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Usage pattern:
+// .font-label + text size + colour
+<p className="font-label text-xs
+  text-[var(--text-tertiary)]">
+  CATEGORY LABEL
+</p>
+
+// Size and colour are set per-instance
+// The class handles weight, case, tracking`}
               </pre>
             </div>
           </div>
@@ -392,53 +449,161 @@ export default function DesignSystemPage() {
               <h3 className="text-xl font-medium mb-6">Type Scale</h3>
               <div className="space-y-4">
                 <div className="py-3 border-b border-[var(--border-light)]">
-                  <p className="text-5xl font-medium">Display Large</p>
-                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">72PX</p>
+                  <p className="font-display text-5xl font-bold tracking-[-0.03em]">Display</p>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-1">TEXT-5XL · FONT-BOLD · TRACKING-[-0.03EM]</p>
                 </div>
                 <div className="py-3 border-b border-[var(--border-light)]">
-                  <p className="text-3xl font-bold tracking-tight">Page Titles</p>
-                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">40PX</p>
+                  <p className="font-display text-3xl font-bold tracking-[-0.03em]">Page Titles</p>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-1">TEXT-3XL/4XL/5XL · RESPONSIVE</p>
                 </div>
                 <div className="py-3 border-b border-[var(--border-light)]">
                   <p className="text-xl font-medium">Subheadings</p>
-                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">20PX</p>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-1">TEXT-XL · FONT-MEDIUM</p>
                 </div>
                 <div className="py-3 border-b border-[var(--border-light)]">
-                  <p className="text-base">Body Text</p>
-                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">16PX</p>
+                  <p className="text-base">Body text for readable content</p>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-1">TEXT-BASE · NHG TEXT 400</p>
                 </div>
                 <div className="py-3">
-                  <p className="font-input text-xs">METADATA</p>
-                  <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-1">11PX</p>
+                  <p className="font-label text-xs text-[var(--text-tertiary)]">METADATA LABEL</p>
+                  <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-1">TEXT-XS · .FONT-LABEL</p>
                 </div>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`// Tailwind classes
-text-5xl font-medium → Display Large (72px)
-text-4xl font-bold tracking-tight → Page Titles (56px)
-text-3xl font-bold tracking-tight → Page Titles (40px)
-text-2xl font-medium → Section Heads (28px)
-text-xl font-medium → Subheadings (20px)
-text-lg → Article Body (18px)
-text-base → Body Text (16px)
-font-input text-sm → LABELS (13px)
-font-input text-xs → METADATA (11px)
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">TAILWIND CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Display / Page titles
+font-display text-4xl md:text-5xl
+  font-bold tracking-[-0.03em]
 
-// Mobile adjustments in globals.css
-// Type scale: xs 11px → 5xl 72px
-// Page titles: font-bold tracking-tight`}
+// Subheadings
+text-xl md:text-2xl font-medium
+
+// Body text
+text-base leading-relaxed
+  text-[var(--text-secondary)]
+
+// Labels / Metadata
+font-label text-xs
+  text-[var(--text-tertiary)]
+
+// CRITICAL: All bold NHG must have
+// tracking-[-0.03em] (-0.03em)
+// The CSS rule handles this automatically
+// for .font-nhg.font-bold combinations`}
               </pre>
             </div>
           </div>
         </section>
 
-        {/* 5. Spacing */}
+        {/* 5. Container System */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">05</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">05</span>
+            Container System
+          </h2>
+
+          {/* Container Examples */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Content Containers</h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
+                All content containers use rounded-xl corners with bg-secondary fill. No borders. Nested containers use bg-tertiary.
+              </p>
+              <div className="space-y-4">
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-6">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">DEFAULT CONTAINER</p>
+                  <p className="text-sm text-[var(--text-secondary)]">bg-secondary with rounded-xl corners and p-6 or p-8 padding.</p>
+                </div>
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-6">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">WITH NESTED CONTAINER</p>
+                  <div className="bg-[var(--bg-tertiary)] rounded-xl p-4 mt-3">
+                    <p className="text-sm text-[var(--text-secondary)]">Nested content uses bg-tertiary for contrast.</p>
+                  </div>
+                </div>
+                <div className="bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] rounded-xl p-6 transition-colors cursor-pointer">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">INTERACTIVE CONTAINER</p>
+                  <p className="text-sm text-[var(--text-secondary)]">Hover to see bg-tertiary state.</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">PATTERN</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Default container
+<div className="bg-[var(--bg-secondary)]
+  rounded-xl p-6 md:p-8">
+  Content here
+</div>
+
+// Nested container (inside bg-secondary)
+<div className="bg-[var(--bg-tertiary)]
+  rounded-xl p-4">
+  Nested content
+</div>
+
+// Interactive container
+<div className="bg-[var(--bg-secondary)]
+  hover:bg-[var(--bg-tertiary)]
+  rounded-xl p-6 transition-colors">
+  Hoverable content
+</div>
+
+// IMPORTANT: No border-radius on buttons
+// Rounded corners are for containers only`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Container Rules */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Container Rules</h3>
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-6 space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-[var(--status-nominal)] text-sm mt-0.5">&#10003;</span>
+                  <p className="text-sm text-[var(--text-secondary)]">Content containers: rounded-xl, bg-secondary</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[var(--status-nominal)] text-sm mt-0.5">&#10003;</span>
+                  <p className="text-sm text-[var(--text-secondary)]">Nested containers: rounded-xl, bg-tertiary</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[var(--status-nominal)] text-sm mt-0.5">&#10003;</span>
+                  <p className="text-sm text-[var(--text-secondary)]">Interactive hover: bg-secondary to bg-tertiary</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[var(--status-critical)] text-sm mt-0.5">&#10007;</span>
+                  <p className="text-sm text-[var(--text-secondary)]">No border-radius on buttons</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[var(--status-critical)] text-sm mt-0.5">&#10007;</span>
+                  <p className="text-sm text-[var(--text-secondary)]">No border-based containers (removed in v2)</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">WHERE USED</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Applied consistently across:
+- Contact page (reference implementation)
+- Method page (cells, accordions, CTA)
+- Services page (service cards, steps)
+- Lab page (experiment cards)
+- Work page (work cards)
+
+// The pattern replaces the previous
+// bordered container system`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Spacing */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">06</span>
             Spacing
           </h2>
 
@@ -447,20 +612,16 @@ font-input text-xs → METADATA (11px)
               <h3 className="text-xl font-medium mb-6">8px Base Grid</h3>
               <div className="space-y-3">
                 {[
-                  { name: 'space-1', value: '4px' },
-                  { name: 'space-2', value: '8px' },
-                  { name: 'space-3', value: '12px' },
-                  { name: 'space-4', value: '16px' },
-                  { name: 'space-6', value: '24px' },
-                  { name: 'space-8', value: '32px' },
-                  { name: 'space-12', value: '48px' },
-                  { name: 'space-16', value: '64px' },
-                  { name: 'space-24', value: '96px' },
-                  { name: 'space-32', value: '128px' },
+                  { name: 'space-xs', value: '4px', tw: 'p-1' },
+                  { name: 'space-sm', value: '8px', tw: 'p-2' },
+                  { name: 'space-md', value: '16px', tw: 'p-4' },
+                  { name: 'space-lg', value: '32px', tw: 'p-8' },
+                  { name: 'space-xl', value: '64px', tw: 'p-16' },
+                  { name: 'space-2xl', value: '128px', tw: 'p-32' },
                 ].map(space => (
                   <div key={space.name} className="flex items-center gap-4">
-                    <code className="font-input text-xs text-[var(--text-tertiary)] w-20">
-                      var(--{space.name})
+                    <code className="font-label text-xs text-[var(--text-tertiary)] w-20">
+                      {space.tw}
                     </code>
                     <span className="text-sm text-[var(--text-secondary)] w-16">{space.value}</span>
                     <div
@@ -472,28 +633,30 @@ font-input text-xs → METADATA (11px)
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`:root {
-  --space-xs: 0.25rem;   /* 4px */
-  --space-sm: 0.5rem;    /* 8px */
-  --space-md: 1rem;      /* 16px */
-  --space-lg: 2rem;      /* 32px */
-  --space-xl: 4rem;      /* 64px */
-  --space-2xl: 8rem;     /* 128px */
-}
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CONTAINER PADDING</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Standard page padding
+className="px-4 md:px-8 lg:px-12"
 
-// Or use Tailwind spacing: p-4, mb-8, gap-6 etc.
-// 8px base grid - never invent intermediate values`}
+// Applied to: Header, Footer, all pages
+
+// Vertical spacing
+py-6       → Header
+py-12/16/20 → Footer (responsive)
+pt-24/28/32 → Page hero sections
+
+// Container internal padding
+p-6 md:p-8 → Standard container
+p-8 md:p-10 → Large container (CTA)`}
               </pre>
             </div>
           </div>
         </section>
 
-        {/* 6. Components */}
+        {/* 7. Components */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">06</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">07</span>
             Components
           </h2>
 
@@ -504,11 +667,14 @@ font-input text-xs → METADATA (11px)
               <div className="space-y-4">
                 <button className="btn">Default Button</button>
                 <button className="btn" disabled>Disabled State</button>
+                <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-2">
+                  NO BORDER-RADIUS ON BUTTONS - SQUARE CORNERS ONLY
+                </p>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
 {`.btn {
   display: inline-flex;
   padding: 0.75rem 1.5rem;
@@ -522,8 +688,10 @@ font-input text-xs → METADATA (11px)
 .btn:hover {
   background: var(--text-primary);
   color: var(--bg-primary);
-  border-color: var(--text-primary);
-}`}
+}
+
+// No border-radius - buttons are always
+// square-cornered per design system rules`}
               </pre>
             </div>
           </div>
@@ -542,318 +710,37 @@ font-input text-xs → METADATA (11px)
                   <span>PARTICLES: 1000</span>
                 </div>
               </div>
-              <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-4">
+              <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
                 ALWAYS DARK - EVEN IN LIGHT MODE
               </p>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
 {`.control-panel {
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-text);
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 
-// Always dark regardless of page theme
-// For visualiser controls and lab UI`}
-              </pre>
-            </div>
-          </div>
-        </section>
-
-        {/* 7. Guardrails */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">07</span>
-            Visual Guardrails
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <div className="p-6 border border-[var(--status-critical)] rounded-lg mb-4">
-                <h3 className="text-lg font-medium mb-4 text-[var(--status-critical)]">Never Do</h3>
-                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                  <li>• Use colours outside the defined palette</li>
-                  <li>• Add drop shadows to widgets or components</li>
-                  <li>• Use decorative gradients</li>
-                  <li>• Place text over complex visualisations without background</li>
-                  <li>• Use pie charts (bar charts are clearer)</li>
-                  <li>• Add animations that serve no informational purpose</li>
-                  <li>• Rotate, stretch, outline, or add effects to the logo</li>
-                  <li>• Use em dashes (use hyphens instead)</li>
-                </ul>
-              </div>
-            </div>
-            <div>
-              <div className="p-6 border border-[var(--status-nominal)] rounded-lg">
-                <h3 className="text-lg font-medium mb-4 text-[var(--status-nominal)]">Always Do</h3>
-                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                  <li>• Use British English (colour, visualisation, etc.)</li>
-                  <li>• Every widget must have: header (title + status), body (visualisation), footer (source + timestamp)</li>
-                  <li>• Typography roles: NHG for UI, Input Mono for data, Sabon for reading</li>
-                  <li>• Credit data sources in every widget</li>
-                  <li>• Last-updated timestamp must be visible</li>
-                  <li>• Maintain 8px spacing grid</li>
-                  <li>• Respect the mathematics - show equations, don&apos;t hide them</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 8. Brand Voice */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">08</span>
-            Brand Voice & Terminology
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)] mb-4">USE</h3>
-              <ul className="space-y-2 text-base">
-                <li>• MXWLL (always uppercase)</li>
-                <li>• explanation design</li>
-                <li>• visualisation (British spelling)</li>
-                <li>• data visualisation</li>
-                <li>• colour (British)</li>
-                <li>• hyphens for breaks</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-input text-[var(--text-sm)] text-[var(--text-tertiary)] mb-4">NEVER USE</h3>
-              <ul className="space-y-2 text-base text-[var(--text-secondary)]">
-                <li>• innovative, cutting-edge</li>
-                <li>• leverage, synergy</li>
-                <li>• disrupt, stakeholder</li>
-                <li>• solution (unless chemical)</li>
-                <li>• utilize (use &quot;use&quot;)</li>
-                <li>• amazing, game-changing</li>
-                <li>• best-in-class, deliverable</li>
-                <li>• em dashes, en dashes</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* 9. Layout & Structure */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">09</span>
-            Layout & Structure
-          </h2>
-
-          {/* Breakpoints */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Breakpoints</h3>
-              <div className="space-y-4">
-                <div className="p-4 border border-[var(--border-light)] rounded">
-                  <p className="font-input text-xs text-[var(--text-tertiary)] mb-2">MOBILE (DEFAULT)</p>
-                  <p className="text-sm text-[var(--text-secondary)]">0px - 767px</p>
-                </div>
-                <div className="p-4 border border-[var(--border-light)] rounded">
-                  <p className="font-input text-xs text-[var(--text-tertiary)] mb-2">TABLET (MD)</p>
-                  <p className="text-sm text-[var(--text-secondary)]">768px - 1023px</p>
-                </div>
-                <div className="p-4 border border-[var(--border-light)] rounded">
-                  <p className="font-input text-xs text-[var(--text-tertiary)] mb-2">DESKTOP (LG)</p>
-                  <p className="text-sm text-[var(--text-secondary)]">1024px+</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`// Tailwind default breakpoints
-Mobile: default (no prefix)
-Tablet: md: (min-width: 768px)
-Desktop: lg: (min-width: 1024px)
-
-// Usage examples
-className="px-4 md:px-8 lg:px-12"
-className="text-sm md:text-base lg:text-lg"
-className="hidden md:block"
-
-// Always mobile-first approach`}
+// Uses NHG Text 500 (same as .font-label)
+// Always dark regardless of page theme`}
               </pre>
             </div>
           </div>
 
-          {/* Container Padding */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Container Padding</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-[var(--text-tertiary)]">Mobile:</span>
-                    <span className="font-mono">16px (px-4)</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[var(--text-tertiary)]">Tablet:</span>
-                    <span className="font-mono">32px (md:px-8)</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[var(--text-tertiary)]">Desktop:</span>
-                    <span className="font-mono">48px (lg:px-12)</span>
-                  </div>
-                </div>
-                <p className="font-input text-[10px] text-[var(--text-tertiary)] mt-6">
-                  HEADER, FOOTER, AND ALL PAGES USE THIS PADDING
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`// Standard container padding
-className="px-4 md:px-8 lg:px-12"
-
-// Applied to:
-- Header
-- Footer
-- All page content
-- Design system page
-
-// Vertical spacing
-py-6       → Header (24px top/bottom)
-py-12/16/20 → Footer responsive
-pt-24/28/32 → Page hero sections`}
-              </pre>
-            </div>
-          </div>
-
-          {/* Body Styles */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Body & Document</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <p className="font-input text-xs text-[var(--text-tertiary)] mb-1">BACKGROUND</p>
-                    <p className="font-mono">#FFFFFF (white)</p>
-                  </div>
-                  <div>
-                    <p className="font-input text-xs text-[var(--text-tertiary)] mb-1">BASE FONT</p>
-                    <p>Neue Haas Grotesk Text, 16px, -0.01em tracking</p>
-                  </div>
-                  <div>
-                    <p className="font-input text-xs text-[var(--text-tertiary)] mb-1">LINE HEIGHT</p>
-                    <p>1.5 (body), 1.6 (prose)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`body {
-  background: #FFFFFF;
-  color: var(--text-primary);
-  font-family: var(--font-text);
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: -0.01em;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-}`}
-              </pre>
-            </div>
-          </div>
-        </section>
-
-        {/* 10. Footer */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">10</span>
-            Footer
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Footer Layout</h3>
-              <div className="p-8 bg-black rounded-lg">
-                <div className="grid grid-cols-2 gap-8">
-                  <div>
-                    <Logo className="h-10 w-auto text-white" />
-                  </div>
-                  <div className="flex flex-col gap-2 text-xs">
-                    <span className="text-white underline">Work</span>
-                    <span className="text-white">Lab</span>
-                    <span className="text-white">Method</span>
-                    <span className="text-white">Services</span>
-                    <span className="text-white">About</span>
-                    <span className="text-white">Contact</span>
-                    <span className="text-white">Get a Quote</span>
-                    <span className="text-white mt-2">Instagram</span>
-                    <span className="text-white">hello@mxwll.io</span>
-                    <span className="text-white/50 text-[10px] mt-1">© 2026 MXWLL</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CURRENT STYLING</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<footer className="w-full bg-black mt-24">
-  <div className="px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-      {/* Logo - spans 2 columns */}
-      <div className="col-span-2">
-        <Logo className="h-20 md:h-24 lg:h-32 w-auto text-white" />
-      </div>
-
-      {/* Gap column on desktop */}
-      <div className="hidden md:block md:col-span-1"></div>
-
-      {/* Navigation links */}
-      <nav className="col-span-1 flex flex-col gap-3">
-        <Link className="text-sm text-white hover:underline w-fit">
-          Work
-        </Link>
-        {/* ... more nav links */}
-      </nav>
-
-      {/* Instagram + Email */}
-      <div className="col-span-1 flex flex-col gap-3">
-        <a className="text-sm text-white hover:underline">Instagram</a>
-        <a className="text-sm text-white hover:underline">hello@mxwll.io</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-// All links: white with underline on hover
-// Copyright: white/50
-// No colour changes, underline only`}
-              </pre>
-            </div>
-          </div>
-        </section>
-
-        {/* 11. Forms & Contact */}
-        <section className="mb-24">
-          <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">11</span>
-            Forms & Contact
-          </h2>
-
-          {/* Form Inputs */}
+          {/* Forms */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Form Inputs</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-6">
-                {/* Text Input - Default */}
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-8 space-y-6">
                 <div>
                   <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
                     Text input
@@ -864,8 +751,6 @@ pt-24/28/32 → Page hero sections`}
                     className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
                   />
                 </div>
-
-                {/* Select Dropdown */}
                 <div>
                   <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
                     Select
@@ -876,20 +761,6 @@ pt-24/28/32 → Page hero sections`}
                     <option>Option 2</option>
                   </select>
                 </div>
-
-                {/* Textarea */}
-                <div>
-                  <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
-                    Textarea
-                  </label>
-                  <textarea
-                    rows={4}
-                    placeholder="Enter longer text"
-                    className="w-full px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors resize-y"
-                  />
-                </div>
-
-                {/* Error State */}
                 <div>
                   <label className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
                     Error state
@@ -903,9 +774,9 @@ pt-24/28/32 → Page hero sections`}
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">FORM INPUT CLASSES</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`// Base Input Classes
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">FORM CLASSES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Base Input
 className="w-full px-3 py-2
   border border-[var(--border)]
   font-nhg text-sm
@@ -915,231 +786,268 @@ className="w-full px-3 py-2
   focus:border-[var(--text-primary)]
   transition-colors"
 
-// Label Classes (NHG, not Input Mono)
+// Labels (NHG, normal case)
 className="block font-nhg text-xs
   text-[var(--text-secondary)] mb-2"
 
-// Normal case, not uppercase
-// Use NHG for all form text (labels, inputs, buttons)
-
-// Error State
-border-red-600 (instead of border-[var(--border)])
-<p className="text-sm text-red-600 mt-1">Error message</p>
-
-// Textarea: add resize-y
-// Select: same classes as input`}
-              </pre>
-            </div>
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Newsletter Signup</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white space-y-6">
-                {/* Desktop: Inline */}
-                <div>
-                  <p className="font-input text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
-                    Desktop (Inline)
-                  </p>
-                  <div className="flex gap-3">
-                    <input
-                      type="email"
-                      placeholder="Your email"
-                      className="flex-1 px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
-                    />
-                    <button className="px-6 py-2 bg-[var(--text-primary)] text-[var(--bg-primary)] font-nhg text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-
-                {/* Mobile: Stacked */}
-                <div>
-                  <p className="font-input text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
-                    Mobile (Stacked)
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <input
-                      type="email"
-                      placeholder="Your email"
-                      className="px-3 py-2 border border-[var(--border)] font-nhg text-sm text-[var(--text-primary)] bg-white placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors"
-                    />
-                    <button className="px-6 py-2 bg-[var(--text-primary)] text-[var(--bg-primary)] font-nhg text-sm hover:opacity-90 transition-opacity">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">NEWSLETTER CLASSES</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`// Desktop (inline)
-<div className="flex flex-col md:flex-row gap-3">
-  <input className="flex-1 px-3 py-2 ..." />
-  <button className="px-6 py-2 ... whitespace-nowrap">
-    Subscribe
-  </button>
-</div>
-
-// Mobile (stacked)
-<div className="flex flex-col gap-3">
-  <input className="px-3 py-2 ..." />
-  <button className="px-6 py-2 ...">
-    Subscribe
-  </button>
-</div>
-
-// Button styling
-bg-[var(--text-primary)]
-text-[var(--bg-primary)]
-font-nhg text-sm
-hover:opacity-90
-transition-opacity`}
-              </pre>
-            </div>
-          </div>
-
-          {/* Callout Block */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div>
-              <h3 className="text-xl font-medium mb-6">Callout Block</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
-                <div className="border border-[var(--border)] bg-[var(--bg-secondary)] p-8">
-                  <p className="font-sabon text-base text-[var(--text-primary)] leading-relaxed mb-4">
-                    For a faster response with an instant estimate, use our quote tool - no call required.
-                  </p>
-                  <a
-                    href="/quote"
-                    className="inline-block px-4 py-2 text-sm font-nhg text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-colors border border-[var(--text-primary)]"
-                  >
-                    Get an instant estimate →
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">CALLOUT CLASSES</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`<div className="border border-[var(--border)]
-  bg-[var(--bg-secondary)] p-8">
-  <p className="font-sabon text-base
-    text-[var(--text-primary)]
-    leading-relaxed mb-4">
-    Callout text
-  </p>
-  <a className="inline-block px-4 py-2
-    text-sm font-nhg
-    text-[var(--text-primary)]
-    hover:bg-[var(--text-primary)]
-    hover:text-[var(--bg-primary)]
-    transition-colors
-    border border-[var(--text-primary)]">
-    Button text →
-  </a>
-</div>`}
+// Error state
+border-red-600
+<p className="text-sm text-red-600">
+  Error message
+</p>`}
               </pre>
             </div>
           </div>
         </section>
 
-        {/* 12. Explanation Modal */}
+        {/* 8. Visual Guardrails */}
         <section className="mb-24">
           <h2 className="text-3xl font-medium mb-12">
-            <span className="font-input text-[var(--text-tertiary)] text-sm mr-3">12</span>
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">08</span>
+            Visual Guardrails
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-6 border-l-4 border-[var(--status-critical)] mb-4">
+                <h3 className="text-lg font-medium mb-4 text-[var(--status-critical)]">Never Do</h3>
+                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
+                  <li>Use colours outside the defined palette</li>
+                  <li>Add drop shadows to widgets or components</li>
+                  <li>Use decorative gradients</li>
+                  <li>Place text over visualisations without background</li>
+                  <li>Use pie charts (bar charts are clearer)</li>
+                  <li>Add animations that serve no informational purpose</li>
+                  <li>Rotate, stretch, or add effects to the logo</li>
+                  <li>Use em dashes (use hyphens instead)</li>
+                  <li>Add border-radius to buttons</li>
+                  <li>Use fonts other than Neue Haas Grotesk</li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-6 border-l-4 border-[var(--status-nominal)]">
+                <h3 className="text-lg font-medium mb-4 text-[var(--status-nominal)]">Always Do</h3>
+                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
+                  <li>Use British English (colour, visualisation, etc.)</li>
+                  <li>Typography: NHG 700 for headings, NHG 400 for body, NHG 500 for labels</li>
+                  <li>Bold NHG must always have -0.03em letter-spacing</li>
+                  <li>Content containers: rounded-xl, bg-secondary fill</li>
+                  <li>Credit data sources in every visualiser</li>
+                  <li>Maintain 8px spacing grid</li>
+                  <li>Respect the mathematics - show equations, don&apos;t hide them</li>
+                  <li>Use .font-label for metadata and status text</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 9. Brand Voice */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">09</span>
+            Brand Voice & Terminology
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-label text-sm text-[var(--text-tertiary)] mb-4">USE</h3>
+              <ul className="space-y-2 text-base">
+                <li>MXWLL (always uppercase)</li>
+                <li>explanation design</li>
+                <li>visualisation (British spelling)</li>
+                <li>data visualisation</li>
+                <li>colour (British)</li>
+                <li>hyphens for breaks</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-label text-sm text-[var(--text-tertiary)] mb-4">NEVER USE</h3>
+              <ul className="space-y-2 text-base text-[var(--text-secondary)]">
+                <li>innovative, cutting-edge</li>
+                <li>leverage, synergy</li>
+                <li>disrupt, stakeholder</li>
+                <li>solution (unless chemical)</li>
+                <li>utilize (use &quot;use&quot;)</li>
+                <li>amazing, game-changing</li>
+                <li>best-in-class, deliverable</li>
+                <li>em dashes, en dashes</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* 10. Layout */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">10</span>
+            Layout & Structure
+          </h2>
+
+          {/* Breakpoints */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Breakpoints</h3>
+              <div className="space-y-4">
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-4">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">MOBILE (DEFAULT)</p>
+                  <p className="text-sm text-[var(--text-secondary)]">0px - 767px</p>
+                </div>
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-4">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">TABLET (MD)</p>
+                  <p className="text-sm text-[var(--text-secondary)]">768px - 1023px</p>
+                </div>
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-4">
+                  <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">DESKTOP (LG)</p>
+                  <p className="text-sm text-[var(--text-secondary)]">1024px+</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">NOTES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Tailwind default breakpoints
+Mobile: default (no prefix)
+Tablet: md: (min-width: 768px)
+Desktop: lg: (min-width: 1024px)
+
+// Always mobile-first approach
+className="px-4 md:px-8 lg:px-12"
+className="text-sm md:text-base lg:text-lg"
+className="hidden md:block"`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Footer</h3>
+              <div className="bg-black rounded-xl p-8">
+                <div className="grid grid-cols-2 gap-8">
+                  <div>
+                    <Logo className="h-10 w-auto text-white" />
+                  </div>
+                  <div className="flex flex-col gap-2 text-xs">
+                    <span className="text-white underline">Work</span>
+                    <span className="text-white">Lab</span>
+                    <span className="text-white">Method</span>
+                    <span className="text-white">Services</span>
+                    <span className="text-white">About</span>
+                    <span className="text-white">Contact</span>
+                    <span className="text-white mt-2">Instagram</span>
+                    <span className="text-white">hello@mxwll.io</span>
+                    <span className="text-white/50 text-[10px] mt-1">&copy; 2026 MXWLL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">NOTES</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Black background, white text
+// Logo 50% width on left
+// Nav menu on right
+// All links: white, underline on hover
+// Copyright: white/50
+
+className="w-full bg-black"
+className="px-4 md:px-8 lg:px-12
+  py-12 md:py-16 lg:py-20"`}
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        {/* 11. Explanation Modal */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-medium mb-12">
+            <span className="font-label text-[var(--text-tertiary)] text-sm mr-3">11</span>
             Explanation Modal
           </h2>
 
-          {/* Component */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div>
               <h3 className="text-xl font-medium mb-6">Four-Tier Explanation System</h3>
-              <div className="p-8 border border-[var(--border-light)] rounded-lg bg-white">
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-8">
                 <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
                   Different audiences need different explanations. This component presents content at four expertise levels based on the cognitive science principle of expertise reversal.
                 </p>
                 <button
                   onClick={() => setIsExplanationModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white text-sm font-display hover:bg-[var(--text-primary)] transition-colors rounded"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white text-sm font-display hover:bg-[var(--text-primary)] transition-colors"
                 >
                   Open Example Modal
                 </button>
               </div>
             </div>
             <div>
-              <p className="font-input text-[var(--text-xs)] text-[var(--text-tertiary)] mb-2">USAGE EXAMPLE</p>
-              <pre className="p-4 bg-[var(--bg-secondary)] rounded text-xs font-mono overflow-x-auto">
-{`import { ExplanationModal } from '@/components/ExplanationModal'
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">USAGE</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`import { ExplanationModal }
+  from '@/components/ExplanationModal'
 
 <ExplanationModal
   isOpen={isOpen}
   onClose={() => setIsOpen(false)}
   title="Black Holes"
-  subtitle="Objects so dense that nothing can escape"
+  subtitle="Objects so dense that
+    nothing can escape"
   tiers={[
-    {
-      level: 'child',
-      label: 'Simple',
-      description: 'Anyone can understand',
-      content: '...'
-    },
-    {
-      level: 'student',
-      label: 'Intuitive',
-      description: 'High school level',
-      content: '...'
-    },
-    // ... undergraduate and expert tiers
+    { level: 'child',
+      label: 'Simple', content: '...' },
+    { level: 'student',
+      label: 'Intuitive', content: '...' },
+    { level: 'undergraduate',
+      label: 'Technical', content: '...' },
+    { level: 'expert',
+      label: 'Advanced', content: '...' },
   ]}
   defaultTier="student"
-/>
-
-// Four levels:
-// - child: Concrete analogies, no jargon
-// - student: First principles, minimal math
-// - undergraduate: Equations, technical terms
-// - expert: Full formalism, current research`}
+/>`}
               </pre>
             </div>
           </div>
         </section>
 
-        <ExplanationModal
-          isOpen={isExplanationModalOpen}
-          onClose={() => setIsExplanationModalOpen(false)}
-          title="Black Holes"
-          subtitle="Objects so dense that nothing can escape"
-          tiers={[
-            {
-              level: 'child',
-              label: 'Simple',
-              description: 'Anyone can understand',
-              content: 'A black hole is like a cosmic vacuum cleaner - it sucks in everything nearby and nothing can escape, not even light! If you got too close, you would be stretched like spaghetti and pulled in forever.'
-            },
-            {
-              level: 'student',
-              label: 'Intuitive',
-              description: 'High school level',
-              content: 'When a massive star collapses, it creates a region where gravity is so strong that the escape velocity exceeds the speed of light. Nothing can move faster than light, so nothing can escape. The boundary where this happens is called the event horizon.'
-            },
-            {
-              level: 'undergraduate',
-              label: 'Technical',
-              description: 'University level',
-              content: "The Schwarzschild radius R_s = 2GM/c² defines the event horizon for a non-rotating black hole. For a solar mass black hole, R_s ≈ 3 km. Time dilation approaches infinity at the horizon from an external observer's perspective. The singularity at r=0 represents a breakdown of general relativity."
-            },
-            {
-              level: 'expert',
-              label: 'Advanced',
-              description: 'Graduate/research level',
-              content: 'Kerr metric describes rotating black holes with angular momentum parameter a. Frame-dragging in the ergosphere allows Penrose process for energy extraction. Hawking radiation implies black holes have entropy S = A/4 in Planck units, suggesting information paradox. Recent EHT observations confirm photon ring structure predicted by GR.'
-            }
-          ]}
-          defaultTier="student"
-        />
       </div>
       </div>
+
+      {/* Explanation Modal */}
+      <ExplanationModal
+        isOpen={isExplanationModalOpen}
+        onClose={() => setIsExplanationModalOpen(false)}
+        title="Black Holes"
+        subtitle="Objects so dense that nothing - not even light - can escape their gravitational pull"
+        tiers={[
+          {
+            level: 'child' as const,
+            label: 'Simple',
+            description: 'Anyone can understand',
+            content: 'Imagine something so heavy that even light gets stuck. A black hole is like a cosmic drain - everything that gets too close falls in and can never come back out. Not even the fastest thing in the universe (light!) can escape.',
+          },
+          {
+            level: 'student' as const,
+            label: 'Intuitive',
+            description: 'High school level',
+            content: 'When a massive star dies, its core can collapse under its own gravity until it becomes infinitely dense - a singularity. The boundary around it where escape velocity exceeds the speed of light is called the event horizon. Cross it, and there is no return. Black holes warp space and time so severely that time itself slows down near them.',
+          },
+          {
+            level: 'undergraduate' as const,
+            label: 'Technical',
+            description: 'University physics',
+            content: 'A black hole is described by the Schwarzschild metric (non-rotating) or Kerr metric (rotating). The event horizon radius rs = 2GM/c\u00b2 defines the causal boundary. Inside, all worldlines terminate at the singularity. Hawking radiation provides a quantum mechanical mechanism for black hole evaporation, with temperature T = \u0127c\u00b3/(8\u03c0GMkB).',
+          },
+          {
+            level: 'expert' as const,
+            label: 'Advanced',
+            description: 'Research level',
+            content: 'The information paradox remains unresolved: unitarity of quantum mechanics conflicts with the thermal nature of Hawking radiation. Recent developments in AdS/CFT suggest information is preserved in subtle correlations. The firewall paradox (AMPS) challenges the equivalence principle at the horizon. Loop quantum gravity approaches suggest the singularity is replaced by a Planck-density bounce.',
+          },
+        ]}
+        defaultTier="student"
+      />
     </div>
   )
 }

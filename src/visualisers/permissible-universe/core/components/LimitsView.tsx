@@ -58,7 +58,7 @@ export function LimitsView({ boundaries, onBoundaryClick }: Props) {
               </div>
 
               <div 
-                className="inline-block font-mono text-sm px-3 py-1.5 rounded-lg mb-4"
+                className="inline-block font-nhg text-sm px-3 py-1.5 rounded-lg mb-4"
                 style={{ backgroundColor: colors?.fill || 'rgba(255,255,255,0.1)', color: colors?.line || 'white' }}
               >
                 {boundary.equation}
@@ -96,15 +96,15 @@ export function LimitsView({ boundaries, onBoundaryClick }: Props) {
         <div className="flex flex-wrap gap-3">
           <div className="bg-white/5 rounded-lg px-4 py-2">
             <div className="text-xs text-white/40 uppercase tracking-wider">Planck Mass</div>
-            <div className="font-mono text-white">2.18 × 10⁻⁵ g</div>
+            <div className="font-nhg text-white">2.18 × 10⁻⁵ g</div>
           </div>
           <div className="bg-white/5 rounded-lg px-4 py-2">
             <div className="text-xs text-white/40 uppercase tracking-wider">Planck Length</div>
-            <div className="font-mono text-white">1.62 × 10⁻³³ cm</div>
+            <div className="font-nhg text-white">1.62 × 10⁻³³ cm</div>
           </div>
           <div className="bg-white/5 rounded-lg px-4 py-2">
             <div className="text-xs text-white/40 uppercase tracking-wider">Planck Time</div>
-            <div className="font-mono text-white">5.39 × 10⁻⁴⁴ s</div>
+            <div className="font-nhg text-white">5.39 × 10⁻⁴⁴ s</div>
           </div>
         </div>
       </div>

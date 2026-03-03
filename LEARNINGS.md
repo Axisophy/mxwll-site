@@ -146,6 +146,18 @@ When you learn something the hard way, add it here. Format:
 - **Solution**: Verify field presence directly in `public/data/gaia-stars.json` before wiring shader logic. Current export stores `ra`, `dec`, `bp_rp`, `abs_mag`, `teff` only.
 - **Rule**: Treat `phot_g_mean_mag` as unavailable at runtime unless explicitly added to the export script and JSON schema.
 
+### NHG-Only Typography Consolidation (2026-03-03)
+- **Problem**: Three-font system (NHG, Sabon, Input Mono) was inconsistent across the site and added load time.
+- **Solution**: Consolidated to NHG only. Sabon replaced by NHG Text 400. Input Mono replaced by NHG Text 500 with uppercase and 0.05em tracking (the `.font-label` class). Legacy CSS classes (`font-sabon`, `font-input`, `font-mono`) redirect to NHG in globals.css as a safety net.
+- **Rule**: Never add additional typefaces. Use `.font-label` for all metadata/label text (it sets weight 500, uppercase, 0.05em tracking). Bold NHG must always have `tracking-[-0.03em]`.
+- **Rule**: When using `tracking-tight` (Tailwind's -0.025em), replace with `tracking-[-0.03em]` for consistency with the design system's -0.03em standard.
+
+### Container System Standardisation (2026-03-03)
+- **Problem**: Containers used a mix of bordered cards (`border border-[var(--border)]`) and plain backgrounds with inconsistent border-radius values.
+- **Solution**: Standardised to `bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8` with no borders. Nested containers use `bg-[var(--bg-tertiary)] rounded-xl`. Interactive containers hover to `bg-[var(--bg-tertiary)]`.
+- **Rule**: No border-radius on buttons - rounded corners are for content containers only.
+- **Rule**: Use `rounded-xl` consistently, never `rounded-lg` for containers.
+
 ### Mobile Canvas Dimension Timing (2026-02-28)
 - **Problem**: Mobile visualiser views can render cropped or offset if canvas pixel size is resolved before layout is complete.
 - **Solution**: Resolve dimensions from `canvas.getBoundingClientRect()` after mount, set backing width/height with capped DPR, and gate animation start until dimensions are non-zero.

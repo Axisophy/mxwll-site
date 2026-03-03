@@ -608,7 +608,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
       {/* Loading overlay */}
       {isLoading && !webglError && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#050508] z-10">
-          <div className="text-white/50 text-sm font-mono animate-pulse">
+          <div className="text-white/50 text-sm font-nhg animate-pulse">
             Loading 100,000 asteroids...
           </div>
         </div>
@@ -618,10 +618,10 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
       {webglError && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#050508] z-10">
           <div className="text-center px-8">
-            <div className="text-white/70 text-sm font-mono mb-4">
+            <div className="text-white/70 text-sm font-nhg mb-4">
               {webglError}
             </div>
-            <div className="text-white/40 text-xs font-mono mb-4">
+            <div className="text-white/40 text-xs font-nhg mb-4">
               Chrome: Settings &gt; System &gt; Use hardware acceleration<br />
               Firefox: about:config &gt; webgl.disabled = false
             </div>
@@ -629,7 +629,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
               href="https://get.webgl.org/webgl2/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-blue)] text-xs font-mono hover:text-white transition-colors"
+              className="text-[var(--color-blue)] text-xs font-nhg hover:text-white transition-colors"
             >
               Test WebGL2 support
             </a>
@@ -661,19 +661,19 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
                 style={{ left: `${auToScreenX(tick)}%`, transform: 'translateX(-50%)' }}
               >
                 <div className="w-px h-2 bg-white/30 mx-auto" />
-                <div className="text-[9px] font-mono text-white/40 mt-1">{tick.toFixed(1)}</div>
+                <div className="text-[9px] font-nhg text-white/40 mt-1">{tick.toFixed(1)}</div>
               </div>
             ))}
           </div>
 
           {/* X-axis label */}
-          <div className="absolute bottom-14 md:bottom-16 left-1/2 transform -translate-x-1/2 text-[9px] font-mono text-white/30">
+          <div className="absolute bottom-14 md:bottom-16 left-1/2 transform -translate-x-1/2 text-[9px] font-nhg text-white/30">
             Distance from the Sun (AU)
           </div>
 
           {/* Y-axis indicator */}
           <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -rotate-90 origin-center">
-            <div className="text-[9px] font-mono text-white/30 whitespace-nowrap flex items-center gap-2">
+            <div className="text-[9px] font-nhg text-white/30 whitespace-nowrap flex items-center gap-2">
               <span>Fewer</span>
               <span className="text-white/20">|</span>
               <span>More asteroids</span>
@@ -699,10 +699,10 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
                 />
 
                 <div className="absolute top-16 md:top-20">
-                  <div className="text-xs md:text-sm font-mono text-white/70 font-medium">
+                  <div className="text-xs md:text-sm font-nhg text-white/70 font-medium">
                     {gap.ratio}
                   </div>
-                  <div className="text-[9px] font-mono text-white/30 mt-1 whitespace-nowrap">
+                  <div className="text-[9px] font-nhg text-white/30 mt-1 whitespace-nowrap">
                     {GAP_EXPLANATIONS[gap.ratio]}
                   </div>
                 </div>
@@ -720,7 +720,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
         >
           {/* Sun indicator */}
           <div
-            className="absolute text-xs font-mono text-yellow-500/70"
+            className="absolute text-xs font-nhg text-yellow-500/70"
             style={{
               left: `calc(50% + ${panRef.current.x * zoomRef.current * 50}%)`,
               top: `calc(50% - ${panRef.current.y * zoomRef.current * 50}%)`,
@@ -740,7 +740,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
             return (
               <div
                 key={planet.name}
-                className="absolute text-[8px] font-mono uppercase tracking-wider"
+                className="absolute text-[8px] font-nhg uppercase tracking-wider"
                 style={{
                   left: `calc(50% + ${(labelX + panRef.current.x) * zoomRef.current * 50}%)`,
                   top: `calc(50% - ${(labelY + panRef.current.y) * zoomRef.current * 50}%)`,
@@ -755,7 +755,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
 
           {/* Main Belt label */}
           <div
-            className="absolute text-[10px] font-mono text-white/15 uppercase tracking-widest"
+            className="absolute text-[10px] font-nhg text-white/15 uppercase tracking-widest"
             style={{
               left: `calc(50% + ${(2.7 * Math.cos(Math.PI * 0.6) + panRef.current.x) * zoomRef.current * 50}%)`,
               top: `calc(50% - ${(2.7 * Math.sin(Math.PI * 0.6) + panRef.current.y) * zoomRef.current * 50}%)`,
@@ -770,7 +770,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
       {/* Legend - bottom left (spatial view) */}
       {!isLoading && spatialOpacity > 0.5 && (
         <div
-          className="absolute bottom-20 left-4 pointer-events-none text-[8px] font-mono text-white/40 space-y-1"
+          className="absolute bottom-20 left-4 pointer-events-none text-[8px] font-nhg text-white/40 space-y-1"
           style={{ opacity: Math.max(0, (spatialOpacity - 0.5) * 2) }}
         >
           {ORBIT_CLASS_LEGEND.map((item) => (
@@ -789,27 +789,27 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
           style={{ opacity: Math.max(0, (familyOpacity - 0.5) * 2) }}
         >
           {/* Axis labels */}
-          <div className="absolute bottom-14 md:bottom-16 left-1/2 transform -translate-x-1/2 text-[9px] font-mono text-white/30">
+          <div className="absolute bottom-14 md:bottom-16 left-1/2 transform -translate-x-1/2 text-[9px] font-nhg text-white/30">
             Semi-major axis (AU)
           </div>
           <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -rotate-90 origin-center">
-            <div className="text-[9px] font-mono text-white/30">
+            <div className="text-[9px] font-nhg text-white/30">
               Eccentricity
             </div>
           </div>
 
           {/* Title */}
           <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center">
-            <div className="text-sm font-mono text-white/60 uppercase tracking-wider">
+            <div className="text-sm font-nhg text-white/60 uppercase tracking-wider">
               Asteroid Families
             </div>
-            <div className="text-[9px] font-mono text-white/30 mt-1">
+            <div className="text-[9px] font-nhg text-white/30 mt-1">
               Collisional fragments cluster in orbital element space
             </div>
           </div>
 
           {/* Family legend */}
-          <div className="absolute bottom-20 left-4 text-[8px] font-mono text-white/40 space-y-1">
+          <div className="absolute bottom-20 left-4 text-[8px] font-nhg text-white/40 space-y-1">
             {ASTEROID_FAMILIES.slice(0, 5).map((family) => (
               <div key={family.name} className="flex items-center gap-2">
                 <div
@@ -820,7 +820,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
               </div>
             ))}
           </div>
-          <div className="absolute bottom-20 left-28 text-[8px] font-mono text-white/40 space-y-1">
+          <div className="absolute bottom-20 left-28 text-[8px] font-nhg text-white/40 space-y-1">
             {ASTEROID_FAMILIES.slice(5).map((family) => (
               <div key={family.name} className="flex items-center gap-2">
                 <div
@@ -846,22 +846,22 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
         >
           {/* Title */}
           <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center">
-            <div className="text-sm font-mono text-[var(--color-pink)] uppercase tracking-wider">
+            <div className="text-sm font-nhg text-[var(--color-pink)] uppercase tracking-wider">
               Near-Earth Objects
             </div>
-            <div className="text-[9px] font-mono text-white/30 mt-1">
+            <div className="text-[9px] font-nhg text-white/30 mt-1">
               Asteroids with perihelion &lt; 1.3 AU
             </div>
           </div>
 
           {/* X-axis label */}
-          <div className="absolute bottom-14 md:bottom-16 left-1/2 transform -translate-x-1/2 text-[9px] font-mono text-white/30">
+          <div className="absolute bottom-14 md:bottom-16 left-1/2 transform -translate-x-1/2 text-[9px] font-nhg text-white/30">
             Perihelion distance (AU)
           </div>
 
           {/* Earth orbit marker */}
           <div
-            className="absolute text-[9px] font-mono text-[var(--color-blue)]"
+            className="absolute text-[9px] font-nhg text-[var(--color-blue)]"
             style={{ left: 'calc(5% + 66.67% * 1.0 / 1.5)', bottom: '20%' }}
           >
             <div className="w-px h-12 bg-[var(--color-blue)]/30" />
@@ -869,7 +869,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
           </div>
 
           {/* Legend */}
-          <div className="absolute bottom-20 left-4 text-[8px] font-mono text-white/40 space-y-1">
+          <div className="absolute bottom-20 left-4 text-[8px] font-nhg text-white/40 space-y-1">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-red-500" />
               <span>Closest approach</span>
@@ -894,10 +894,10 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
         >
           {/* Title */}
           <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-center">
-            <div className="text-sm font-mono text-white/60 uppercase tracking-wider">
+            <div className="text-sm font-nhg text-white/60 uppercase tracking-wider">
               Discovery Timeline
             </div>
-            <div className="text-[9px] font-mono text-white/30 mt-1">
+            <div className="text-[9px] font-nhg text-white/30 mt-1">
               From Ceres (1801) to modern surveys
             </div>
           </div>
@@ -913,14 +913,14 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
                   style={{ left: `${xPercent}%`, transform: 'translateX(-50%)' }}
                 >
                   <div className="w-px h-2 bg-white/30 mx-auto" />
-                  <div className="text-[9px] font-mono text-white/40 mt-1">{year}</div>
+                  <div className="text-[9px] font-nhg text-white/40 mt-1">{year}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Key events */}
-          <div className="absolute left-4 top-20 text-[8px] font-mono text-white/40 space-y-2">
+          <div className="absolute left-4 top-20 text-[8px] font-nhg text-white/40 space-y-2">
             <div>
               <span className="text-white/60">1801</span> Ceres discovered
             </div>
@@ -941,7 +941,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
       {toastMessage && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20
           bg-black/80 backdrop-blur-sm border border-white/10 px-4 py-2
-          text-white/70 text-sm font-mono rounded-lg">
+          text-white/70 text-sm font-nhg rounded-lg">
           {toastMessage}
         </div>
       )}
@@ -950,7 +950,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
       {showInfo && (
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20
           w-72 bg-black/80 backdrop-blur-xl border border-white/10
-          rounded-lg p-4 text-[10px] font-mono text-white/50">
+          rounded-lg p-4 text-[10px] font-nhg text-white/50">
           <button
             onClick={() => setShowInfo(false)}
             className="absolute top-2 right-2 text-white/40 hover:text-white/60"
@@ -983,7 +983,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
                 onClick={() => transitionToView(view.id)}
                 disabled={isTransitioning}
                 className={`
-                  px-3 py-1.5 text-[10px] uppercase tracking-[0.08em] rounded-full
+                  px-3 py-1.5 text-[10px] uppercase tracking-[0.05em] rounded-full
                   transition-all duration-300
                   ${activeView === view.id
                     ? 'bg-white/15 text-white/90'

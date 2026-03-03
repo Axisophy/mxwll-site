@@ -48,7 +48,7 @@ export function BoundaryModal({
           <div>
             <div className="flex items-center gap-2 mb-1">
               <AlertTriangle className="w-4 h-4" style={{ color: boundary.color }} />
-              <span className="text-xs font-mono uppercase tracking-wider" style={{ color: boundary.color }}>Forbidden Zone</span>
+              <span className="text-xs font-nhg uppercase tracking-wider" style={{ color: boundary.color }}>Forbidden Zone</span>
             </div>
             <h2 className="text-2xl font-light text-white">{boundary.name}</h2>
             <p className="text-white/60 text-sm mt-1">{boundary.shortName}</p>
@@ -60,7 +60,7 @@ export function BoundaryModal({
         
         <div className="overflow-y-auto max-h-[calc(90vh-140px)] px-6 py-6">
           <div className="bg-white/5 rounded-xl p-5 mb-6 text-center">
-            <div className="text-3xl font-mono text-white mb-2">{boundary.equation}</div>
+            <div className="text-3xl font-nhg text-white mb-2">{boundary.equation}</div>
             <p className="text-sm text-white/50">{boundary.equationExplained}</p>
           </div>
           
