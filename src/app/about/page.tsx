@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'About - MXWLL',
+  description: 'MXWLL is an explanation design studio for science, data, and the complex. Founded by Simon Tyler - designer, illustrator, and author.',
+}
 
 export default function AboutPage() {
   return (

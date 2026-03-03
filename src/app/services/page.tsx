@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Services - MXWLL',
+  description: 'Explanation design systems, data visualisation, scientific illustration, research communication, and the Audit. We make complex things comprehensible.',
+}
 
 export default function ServicesPage() {
   return (
@@ -21,7 +27,7 @@ export default function ServicesPage() {
 
           {/* Card 1 - Explanation Design Systems */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               EXPLANATION DESIGN
             </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
@@ -37,7 +43,7 @@ export default function ServicesPage() {
 
           {/* Card 2 - Research & Impact */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               RESEARCH & IMPACT
             </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
@@ -53,7 +59,7 @@ export default function ServicesPage() {
 
           {/* Card 3 - Data Visualisation */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               DATA VISUALISATION
             </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
@@ -69,7 +75,7 @@ export default function ServicesPage() {
 
           {/* Card 4 - Product Explainers */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               PRODUCT EXPLAINERS
             </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
@@ -85,7 +91,7 @@ export default function ServicesPage() {
 
           {/* Card 5 - Illustration */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               ILLUSTRATION
             </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
@@ -101,7 +107,7 @@ export default function ServicesPage() {
 
           {/* Card 6 - The Audit */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               THE AUDIT
             </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em] mb-4">
@@ -118,12 +124,27 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Placeholder - Work thumbnails */}
+      {/* Selected work strip */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="bg-[var(--bg-secondary)] rounded-xl aspect-[3/1] flex items-center justify-center">
-          <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] text-center px-4">
-            PLACEHOLDER: 2-3 small work thumbnails as horizontal strip showing range across service types
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-[#050508] rounded-xl aspect-[16/9] flex items-end p-5">
+            <div>
+              <p className="font-nhg text-sm font-medium text-white">Stellar Cartography</p>
+              <p className="font-nhg text-xs text-white/50">Interactive visualisation</p>
+            </div>
+          </div>
+          <div className="bg-[#050508] rounded-xl aspect-[16/9] flex items-end p-5">
+            <div>
+              <p className="font-nhg text-sm font-medium text-white">Chart of Nuclides</p>
+              <p className="font-nhg text-xs text-white/50">Explanation design</p>
+            </div>
+          </div>
+          <div className="bg-[#050508] rounded-xl aspect-[16/9] flex items-end p-5">
+            <div>
+              <p className="font-nhg text-sm font-medium text-white">Gravitational Wave</p>
+              <p className="font-nhg text-xs text-white/50">Interactive narrative</p>
+            </div>
+          </div>
         </div>
       </section>
 

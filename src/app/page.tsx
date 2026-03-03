@@ -19,7 +19,7 @@ export default function Home() {
       {/* Stellar Cartography */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <Link href="/work/stellar-cartography" className="block">
-          <div className="relative bg-[#050508] overflow-hidden border border-[var(--border-light)] transition-colors hover:border-white/30">
+          <div className="relative bg-[#050508] overflow-hidden rounded-xl border border-[var(--border-light)] transition-colors hover:border-white/30">
             <StellarDemo className="w-full h-full" />
             <div className="absolute top-6 left-6">
               <h2 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1">
@@ -36,7 +36,7 @@ export default function Home() {
       {/* Chart of Nuclides */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <Link href="/work/nuclide-chart" className="block">
-          <div className="relative bg-[#050508] overflow-hidden border border-[var(--border-light)] aspect-[16/9] transition-colors hover:border-white/30">
+          <div className="relative bg-[#050508] overflow-hidden rounded-xl border border-[var(--border-light)] aspect-[16/9] transition-colors hover:border-white/30">
             <div className="absolute top-6 left-6">
               <h2 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1">
                 Chart of Nuclides
@@ -52,7 +52,7 @@ export default function Home() {
       {/* Gravitational Wave Detection */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <Link href="/work/gravitational-wave" className="block">
-          <div className="relative bg-[#050508] overflow-hidden border border-[var(--border-light)] aspect-[16/9] transition-colors hover:border-white/30">
+          <div className="relative bg-[#050508] overflow-hidden rounded-xl border border-[var(--border-light)] aspect-[16/9] transition-colors hover:border-white/30">
             <div className="absolute top-6 left-6">
               <h2 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1">
                 Gravitational Wave Detection
@@ -68,7 +68,7 @@ export default function Home() {
       {/* Permissible Universe */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <Link href="/work/permissible-universe" className="block">
-          <div className="relative bg-[#050508] overflow-hidden border border-[var(--border-light)] aspect-[16/9] transition-colors hover:border-white/30">
+          <div className="relative bg-[#050508] overflow-hidden rounded-xl border border-[var(--border-light)] aspect-[16/9] transition-colors hover:border-white/30">
             <div className="absolute top-6 left-6">
               <h2 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1">
                 The Permissible Universe
@@ -83,7 +83,7 @@ export default function Home() {
 
       {/* Phylogenetic Trees */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="relative bg-white overflow-hidden border border-[var(--border-light)] aspect-[16/9]">
+        <div className="relative bg-white overflow-hidden rounded-xl border border-[var(--border-light)] aspect-[16/9]">
           <img
             src="/images/work/dinosauria-phylogenetic.png"
             alt="Phylogenetic tree of Dinosauria"
@@ -102,13 +102,13 @@ export default function Home() {
 
       {/* Illustrations */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="relative bg-[#050508] overflow-hidden border border-[var(--border-light)] aspect-[16/9]">
+        <div className="relative bg-[#050508] overflow-hidden rounded-xl border border-[var(--border-light)] aspect-[16/9]">
           <div className="absolute top-6 left-6">
             <h2 className="font-nhg text-2xl md:text-3xl font-bold text-white mb-1">
               Illustrations
             </h2>
             <p className="font-nhg text-sm md:text-base text-white/70">
-              Placeholder secondary text for illustrations showcase
+              Scientific illustration, pictogram systems, and visual languages built for clarity
             </p>
           </div>
         </div>

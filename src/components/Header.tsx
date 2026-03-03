@@ -44,7 +44,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`
-                    text-sm font-text text-[var(--text-primary)] whitespace-nowrap
+                    text-sm font-nhg text-[var(--text-primary)] whitespace-nowrap
                     ${
                       pathname === link.href
                         ? 'underline'

@@ -30,7 +30,7 @@ export default function MethodPage() {
 
           {/* Cell A - Understand */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               UNDERSTAND
             </p>
             <h2 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-4">
@@ -43,7 +43,7 @@ export default function MethodPage() {
 
           {/* Cell B - Structure */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               STRUCTURE
             </p>
             <h2 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-4">
@@ -56,7 +56,7 @@ export default function MethodPage() {
 
           {/* Cell C - Build */}
           <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-            <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+            <p className="font-label text-xs text-[var(--text-tertiary)] mb-3">
               BUILD
             </p>
             <h2 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-4">
@@ -69,11 +69,30 @@ export default function MethodPage() {
 
         </div>
 
-        {/* Placeholder - Process diagram */}
-        <div className="mt-8 border-2 border-dashed border-[var(--border)] rounded-xl aspect-[3/1] flex items-center justify-center bg-[var(--bg-secondary)]">
-          <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] text-center px-4">
-            DIAGRAM: Three-stage process arc - Understand → Structure → Build - simple horizontal flow diagram, MXWLL colour palette, clean geometric style
-          </p>
+        {/* Process flow diagram */}
+        <div className="mt-8 bg-[var(--bg-secondary)] rounded-xl p-8 md:p-12">
+          <div className="flex items-center justify-center gap-4 md:gap-8">
+            <div className="flex-1 text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[var(--text-primary)] text-[var(--bg-primary)] flex items-center justify-center mx-auto mb-3">
+                <span className="font-display text-lg md:text-xl font-bold">1</span>
+              </div>
+              <p className="font-display text-sm md:text-base font-bold tracking-[-0.03em]">Understand</p>
+            </div>
+            <div className="flex-shrink-0 w-8 md:w-16 h-[2px] bg-[var(--border)]" />
+            <div className="flex-1 text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[var(--text-primary)] text-[var(--bg-primary)] flex items-center justify-center mx-auto mb-3">
+                <span className="font-display text-lg md:text-xl font-bold">2</span>
+              </div>
+              <p className="font-display text-sm md:text-base font-bold tracking-[-0.03em]">Structure</p>
+            </div>
+            <div className="flex-shrink-0 w-8 md:w-16 h-[2px] bg-[var(--border)]" />
+            <div className="flex-1 text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[var(--text-primary)] text-[var(--bg-primary)] flex items-center justify-center mx-auto mb-3">
+                <span className="font-display text-lg md:text-xl font-bold">3</span>
+              </div>
+              <p className="font-display text-sm md:text-base font-bold tracking-[-0.03em]">Build</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -139,11 +158,28 @@ export default function MethodPage() {
                     </div>
                   </div>
 
-                  {/* Placeholder - Seven-stage arc */}
-                  <div className="border-2 border-dashed border-[var(--border)] rounded-xl aspect-[2/1] flex items-center justify-center bg-[var(--bg-secondary)] mb-4">
-                    <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] text-center px-4">
-                      DIAGRAM: Seven-stage explanation arc - Hook / Anchor / Foundation / Build / Reward / Extend / Launch - horizontal timeline or rising arc shape
-                    </p>
+                  {/* Seven-stage explanation arc */}
+                  <div className="bg-[var(--bg-tertiary)] rounded-xl p-6 mb-4 overflow-x-auto">
+                    <div className="flex items-end gap-1 min-w-[500px]">
+                      {[
+                        { label: 'Hook', h: 40, desc: 'Open the gap' },
+                        { label: 'Anchor', h: 50, desc: 'Familiar ground' },
+                        { label: 'Foundation', h: 60, desc: 'Core concepts' },
+                        { label: 'Build', h: 75, desc: 'Layer complexity' },
+                        { label: 'Reward', h: 90, desc: 'The insight' },
+                        { label: 'Extend', h: 80, desc: 'Broader context' },
+                        { label: 'Launch', h: 70, desc: 'What next?' },
+                      ].map((stage) => (
+                        <div key={stage.label} className="flex-1 flex flex-col items-center">
+                          <p className="font-nhg text-[10px] text-[var(--text-tertiary)] mb-1">{stage.desc}</p>
+                          <div
+                            className="w-full bg-[var(--text-primary)] rounded-t-sm"
+                            style={{ height: `${stage.h}px` }}
+                          />
+                          <p className="font-label text-[10px] text-[var(--text-secondary)] mt-2">{stage.label.toUpperCase()}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   <p className="font-nhg text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -203,11 +239,24 @@ export default function MethodPage() {
                     </div>
                   </div>
 
-                  {/* Placeholder - Audit report mockup */}
-                  <div className="border-2 border-dashed border-[var(--border)] rounded-xl aspect-[4/3] flex items-center justify-center bg-[var(--bg-secondary)] mb-4">
-                    <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] text-center px-4">
-                      DIAGRAM / MOCKUP: Sample audit report page - six-dimension assessment as designed infographic, spider/radar chart or scored grid
-                    </p>
+                  {/* Audit dimensions grid */}
+                  <div className="bg-[var(--bg-tertiary)] rounded-xl p-6 mb-4">
+                    <p className="font-label text-[10px] text-[var(--text-tertiary)] mb-4">SIX AUDIT DIMENSIONS</p>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {[
+                        { dim: 'Vocabulary', score: '—' },
+                        { dim: 'Structure', score: '—' },
+                        { dim: 'Visual alignment', score: '—' },
+                        { dim: 'Cognitive load', score: '—' },
+                        { dim: 'Engagement', score: '—' },
+                        { dim: 'Audience calibration', score: '—' },
+                      ].map((item) => (
+                        <div key={item.dim} className="bg-[var(--bg-secondary)] rounded-lg p-4">
+                          <p className="font-nhg text-sm font-medium text-[var(--text-primary)]">{item.dim}</p>
+                          <p className="font-nhg text-xs text-[var(--text-tertiary)] mt-1">Assessed and scored</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Callout box */}
@@ -273,11 +322,33 @@ export default function MethodPage() {
                     </div>
                   </div>
 
-                  {/* Placeholder - Visual encoding hierarchy */}
-                  <div className="border-2 border-dashed border-[var(--border)] rounded-xl aspect-[1/2] max-w-md mx-auto flex items-center justify-center bg-[var(--bg-secondary)]">
-                    <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] text-center px-4">
-                      DIAGRAM: Visual encoding hierarchy - ranked list showing position &gt; length &gt; area &gt; colour saturation, clean typographic treatment
-                    </p>
+                  {/* Visual encoding hierarchy */}
+                  <div className="bg-[var(--bg-tertiary)] rounded-xl p-6 max-w-md mx-auto">
+                    <p className="font-label text-[10px] text-[var(--text-tertiary)] mb-4">PERCEPTUAL ACCURACY (CLEVELAND, 1984)</p>
+                    <div className="space-y-3">
+                      {[
+                        { rank: 1, channel: 'Position', accuracy: 'Most accurate', width: '100%' },
+                        { rank: 2, channel: 'Length', accuracy: 'High', width: '85%' },
+                        { rank: 3, channel: 'Angle / Slope', accuracy: 'Moderate', width: '68%' },
+                        { rank: 4, channel: 'Area', accuracy: 'Moderate', width: '55%' },
+                        { rank: 5, channel: 'Volume', accuracy: 'Low', width: '40%' },
+                        { rank: 6, channel: 'Colour saturation', accuracy: 'Low', width: '30%' },
+                        { rank: 7, channel: 'Colour hue', accuracy: 'Categorical only', width: '20%' },
+                      ].map((item) => (
+                        <div key={item.rank} className="flex items-center gap-3">
+                          <span className="font-nhg text-xs text-[var(--text-tertiary)] w-4 flex-shrink-0">{item.rank}</span>
+                          <div className="flex-1">
+                            <div
+                              className="h-6 bg-[var(--text-primary)] rounded-sm flex items-center px-2"
+                              style={{ width: item.width }}
+                            >
+                              <span className="font-nhg text-[10px] text-[var(--bg-primary)] truncate">{item.channel}</span>
+                            </div>
+                          </div>
+                          <span className="font-nhg text-[10px] text-[var(--text-tertiary)] w-24 text-right flex-shrink-0">{item.accuracy}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -333,11 +404,41 @@ export default function MethodPage() {
                     </div>
                   </div>
 
-                  {/* Placeholder - Sample illustration */}
-                  <div className="border-2 border-dashed border-[var(--border)] rounded-xl aspect-[16/9] flex items-center justify-center bg-[var(--bg-secondary)]">
-                    <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] text-center px-4">
-                      IMAGE: Sample illustration or pictogram system from existing work - honeybee anatomy SVG or Axisophy poster detail
-                    </p>
+                  {/* Illustration principles */}
+                  <div className="bg-[var(--bg-tertiary)] rounded-xl p-6">
+                    <p className="font-label text-[10px] text-[var(--text-tertiary)] mb-4">ILLUSTRATION PRINCIPLES</p>
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="text-center">
+                        <div className="w-full aspect-square bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mb-2">
+                          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-[var(--text-tertiary)]">
+                            <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="1.5"/>
+                            <line x1="24" y1="8" x2="24" y2="40" stroke="currentColor" strokeWidth="0.75" strokeDasharray="2 2"/>
+                            <line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" strokeWidth="0.75" strokeDasharray="2 2"/>
+                          </svg>
+                        </div>
+                        <p className="font-nhg text-xs text-[var(--text-secondary)]">Accuracy</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-full aspect-square bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mb-2">
+                          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-[var(--text-tertiary)]">
+                            <rect x="10" y="10" width="12" height="12" stroke="currentColor" strokeWidth="1.5"/>
+                            <rect x="26" y="10" width="12" height="12" stroke="currentColor" strokeWidth="1.5"/>
+                            <rect x="10" y="26" width="12" height="12" stroke="currentColor" strokeWidth="1.5"/>
+                            <rect x="26" y="26" width="12" height="12" stroke="currentColor" strokeWidth="1.5"/>
+                          </svg>
+                        </div>
+                        <p className="font-nhg text-xs text-[var(--text-secondary)]">Consistency</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-full aspect-square bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mb-2">
+                          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-[var(--text-tertiary)]">
+                            <path d="M12 36 L24 12 L36 36" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                            <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" strokeWidth="0.75"/>
+                          </svg>
+                        </div>
+                        <p className="font-nhg text-xs text-[var(--text-secondary)]">Clarity</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

@@ -85,7 +85,7 @@ export default function ContactPage() {
       {/* Page Title */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-[-0.03em]">Contact</h1>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em]">Contact</h1>
         </div>
       </section>
 
