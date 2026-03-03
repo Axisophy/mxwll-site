@@ -2,6 +2,13 @@ import Link from 'next/link'
 
 const labItems = [
   {
+    title: 'Exoplanet Systems',
+    description: 'Interactive orrery of real exoplanetary systems using NASA archive data, with TRAPPIST-1 as the primary showcase and a full discovery timeline browser. Three coordinated views show complementary aspects of planetary discovery.',
+    tags: ['Three.js', 'Astronomy', 'NASA Data'],
+    slug: '/lab/exoplanet-systems',
+    status: 'In Development',
+  },
+  {
     title: 'Stellar Cartography',
     description: '50,000 stars from the ESA Gaia catalogue, rendered in two arrangements. Sky coordinates show where they appear. The HR diagram reveals the hidden structure beneath - main sequence, red giants, white dwarfs. The transition between views is the explanatory moment.',
     tags: ['WebGL', 'Gaia DR3', 'Astronomy'],
@@ -68,13 +75,6 @@ const labItems = [
     title: 'Chladni Figures',
     description: 'Nodal vibration patterns where virtual sand accumulates at standing-wave nodes. Includes mode browser, frequency sweep, and optional microphone-reactive mode.',
     tags: ['Canvas/WebGL', 'Acoustics', 'Pattern Formation'],
-    slug: '#',
-    status: 'In Development',
-  },
-  {
-    title: 'Exoplanet Systems',
-    description: 'Interactive orrery of real exoplanetary systems using NASA archive data, with TRAPPIST-1 as the primary showcase and a full discovery timeline browser.',
-    tags: ['Three.js', 'Astronomy', 'NASA Data'],
     slug: '#',
     status: 'In Development',
   },

@@ -8,8 +8,6 @@ import {
   createProgram,
   easeInOutCubic,
   loadGaiaData,
-  lerp,
-  GaiaStar,
 } from '../demo/demo-utils';
 
 interface StellarCartographyExplorerProps {
@@ -67,17 +65,18 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
   const cssHeightRef = useRef<number>(0);
   const transitionStartRef = useRef<number>(0);
   const isTransitioningRef = useRef<boolean>(false);
+  const currentViewRef = useRef<ViewName>('sky');
+  const targetViewRef = useRef<ViewName>('sky');
 
   const [isLoading, setIsLoading] = useState(true);
   const [currentView, setCurrentView] = useState<ViewName>('sky');
-  const [targetView, setTargetView] = useState<ViewName>('sky');
 
   // Handle view button clicks
   const handleViewChange = (view: ViewName) => {
-    if (view === currentView || isTransitioningRef.current) {
+    if (view === currentViewRef.current || isTransitioningRef.current) {
       return;
     }
-    setTargetView(view);
+    targetViewRef.current = view;
     isTransitioningRef.current = true;
     transitionStartRef.current = performance.now();
   };
@@ -275,8 +274,8 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
       }
 
       let transition = 0;
-      const fromWeights = VIEW_WEIGHTS[currentView];
-      const toWeights = VIEW_WEIGHTS[targetView];
+      const fromWeights = VIEW_WEIGHTS[currentViewRef.current];
+      const toWeights = VIEW_WEIGHTS[targetViewRef.current];
 
       if (isTransitioningRef.current) {
         const elapsed = (now - transitionStartRef.current) / 1000;
@@ -286,7 +285,8 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
 
         if (progress >= 1.0) {
           isTransitioningRef.current = false;
-          setCurrentView(targetView);
+          currentViewRef.current = targetViewRef.current;
+          setCurrentView(targetViewRef.current); // sync UI state
           transition = 0;
         }
       }
@@ -325,7 +325,8 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
         clearTimeout(resizeTimeout);
       }
     };
-  }, [currentView, targetView]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Convert NDC to pixel coordinates
   const ndcToPixel = (ndcX: number, ndcY: number) => {
@@ -384,7 +385,8 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
     <div className={`relative ${className ?? ''}`}>
       <div ref={containerRef} className="relative overflow-hidden bg-[#03060f]" style={{ aspectRatio: '16 / 10' }}>
         <canvas ref={canvasRef} className="block w-full h-full" />
-        {renderAnnotations()}
+        {/* Annotations hidden for now - uncomment to restore */}
+        {/* {renderAnnotations()} */}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="font-input text-xs uppercase tracking-[0.12em] text-white/45">Loading stars...</span>
@@ -393,14 +395,14 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
       </div>
 
       {/* View buttons */}
-      <div className="flex gap-2 mt-4 justify-center">
+      <div className="flex gap-2 mt-6 justify-center">
         <button
           onClick={() => handleViewChange('sky')}
           disabled={isLoading}
           className={`font-nhg px-4 py-2 text-sm transition-colors ${
             currentView === 'sky'
               ? 'bg-[#0055FF] text-white'
-              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
           }`}
         >
           Sky
@@ -411,7 +413,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
           className={`font-nhg px-4 py-2 text-sm transition-colors ${
             currentView === 'hr'
               ? 'bg-[#0055FF] text-white'
-              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
           }`}
         >
           HR Diagram
@@ -422,7 +424,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
           className={`font-nhg px-4 py-2 text-sm transition-colors ${
             currentView === 'galactic'
               ? 'bg-[#0055FF] text-white'
-              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
           }`}
         >
           Galactic
@@ -433,7 +435,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
           className={`font-nhg px-4 py-2 text-sm transition-colors ${
             currentView === 'observer'
               ? 'bg-[#0055FF] text-white'
-              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+              : 'bg-white text-[var(--text-primary)] hover:bg-[#F5F5F5]'
           }`}
         >
           Observer
