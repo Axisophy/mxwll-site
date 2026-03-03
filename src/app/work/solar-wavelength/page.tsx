@@ -4,7 +4,7 @@ import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import MetadataDropdown from '@/components/MetadataDropdown'
 
-const SolarDemo = dynamic(() => import('@/visualisers/solar-wavelength/demo/SolarDemo'), {
+const SolarDemo = dynamic(() => import('@/visualisers/solar-wavelength/demo'), {
   ssr: false,
 })
 

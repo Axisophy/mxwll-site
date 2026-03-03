@@ -4,7 +4,7 @@ import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import MetadataDropdown from '@/components/MetadataDropdown'
 
-const ExoplanetDemo = dynamic(() => import('@/visualisers/exoplanet-systems/demo/ExoplanetDemo'), {
+const ExoplanetDemo = dynamic(() => import('@/visualisers/exoplanet-transit/demo/ExoplanetDemo'), {
   ssr: false,
 })
 
