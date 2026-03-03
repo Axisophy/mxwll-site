@@ -1,0 +1,451 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import {
+  DESKTOP_POINT_STOPS,
+  SKY_BG,
+  buildRenderData,
+  createProgram,
+  easeInOutCubic,
+  loadGaiaData,
+  lerp,
+  GaiaStar,
+} from '../demo/demo-utils';
+
+interface StellarCartographyExplorerProps {
+  className?: string;
+}
+
+type ViewName = 'sky' | 'hr' | 'galactic' | 'observer';
+type ViewWeights4 = [number, number, number, number];
+
+const VIEW_WEIGHTS: Record<ViewName, ViewWeights4> = {
+  sky: [1, 0, 0, 0],
+  hr: [0, 1, 0, 0],
+  galactic: [0, 0, 1, 0],
+  observer: [0, 0, 0, 1],
+};
+
+interface AnnotationData {
+  label: string;
+  x: number; // NDC coordinates
+  y: number;
+}
+
+// HR Diagram region labels (approximate positions in NDC)
+const HR_ANNOTATIONS: AnnotationData[] = [
+  { label: 'Main Sequence', x: 0.0, y: -0.1 },
+  { label: 'Red Giants', x: 0.5, y: 0.4 },
+  { label: 'Red Supergiants', x: 0.6, y: 0.7 },
+  { label: 'Horizontal Branch', x: -0.1, y: 0.3 },
+  { label: 'White Dwarfs', x: -0.6, y: -0.7 },
+  { label: 'Blue Stragglers', x: -0.4, y: 0.2 },
+];
+
+// Named stars for Observer view - approximate positions based on known properties
+// These are positioned in magnitude/colour space (same as HR diagram but with observer colour map)
+// Positions are approximate NDC coordinates
+const OBSERVER_ANNOTATIONS: AnnotationData[] = [
+  { label: 'Sirius', x: -0.05, y: -0.85 }, // Bright, white (A-type)
+  { label: 'Betelgeuse', x: 0.65, y: 0.75 }, // Red supergiant, very bright
+  { label: 'Rigel', x: -0.5, y: 0.65 }, // Blue supergiant, very bright
+  { label: 'Vega', x: -0.15, y: -0.7 }, // Bright, white (A-type)
+  { label: 'Arcturus', x: 0.45, y: 0.45 }, // Orange giant, bright
+  { label: 'Aldebaran', x: 0.55, y: 0.3 }, // Orange giant
+  { label: 'Antares', x: 0.7, y: 0.7 }, // Red supergiant
+  { label: 'Deneb', x: -0.3, y: 0.8 }, // Blue supergiant, extremely bright
+  { label: 'Procyon', x: 0.2, y: -0.6 }, // Yellow-white, bright
+  { label: 'Spica', x: -0.45, y: 0.35 }, // Blue, bright
+];
+
+export default function StellarCartographyExplorer({ className }: StellarCartographyExplorerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const frameRef = useRef<number>(0);
+  const dprRef = useRef<number>(1);
+  const cssWidthRef = useRef<number>(0);
+  const cssHeightRef = useRef<number>(0);
+  const transitionStartRef = useRef<number>(0);
+  const isTransitioningRef = useRef<boolean>(false);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentView, setCurrentView] = useState<ViewName>('sky');
+  const [targetView, setTargetView] = useState<ViewName>('sky');
+
+  // Handle view button clicks
+  const handleViewChange = (view: ViewName) => {
+    if (view === currentView || isTransitioningRef.current) {
+      return;
+    }
+    setTargetView(view);
+    isTransitioningRef.current = true;
+    transitionStartRef.current = performance.now();
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const canvas = canvasRef.current;
+
+    if (!container || !canvas) {
+      return;
+    }
+
+    const gl = canvas.getContext('webgl2', {
+      antialias: true,
+      alpha: false,
+      preserveDrawingBuffer: true,
+    });
+
+    if (!gl) {
+      console.error('WebGL2 is unavailable');
+      return;
+    }
+
+    const program = createProgram(gl);
+    if (!program) {
+      console.error('Failed to compile shaders');
+      return;
+    }
+
+    gl.useProgram(program);
+
+    const aSkyPos = gl.getAttribLocation(program, 'a_skyPos');
+    const aHrPos = gl.getAttribLocation(program, 'a_hrPos');
+    const aGalPos = gl.getAttribLocation(program, 'a_galPos');
+    const aMagPos = gl.getAttribLocation(program, 'a_magPos');
+    const aGalLatAbs = gl.getAttribLocation(program, 'a_galLatAbs');
+    const aSubtleColour = gl.getAttribLocation(program, 'a_subtleColour');
+    const aObserverColour = gl.getAttribLocation(program, 'a_observerColour');
+    const aBaseSize = gl.getAttribLocation(program, 'a_baseSize');
+    const aHrSize = gl.getAttribLocation(program, 'a_hrSize');
+    const aObserverSize = gl.getAttribLocation(program, 'a_observerSize');
+
+    const uTransition = gl.getUniformLocation(program, 'u_transition');
+    const uPan = gl.getUniformLocation(program, 'u_pan');
+    const uZoom = gl.getUniformLocation(program, 'u_zoom');
+    const uDpr = gl.getUniformLocation(program, 'u_dpr');
+    const uResolution = gl.getUniformLocation(program, 'u_resolution');
+    const uSkyOffset = gl.getUniformLocation(program, 'u_skyOffset');
+    const uGalacticOffset = gl.getUniformLocation(program, 'u_galacticOffset');
+    const uFromWeights = gl.getUniformLocation(program, 'u_fromWeights');
+    const uToWeights = gl.getUniformLocation(program, 'u_toWeights');
+    const uGalacticMix = gl.getUniformLocation(program, 'u_galacticMix');
+    const uObserverMix = gl.getUniformLocation(program, 'u_observerMix');
+
+    const vao = gl.createVertexArray();
+    gl.bindVertexArray(vao);
+
+    const skyPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, skyPosBuffer);
+    gl.enableVertexAttribArray(aSkyPos);
+    gl.vertexAttribPointer(aSkyPos, 2, gl.FLOAT, false, 0, 0);
+
+    const hrPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, hrPosBuffer);
+    gl.enableVertexAttribArray(aHrPos);
+    gl.vertexAttribPointer(aHrPos, 2, gl.FLOAT, false, 0, 0);
+
+    const galPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
+    gl.enableVertexAttribArray(aGalPos);
+    gl.vertexAttribPointer(aGalPos, 2, gl.FLOAT, false, 0, 0);
+
+    const magPosBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, magPosBuffer);
+    gl.enableVertexAttribArray(aMagPos);
+    gl.vertexAttribPointer(aMagPos, 2, gl.FLOAT, false, 0, 0);
+
+    const galLatBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
+    gl.enableVertexAttribArray(aGalLatAbs);
+    gl.vertexAttribPointer(aGalLatAbs, 1, gl.FLOAT, false, 0, 0);
+
+    const subtleColourBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, subtleColourBuffer);
+    gl.enableVertexAttribArray(aSubtleColour);
+    gl.vertexAttribPointer(aSubtleColour, 3, gl.FLOAT, false, 0, 0);
+
+    const observerColourBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, observerColourBuffer);
+    gl.enableVertexAttribArray(aObserverColour);
+    gl.vertexAttribPointer(aObserverColour, 3, gl.FLOAT, false, 0, 0);
+
+    const baseSizeBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, baseSizeBuffer);
+    gl.enableVertexAttribArray(aBaseSize);
+    gl.vertexAttribPointer(aBaseSize, 1, gl.FLOAT, false, 0, 0);
+
+    const hrSizeBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, hrSizeBuffer);
+    gl.enableVertexAttribArray(aHrSize);
+    gl.vertexAttribPointer(aHrSize, 1, gl.FLOAT, false, 0, 0);
+
+    const observerSizeBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, observerSizeBuffer);
+    gl.enableVertexAttribArray(aObserverSize);
+    gl.vertexAttribPointer(aObserverSize, 1, gl.FLOAT, false, 0, 0);
+
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+
+    let starCount = 0;
+    let disposed = false;
+
+    const resize = () => {
+      const rect = container.getBoundingClientRect();
+      const cssWidth = Math.max(1, rect.width);
+      const cssHeight = Math.max(1, rect.height);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(cssWidth * dpr);
+      canvas.height = Math.floor(cssHeight * dpr);
+      canvas.style.width = `${cssWidth}px`;
+      canvas.style.height = `${cssHeight}px`;
+
+      dprRef.current = dpr;
+      cssWidthRef.current = cssWidth;
+      cssHeightRef.current = cssHeight;
+
+      gl.viewport(0, 0, canvas.width, canvas.height);
+    };
+
+    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
+    const onResize = () => {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      resizeTimeout = setTimeout(resize, 120);
+    };
+
+    const resizeObserver = new ResizeObserver(onResize);
+    resizeObserver.observe(container);
+    window.addEventListener('resize', onResize);
+    resize();
+
+    loadGaiaData()
+      .then((data) => {
+        if (disposed) {
+          return;
+        }
+
+        const renderData = buildRenderData(data.stars, DESKTOP_POINT_STOPS, { hrUniformSize: 1.5 });
+        starCount = renderData.count;
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, skyPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.skyPositions, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, hrPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.hrPositions, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, galPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticPositions, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, magPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.magnitudePositions, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, galLatBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.galacticLatitudes, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, subtleColourBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.subtleColours, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, observerColourBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.observerColours, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, baseSizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.baseSizes, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, hrSizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.hrSizes, gl.STATIC_DRAW);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, observerSizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, renderData.observerSizes, gl.STATIC_DRAW);
+
+        setIsLoading(false);
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to load stellar data', error);
+      });
+
+    const renderFrame = (now: number) => {
+      frameRef.current = window.requestAnimationFrame(renderFrame);
+
+      if (starCount === 0) {
+        return;
+      }
+
+      let transition = 0;
+      const fromWeights = VIEW_WEIGHTS[currentView];
+      const toWeights = VIEW_WEIGHTS[targetView];
+
+      if (isTransitioningRef.current) {
+        const elapsed = (now - transitionStartRef.current) / 1000;
+        const duration = 1.5; // seconds
+        const progress = Math.min(elapsed / duration, 1.0);
+        transition = easeInOutCubic(progress);
+
+        if (progress >= 1.0) {
+          isTransitioningRef.current = false;
+          setCurrentView(targetView);
+          transition = 0;
+        }
+      }
+
+      const galacticMix = fromWeights[2] * (1 - transition) + toWeights[2] * transition;
+      const observerMix = fromWeights[3] * (1 - transition) + toWeights[3] * transition;
+
+      gl.clearColor(SKY_BG[0], SKY_BG[1], SKY_BG[2], SKY_BG[3]);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+
+      gl.uniform1f(uTransition, transition);
+      gl.uniform2f(uPan, 0, 0);
+      gl.uniform1f(uZoom, 1.0);
+      gl.uniform1f(uDpr, dprRef.current);
+      if (uResolution) {
+        gl.uniform2f(uResolution, cssWidthRef.current, cssHeightRef.current);
+      }
+      gl.uniform1f(uSkyOffset, 0);
+      gl.uniform1f(uGalacticOffset, 0);
+      gl.uniform4f(uFromWeights, fromWeights[0], fromWeights[1], fromWeights[2], fromWeights[3]);
+      gl.uniform4f(uToWeights, toWeights[0], toWeights[1], toWeights[2], toWeights[3]);
+      gl.uniform1f(uGalacticMix, galacticMix);
+      gl.uniform1f(uObserverMix, observerMix);
+
+      gl.drawArrays(gl.POINTS, 0, starCount);
+    };
+
+    frameRef.current = window.requestAnimationFrame(renderFrame);
+
+    return () => {
+      disposed = true;
+      window.cancelAnimationFrame(frameRef.current);
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', onResize);
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+    };
+  }, [currentView, targetView]);
+
+  // Convert NDC to pixel coordinates
+  const ndcToPixel = (ndcX: number, ndcY: number) => {
+    const x = ((ndcX + 1) / 2) * cssWidthRef.current;
+    const y = ((1 - ndcY) / 2) * cssHeightRef.current;
+    return { x, y };
+  };
+
+  const renderAnnotations = () => {
+    if (currentView === 'hr' && !isTransitioningRef.current) {
+      return HR_ANNOTATIONS.map((annotation, idx) => {
+        const { x, y } = ndcToPixel(annotation.x, annotation.y);
+        return (
+          <div
+            key={idx}
+            className="absolute pointer-events-none"
+            style={{
+              left: `${x}px`,
+              top: `${y}px`,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <span className="font-input text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
+              {annotation.label}
+            </span>
+          </div>
+        );
+      });
+    }
+
+    if (currentView === 'observer' && !isTransitioningRef.current) {
+      return OBSERVER_ANNOTATIONS.map((annotation, idx) => {
+        const { x, y } = ndcToPixel(annotation.x, annotation.y);
+        return (
+          <div
+            key={idx}
+            className="absolute pointer-events-none"
+            style={{
+              left: `${x}px`,
+              top: `${y}px`,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <span className="font-input text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
+              {annotation.label}
+            </span>
+          </div>
+        );
+      });
+    }
+
+    return null;
+  };
+
+  return (
+    <div className={`relative ${className ?? ''}`}>
+      <div ref={containerRef} className="relative overflow-hidden bg-[#03060f]" style={{ aspectRatio: '16 / 10' }}>
+        <canvas ref={canvasRef} className="block w-full h-full" />
+        {renderAnnotations()}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="font-input text-xs uppercase tracking-[0.12em] text-white/45">Loading stars...</span>
+          </div>
+        )}
+      </div>
+
+      {/* View buttons */}
+      <div className="flex gap-2 mt-4 justify-center">
+        <button
+          onClick={() => handleViewChange('sky')}
+          disabled={isLoading}
+          className={`font-nhg px-4 py-2 text-sm transition-colors ${
+            currentView === 'sky'
+              ? 'bg-[#0055FF] text-white'
+              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+          }`}
+        >
+          Sky
+        </button>
+        <button
+          onClick={() => handleViewChange('hr')}
+          disabled={isLoading}
+          className={`font-nhg px-4 py-2 text-sm transition-colors ${
+            currentView === 'hr'
+              ? 'bg-[#0055FF] text-white'
+              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+          }`}
+        >
+          HR Diagram
+        </button>
+        <button
+          onClick={() => handleViewChange('galactic')}
+          disabled={isLoading}
+          className={`font-nhg px-4 py-2 text-sm transition-colors ${
+            currentView === 'galactic'
+              ? 'bg-[#0055FF] text-white'
+              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+          }`}
+        >
+          Galactic
+        </button>
+        <button
+          onClick={() => handleViewChange('observer')}
+          disabled={isLoading}
+          className={`font-nhg px-4 py-2 text-sm transition-colors ${
+            currentView === 'observer'
+              ? 'bg-[#0055FF] text-white'
+              : 'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border)]'
+          }`}
+        >
+          Observer
+        </button>
+      </div>
+
+      {/* Mobile note */}
+      <div className="md:hidden mt-4 text-center">
+        <p className="font-sabon text-sm italic text-[var(--text-secondary)]">
+          This visualiser renders 50,000 stars in real-time and is best experienced on a larger screen.
+        </p>
+      </div>
+    </div>
+  );
+}

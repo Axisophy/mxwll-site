@@ -6,6 +6,15 @@ import WorkFilter from '@/components/WorkFilter'
 
 const allWork = [
   {
+    title: 'Stellar Cartography',
+    description: '50,000 stars from the Gaia catalogue in four coordinated views - showing the same data arranged by position, temperature, galactic structure, and observer perspective. The transitions teach you what each view reveals.',
+    category: 'EXPLANATION DESIGN',
+    year: '2026',
+    slug: 'stellar-cartography',
+    label: 'Four ways to see the same stars',
+    tags: ['Astronomy', 'Data Visualisation', 'WebGL'],
+  },
+  {
     title: 'Exoplanet Systems',
     description: 'An autonomous three-view demo showing how exoplanet discovery accelerates over time, how orbital period relates to size, and where discoveries cluster on the sky.',
     category: 'EXPLANATION DESIGN',
