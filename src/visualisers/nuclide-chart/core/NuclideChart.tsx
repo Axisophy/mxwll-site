@@ -372,68 +372,55 @@ export default function NuclideChart({ className = '' }: NuclideChartProps) {
   };
 
   return (
-    <div className={`flex flex-col h-full bg-white ${className}`}>
-      {/* Controls Header */}
-      <div className="border-b border-black/10 px-4 py-3">
-        <div className="flex flex-wrap items-center gap-4 justify-between">
-          <div className="text-xs font-nhg text-black/40">
-            Drag to pan · Scroll to zoom · Click for details
-          </div>
-
-          {/* Controls */}
-          <div className="flex flex-wrap items-center gap-4">
-            {/* Colour mode toggle */}
-            <div className="flex">
-              <button
-                onClick={() => setColorMode('decay')}
-                className={`px-4 py-2 text-xs font-nhg transition-colors ${
-                  colorMode === 'decay'
-                    ? 'bg-black text-white'
-                    : 'bg-black/5 text-black/60 hover:text-black'
-                }`}
-              >
-                Decay
-              </button>
-              <button
-                onClick={() => setColorMode('halflife')}
-                className={`px-4 py-2 text-xs font-nhg transition-colors ${
-                  colorMode === 'halflife'
-                    ? 'bg-black text-white'
-                    : 'bg-black/5 text-black/60 hover:text-black'
-                }`}
-              >
-                Half-life
-              </button>
-            </div>
-
-            {/* Magic numbers toggle */}
-            <button
-              onClick={() => setShowMagicNumbers(!showMagicNumbers)}
-              className={`px-4 py-2 text-xs font-nhg transition-colors ${
-                showMagicNumbers
-                  ? 'bg-black text-white'
-                  : 'bg-black/5 text-black/60 hover:text-black'
-              }`}
-            >
-              Magic #
-            </button>
-
-            {/* Element filter */}
-            <select
-              value={highlightElement ?? ''}
-              onChange={(e) => setHighlightElement(e.target.value ? parseInt(e.target.value) : null)}
-              className="text-xs font-nhg border border-black/20 px-4 py-2 bg-white focus:outline-none focus:border-black"
-            >
-              <option value="">All elements</option>
-              {Object.entries(ELEMENTS).slice(1).map(([z, el]) => (
-                <option key={z} value={z}>{el.symbol} — {el.name}</option>
-              ))}
-            </select>
-          </div>
-        </div>
+    <div className={`flex flex-col ${className}`}>
+      {/* Controls */}
+      <div className="flex flex-wrap items-center gap-2 mb-4">
+        <button
+          onClick={() => setColorMode('decay')}
+          className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
+            colorMode === 'decay'
+              ? 'bg-[#0055FF] text-white'
+              : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
+          }`}
+        >
+          Decay
+        </button>
+        <button
+          onClick={() => setColorMode('halflife')}
+          className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
+            colorMode === 'halflife'
+              ? 'bg-[#0055FF] text-white'
+              : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
+          }`}
+        >
+          Half-life
+        </button>
+        <button
+          onClick={() => setShowMagicNumbers(!showMagicNumbers)}
+          className={`font-label text-xs px-4 py-2 rounded-xl transition-colors ${
+            showMagicNumbers
+              ? 'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
+              : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
+          }`}
+        >
+          Magic #
+        </button>
+        <select
+          value={highlightElement ?? ''}
+          onChange={(e) => setHighlightElement(e.target.value ? parseInt(e.target.value) : null)}
+          className="font-label text-xs px-4 py-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-tertiary)] focus:outline-none"
+        >
+          <option value="">All elements</option>
+          {Object.entries(ELEMENTS).slice(1).map(([z, el]) => (
+            <option key={z} value={z}>{el.symbol} — {el.name}</option>
+          ))}
+        </select>
+        <span className="font-label text-[10px] text-[var(--text-tertiary)] ml-auto hidden md:inline">
+          Drag to pan · Scroll to zoom · Click for details
+        </span>
       </div>
 
-      <div className="flex-1 flex min-h-0">
+      <div className="flex-1 flex min-h-0 bg-[var(--bg-secondary)] rounded-xl overflow-hidden">
         {/* Chart */}
         <div
           ref={containerRef}
@@ -457,19 +444,19 @@ export default function NuclideChart({ className = '' }: NuclideChartProps) {
           <div className="absolute bottom-4 right-4 flex flex-col gap-1">
             <button
               onClick={handleZoomIn}
-              className="w-8 h-8 bg-white border border-black/20 flex items-center justify-center text-lg hover:bg-black hover:text-white transition-colors"
+              className="w-8 h-8 bg-white/90 rounded-lg flex items-center justify-center text-lg text-[var(--text-secondary)] hover:bg-white transition-colors"
             >
               +
             </button>
             <button
               onClick={handleZoomOut}
-              className="w-8 h-8 bg-white border border-black/20 flex items-center justify-center text-lg hover:bg-black hover:text-white transition-colors"
+              className="w-8 h-8 bg-white/90 rounded-lg flex items-center justify-center text-lg text-[var(--text-secondary)] hover:bg-white transition-colors"
             >
               −
             </button>
             <button
               onClick={handleResetView}
-              className="w-8 h-8 bg-white border border-black/20 flex items-center justify-center text-[9px] font-nhg hover:bg-black hover:text-white transition-colors"
+              className="w-8 h-8 bg-white/90 rounded-lg flex items-center justify-center text-[9px] font-label text-[var(--text-secondary)] hover:bg-white transition-colors"
             >
               Reset
             </button>
@@ -477,7 +464,7 @@ export default function NuclideChart({ className = '' }: NuclideChartProps) {
 
           {/* Hover tooltip */}
           {hoveredNuclide && !isDragging && (
-            <div className="absolute top-4 left-4 bg-white border border-black/10 p-4 pointer-events-none">
+            <div className="absolute top-4 left-4 bg-white rounded-xl p-4 pointer-events-none shadow-sm">
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-nhg font-bold">{hoveredNuclide.symbol}</span>
                 <span className="text-lg font-nhg text-black/60">{hoveredNuclide.massNumber}</span>
@@ -490,7 +477,7 @@ export default function NuclideChart({ className = '' }: NuclideChartProps) {
           )}
 
           {/* Zoom indicator */}
-          <div className="absolute bottom-4 left-4 bg-white/90 px-2 py-1 text-xs font-nhg text-black/60">
+          <div className="absolute bottom-4 left-4 bg-white/90 rounded-lg px-2 py-1 text-xs font-label text-[var(--text-tertiary)]">
             {(zoom * 100).toFixed(0)}%
           </div>
         </div>
@@ -611,7 +598,7 @@ export default function NuclideChart({ className = '' }: NuclideChartProps) {
       </div>
 
       {/* Legend */}
-      <div className="border-t border-black/10 px-4 py-3">
+      <div className="mt-4">
         <div className="flex flex-wrap items-center gap-4 text-xs font-nhg">
           {colorMode === 'decay' ? (
             <>

@@ -21,7 +21,7 @@ export default function NuclideChartPage() {
               Chart of Nuclides
             </h1>
             <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
-              A Beginner&apos;s Guide
+              3,352 ways to build an atom
             </p>
             <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
               An accessible introduction to nuclear physics through the chart of nuclides - from the familiar periodic table to the vast landscape of 3,300+ atomic species. Designed to explain what makes atoms stable or unstable without requiring any physics background.
@@ -81,23 +81,6 @@ export default function NuclideChartPage() {
               <span className="font-nhg text-sm text-[var(--text-secondary)]">IAEA Nuclear Data Services (3,352 nuclides)</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stage 1: HOOK - Visual */}
-      <section className="relative h-[50vh] min-h-[400px] bg-black overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 opacity-30">
-          <div className="w-full h-full" style={{
-            background: 'linear-gradient(135deg, #000 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #000 100%)'
-          }} />
-        </div>
-        <div className="relative text-center text-white px-4">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.03em] leading-[1.1] mb-4">
-            Chart of Nuclides
-          </h2>
-          <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.03em] text-white/80">
-            3,352 ways to build an atom
-          </p>
         </div>
       </section>
 
@@ -165,10 +148,8 @@ export default function NuclideChartPage() {
             </p>
           </div>
         </div>
-        <div className="rounded-xl bg-[#03060f] overflow-hidden">
-          <div className="h-[500px] md:h-[750px] lg:h-[875px]">
-            <NuclideChart className="h-full" />
-          </div>
+        <div className="h-[500px] md:h-[750px] lg:h-[875px]">
+          <NuclideChart className="h-full" />
         </div>
       </section>
 
@@ -216,7 +197,7 @@ export default function NuclideChartPage() {
       </section>
 
       {/* Stage 5: REWARD - The Landscape of Matter */}
-      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[var(--bg-tertiary)]">
+      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Landscape of Matter
