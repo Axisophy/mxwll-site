@@ -40,20 +40,6 @@ const HR_ANNOTATIONS: AnnotationData[] = [
   { label: 'Blue Stragglers', x: -0.4, y: 0.2 },
 ];
 
-// Named stars for Observer view - positioned by real bp_rp and abs_mag values
-// NDC coordinates computed from dataset ranges (bp_rp: -0.45..4.48, abs_mag: -2.89..14.11)
-// Stars chosen for good spacing across the chart and recognisability
-const OBSERVER_ANNOTATIONS: AnnotationData[] = [
-  { label: 'Sirius', x: -0.82, y: 0.49 },         // A-type, abs_mag 1.42, brightest star
-  { label: 'Capella', x: -0.49, y: 0.65 },         // Yellow giant, abs_mag 0.08
-  { label: 'Aldebaran', x: -0.25, y: 0.74 },       // Orange giant, abs_mag -0.65
-  { label: 'Procyon', x: -0.63, y: 0.35 },         // F-type, abs_mag 2.66
-  { label: 'Sun', x: -0.48, y: 0.09 },             // G-type main sequence reference
-  { label: '61 Cygni', x: -0.15, y: -0.22 },       // K-type dwarf, first parallax star
-  { label: 'Mira', x: 0.40, y: 0.31 },             // Red giant variable, bp_rp 1.5
-  { label: "Barnard's Star", x: 0.28, y: -0.89 },  // Red dwarf, bp_rp 2.7, abs_mag 13.2
-];
-
 export default function StellarCartographyExplorer({ className }: StellarCartographyExplorerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -285,7 +271,10 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
           isTransitioningRef.current = false;
           currentViewRef.current = targetViewRef.current;
           setCurrentView(targetViewRef.current); // sync UI state
-          transition = 0;
+          // Use 1.0 (not 0) on completion frame: fromWeights were computed
+          // before the ref update, so transition=0 would snap to the old view
+          // for one frame. On the next frame, from===to so transition=0 is fine.
+          transition = 1.0;
         }
       }
 
@@ -347,28 +336,7 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <span className="font-nhg text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
-              {annotation.label}
-            </span>
-          </div>
-        );
-      });
-    }
-
-    if (currentView === 'observer' && !isTransitioningRef.current) {
-      return OBSERVER_ANNOTATIONS.map((annotation, idx) => {
-        const { x, y } = ndcToPixel(annotation.x, annotation.y);
-        return (
-          <div
-            key={idx}
-            className="absolute pointer-events-none"
-            style={{
-              left: `${x}px`,
-              top: `${y}px`,
-              transform: 'translate(-50%, -50%)',
-            }}
-          >
-            <span className="font-nhg text-[11px] text-white/50 uppercase tracking-wider whitespace-nowrap">
+            <span className="font-label text-[10px] text-white/70 whitespace-nowrap bg-black/60 px-2 py-0.5 rounded">
               {annotation.label}
             </span>
           </div>
@@ -379,11 +347,59 @@ export default function StellarCartographyExplorer({ className }: StellarCartogr
     return null;
   };
 
+  // Axis labels for HR and Observer views
+  const renderAxisLabels = () => {
+    if (currentView !== 'hr' && currentView !== 'observer') return null;
+    if (isTransitioningRef.current) return null;
+
+    const isHR = currentView === 'hr';
+
+    return (
+      <>
+        {/* X axis labels */}
+        <div className="absolute bottom-3 left-4 pointer-events-none">
+          <span className="font-label text-[10px] text-white/40">
+            {isHR ? 'Hot (Blue)' : 'Blue'}
+          </span>
+        </div>
+        <div className="absolute bottom-3 right-4 pointer-events-none">
+          <span className="font-label text-[10px] text-white/40">
+            {isHR ? 'Cool (Red)' : 'Red'}
+          </span>
+        </div>
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none hidden md:block">
+          <span className="font-label text-[10px] text-white/30">
+            Colour Index (BP-RP)
+          </span>
+        </div>
+
+        {/* Y axis labels */}
+        <div className="absolute top-3 left-4 pointer-events-none">
+          <span className="font-label text-[10px] text-white/40">
+            {isHR ? 'Brighter' : 'Brighter'}
+          </span>
+        </div>
+        <div className="absolute bottom-8 left-4 pointer-events-none">
+          <span className="font-label text-[10px] text-white/40">
+            {isHR ? 'Dimmer' : 'Dimmer'}
+          </span>
+        </div>
+        <div className="absolute top-1/2 left-3 -translate-y-1/2 pointer-events-none hidden md:block"
+          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg) translateX(50%)' }}>
+          <span className="font-label text-[10px] text-white/30">
+            Absolute Magnitude
+          </span>
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className={`relative ${className ?? ''}`}>
       <div ref={containerRef} className="relative overflow-hidden bg-[#03060f]" style={{ aspectRatio: '16 / 10' }}>
         <canvas ref={canvasRef} className="block w-full h-full" />
         {renderAnnotations()}
+        {renderAxisLabels()}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="font-nhg text-xs uppercase tracking-[0.05em] text-white/45">Loading stars...</span>

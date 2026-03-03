@@ -1,6 +1,10 @@
 # Changelog
 
 ## 2026-03-03
+- Fixed transition glitch: on the completion frame, `transition` was set to 0 while `fromWeights` still pointed at the source view (computed before the ref update), causing a single-frame snap back to the origin. Fix: use `transition = 1.0` on the completion frame.
+- Removed Observer view annotations entirely (named star labels deleted).
+- Improved HR Diagram annotation legibility: added dark semi-transparent pill backgrounds (`bg-black/60`) behind region labels.
+- Added axis labels for HR Diagram and Observer views: X = Colour Index (Blue/Red), Y = Absolute Magnitude (Brighter/Dimmer), with centred axis names on desktop.
 - Restyled view buttons to MXWLL UI control system: rounded-xl, bg-secondary/bg-tertiary hover, electric blue active state, font-label typography. Buttons now sit clearly outside the visualiser container as page UI.
 
 ## 2026-02-28

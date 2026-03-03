@@ -5,6 +5,7 @@
 - Current dataset does not include `phot_g_mean_mag` or `parallax`, so magnitude sizing uses `abs_mag` fallback and HR Y uses `abs_mag` fallback.
 
 ## Resolved
+- Transition glitch (single-frame snap-back at end of view transition) fixed by using `transition = 1.0` instead of `0` on the completion frame. The issue was that `fromWeights` were computed before the ref update.
 - Demo and interactive concerns are now separated for the homepage path.
 - Sky projection vertical fill issue in demo mode was a mapping bug in prior code (`dec` scaled to half-height). Demo now maps Dec -90/+90 to full canvas height.
 - Fixed black gap on left edge in initial sky view by starting RA offset at `0` and wrapping horizontal sky offset seamlessly.
