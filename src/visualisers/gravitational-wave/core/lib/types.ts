@@ -84,7 +84,8 @@ export const COLOURS = {
   // UI
   BACKGROUND: 'rgba(5, 5, 8, 1)',
   TEXT_PRIMARY: 'rgba(255, 255, 255, 0.7)',
-  TEXT_SECONDARY: 'rgba(255, 255, 255, 0.3)',
+  TEXT_SECONDARY: 'rgba(255, 255, 255, 0.4)',
+  TEXT_AXIS: 'rgba(255, 255, 255, 0.25)',
   TEXT_DIM: 'rgba(255, 255, 255, 0.15)',
   PANEL_BG: 'rgba(8, 8, 12, 0.8)',
   PANEL_BORDER: 'rgba(255, 255, 255, 0.05)',

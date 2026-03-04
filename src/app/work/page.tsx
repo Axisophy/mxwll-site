@@ -26,8 +26,8 @@ const allWork = [
     tags: ['Astronomy', 'Data Visualisation', 'WebGL'],
   },
   {
-    title: 'Gravitational Wave Detection',
-    description: 'On 14 September 2015, two black holes collided. LIGO caught the signal - barely. This interactive recreates the moment of discovery, from raw noise to the chirp that confirmed Einstein was right.',
+    title: 'The Chirp',
+    description: 'On 14 September 2015, two black holes collided 1.3 billion light-years away. LIGO caught the signal - barely. This interactive recreates the moment of discovery, from raw noise to the chirp that confirmed Einstein was right.',
     category: 'EXPLANATION DESIGN',
     year: '2026',
     slug: 'gravitational-wave',

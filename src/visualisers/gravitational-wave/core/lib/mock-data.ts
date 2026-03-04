@@ -30,11 +30,11 @@ function generateChirpSignal(
     if (tRel < 0) {
       // INSPIRAL: frequency increases as f(t) ~ (-t)^(-3/8)
       const tau = Math.max(-tRel, 0.0005);  // Time to merger
-      const freq = 35 * Math.pow(tau / 0.35, -3 / 8);  // Starting freq ~35Hz
+      const freq = 30 * Math.pow(tau / 0.35, -3 / 8);  // Starting freq ~30Hz
       const amplitude = Math.pow(tau / 0.35, -1 / 4);   // Amplitude grows
 
       // Accumulated phase (integral of frequency)
-      const phase = -2 * Math.PI * 35 * 0.35 * (8 / 5) *
+      const phase = -2 * Math.PI * 30 * 0.35 * (8 / 5) *
         (Math.pow(tau / 0.35, 5 / 8) - 1);
 
       strain.push(amplitude * Math.sin(phase));
@@ -89,7 +89,7 @@ function generateMockSpectrogram(
     let chirpFreq = 0;
     if (tNorm < mergerFrac) {
       const tau = Math.max(mergerFrac - tNorm, 0.005);
-      chirpFreq = 35 * Math.pow(tau / mergerFrac, -3 / 8);
+      chirpFreq = 30 * Math.pow(tau / mergerFrac, -3 / 8);
       chirpFreq = Math.min(chirpFreq, 280);
     } else {
       chirpFreq = 250 * Math.exp(-(tNorm - mergerFrac) * 25);
@@ -146,7 +146,7 @@ function generateOrbitalData(template: WaveformData): OrbitalData {
     let freq: number;
     if (tNorm < mergerFrac) {
       const tau = Math.max(mergerFrac - tNorm, 0.005);
-      freq = 35 * Math.pow(tau / mergerFrac, -3 / 8);
+      freq = 30 * Math.pow(tau / mergerFrac, -3 / 8);
       freq = Math.min(freq, 280);
     } else {
       freq = 250 * Math.exp(-(tNorm - mergerFrac) * 20);
@@ -173,7 +173,7 @@ function generateOrbitalData(template: WaveformData): OrbitalData {
  * Generate complete mock GW150914 data
  */
 export function generateMockGWData(): GWData {
-  const sampleRate = 1024;  // Hz
+  const sampleRate = 2560;  // Hz (~1024 samples across 0.4s window)
   const duration = TIME_RANGE[1] - TIME_RANGE[0];
 
   // Generate clean template

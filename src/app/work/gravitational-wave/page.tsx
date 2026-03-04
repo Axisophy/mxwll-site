@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import MetadataDropdown from '@/components/MetadataDropdown'
 
@@ -12,66 +11,61 @@ const GravitationalWaveExplorer = dynamic(
 export default function GravitationalWavePage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Header with Metadata Sidebar */}
+      {/* Header */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12 lg:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
-          {/* Left column - Title and description */}
-          <div className="lg:col-span-2">
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
-              Gravitational Wave Detection
-            </h1>
-            <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
-              How LIGO found a whisper from 1.3 billion years ago
-            </p>
-            <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
-              On 14 September 2015, two black holes collided. LIGO caught the signal - barely. This interactive recreates the moment of discovery, from raw noise to the chirp that confirmed Einstein was right.
-            </p>
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8">
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Interactive</span>
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Scientific Data</span>
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">WebAudio</span>
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Astronomy</span>
-            </div>
-          </div>
+        <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
+          The Chirp
+        </h1>
+        <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
+          How LIGO found a whisper from 1.3 billion years ago
+        </p>
+        <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
+          On 14 September 2015, two black holes collided 1.3 billion light-years away. The collision was so violent it radiated more energy in 0.2 seconds than all the stars in the observable universe combined. LIGO caught it - barely. This interactive recreates the moment of discovery.
+        </p>
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8">
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Interactive</span>
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Scientific Data</span>
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">WebAudio</span>
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Astronomy</span>
+        </div>
 
-          {/* Right column - Portfolio Metadata */}
-          <div className="space-y-6">
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Category
-              </span>
-              <span className="font-nhg text-sm">Scientific Data Visualisation</span>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Audience
-              </span>
-              <MetadataDropdown title="General / Science-curious">
-                <p>For people who know black holes exist and have heard of gravitational waves, but don&apos;t understand how detection works or why it&apos;s significant. The interactive shows the actual discovery process - how LIGO finds signals buried in noise.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Approach
-              </span>
-              <MetadataDropdown>
-                <p>Progressive revelation through multi-representation. Start with raw detector readings (pure noise), reveal the predicted template, show the correlation process, then present the physical interpretation. Each stage builds understanding of how matched filtering works.</p>
-                <p>Audio sonification makes the &quot;chirp&quot; visceral - you can hear the frequency rise as the black holes spiral inward. This transforms abstract data into something immediate and real.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Technology
-              </span>
-              <span className="font-nhg text-sm">React, Canvas 2D, Web Audio API, TypeScript</span>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Data
-              </span>
-              <span className="font-nhg text-sm text-[var(--text-secondary)]">Gravitational Wave Open Science Center (GWOSC)</span>
-            </div>
+        {/* Portfolio Metadata */}
+        <div className="flex flex-wrap gap-x-12 gap-y-6 mt-8 md:mt-12">
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Category
+            </span>
+            <span className="font-nhg text-sm">Explanation Design</span>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Audience
+            </span>
+            <MetadataDropdown title="General / Science-curious">
+              <p>For people who know black holes exist and have heard of gravitational waves, but don&apos;t understand how detection works or why it&apos;s significant. The interactive shows the actual discovery process - how LIGO finds signals buried in noise.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Approach
+            </span>
+            <MetadataDropdown>
+              <p>Progressive revelation through multi-representation. Start with raw detector readings (pure noise), reveal the predicted template, show the correlation process, then present the physical interpretation. Each stage builds understanding of how matched filtering works.</p>
+              <p>Audio sonification makes the &quot;chirp&quot; visceral - you can hear the frequency rise as the black holes spiral inward.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Technology
+            </span>
+            <span className="font-nhg text-sm">React, Canvas 2D, Web Audio API</span>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Data
+            </span>
+            <span className="font-nhg text-sm text-[var(--text-secondary)]">Mock (Post-Newtonian approximation)</span>
           </div>
         </div>
       </section>
@@ -84,56 +78,59 @@ export default function GravitationalWavePage() {
           </div>
         </div>
         <p className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mt-4">
-          INTERACTIVE GRAVITATIONAL WAVE DETECTION - FOUR STAGES FROM RAW DATA TO INTERPRETATION
+          INTERACTIVE - FOUR STAGES FROM RAW DATA TO INTERPRETATION
         </p>
       </section>
 
-      {/* Stage 2: ANCHOR - The Challenge */}
+      {/* The Challenge */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Challenge
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Gravitational waves compress and stretch spacetime by infinitesimal amounts. When GW150914 arrived, LIGO&apos;s 4-kilometre laser arms shifted by less than one-thousandth of a proton&apos;s diameter.
             </p>
             <p>
-              Raw detector readings resembled pure noise - the signal remained invisible to direct observation.
+              Raw detector readings resembled pure noise - the signal remained invisible to direct observation. Two detectors, 3,000 kilometres apart, recorded near-identical noise patterns 6.9 milliseconds apart. That delay is how long the gravitational wave took to travel from Livingston, Louisiana to Hanford, Washington.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Stage 3: FOUNDATION - Matched Filtering */}
+      {/* Matched Filtering */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Matched Filtering
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
-              LIGO employs matched filtering methodology. Einstein&apos;s equations precisely predict gravitational wave characteristics for merging black hole pairs. The distinctive &quot;chirp&quot; signal - frequency and amplitude increasing together - follows exact mathematical patterns.
+              LIGO employs matched filtering methodology. Einstein&apos;s equations precisely predict gravitational wave characteristics for merging black hole pairs. The distinctive &quot;chirp&quot; signal - frequency and amplitude increasing together - follows exact mathematical patterns determined by the masses and spins of the merging objects.
             </p>
             <p>
-              By correlating predicted templates against noisy measurements, LIGO isolates buried signals. GW150914&apos;s correlation strength suggested occurrence probability below 1 in 200,000 years of random data.
+              By correlating predicted templates against noisy measurements, LIGO isolates buried signals. The process is like listening for a specific bird call in a crowded forest - if you know what it sounds like, you can find it even when everything else is louder.
+            </p>
+            <p>
+              GW150914&apos;s correlation strength reached a signal-to-noise ratio of 24 - meaning the chance of random noise producing this match was less than 1 in 200,000 years of continuous data. The signal was real.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Stage 4: BUILD - The Event */}
+      {/* The Event */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Event
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Two black holes - 36 and 29 solar masses - spiralled inward over millions of years. During their final fractional second, orbital speed approached half light-speed, completing dozens of cycles before merger.
             </p>
             <p>
-              The resulting 62-solar-mass object released three solar masses as gravitational energy (more than 10⁴⁷ joules) - momentarily outshining all observable universe stars combined.
+              The resulting 62-solar-mass object released three solar masses as gravitational energy - more than 10&#x2074;&#x2077; joules - momentarily outshining all observable stars combined.
             </p>
             <p>
               After travelling 1.3 billion years while expanding with the universe, the wave reached Earth on 14 September 2015.
@@ -142,42 +139,47 @@ export default function GravitationalWavePage() {
         </div>
       </section>
 
-      {/* Stage 5: REWARD */}
-      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[var(--bg-tertiary)]">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
-            What This Means
-          </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
-            <p>
-              GW150914 was the first direct detection of gravitational waves - confirming a century-old prediction by Einstein. But it also opened a new way of observing the universe. Light can&apos;t escape black holes. Gravitational waves can.
-            </p>
-            <p className="text-[var(--text-primary)]">
-              We can now &quot;hear&quot; events that were previously invisible. LIGO has since detected dozens of black hole mergers and neutron star collisions. Each one reveals physics that was inaccessible before September 2015.
-            </p>
+      {/* What This Means */}
+      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24">
+        <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+          <div className="max-w-3xl">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
+              What This Means
+            </h2>
+            <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
+              <p>
+                GW150914 was the first direct detection of gravitational waves - confirming a century-old prediction by Einstein. But it also opened a new way of observing the universe. Light can&apos;t escape black holes. Gravitational waves can.
+              </p>
+              <p>
+                Rainer Weiss, Kip Thorne, and Barry Barish received the 2017 Nobel Prize in Physics for the detection.
+              </p>
+              <p className="text-[var(--text-primary)]">
+                We can now &quot;hear&quot; events that were previously invisible. LIGO has since detected dozens of black hole mergers and neutron star collisions. Each one reveals physics that was inaccessible before September 2015.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stage 6: EXTEND - Going Deeper */}
+      {/* Going Deeper */}
       <section className="px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Going Deeper
           </h2>
-          <p className="font-nhg text-[var(--text-tertiary)] text-sm">
+          <p className="font-nhg text-[var(--text-tertiary)] text-sm mt-4">
             For the curious - you&apos;ve got the main idea, this is extra.
           </p>
         </div>
       </section>
 
-      {/* 6a: How LIGO Works */}
+      {/* How LIGO Works */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             How LIGO Achieves Sub-Atomic Precision
           </h3>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               LIGO uses laser interferometry. A single laser beam splits and travels down two perpendicular 4-kilometre arms. Mirrors reflect the beams back and forth about 280 times, effectively creating 1,120-kilometre paths.
             </p>
@@ -191,13 +193,13 @@ export default function GravitationalWavePage() {
         </div>
       </section>
 
-      {/* 6b: The Chirp */}
+      {/* The Chirp */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Why It&apos;s Called a Chirp
           </h3>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               As two black holes spiral closer, they orbit faster. Faster orbits produce higher-frequency gravitational waves. The amplitude also increases as the black holes approach merger.
             </p>
@@ -211,13 +213,13 @@ export default function GravitationalWavePage() {
         </div>
       </section>
 
-      {/* Stage 7: LAUNCH */}
+      {/* Further Exploration */}
       <section className="px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Further Exploration
           </h2>
-          <div>
+          <div className="mt-6">
             <div className="space-y-8">
               <div>
                 <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
@@ -267,7 +269,15 @@ export default function GravitationalWavePage() {
                       href="/work/stellar-cartography"
                       className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                     >
-                      Stellar Cartography →
+                      Stellar Cartography &rarr;
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/work/stellar-evolution"
+                      className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                    >
+                      Stellar Evolution &rarr;
                     </a>
                   </li>
                 </ul>

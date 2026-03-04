@@ -1,16 +1,56 @@
 import { Panel, Stage, SpectrogramData, OrbitalData, EventMetadata, COLOURS, TIME_RANGE } from './types';
 import { findNearestIndex } from './mock-data';
 
+const FONT_LABEL = '12px neue-haas-grotesk-text, sans-serif';
+const FONT_AXIS = '10px neue-haas-grotesk-text, sans-serif';
+
 /**
- * Compute panel layout based on current stage
+ * Compute panel layout based on current stage and viewport
  */
-export function computePanelLayout(stage: Stage, W: number, H: number): Panel[] {
+export function computePanelLayout(stage: Stage, W: number, H: number, isMobile: boolean): Panel[] {
   const panels: Panel[] = [];
   const pad = 12;
   const headerHeight = 56;
   const scrubberHeight = 56;
   const usableHeight = H - headerHeight - scrubberHeight;
 
+  if (isMobile) {
+    // Mobile layouts: drop L1 to save space
+    switch (stage) {
+      case 1: {
+        // Single H1 waveform (full height)
+        panels.push({ id: 'h1', x: pad, y: headerHeight, width: W - pad * 2, height: usableHeight, opacity: 1 });
+        break;
+      }
+      case 2: {
+        // H1 + template
+        const panelH = (usableHeight - pad) / 2;
+        panels.push({ id: 'h1', x: pad, y: headerHeight, width: W - pad * 2, height: panelH, opacity: 1 });
+        panels.push({ id: 'template', x: pad, y: headerHeight + panelH + pad, width: W - pad * 2, height: panelH, opacity: 1 });
+        break;
+      }
+      case 3: {
+        // H1 + spectrogram
+        const panelH = (usableHeight - pad) / 2;
+        panels.push({ id: 'h1', x: pad, y: headerHeight, width: W - pad * 2, height: panelH, opacity: 1 });
+        panels.push({ id: 'spectrogram', x: pad, y: headerHeight + panelH + pad, width: W - pad * 2, height: panelH, opacity: 1 });
+        break;
+      }
+      case 4: {
+        // Orbital on top, H1 + spectrogram below (stacked)
+        const orbitalH = usableHeight * 0.4;
+        const remainH = usableHeight - orbitalH - pad;
+        const panelH = (remainH - pad) / 2;
+        panels.push({ id: 'orbital', x: pad, y: headerHeight, width: W - pad * 2, height: orbitalH, opacity: 1 });
+        panels.push({ id: 'h1', x: pad, y: headerHeight + orbitalH + pad, width: W - pad * 2, height: panelH, opacity: 1 });
+        panels.push({ id: 'spectrogram', x: pad, y: headerHeight + orbitalH + pad + panelH + pad, width: W - pad * 2, height: panelH, opacity: 1 });
+        break;
+      }
+    }
+    return panels;
+  }
+
+  // Desktop layouts
   switch (stage) {
     case 1: {
       // Two tall waveform panels
@@ -89,7 +129,7 @@ export function drawWaveform(
 
   // Label
   if (options?.label) {
-    ctx.font = '12px monospace';
+    ctx.font = FONT_LABEL;
     ctx.fillStyle = COLOURS.TEXT_SECONDARY;
     ctx.fillText(options.label, x + 8, y + 18);
   }
@@ -162,14 +202,14 @@ export function drawSpectrogram(
   ctx.fillRect(x, y, width, height);
 
   // Label
-  ctx.font = '12px monospace';
+  ctx.font = FONT_LABEL;
   ctx.fillStyle = COLOURS.TEXT_SECONDARY;
   ctx.fillText('Time-Frequency Map (Q-Transform)', x + 8, y + 18);
 
   // Draw spectrogram as pixel grid
   const tBins = specData.timeBins;
   const fBins = specData.freqBins;
-  const labelHeight = 20;
+  const labelHeight = 24;
   const cellW = width / tBins;
   const cellH = (height - labelHeight) / fBins;
 
@@ -196,9 +236,9 @@ export function drawSpectrogram(
   ctx.globalAlpha = 1;
 
   // Frequency axis labels
-  ctx.font = '11px monospace';
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-  ctx.fillText(`${Math.round(specData.freqRange[1])} Hz`, x + 4, y + 32);
+  ctx.font = FONT_AXIS;
+  ctx.fillStyle = COLOURS.TEXT_AXIS;
+  ctx.fillText(`${Math.round(specData.freqRange[1])} Hz`, x + 4, y + 36);
   ctx.fillText(`${Math.round(specData.freqRange[0])} Hz`, x + 4, y + height - 6);
 
   // Playhead
@@ -334,14 +374,14 @@ export function drawOrbitalDiagram(
   ctx.stroke();
 
   // Mass labels
-  ctx.font = '11px monospace';
-  ctx.fillStyle = COLOURS.TEXT_SECONDARY;
+  ctx.font = FONT_AXIS;
+  ctx.fillStyle = COLOURS.TEXT_AXIS;
   ctx.fillText(`${event.mass1.toFixed(0)} M\u2609`, bh1x + bh1r + 6, bh1y + 4);
   ctx.fillText(`${event.mass2.toFixed(0)} M\u2609`, bh2x + bh2r + 6, bh2y + 4);
 
   // Separation / merged indicator
   ctx.fillStyle = COLOURS.TEXT_DIM;
-  ctx.font = '12px monospace';
+  ctx.font = FONT_AXIS;
   const sepText = separation < 1.5 ? 'MERGED' : `${separation.toFixed(0)} Rs`;
   ctx.fillText(sepText, x + 10, y + height - 10);
 
