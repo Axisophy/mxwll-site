@@ -135,6 +135,13 @@ const labItems = [
     slug: '/lab/pulsar',
     status: 'Live',
   },
+  {
+    title: 'Neutron Stars & Magnetars',
+    description: 'The densest objects in the visible universe rendered as a WebGL2 particle system. Three states: quiet neutron star, active pulsar, and magnetar starquake with bloom post-processing.',
+    tags: ['WebGL2', 'Particle System', 'Astrophysics'],
+    slug: '/lab/neutron-stars',
+    status: 'Live',
+  },
   // --- In Development ---
   {
     title: 'What\'s Inside Your Console?',
