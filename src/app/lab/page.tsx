@@ -12,6 +12,7 @@ const labItems = [
     tags: ['SVG', 'Astrophysics', 'Interactive', 'Data Visualisation'],
     slug: '/lab/permissible-universe',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Cosmic Distance Ladder',
@@ -19,6 +20,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Astronomy', 'Scrollytelling', 'Interactive'],
     slug: '/lab/cosmic-distance-ladder',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Asteroid Belt',
@@ -26,6 +28,7 @@ const labItems = [
     tags: ['WebGL', 'Astronomy', 'Simulation', 'NASA Data'],
     slug: '/lab/asteroid-belt',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Orbital Mechanics',
@@ -33,6 +36,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Physics', 'Simulation', 'Interactive', 'Space'],
     slug: '/lab/orbital-mechanics',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Fractals',
@@ -40,6 +44,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Mathematics', 'Generative', 'Interactive'],
     slug: '/lab/fractals',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Galaxy Merger',
@@ -47,6 +52,7 @@ const labItems = [
     tags: ['Three.js', 'Astronomy', 'Simulation', 'Generative'],
     slug: '/lab/galaxy-merger',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Decay Chain',
@@ -54,6 +60,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Nuclear Physics', 'Interactive', 'Simulation'],
     slug: '/lab/decay-chain',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Network Theory',
@@ -61,6 +68,7 @@ const labItems = [
     tags: ['SVG', 'Mathematics', 'Simulation', 'Interactive'],
     slug: '/lab/network-theory',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Seismic Anatomy',
@@ -68,6 +76,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Earth Science', 'Interactive', 'Simulation'],
     slug: '/lab/seismic-anatomy',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Braess Paradox',
@@ -75,6 +84,7 @@ const labItems = [
     tags: ['Interactive', 'Game Theory', 'Mathematics', 'Simulation'],
     slug: '/lab/braess-paradox',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Network Effects',
@@ -82,6 +92,7 @@ const labItems = [
     tags: ['Interactive', 'Economics', 'Data Visualisation'],
     slug: '/lab/network-effects',
     status: 'Live',
+    date: '2025-11',
   },
   {
     title: 'Phyllotaxis',
@@ -89,6 +100,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Mathematics', 'Generative'],
     slug: '/lab/phyllotaxis',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Brownian Motion',
@@ -96,6 +108,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Physics', 'Simulation'],
     slug: '/lab/brownian-motion',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Penrose Tiling',
@@ -103,6 +116,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Mathematics', 'Generative'],
     slug: '/lab/penrose-tiling',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Lissajous',
@@ -110,6 +124,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Mathematics', 'Generative'],
     slug: '/lab/lissajous',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Space-filling Curves',
@@ -117,6 +132,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Mathematics', 'Generative'],
     slug: '/lab/space-filling-curves',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Orbital Resonance',
@@ -124,6 +140,7 @@ const labItems = [
     tags: ['Canvas 2D', 'Astronomy', 'Simulation'],
     slug: '/lab/orbital-resonance',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Solar System to Scale',
@@ -131,6 +148,7 @@ const labItems = [
     tags: ['SVG', 'Astronomy', 'Interactive'],
     slug: '/lab/solar-system-scale',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Pulsar',
@@ -138,6 +156,7 @@ const labItems = [
     tags: ['Three.js', 'Web Audio', 'Astrophysics', 'Simulation', 'Interactive'],
     slug: '/lab/pulsar',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Neutron Stars & Magnetars',
@@ -145,6 +164,7 @@ const labItems = [
     tags: ['WebGL', 'Astrophysics', 'Simulation', 'GLSL'],
     slug: '/lab/neutron-stars',
     status: 'Live',
+    date: '2026-03',
   },
   {
     title: 'Earth\'s Orbital Neighbourhood',
@@ -152,6 +172,7 @@ const labItems = [
     tags: ['Three.js', 'Space', 'NASA Data', 'Data Visualisation', 'Interactive'],
     slug: '/lab/satellite-tracker',
     status: 'Live',
+    date: '2026-03',
   },
   // --- In Development ---
   {
@@ -160,6 +181,7 @@ const labItems = [
     tags: ['Interactive', 'Illustration'],
     slug: '#',
     status: 'In Development',
+    date: '2026-03',
   },
   {
     title: 'Stellar Cartography',
@@ -167,6 +189,7 @@ const labItems = [
     tags: ['WebGL', 'Gaia', 'Astronomy', 'Data Visualisation'],
     slug: '/work/stellar-cartography',
     status: 'Live',
+    date: '2026-02',
   },
   {
     title: 'Emergent Currents',
@@ -174,6 +197,7 @@ const labItems = [
     tags: ['WebGL', 'Generative', 'GLSL'],
     slug: '#',
     status: 'In Development',
+    date: '2026-02',
   },
   {
     title: 'Lorenz Attractor',
@@ -181,6 +205,7 @@ const labItems = [
     tags: ['WebGL', 'Mathematics', 'Simulation', 'Generative'],
     slug: '#',
     status: 'In Development',
+    date: '2026-02',
   },
   {
     title: 'Physarum',
@@ -188,6 +213,7 @@ const labItems = [
     tags: ['WebGL', 'Biology', 'Simulation', 'Generative', 'GLSL'],
     slug: '#',
     status: 'In Development',
+    date: '2026-01',
   },
   {
     title: 'CMB Explorer',
@@ -195,6 +221,7 @@ const labItems = [
     tags: ['Three.js', 'Astronomy', 'ESA', 'Data Visualisation'],
     slug: '#',
     status: 'In Development',
+    date: '2026-01',
   },
 ]
 
@@ -211,16 +238,30 @@ function buildTagCounts(items: { tags: string[] }[]): { tag: string; count: numb
     .map(([tag, count]) => ({ tag, count }))
 }
 
+/** Sort: Live first (newest first), then In Development (newest first) */
+function sortedItems(items: typeof labItems) {
+  return [...items].sort((a, b) => {
+    // Status grouping: Live before In Development
+    if (a.status !== b.status) {
+      return a.status === 'Live' ? -1 : 1
+    }
+    // Within same status: newest date first
+    return b.date.localeCompare(a.date)
+  })
+}
+
 export default function LabPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   const tagCounts = useMemo(() => buildTagCounts(labItems), [])
 
   const filteredItems = useMemo(() => {
-    if (selectedTags.length === 0) return labItems
-    return labItems.filter(item =>
-      selectedTags.some(tag => item.tags.includes(tag))
-    )
+    const base = selectedTags.length === 0
+      ? labItems
+      : labItems.filter(item =>
+          selectedTags.some(tag => item.tags.includes(tag))
+        )
+    return sortedItems(base)
   }, [selectedTags])
 
   return (
@@ -239,53 +280,75 @@ export default function LabPage() {
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         {filteredItems.length > 0 ? (
           <div className="space-y-4">
-            {filteredItems.map((item) => (
-              <div
-                key={item.title}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
-                {/* Left frame - Title and status */}
-                <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-                  <h2 className="font-nhg text-xl md:text-2xl font-medium text-[var(--text-primary)]">
-                    {item.slug !== '#' ? (
-                      <Link href={item.slug} className="hover:text-[#0055FF] transition-colors">
-                        {item.title}
-                      </Link>
-                    ) : (
-                      item.title
-                    )}
+            {filteredItems.map((item) => {
+              const isLinked = item.slug !== '#'
+              const leftContent = (
+                <div
+                  className={`
+                    bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8
+                    transition-colors duration-200
+                    ${isLinked ? 'group-hover:bg-[#0055FF]' : ''}
+                  `}
+                >
+                  <h2 className={`
+                    font-nhg text-xl md:text-2xl font-medium text-[var(--text-primary)]
+                    transition-colors duration-200
+                    ${isLinked ? 'group-hover:text-white' : ''}
+                  `}>
+                    {item.title}
                   </h2>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {item.status === 'Live' && (
-                      <span className="font-label text-[10px] uppercase tracking-wider text-white bg-green-500 px-2.5 py-0.5 rounded-full">
+                      <span className={`
+                        font-label text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full
+                        transition-colors duration-200
+                        text-white bg-green-500
+                        ${isLinked ? 'group-hover:bg-white/20 group-hover:text-white' : ''}
+                      `}>
                         Live
                       </span>
                     )}
                     {item.status === 'In Development' && (
-                      <span className="font-label text-[10px] uppercase tracking-wider text-black bg-orange-400 px-2.5 py-0.5 rounded-full">
+                      <span className="font-label text-[10px] uppercase tracking-wider text-white bg-orange-400 px-2.5 py-0.5 rounded-full">
                         In Development
                       </span>
                     )}
                   </div>
                 </div>
-                {/* Right frame - Description and tags */}
-                <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
-                  <p className="font-nhg text-[var(--text-secondary)] leading-relaxed">
-                    {item.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-label text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+              )
+
+              return (
+                <div
+                  key={item.title}
+                  className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4"
+                >
+                  {/* Left frame - Title and status */}
+                  {isLinked ? (
+                    <Link href={item.slug} className="group">
+                      {leftContent}
+                    </Link>
+                  ) : (
+                    <div>{leftContent}</div>
+                  )}
+                  {/* Right frame - Description and tags */}
+                  <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+                    <p className="font-nhg text-[var(--text-secondary)] leading-relaxed">
+                      {item.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-label text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         ) : (
           <div className="py-24 text-center">

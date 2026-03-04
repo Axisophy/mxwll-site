@@ -24,6 +24,7 @@ const allWork = [
     slug: 'stellar-cartography',
     label: 'Four ways to see the same stars',
     tags: ['WebGL', 'Astronomy', 'Data Visualisation', 'Interactive', 'Gaia'],
+    date: '2026-02',
   },
   {
     title: 'The Chirp',
@@ -33,6 +34,7 @@ const allWork = [
     slug: 'gravitational-wave',
     label: 'How LIGO found a whisper from 1.3 billion years ago',
     tags: ['Canvas 2D', 'Web Audio', 'Physics', 'Interactive', 'Simulation'],
+    date: '2026-02',
   },
   {
     title: 'Chart of Nuclides',
@@ -42,6 +44,7 @@ const allWork = [
     slug: 'nuclide-chart',
     label: '3,352 ways to build an atom',
     tags: ['SVG', 'Nuclear Physics', 'Interactive', 'Data Visualisation', 'IAEA'],
+    date: '2026-02',
   },
   {
     title: 'Stellar Evolution',
@@ -52,6 +55,7 @@ const allWork = [
     label: 'A map of how stars live and die',
     tags: ['SVG', 'Astronomy', 'Interactive', 'Data Visualisation', 'Gaia'],
     videoUrl: '/video/hr_animation.mp4',
+    date: '2026-02',
   },
   {
     title: 'Exoplanet Systems',
@@ -61,6 +65,7 @@ const allWork = [
     slug: 'exoplanet-systems',
     label: 'A gallery of alien solar systems',
     tags: ['Canvas 2D', 'Astronomy', 'NASA Data', 'Interactive', 'Data Visualisation'],
+    date: '2026-02',
   },
   {
     title: 'Solar Wavelength',
@@ -70,6 +75,7 @@ const allWork = [
     slug: 'solar-wavelength',
     label: 'One moment, eight wavelengths',
     tags: ['Canvas 2D', 'Astronomy', 'SDO', 'Data Visualisation'],
+    date: '2026-02',
   },
   {
     title: 'Space Mission Timeline',
@@ -79,6 +85,7 @@ const allWork = [
     slug: 'space-missions',
     label: 'Seven decades of reaching beyond Earth',
     tags: ['Scrollytelling', 'Space', 'NASA Data', 'Interactive', 'Data Visualisation'],
+    date: '2026-03',
   },
   {
     title: 'Solar Activity',
@@ -88,6 +95,7 @@ const allWork = [
     slug: 'solar-activity',
     label: 'The Sun in action across two solar cycles',
     tags: ['Canvas 2D', 'Astronomy', 'SDO', 'Interactive'],
+    date: '2026-03',
   },
 ]
 
