@@ -121,6 +121,13 @@ const labItems = [
     slug: '/lab/orbital-resonance',
     status: 'Live',
   },
+  {
+    title: 'Solar System to Scale',
+    description: 'Every planet drawn to its true relative size. Swipe through the solar system and feel the difference between Jupiter and Earth. Mercury is a speck.',
+    tags: ['SVG', 'Astronomy', 'Mobile-First'],
+    slug: '/lab/solar-system-scale',
+    status: 'Live',
+  },
   // --- In Development ---
   {
     title: 'What\'s Inside Your Console?',
