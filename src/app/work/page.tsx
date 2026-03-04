@@ -1,9 +1,7 @@
 'use client'
 
-import { useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import WorkCard from '@/components/WorkCard'
-import TagFilter from '@/components/TagFilter'
 
 const StellarDemo = dynamic(
   () => import('@/visualisers/stellar-cartography/demo/StellarDemo'),
@@ -105,59 +103,21 @@ const DEMO_CARDS: Record<string, React.ReactNode> = {
   'solar-wavelength': <SolarWorkDemo className="w-full h-full" />,
 }
 
-/** Build tag list with counts from project data */
-function buildTagCounts(items: { tags: string[] }[]): { tag: string; count: number }[] {
-  const counts = new Map<string, number>()
-  for (const item of items) {
-    for (const tag of item.tags) {
-      counts.set(tag, (counts.get(tag) || 0) + 1)
-    }
-  }
-  return Array.from(counts.entries())
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([tag, count]) => ({ tag, count }))
-}
-
 export default function WorkPage() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-
-  const tagCounts = useMemo(() => buildTagCounts(allWork), [])
-
-  const filteredWork = useMemo(() => {
-    if (selectedTags.length === 0) return allWork
-    // OR logic: show projects matching ANY selected tag
-    return allWork.filter(work =>
-      selectedTags.some(tag => work.tags.includes(tag))
-    )
-  }, [selectedTags])
-
   return (
     <>
-      {/* Title + Filter */}
+      {/* Title */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8">
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">Work</h1>
-        <TagFilter
-          tags={tagCounts}
-          selectedTags={selectedTags}
-          onTagsChange={setSelectedTags}
-        />
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em]">Work</h1>
       </section>
 
       {/* Work Grid */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        {filteredWork.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 md:gap-12">
-            {filteredWork.map((work) => (
-              <WorkCard key={work.slug} {...work} demoElement={DEMO_CARDS[work.slug]} />
-            ))}
-          </div>
-        ) : (
-          <div className="py-24 text-center">
-            <p className="text-lg text-[var(--text-secondary)]">
-              No work matches these tags.
-            </p>
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-8 md:gap-12">
+          {allWork.map((work) => (
+            <WorkCard key={work.slug} {...work} demoElement={DEMO_CARDS[work.slug]} />
+          ))}
+        </div>
       </section>
     </>
   )
