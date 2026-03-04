@@ -185,45 +185,47 @@ export default function LabPage() {
           {labItems.map((item) => (
             <div
               key={item.title}
-              className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-12">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <h2 className="font-nhg text-xl md:text-2xl font-medium text-[var(--text-primary)]">
-                      {item.slug !== '#' ? (
-                        <Link href={item.slug} className="hover:text-[var(--accent-hover)] transition-colors">
-                          {item.title}
-                        </Link>
-                      ) : (
-                        item.title
-                      )}
-                    </h2>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {item.status === 'In Development' && (
-                      <span className="font-nhg text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded">
-                        In Development
-                      </span>
-                    )}
-                    {item.status === 'Live' && (
-                      <span className="font-nhg text-[10px] text-[var(--status-nominal)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded">
-                        Live
-                      </span>
-                    )}
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-nhg text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* Left frame - Title and status */}
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+                <h2 className="font-nhg text-xl md:text-2xl font-medium text-[var(--text-primary)]">
+                  {item.slug !== '#' ? (
+                    <Link href={item.slug} className="hover:text-[#0055FF] transition-colors">
+                      {item.title}
+                    </Link>
+                  ) : (
+                    item.title
+                  )}
+                </h2>
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {item.status === 'Live' && (
+                    <span className="font-label text-[10px] uppercase tracking-wider text-white bg-green-500 px-2.5 py-0.5 rounded-full">
+                      Live
+                    </span>
+                  )}
+                  {item.status === 'In Development' && (
+                    <span className="font-label text-[10px] uppercase tracking-wider text-black bg-orange-400 px-2.5 py-0.5 rounded-full">
+                      In Development
+                    </span>
+                  )}
                 </div>
-                <p className="font-nhg text-lg text-[var(--text-secondary)] leading-relaxed">
+              </div>
+              {/* Right frame - Description and tags */}
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+                <p className="font-nhg text-[var(--text-secondary)] leading-relaxed">
                   {item.description}
                 </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-label text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider bg-[var(--bg-tertiary)] px-2 py-0.5 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

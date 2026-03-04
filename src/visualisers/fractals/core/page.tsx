@@ -17,7 +17,7 @@ function MetadataDropdown({ title, children }: { title?: string; children: React
       >
         {title && <span className='text-sm'>{title}</span>}
         <svg
-          className={`w-4 h-4 text-white/40 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-[var(--text-tertiary)] transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill='none'
           viewBox='0 0 24 24'
           stroke='currentColor'
@@ -26,7 +26,7 @@ function MetadataDropdown({ title, children }: { title?: string; children: React
         </svg>
       </button>
       {isOpen && (
-        <div className='text-xs text-white/60 mt-2 leading-relaxed space-y-2'>
+        <div className='text-xs text-[var(--text-tertiary)] mt-2 leading-relaxed space-y-2'>
           {children}
         </div>
       )}
@@ -58,30 +58,30 @@ export default function FractalsPage() {
             <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
               What are Fractals?
             </h1>
-            <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
+            <p className='text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2'>
               A Beginner&apos;s Guide
             </p>
-            <p className='text-base text-white/70 max-w-3xl mt-6 md:mt-8 lg:mt-12'>
+            <p className='text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12'>
               An accessible introduction to fractal geometry  - from simple self-similarity to the infinite complexity of the Mandelbrot set. Designed to spark curiosity without requiring any mathematical background.
             </p>
             {/* Tags */}
             <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Explanation Design</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Interactive</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Mathematics</span>
+              <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Explanation Design</span>
+              <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Interactive</span>
+              <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Mathematics</span>
             </div>
           </div>
 
           {/* Right column - Portfolio Metadata */}
           <div className='space-y-6'>
             <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>
                 Category
               </span>
               <span className='text-sm'>Explanation Design</span>
             </div>
             <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>
                 Audience
               </span>
               <MetadataDropdown title='Generally interested adults'>
@@ -89,7 +89,7 @@ export default function FractalsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>
                 Approach
               </span>
               <MetadataDropdown>
@@ -99,7 +99,7 @@ export default function FractalsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>
                 Adaptability
               </span>
               <MetadataDropdown>
@@ -108,16 +108,16 @@ export default function FractalsPage() {
               </MetadataDropdown>
             </div>
             <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>
                 Technology
               </span>
               <span className='text-sm'>React, Canvas/WebGL, D3.js</span>
             </div>
             <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
+              <span className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>
                 Data
               </span>
-              <span className='text-sm text-white/70'>Mathematical generation (no external datasets)</span>
+              <span className='text-sm text-[var(--text-secondary)]'>Mathematical generation (no external datasets)</span>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             You&apos;ve Seen These Before
           </h2>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               You&apos;ve seen fractal images  - on posters, screensavers, album covers. The Mandelbrot set, with its seahorses and spirals, has become one of the most recognisable images in mathematics.
             </p>
@@ -175,7 +175,7 @@ export default function FractalsPage() {
             { name: 'Fern', file: 'fern-thumbnail.jpg' },
             { name: 'Koch snowflake', file: 'snowflake-thumbnail.jpg' },
           ].map((item) => (
-            <div key={item.file} className='aspect-square bg-white/10 flex items-center justify-center border border-white/10'>
+            <div key={item.file} className='aspect-square bg-[var(--bg-secondary)] flex items-center justify-center border border-[var(--bg-tertiary)]'>
               <span className='text-black/30 text-xs font-nhg text-center px-2'>{item.file}</span>
             </div>
           ))}
@@ -188,7 +188,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Patterns Within Patterns
           </h2>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               The defining feature of fractals is <strong>self-similarity</strong>  - zoom in, and you find smaller copies of the same shapes you just saw. Zoom in on those copies, and you find even smaller copies. This continues forever.
             </p>
@@ -205,7 +205,7 @@ export default function FractalsPage() {
           <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             The Koch Snowflake
           </h3>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               The Koch snowflake is one of the simplest fractals to understand. Start with an equilateral triangle. Take each straight edge and replace it with a kinked version: remove the middle third and add two sides of a smaller triangle pointing outward.
             </p>
@@ -223,7 +223,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             How Long is Britain&apos;s Coastline?
           </h2>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               In 1967, mathematician Benoit Mandelbrot asked a deceptively simple question: how long is the coast of Britain?
             </p>
@@ -240,10 +240,10 @@ export default function FractalsPage() {
         </div>
 
         {/* Coastline diagram placeholder - full width */}
-        <div className='border border-white/10 aspect-[2/1] flex items-center justify-center bg-white/10'>
+        <div className='border border-[var(--bg-tertiary)] aspect-[2/1] flex items-center justify-center bg-[var(--bg-secondary)]'>
           <span className='text-black/30 text-sm font-nhg'>coastline-measurement.svg</span>
         </div>
-        <p className='text-xs md:text-sm text-white/50 mt-4'>
+        <p className='text-xs md:text-sm text-[var(--text-tertiary)] mt-4'>
           The same coastline measured at different scales yields different lengths.
         </p>
       </section>
@@ -254,7 +254,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             More Than a Line, Less Than a Plane
           </h2>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               A straight line is one-dimensional. A filled square is two-dimensional. But what about a coastline? Or the Koch snowflake?
             </p>
@@ -272,16 +272,16 @@ export default function FractalsPage() {
 
         {/* Dimension comparison - full width */}
         <div className='grid grid-cols-3 gap-4'>
-          <div className='border border-white/10 p-4 flex flex-col items-center'>
+          <div className='border border-[var(--bg-tertiary)] p-4 flex flex-col items-center'>
             <div className='h-24 flex items-center justify-center'>
               <svg width='100' height='4' viewBox='0 0 100 4'>
                 <line x1='0' y1='2' x2='100' y2='2' stroke='black' strokeWidth='2' />
               </svg>
             </div>
             <span className='text-sm font-bold mt-2'>D = 1</span>
-            <span className='text-xs text-white/50'>Line</span>
+            <span className='text-xs text-[var(--text-tertiary)]'>Line</span>
           </div>
-          <div className='border border-white/10 p-4 flex flex-col items-center bg-[var(--color-blue)]/5'>
+          <div className='border border-[var(--bg-tertiary)] p-4 flex flex-col items-center bg-[var(--color-blue)]/5'>
             <div className='h-24 flex items-center justify-center'>
               <svg width='80' height='80' viewBox='0 0 80 80'>
                 <path
@@ -293,14 +293,14 @@ export default function FractalsPage() {
               </svg>
             </div>
             <span className='text-sm font-bold mt-2'>D = 1.26</span>
-            <span className='text-xs text-white/50'>Koch snowflake</span>
+            <span className='text-xs text-[var(--text-tertiary)]'>Koch snowflake</span>
           </div>
-          <div className='border border-white/10 p-4 flex flex-col items-center'>
+          <div className='border border-[var(--bg-tertiary)] p-4 flex flex-col items-center'>
             <div className='h-24 flex items-center justify-center'>
               <div className='w-16 h-16 bg-black' />
             </div>
             <span className='text-sm font-bold mt-2'>D = 2</span>
-            <span className='text-xs text-white/50'>Square</span>
+            <span className='text-xs text-[var(--text-tertiary)]'>Square</span>
           </div>
         </div>
       </section>
@@ -311,7 +311,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Nature&apos;s Favourite Pattern
           </h2>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               Fractals aren&apos;t just mathematical curiosities  - they&apos;re everywhere in the natural world.
             </p>
@@ -332,7 +332,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             The Icon
           </h2>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               The Mandelbrot set is the most famous image in mathematics. It&apos;s what was zooming in the video you saw at the top of this page.
             </p>
@@ -379,7 +379,7 @@ export default function FractalsPage() {
           <h2 className='text-3xl md:text-4xl font-bold tracking-[-0.03em]'>
             Going Deeper
           </h2>
-          <p className='text-white/50 text-sm'>
+          <p className='text-[var(--text-tertiary)] text-sm'>
             For the curious  - you&apos;ve got the main idea, this is extra.
           </p>
         </div>
@@ -391,7 +391,7 @@ export default function FractalsPage() {
           <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             Julia Sets
           </h3>
-          <div className='space-y-4 text-white/70 leading-relaxed'>
+          <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
             <p>
               The Mandelbrot set has a secret twin  - actually, infinitely many twins.
             </p>
@@ -407,7 +407,7 @@ export default function FractalsPage() {
         {/* 3D Julia gallery placeholder - full width */}
         <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mb-8'>
           {['julia-dendrite.jpg', 'julia-rabbit.jpg', 'julia-spiral.jpg'].map((img) => (
-            <div key={img} className='aspect-square bg-white/10 flex items-center justify-center border border-white/10'>
+            <div key={img} className='aspect-square bg-[var(--bg-secondary)] flex items-center justify-center border border-[var(--bg-tertiary)]'>
               <span className='text-black/30 text-xs font-nhg'>{img}</span>
             </div>
           ))}
@@ -422,17 +422,17 @@ export default function FractalsPage() {
           <h3 className='text-2xl md:text-3xl font-bold tracking-[-0.03em]'>
             Beyond Two Dimensions
           </h3>
-          <p className='text-white/70 leading-relaxed'>
+          <p className='text-[var(--text-secondary)] leading-relaxed'>
             Fractals extend into three dimensions and beyond. The Mandelbulb (discovered 2009) is a 3D analog of the Mandelbrot set  - infinitely detailed surfaces you could explore forever.
           </p>
         </div>
 
         {/* 3D renders placeholder - full width */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <div className='aspect-square bg-white/10 flex items-center justify-center border border-white/10'>
+          <div className='aspect-square bg-[var(--bg-secondary)] flex items-center justify-center border border-[var(--bg-tertiary)]'>
             <span className='text-black/30 text-sm font-nhg'>mandelbulb.jpg</span>
           </div>
-          <div className='aspect-square bg-white/10 flex items-center justify-center border border-white/10'>
+          <div className='aspect-square bg-[var(--bg-secondary)] flex items-center justify-center border border-[var(--bg-tertiary)]'>
             <span className='text-black/30 text-sm font-nhg'>mandelbox.jpg</span>
           </div>
         </div>
@@ -445,32 +445,32 @@ export default function FractalsPage() {
             More Than Pretty Pictures
           </h3>
           <div>
-            <p className='text-white/70 leading-relaxed mb-8'>
+            <p className='text-[var(--text-secondary)] leading-relaxed mb-8'>
               Fractals aren&apos;t just beautiful  - they&apos;re useful.
             </p>
 
             <div className='space-y-6'>
               <div>
                 <h4 className='font-bold mb-1'>Antennas</h4>
-                <p className='text-sm text-white/60'>
+                <p className='text-sm text-[var(--text-tertiary)]'>
                   Fractal designs pack more electrical length into small spaces  - that&apos;s why your phone can receive multiple frequencies.
                 </p>
               </div>
               <div>
                 <h4 className='font-bold mb-1'>Computer graphics</h4>
-                <p className='text-sm text-white/60'>
+                <p className='text-sm text-[var(--text-tertiary)]'>
                   Games and films use fractal algorithms to generate realistic terrain, clouds, and vegetation.
                 </p>
               </div>
               <div>
                 <h4 className='font-bold mb-1'>Medicine</h4>
-                <p className='text-sm text-white/60'>
+                <p className='text-sm text-[var(--text-tertiary)]'>
                   The fractal patterns of blood vessels and airways help doctors spot abnormalities.
                 </p>
               </div>
               <div>
                 <h4 className='font-bold mb-1'>Finance</h4>
-                <p className='text-sm text-white/60'>
+                <p className='text-sm text-[var(--text-tertiary)]'>
                   Mandelbrot&apos;s later work revealed fractal patterns in market price movements  - something traditional models miss.
                 </p>
               </div>
@@ -488,7 +488,7 @@ export default function FractalsPage() {
           <div>
             <div className='space-y-8'>
               <div>
-                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] mb-4'>
                   Recommended Reading
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -501,13 +501,13 @@ export default function FractalsPage() {
                     >
                       The Fractal Geometry of Nature  - Benoit Mandelbrot
                     </a>
-                    <span className='text-white/40 ml-2'>The foundational text</span>
+                    <span className='text-[var(--text-tertiary)] ml-2'>The foundational text</span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] mb-4'>
                   Watch
                 </h3>
                 <ul className='space-y-2 text-sm'>
@@ -520,13 +520,13 @@ export default function FractalsPage() {
                     >
                       3Blue1Brown: Fractals are typically not self-similar
                     </a>
-                    <span className='text-white/40 ml-2'>A deeper dive into what fractals really are</span>
+                    <span className='text-[var(--text-tertiary)] ml-2'>A deeper dive into what fractals really are</span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className='text-xs font-nhg uppercase tracking-wider text-white/40 mb-4'>
+                <h3 className='text-xs font-nhg uppercase tracking-wider text-[var(--text-tertiary)] mb-4'>
                   Reference
                 </h3>
                 <ul className='space-y-2 text-sm'>
