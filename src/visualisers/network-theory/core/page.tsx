@@ -57,7 +57,7 @@ export default function NetworkTheoryPage() {
       {/* Static image placeholder */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
         <div className='border border-white/10 bg-white/10 aspect-[2/1] flex items-center justify-center'>
-          <span className='text-black/30 text-sm font-nhg'>network_comparison_static.png</span>
+          <span className='text-white/30 text-sm font-nhg'>network_comparison_static.png</span>
         </div>
         <p className='text-xs md:text-sm text-white/50 mt-4'>
           Three canonical network topologies with identical node counts, coloured by degree.

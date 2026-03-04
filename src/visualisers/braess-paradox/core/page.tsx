@@ -454,7 +454,7 @@ export default function BraessParadoxPage() {
                       href='https://www.amazon.co.uk/Algorithmic-Game-Theory-Noam-Nisan/dp/0521872820'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Algorithmic Game Theory - Nisan et al.
                     </a>
@@ -465,7 +465,7 @@ export default function BraessParadoxPage() {
                       href='https://www.amazon.co.uk/Thinking-Systems-Donella-H-Meadows/dp/1603580557'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Thinking in Systems - Donella Meadows
                     </a>
@@ -484,7 +484,7 @@ export default function BraessParadoxPage() {
                       href='https://en.wikipedia.org/wiki/Braess%27s_paradox'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Braess&apos;s paradox (Wikipedia)
                     </a>
@@ -494,7 +494,7 @@ export default function BraessParadoxPage() {
                       href='https://en.wikipedia.org/wiki/Price_of_anarchy'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Price of anarchy (Wikipedia)
                     </a>
@@ -504,7 +504,7 @@ export default function BraessParadoxPage() {
                       href='https://en.wikipedia.org/wiki/Cheonggyecheon'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Cheonggyecheon restoration (Wikipedia)
                     </a>

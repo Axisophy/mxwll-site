@@ -165,19 +165,19 @@ export default function NetworkEffectsPage() {
           </h2>
           <div className='space-y-6 text-white/70 leading-relaxed'>
             <div>
-              <h3 className='text-lg font-bold text-black mb-2'>Direct Network Effects</h3>
+              <h3 className='text-lg font-bold text-white mb-2'>Direct Network Effects</h3>
               <p>
                 Users benefit directly from other users. Phone networks, messaging apps, social platforms. More users = more people to connect with.
               </p>
             </div>
             <div>
-              <h3 className='text-lg font-bold text-black mb-2'>Indirect Network Effects</h3>
+              <h3 className='text-lg font-bold text-white mb-2'>Indirect Network Effects</h3>
               <p>
                 Users benefit from complements attracted by other users. Gaming consoles attract developers, which attracts more gamers, which attracts more developers. Two-sided markets.
               </p>
             </div>
             <div>
-              <h3 className='text-lg font-bold text-black mb-2'>Data Network Effects</h3>
+              <h3 className='text-lg font-bold text-white mb-2'>Data Network Effects</h3>
               <p>
                 Product improves as usage generates more data. Google gets better at search because billions of queries train its algorithms. Each user makes it better for everyone.
               </p>
@@ -275,19 +275,19 @@ export default function NetworkEffectsPage() {
             </p>
             <div className='space-y-4 mt-6'>
               <div className='bg-white/10 p-4'>
-                <p className='font-bold text-black mb-1'>1. Does your product get better when more people use it?</p>
+                <p className='font-bold text-white mb-1'>1. Does your product get better when more people use it?</p>
                 <p className='text-sm'>If yes: network effects are likely present.</p>
               </div>
               <div className='bg-white/10 p-4'>
-                <p className='font-bold text-black mb-1'>2. Would users lose value if they switched to a competitor?</p>
+                <p className='font-bold text-white mb-1'>2. Would users lose value if they switched to a competitor?</p>
                 <p className='text-sm'>If yes: you have switching costs, which amplify network effects.</p>
               </div>
               <div className='bg-white/10 p-4'>
-                <p className='font-bold text-black mb-1'>3. Is there a clear &quot;tipping point&quot; in your market&apos;s history?</p>
+                <p className='font-bold text-white mb-1'>3. Is there a clear &quot;tipping point&quot; in your market&apos;s history?</p>
                 <p className='text-sm'>If yes: you&apos;re in a winner-take-most market.</p>
               </div>
               <div className='bg-white/10 p-4'>
-                <p className='font-bold text-black mb-1'>4. Are there multiple viable competitors with similar market share?</p>
+                <p className='font-bold text-white mb-1'>4. Are there multiple viable competitors with similar market share?</p>
                 <p className='text-sm'>If yes: either tipping hasn&apos;t happened yet, or network effects are weak.</p>
               </div>
             </div>
@@ -358,13 +358,13 @@ export default function NetworkEffectsPage() {
           </h3>
           <div className='space-y-6 text-white/70 leading-relaxed'>
             <div>
-              <h4 className='font-bold text-black mb-2'>Uber vs Lyft</h4>
+              <h4 className='font-bold text-white mb-2'>Uber vs Lyft</h4>
               <p>
                 Launched within a year of each other. Uber&apos;s aggressive growth strategy reached tipping point first. Despite Lyft offering comparable service, Uber maintains 70%+ US market share. Network effects (driver density, rider liquidity) make switching painful.
               </p>
             </div>
             <div>
-              <h4 className='font-bold text-black mb-2'>Slack vs Microsoft Teams</h4>
+              <h4 className='font-bold text-white mb-2'>Slack vs Microsoft Teams</h4>
               <p>
                 Slack pioneered workplace messaging. Microsoft bundled Teams with Office 365. Despite being years late, Teams now dominates - because Microsoft&apos;s existing enterprise network effects (Office, Azure) outweighed Slack&apos;s head start.
               </p>
@@ -391,7 +391,7 @@ export default function NetworkEffectsPage() {
                       href='https://www.amazon.co.uk/Platform-Revolution-Networked-Markets-Transforming/dp/0393354350'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Platform Revolution - Parker, Van Alstyne, Choudary
                     </a>
@@ -402,7 +402,7 @@ export default function NetworkEffectsPage() {
                       href='https://www.amazon.co.uk/Zero-One-Notes-Start-Future/dp/0753555204'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Zero to One - Peter Thiel
                     </a>
@@ -421,7 +421,7 @@ export default function NetworkEffectsPage() {
                       href='https://en.wikipedia.org/wiki/Network_effect'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Network effect (Wikipedia)
                     </a>
@@ -431,7 +431,7 @@ export default function NetworkEffectsPage() {
                       href='https://en.wikipedia.org/wiki/Metcalfe%27s_law'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-[var(--color-blue)] hover:text-black transition-colors'
+                      className='text-[var(--color-blue)] hover:text-white transition-colors'
                     >
                       Metcalfe&apos;s Law (Wikipedia)
                     </a>
