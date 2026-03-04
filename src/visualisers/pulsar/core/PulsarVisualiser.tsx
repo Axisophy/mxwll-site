@@ -621,17 +621,17 @@ export default function PulsarVisualiser() {
       {showInstructions && (
         <div className="absolute inset-0 flex items-end justify-center pb-20 pointer-events-none animate-fadeInstructions">
           <div className="text-center">
-            <p className="font-nhg text-xs text-white/50">Drag left/right to change spin speed</p>
-            <p className="font-nhg text-xs text-white/30 mt-1">Drag up/down to tilt the axis</p>
-            <p className="font-nhg text-xs text-white/30 mt-1">Double-tap to change pulsar type</p>
+            <p className="font-nhg text-xs text-white/70">Drag left/right to change spin speed</p>
+            <p className="font-nhg text-xs text-white/60 mt-1">Drag up/down to tilt the axis</p>
+            <p className="font-nhg text-xs text-white/60 mt-1">Double-tap to change pulsar type</p>
           </div>
         </div>
       )}
 
       {/* Preset label */}
       <div className="absolute top-3 left-3 pointer-events-none">
-        <p className="font-label text-[9px] text-white/25">{PRESETS[presetIdx].label}</p>
-        <p className="font-nhg text-[10px] text-white/15 mt-0.5">{PRESETS[presetIdx].name}</p>
+        <p className="font-label text-[9px] text-white/70">{PRESETS[presetIdx].label}</p>
+        <p className="font-nhg text-[10px] text-white/60 mt-0.5">{PRESETS[presetIdx].name}</p>
       </div>
 
       {/* Mute button */}
@@ -641,12 +641,12 @@ export default function PulsarVisualiser() {
         aria-label={muted ? 'Unmute' : 'Mute'}
       >
         {muted ? (
-          <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
           </svg>
         ) : (
-          <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
           </svg>
         )}
@@ -654,7 +654,7 @@ export default function PulsarVisualiser() {
 
       {/* Desktop instruction */}
       <div className="hidden lg:block absolute bottom-3 right-3 pointer-events-none">
-        <p className="font-nhg text-[10px] text-white/20">Click and drag to explore. Scroll to zoom.</p>
+        <p className="font-nhg text-[10px] text-white/60">Click and drag to explore. Scroll to zoom.</p>
       </div>
     </div>
   )

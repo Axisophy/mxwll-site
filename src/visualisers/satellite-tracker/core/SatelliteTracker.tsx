@@ -698,7 +698,7 @@ export default function SatelliteTracker({ className }: Props) {
       <div
         ref={containerRef}
         className="relative w-full rounded-xl overflow-hidden"
-        style={{ aspectRatio: '16/9', background: '#03060f' }}
+        style={{ aspectRatio: '4/3', background: '#03060f' }}
       >
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
@@ -712,31 +712,11 @@ export default function SatelliteTracker({ className }: Props) {
           </div>
         )}
 
-        {/* Top Controls */}
-        <div className="absolute top-3 left-3 right-3 flex items-start justify-between pointer-events-none z-20">
-          {/* Satellite Count */}
-          <div className="pointer-events-none">
-            <p className="font-label text-[10px] text-white/50">
-              {satCount.toLocaleString()} SATELLITES TRACKED
-            </p>
-          </div>
-
-          {/* Time Controls */}
-          <div className="flex gap-1 pointer-events-auto">
-            {TIME_SPEEDS.map(speed => (
-              <button
-                key={speed}
-                onClick={() => setTimeSpeed(speed)}
-                className={`font-label text-[10px] px-2 py-1 transition-colors ${
-                  timeSpeed === speed
-                    ? 'bg-white/20 text-white'
-                    : 'bg-white/5 text-white/40 hover:bg-white/10 hover:text-white/60'
-                }`}
-              >
-                {speed}x
-              </button>
-            ))}
-          </div>
+        {/* Satellite Count */}
+        <div className="absolute top-3 left-3 pointer-events-none z-20">
+          <p className="font-label text-[10px] text-white/70">
+            {satCount.toLocaleString()} SATELLITES TRACKED
+          </p>
         </div>
 
         {/* Selected Satellite Panel */}
@@ -752,61 +732,84 @@ export default function SatelliteTracker({ className }: Props) {
                   setSelectedPos(null)
                   if (orbitLineRef.current) orbitLineRef.current.visible = false
                 }}
-                className="text-white/40 hover:text-white/80 text-xs ml-2"
+                className="text-white/60 hover:text-white/80 text-xs ml-2"
               >
                 &times;
               </button>
             </div>
             <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
-              <span className="font-label text-[9px] text-white/40">NORAD ID</span>
+              <span className="font-label text-[9px] text-white/60">NORAD ID</span>
               <span className="font-label text-[9px] text-white/70">{selectedSat.noradId}</span>
-              <span className="font-label text-[9px] text-white/40">ALTITUDE</span>
+              <span className="font-label text-[9px] text-white/60">ALTITUDE</span>
               <span className="font-label text-[9px] text-white/70">{Math.round(selectedPos.alt)} km</span>
-              <span className="font-label text-[9px] text-white/40">SPEED</span>
+              <span className="font-label text-[9px] text-white/60">SPEED</span>
               <span className="font-label text-[9px] text-white/70">
                 {(Math.sqrt(398600.4418 / (EARTH_RADIUS_KM + selectedPos.alt)) ).toFixed(2)} km/s
               </span>
-              <span className="font-label text-[9px] text-white/40">PERIOD</span>
+              <span className="font-label text-[9px] text-white/60">PERIOD</span>
               <span className="font-label text-[9px] text-white/70">{selectedSat.period.toFixed(1)} min</span>
-              <span className="font-label text-[9px] text-white/40">INCLINATION</span>
+              <span className="font-label text-[9px] text-white/60">INCLINATION</span>
               <span className="font-label text-[9px] text-white/70">{selectedSat.inclination.toFixed(1)}°</span>
-              <span className="font-label text-[9px] text-white/40">CATEGORY</span>
+              <span className="font-label text-[9px] text-white/60">CATEGORY</span>
               <span className="font-label text-[9px] text-white/70">{CATEGORY_LABELS[selectedSat.category]}</span>
-              <span className="font-label text-[9px] text-white/40">LAT</span>
+              <span className="font-label text-[9px] text-white/60">LAT</span>
               <span className="font-label text-[9px] text-white/70">{selectedPos.lat.toFixed(2)}°</span>
-              <span className="font-label text-[9px] text-white/40">LON</span>
+              <span className="font-label text-[9px] text-white/60">LON</span>
               <span className="font-label text-[9px] text-white/70">{selectedPos.lon.toFixed(2)}°</span>
             </div>
           </div>
         )}
 
-        {/* View Mode Toggle */}
-        <div className="absolute bottom-3 right-3 flex gap-1 pointer-events-auto z-20">
-          <button
-            onClick={() => setViewMode('individual')}
-            className={`font-label text-[10px] px-2 py-1 transition-colors ${
-              viewMode === 'individual'
-                ? 'bg-white/20 text-white'
-                : 'bg-white/5 text-white/40 hover:bg-white/10'
-            }`}
-          >
-            Individual
-          </button>
-          <button
-            onClick={() => setViewMode('density')}
-            className={`font-label text-[10px] px-2 py-1 transition-colors ${
-              viewMode === 'density'
-                ? 'bg-white/20 text-white'
-                : 'bg-white/5 text-white/40 hover:bg-white/10'
-            }`}
-          >
-            Density
-          </button>
-        </div>
       </div>
 
       {/* Controls Below Visualiser */}
       <div className="mt-4 space-y-3">
+        {/* Time Speed + View Mode */}
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-2">
+            <span className="font-label text-xs text-[var(--text-tertiary)]">Speed</span>
+            <div className="flex gap-1">
+              {TIME_SPEEDS.map(speed => (
+                <button
+                  key={speed}
+                  onClick={() => setTimeSpeed(speed)}
+                  className={`font-label text-xs px-3 py-1.5 transition-colors ${
+                    timeSpeed === speed
+                      ? 'bg-[var(--text-primary)] text-white'
+                      : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                  }`}
+                >
+                  {speed}x
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-label text-xs text-[var(--text-tertiary)]">View</span>
+            <div className="flex gap-1">
+              <button
+                onClick={() => setViewMode('individual')}
+                className={`font-label text-xs px-3 py-1.5 transition-colors ${
+                  viewMode === 'individual'
+                    ? 'bg-[var(--text-primary)] text-white'
+                    : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                }`}
+              >
+                Individual
+              </button>
+              <button
+                onClick={() => setViewMode('density')}
+                className={`font-label text-xs px-3 py-1.5 transition-colors ${
+                  viewMode === 'density'
+                    ? 'bg-[var(--text-primary)] text-white'
+                    : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                }`}
+              >
+                Density
+              </button>
+            </div>
+          </div>
+        </div>
         {/* Search */}
         <div className="relative">
           <input

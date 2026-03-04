@@ -958,17 +958,17 @@ export default function NeutronStarVisualiser({ className }: Props) {
             {STATES[currentState].label.toUpperCase()}
           </p>
           <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
-            <span className="font-label text-[9px] text-white/40">MASS</span>
+            <span className="font-label text-[9px] text-white/60">MASS</span>
             <span className="font-label text-[9px] text-white/70">{readout.mass}</span>
-            <span className="font-label text-[9px] text-white/40">RADIUS</span>
+            <span className="font-label text-[9px] text-white/60">RADIUS</span>
             <span className="font-label text-[9px] text-white/70">{readout.radius}</span>
-            <span className="font-label text-[9px] text-white/40">DENSITY</span>
+            <span className="font-label text-[9px] text-white/60">DENSITY</span>
             <span className="font-label text-[9px] text-white/70">{readout.density}</span>
-            <span className="font-label text-[9px] text-white/40">B FIELD</span>
+            <span className="font-label text-[9px] text-white/60">B FIELD</span>
             <span className="font-label text-[9px] text-white/70">{readout.bField}</span>
             {readout.period !== '-' && (
               <>
-                <span className="font-label text-[9px] text-white/40">PERIOD</span>
+                <span className="font-label text-[9px] text-white/60">PERIOD</span>
                 <span className="font-label text-[9px] text-white/70">{readout.period}</span>
               </>
             )}
@@ -977,7 +977,7 @@ export default function NeutronStarVisualiser({ className }: Props) {
 
         {/* State description */}
         <div className="absolute bottom-4 left-4 pointer-events-none">
-          <p className="font-nhg text-xs text-white/50 max-w-xs">
+          <p className="font-nhg text-xs text-white/70 max-w-xs">
             {STATES[currentState].description}
           </p>
         </div>
