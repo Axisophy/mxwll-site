@@ -42,8 +42,24 @@ export default function TagFilter({
     }
   }
 
+  const totalCount = tags.reduce((sum, t) => sum + t.count, 0)
+  const noneSelected = selectedTags.length === 0
+
   return (
     <div className="flex flex-wrap gap-x-6 gap-y-2">
+      <button
+        onClick={() => onTagsChange([])}
+        className={`
+          font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em]
+          transition-colors duration-150
+          ${noneSelected
+            ? 'text-[#0055FF]'
+            : 'text-[var(--text-primary)] hover:text-[#0055FF]'
+          }
+        `}
+      >
+        All{toSuperscript(totalCount)}
+      </button>
       {tags.map(({ tag, count }) => {
         const isActive = selectedTags.includes(tag)
         return (
