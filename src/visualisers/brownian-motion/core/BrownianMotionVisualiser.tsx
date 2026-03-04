@@ -249,7 +249,7 @@ export default function BrownianMotionVisualiser() {
 
       // Left panel label
       const fontSize = isMobile ? 11 : 13
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillStyle = TEXT_DIM
       ctx!.fillText('Microscale', 12, 24)
 
@@ -263,7 +263,7 @@ export default function BrownianMotionVisualiser() {
       // Top half of right: zoomed-out trajectory
       const trajH = rightH * 0.55
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('Random walk trajectory', rightX + 12, rightY + 24)
 
       // Draw trajectory centred
@@ -306,7 +306,7 @@ export default function BrownianMotionVisualiser() {
       const msdW = rightW - 60
 
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('Mean squared displacement', rightX + 12, msdY + 4)
 
       // MSD axes
@@ -322,7 +322,7 @@ export default function BrownianMotionVisualiser() {
 
       // Axis labels
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('t', msdX + msdW - 8, graphY + graphH + 14)
       ctx!.save()
       ctx!.translate(msdX - 8, graphY + graphH / 2)
@@ -352,7 +352,7 @@ export default function BrownianMotionVisualiser() {
 
           // Label
           ctx!.fillStyle = TEXT_PRIMARY
-          ctx!.font = `${fontSize}px monospace`
+          ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
           ctx!.fillText('<r²> = 2Dt', msdX + msdW - 80, graphY + 16)
         }
 
@@ -371,7 +371,7 @@ export default function BrownianMotionVisualiser() {
 
       // Phase label
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       let phase = ''
       if (elapsed < 12) phase = 'Collisions'
       else if (elapsed < 24) phase = 'Random walk'
@@ -382,7 +382,7 @@ export default function BrownianMotionVisualiser() {
 
       // Time
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText(`t = ${elapsed.toFixed(1)}s`, 12, H - 12)
 
       rafRef.current = requestAnimationFrame(draw)

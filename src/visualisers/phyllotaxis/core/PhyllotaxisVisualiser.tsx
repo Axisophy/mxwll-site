@@ -193,7 +193,7 @@ export default function PhyllotaxisVisualiser() {
 
       // --- HUD text ---
       const fontSize = isMobile ? 11 : 13
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
 
       // Seed count
       ctx!.fillStyle = TEXT_DIM
@@ -225,13 +225,13 @@ export default function PhyllotaxisVisualiser() {
 
         // Fibonacci note
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText('Consecutive Fibonacci numbers', W - (isMobile ? 190 : 220), H - 56)
       }
 
       // Phase indicator
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       let phaseLabel = ''
       if (elapsed < PHASE_ZOOM) phaseLabel = 'Growing'
       else if (elapsed < PHASE_FULL) phaseLabel = 'Zooming out'

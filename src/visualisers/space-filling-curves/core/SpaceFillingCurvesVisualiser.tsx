@@ -271,11 +271,11 @@ export default function SpaceFillingCurvesVisualiser() {
 
         // Labels
         ctx!.fillStyle = TEXT_PRIMARY
-        ctx!.font = `${fontSize}px monospace`
+        ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText(`Hilbert curve - Level ${levelIdx + 1}`, pad, 32)
 
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText(`${points.length} points`, pad, H - 12)
 
       } else if (elapsed < 38 && pLevels.length > 0) {
@@ -287,11 +287,11 @@ export default function SpaceFillingCurvesVisualiser() {
         drawCurve(points, PEANO_COLOUR, 1, pad, 50, W - pad * 2, H - 70)
 
         ctx!.fillStyle = TEXT_PRIMARY
-        ctx!.font = `${fontSize}px monospace`
+        ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText(`Peano curve - Level ${levelIdx + 1}`, pad, 32)
 
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText(`${points.length} points`, pad, H - 12)
 
       } else if (elapsed < 52 && hLevels.length > 0) {
@@ -329,17 +329,17 @@ export default function SpaceFillingCurvesVisualiser() {
         }
 
         ctx!.fillStyle = TEXT_PRIMARY
-        ctx!.font = `${fontSize}px monospace`
+        ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText('Locality preservation', pad, 32)
 
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText('Nearby points on the curve map to nearby points in 2D', pad, 32 + fontSize + 4)
       }
 
       // Phase indicator
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       let phase = ''
       if (elapsed < 20) phase = 'Hilbert'
       else if (elapsed < 38) phase = 'Peano'

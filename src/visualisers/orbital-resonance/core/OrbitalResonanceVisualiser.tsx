@@ -196,18 +196,18 @@ export default function OrbitalResonanceVisualiser() {
       // Labels
       const fontSize = isMobile ? 11 : 13
       ctx!.fillStyle = TEXT_PRIMARY
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText(label, cx - maxR, cy - maxR - 20)
 
       if (sublabel) {
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText(sublabel, cx - maxR, cy - maxR - 4)
       }
 
       // Body names
       if (!isMobile || bodies.length <= 4) {
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillStyle = TEXT_DIM
         for (const { body, x, y } of positions) {
           ctx!.fillText(body.name, x + body.size + 4, y + 3)
@@ -254,7 +254,7 @@ export default function OrbitalResonanceVisualiser() {
 
         // Resonance ratios
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText('Laplace resonance: every conjunction maintains orbital stability', 16, H - 16)
 
       } else if (elapsed < 42) {
@@ -274,7 +274,7 @@ export default function OrbitalResonanceVisualiser() {
         )
 
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText('Simple ratios → closed patterns. Irrational ratios → never close.', 16, H - 16)
 
       } else if (elapsed < 58) {
@@ -289,14 +289,14 @@ export default function OrbitalResonanceVisualiser() {
 
         // Period ratios
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         const ratioText = 'Period ratios: ~8:5, ~5:3, ~3:2, ~3:2, ~4:3, ~3:2'
         ctx!.fillText(ratioText, 16, H - 16)
       }
 
       // Phase indicator
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       let phase = ''
       if (elapsed < 20) phase = 'Galilean 1:2:4'
       else if (elapsed < 42) phase = 'Ratio explorer'

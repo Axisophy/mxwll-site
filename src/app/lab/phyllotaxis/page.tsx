@@ -19,13 +19,10 @@ export default function Page() {
           <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] mt-2">
             Golden angle seed packing
           </p>
-          <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6">
-            Plants pack seeds using a single angle - approximately 137.5°. This golden angle, derived from the golden ratio, produces the most efficient packing and creates the spiral patterns visible in sunflowers, pine cones, and succulents. Watch the pattern emerge, then see why non-golden angles fail.
-          </p>
           <div className="flex flex-wrap gap-2 mt-4">
-            <span className="font-nhg px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)] uppercase tracking-wider">Canvas 2D</span>
-            <span className="font-nhg px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)] uppercase tracking-wider">Mathematics</span>
-            <span className="font-nhg px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)] uppercase tracking-wider">Generative</span>
+            <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Canvas 2D</span>
+            <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Mathematics</span>
+            <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Generative</span>
           </div>
         </div>
       </section>
@@ -33,13 +30,23 @@ export default function Page() {
       {/* Visualiser */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         <div className="rounded-xl bg-[#03060f] overflow-hidden">
-          <div className="h-[500px] md:h-[700px] lg:h-[800px]">
+          <div className="aspect-square max-h-[80vh]">
             <PhyllotaxisVisualiser />
           </div>
         </div>
-        <div className="md:hidden mt-4 text-center">
-          <p className="font-nhg text-xs italic text-[var(--text-tertiary)]">
-            Best experienced on a larger screen for full seed count.
+      </section>
+
+      {/* Description */}
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <div className="max-w-3xl space-y-4 text-[var(--text-secondary)] leading-relaxed">
+          <p>
+            Plants pack seeds using a single angle - approximately 137.507764°. This is the golden angle: 360° divided by the golden ratio squared. It produces the most efficient packing because it is the most irrational number - the hardest to approximate with simple fractions - meaning seeds never line up in wasteful radial spokes.
+          </p>
+          <p>
+            The Fibonacci connection isn&apos;t a coincidence. Count the spirals in a sunflower head and you&apos;ll find consecutive Fibonacci numbers - 34 clockwise and 55 anticlockwise, or 55 and 89. These spirals are an emergent consequence of golden-angle packing, not a template the plant follows. The numbers appear because Fibonacci ratios are the best rational approximations to the golden ratio.
+          </p>
+          <p>
+            The biological mechanism is remarkably simple. New primordia (seed buds) form at the growth tip and are pushed outward by subsequent growth. Chemical inhibitors ensure each new primordium forms as far as possible from existing ones. This greedy algorithm, iterated thousands of times, converges on the golden angle without any global plan - an example of how local rules produce global order.
           </p>
         </div>
       </section>

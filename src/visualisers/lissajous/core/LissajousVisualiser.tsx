@@ -88,7 +88,7 @@ export default function LissajousVisualiser() {
       const cellH = gridH / rows
 
       const fontSize = isMobile ? 10 : 12
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
 
       for (let i = 0; i < TABLE_RATIOS.length; i++) {
         const col = i % cols
@@ -112,7 +112,7 @@ export default function LissajousVisualiser() {
 
       // Title
       ctx!.fillStyle = TEXT_PRIMARY
-      ctx!.font = `${isMobile ? 13 : 15}px monospace`
+      ctx!.font = `${isMobile ? 13 : 15}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('Frequency ratio table', 16, 36)
 
       ctx!.globalAlpha = 1
@@ -173,11 +173,11 @@ export default function LissajousVisualiser() {
       // Label
       const fontSize = isMobile ? 11 : 13
       ctx!.fillStyle = TEXT_PRIMARY
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('3:2 ratio - animated trace', 16, 28)
 
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('x = sin(3t + π/4)', 16, 28 + fontSize + 6)
       ctx!.fillText('y = cos(2t)', 16, 28 + (fontSize + 6) * 2)
     }
@@ -213,11 +213,11 @@ export default function LissajousVisualiser() {
       // Label
       const fontSize = isMobile ? 11 : 13
       ctx!.fillStyle = TEXT_PRIMARY
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText('Harmonograph - damped oscillation', 16, 28)
 
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize - 2}px monospace`
+      ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillText(`Damping: ${damping}`, 16, 28 + fontSize + 6)
     }
 
@@ -256,7 +256,7 @@ export default function LissajousVisualiser() {
       // Phase indicator
       const fontSize = isMobile ? 10 : 12
       ctx!.fillStyle = TEXT_DIM
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       let phase = ''
       if (elapsed < 15) phase = 'Ratio table'
       else if (elapsed < 30) phase = 'Animated trace'

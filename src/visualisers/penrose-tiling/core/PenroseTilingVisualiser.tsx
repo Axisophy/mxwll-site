@@ -221,7 +221,7 @@ export default function PenroseTilingVisualiser() {
 
       // HUD
       const fontSize = isMobile ? 11 : 13
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       ctx!.fillStyle = TEXT_DIM
       ctx!.fillText(`Level ${currentLevel}`, 16, H - 16)
       ctx!.fillText(`${levels[currentLevel].length} triangles`, 16, H - 34)
@@ -232,14 +232,14 @@ export default function PenroseTilingVisualiser() {
       else if (elapsed < 42) phase = 'Deflation'
       else phase = 'Fivefold symmetry'
       ctx!.fillStyle = elapsed >= 42 ? TEXT_PRIMARY : TEXT_DIM
-      ctx!.font = `${fontSize}px monospace`
+      ctx!.font = `${fontSize}px neue-haas-grotesk-text, sans-serif`
       const phaseW = ctx!.measureText(phase).width
       ctx!.fillText(phase, W - phaseW - 16, 28)
 
       // Aperiodic note at higher levels
       if (currentLevel >= 3) {
         ctx!.fillStyle = TEXT_DIM
-        ctx!.font = `${fontSize - 2}px monospace`
+        ctx!.font = `${fontSize - 2}px neue-haas-grotesk-text, sans-serif`
         ctx!.fillText('Aperiodic - never repeats', 16, 28)
       }
 
