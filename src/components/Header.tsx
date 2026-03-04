@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full bg-white">
+      <header className="w-full bg-black sticky top-0 z-50">
         <div className="px-4 md:px-8 lg:px-12 py-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -34,7 +34,7 @@ export default function Header() {
               className="block transition-opacity hover:opacity-70"
               aria-label="MXWLL Home"
             >
-              <Logo className="h-10 w-auto text-[var(--text-primary)]" />
+              <Logo className="h-10 w-auto text-white" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -44,7 +44,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`
-                    text-sm font-nhg text-[var(--text-primary)] whitespace-nowrap
+                    text-sm font-nhg text-white whitespace-nowrap
                     ${
                       pathname === link.href
                         ? 'underline'
@@ -67,21 +67,21 @@ export default function Header() {
             >
               <span
                 className={`
-                  w-6 h-[2px] bg-[var(--text-primary)]
+                  w-6 h-[2px] bg-white
                   transition-all duration-300 ease-in-out
                   ${mobileMenuOpen ? 'rotate-45 translate-y-[8px]' : ''}
                 `}
               />
               <span
                 className={`
-                  w-6 h-[2px] bg-[var(--text-primary)]
+                  w-6 h-[2px] bg-white
                   transition-all duration-300 ease-in-out
                   ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}
                 `}
               />
               <span
                 className={`
-                  w-6 h-[2px] bg-[var(--text-primary)]
+                  w-6 h-[2px] bg-white
                   transition-all duration-300 ease-in-out
                   ${mobileMenuOpen ? '-rotate-45 -translate-y-[8px]' : ''}
                 `}

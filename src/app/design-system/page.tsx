@@ -102,28 +102,28 @@ export default function DesignSystemPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
             <div>
               <h3 className="text-xl font-medium mb-6">Desktop Navigation</h3>
-              <div className="bg-[var(--bg-secondary)] rounded-xl p-8">
+              <div className="bg-black rounded-xl p-8">
                 <div className="flex flex-wrap gap-6 text-sm">
-                  <span className="text-[var(--text-primary)] underline">Work</span>
-                  <span className="text-[var(--text-primary)]">Lab</span>
-                  <span className="text-[var(--text-primary)]">Method</span>
-                  <span className="text-[var(--text-primary)]">Services</span>
-                  <span className="text-[var(--text-primary)]">About</span>
-                  <span className="text-[var(--text-primary)]">Contact</span>
-                  <span className="px-3 py-1 border border-[var(--text-primary)] text-[var(--text-primary)] text-sm">Get a Quote</span>
+                  <span className="text-white underline">Work</span>
+                  <span className="text-white">Lab</span>
+                  <span className="text-white">Method</span>
+                  <span className="text-white">Services</span>
+                  <span className="text-white">About</span>
+                  <span className="text-white">Contact</span>
+                  <span className="text-white text-sm">Get a Quote</span>
                 </div>
-                <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
-                  ACTIVE: UNDERLINE · HOVER: UNDERLINE · ALL BLACK
+                <p className="font-label text-[10px] text-white/50 mt-4">
+                  BLACK BG · WHITE TEXT · ACTIVE: UNDERLINE · STICKY TOP-0
                 </p>
               </div>
             </div>
             <div>
               <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">CLASSES</p>
               <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
-{`<nav className="hidden md:flex items-center gap-8">
+{`// Header: bg-black sticky top-0 z-50
+<nav className="hidden md:flex items-center gap-8">
   {navLinks.map(link => (
-    <Link className="text-sm font-text
-      text-[var(--text-primary)]
+    <Link className="text-sm font-nhg text-white
       \${pathname === link.href
         ? 'underline'
         : 'hover:underline'

@@ -176,7 +176,7 @@ Example: `src/widgets/flow-field-visualiser/FlowFieldVisualiser.tsx`
 - Use on: Header, Footer, all pages, design-system
 
 **Header:**
-- No border, not sticky
+- Black background (`bg-black`), white text/logo, sticky (`sticky top-0 z-50`)
 - Padding: `px-4 md:px-8 lg:px-12 py-6`
 - Logo h-10, hamburger on mobile (md:hidden)
 
