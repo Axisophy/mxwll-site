@@ -94,6 +94,7 @@ export default function WorkPage() {
       {/* Intro */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8">
         <div className="max-w-3xl">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">Work</h1>
           <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
             Work across explanation design, data visualisation, interactive systems, and scientific illustration. Each project starts with the same question: what does the audience need to understand, and what&apos;s the clearest path to get them there?
           </p>

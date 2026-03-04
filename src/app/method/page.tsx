@@ -16,7 +16,7 @@ export default function MethodPage() {
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
         <div className="max-w-4xl">
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">
-            How we work
+            Method
           </h1>
           <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
             Good work starts with understanding the problem clearly. We bring a systematic approach to every project - combining research, design thinking, and technical craft to produce work that is rigorous, elegant, and built to last.

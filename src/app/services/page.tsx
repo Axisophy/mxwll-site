@@ -13,7 +13,7 @@ export default function ServicesPage() {
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
         <div className="max-w-4xl">
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">
-            What we do
+            Services
           </h1>
           <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
             We work across a range of scales and formats - from single illustrations to full explanation systems. Every engagement starts with understanding what the work needs to do, and for whom.
@@ -149,8 +149,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Section 3 - How we work together */}
-      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20 bg-[var(--bg-secondary)]">
-        <div className="py-12 md:py-16 lg:py-20">
+      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
+        <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8 lg:p-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em] mb-12">
             How we work together
           </h2>
