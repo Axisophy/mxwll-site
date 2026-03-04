@@ -1,34 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-
-function MetadataDropdown({ title, children }: { title?: string; children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center ${title ? 'justify-between w-full' : ''} text-left`}
-      >
-        {title && <span className='text-sm'>{title}</span>}
-        <svg
-          className={`w-4 h-4 text-white/40 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-        >
-          <path strokeLinecap='square' strokeLinejoin='miter' strokeWidth={2} d='M19 9l-7 7-7-7' />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className='text-xs text-white/60 mt-2 leading-relaxed space-y-2'>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
+import MetadataDropdown from '@/components/MetadataDropdown';
 
 function TimelineItem({ year, first, winner }: { year: string; first: string; winner: string }) {
   return (
@@ -43,72 +15,51 @@ function TimelineItem({ year, first, winner }: { year: string; first: string; wi
 
 export default function NetworkEffectsPage() {
   return (
-    <main className='min-h-screen bg-black'>
-      {/* Header with Metadata Sidebar */}
+    <main className='min-h-screen'>
+      {/* Header */}
       <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12 lg:pb-16'>
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
-          {/* Left column - Title and description */}
-          <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
-              Why Your Competitor&apos;s Head Start Doesn&apos;t Matter
-            </h1>
-            <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
-              Network Effects and Market Timing
-            </p>
-            <p className='text-base text-white/70 max-w-3xl mt-6 md:mt-8 lg:mt-12'>
-              The companies that dominate their markets are rarely the ones that got there first. This explainer shows when first-mover advantage matters, when it doesn&apos;t, and what actually determines market outcomes.
-            </p>
-            {/* Tags */}
-            <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Explanation Design</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Interactive</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Strategy</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Business Leaders</span>
-            </div>
+        <h1 className='font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
+          Network Effects
+        </h1>
+        <p className='font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2'>
+          Why first-movers lose
+        </p>
+        <p className='font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12'>
+          The companies that dominate their markets are rarely the ones that got there first. A strategic framework for understanding network dynamics - from AltaVista to Google, MySpace to Facebook, Nokia to iPhone.
+        </p>
+        {/* Tags */}
+        <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Interactive</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Economics</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Data Visualisation</span>
+        </div>
+        {/* Metadata */}
+        <div className='flex flex-wrap gap-x-12 gap-y-6 mt-8 md:mt-12'>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Category</span>
+            <span className='font-nhg text-sm'>Explanation Design</span>
           </div>
-
-          {/* Right column - Portfolio Metadata */}
-          <div className='space-y-6'>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Category
-              </span>
-              <span className='text-sm'>Explanation Design</span>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Audience
-              </span>
-              <MetadataDropdown title='Business Leaders'>
-                <p>Executives and strategists who face competitive decisions about market timing, investment, and positioning. They&apos;ve heard &quot;first-mover advantage&quot; but haven&apos;t examined when it actually applies. The reward is a diagnostic framework for their own markets.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Approach
-              </span>
-              <MetadataDropdown>
-                <p>Lead with the counterintuitive conclusion: first doesn&apos;t mean winner. Use immediately recognisable examples (Google, Facebook, iPhone) to establish credibility before introducing the framework.</p>
-                <p>Structure follows inverted pyramid - conclusions first, supporting detail after. Respect executive reading patterns: assume interrupted attention, make key points scannable.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Adaptability
-              </span>
-              <MetadataDropdown>
-                <p>The network effects framework applies to any market with user-generated value: platforms, marketplaces, social products, standards-dependent technologies. The diagnostic questions work for strategic planning in any sector.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Technology
-              </span>
-              <span className='text-sm'>React, D3.js, SVG</span>
-            </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Audience</span>
+            <MetadataDropdown title='Business Leaders'>
+              <p>Executives and strategists who face competitive decisions about market timing, investment, and positioning.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Approach</span>
+            <MetadataDropdown>
+              <p>Lead with the counterintuitive conclusion: first doesn&apos;t mean winner. Use immediately recognisable examples to establish credibility before introducing the framework.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Technology</span>
+            <span className='font-nhg text-sm'>React, D3.js, SVG</span>
           </div>
         </div>
       </section>
+
+      {/* Dark content */}
+      <div className='bg-black text-white'>
 
       {/* Stage 1: HOOK */}
       <section className='relative h-[70vh] min-h-[500px] bg-black overflow-hidden flex items-center justify-center'>
@@ -515,6 +466,7 @@ export default function NetworkEffectsPage() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

@@ -1,111 +1,58 @@
 'use client';
 
-import { useState } from 'react';
 import { NetworkComparison } from './components/NetworkComparison';
 import { AttackSimulation } from './components/AttackSimulation';
 import { EpidemicSimulation } from './components/EpidemicSimulation';
-
-function MetadataDropdown({ title, children }: { title?: string; children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center ${title ? 'justify-between w-full' : ''} text-left`}
-      >
-        {title && <span className='text-sm'>{title}</span>}
-        <svg
-          className={`w-4 h-4 text-white/50 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-        >
-          <path strokeLinecap='square' strokeLinejoin='miter' strokeWidth={2} d='M19 9l-7 7-7-7' />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className='text-xs text-white/50 mt-2 leading-relaxed space-y-2'>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
+import MetadataDropdown from '@/components/MetadataDropdown';
 
 export default function NetworkTheoryPage() {
   return (
-    <main className='min-h-screen bg-black'>
-      {/* Header with Metadata Sidebar */}
-      <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20'>
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
-          {/* Left column - Title and description */}
-          <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
-              Fragile by Design
-            </h1>
-            <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
-              How topology shapes resilience, epidemics, and information flow
-            </p>
-            <p className='text-base text-white/70 max-w-3xl mt-6 md:mt-8 lg:mt-12'>
-              Not all networks fail the same way. A random network degrades gracefully under attack. A scale-free network - the topology of the internet, airline routes, and social graphs - can survive random failures but collapses catastrophically when its hubs are targeted. These interactive experiments make the mathematics of connection tangible.
-            </p>
-            {/* Tags */}
-            <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/50'>Interactive</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/50'>Systems</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/50'>Network theory</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/50'>Mxwll</span>
-            </div>
+    <main className='min-h-screen'>
+      {/* Header */}
+      <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12 lg:pb-16'>
+        <h1 className='font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
+          Network Theory
+        </h1>
+        <p className='font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2'>
+          How topology shapes resilience, epidemics, and information flow
+        </p>
+        <p className='font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12'>
+          Interactive network topology comparison, epidemic spread simulation, and attack resilience testing. Force-directed graph layout with random vs scale-free network generation.
+        </p>
+        {/* Tags */}
+        <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>SVG</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Mathematics</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Simulation</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Interactive</span>
+        </div>
+        {/* Metadata */}
+        <div className='flex flex-wrap gap-x-12 gap-y-6 mt-8 md:mt-12'>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Category</span>
+            <span className='font-nhg text-sm'>Interactive Design</span>
           </div>
-
-          {/* Right column - Portfolio Metadata */}
-          <div className='space-y-6'>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
-                Category
-              </span>
-              <span className='text-sm'>Interactive Design</span>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
-                Audience
-              </span>
-              <MetadataDropdown title='Students and systems thinkers'>
-                <p>Anyone curious about why some systems are fragile and others resilient. From students encountering graph theory to engineers designing robust infrastructure.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
-                Approach
-              </span>
-              <MetadataDropdown>
-                <p>Interactive experiments let users break networks and watch epidemics spread. Seeing scale-free networks disintegrate under targeted attack makes the hub vulnerability viscerally clear.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
-                Adaptability
-              </span>
-              <MetadataDropdown>
-                <p>The same framework applies to any system modelled as nodes and edges: supply chains, organisational structures, infrastructure, social networks. The topology shapes the behaviour.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
-                Technology
-              </span>
-              <span className='text-sm'>React, TypeScript, SVG, Force-directed layout</span>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/50 block mb-2'>
-                Data
-              </span>
-              <span className='text-sm text-white/70'>Procedurally generated networks</span>
-            </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Audience</span>
+            <MetadataDropdown title='Students and systems thinkers'>
+              <p>Anyone curious about why some systems are fragile and others resilient. From students encountering graph theory to engineers designing robust infrastructure.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Approach</span>
+            <MetadataDropdown>
+              <p>Interactive experiments let users break networks and watch epidemics spread. Seeing scale-free networks disintegrate under targeted attack makes the hub vulnerability viscerally clear.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Technology</span>
+            <span className='font-nhg text-sm'>React, TypeScript, SVG, Force-directed layout</span>
           </div>
         </div>
       </section>
+
+      {/* Dark content */}
+      <div className='bg-black text-white'>
 
       {/* Static image placeholder */}
       <section className='px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20'>
@@ -196,6 +143,7 @@ export default function NetworkTheoryPage() {
           </ul>
         </div>
       </section>
+      </div>
     </main>
   );
 }

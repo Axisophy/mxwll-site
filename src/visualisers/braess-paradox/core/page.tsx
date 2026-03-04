@@ -1,34 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-
-function MetadataDropdown({ title, children }: { title?: string; children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center ${title ? 'justify-between w-full' : ''} text-left`}
-      >
-        {title && <span className='text-sm'>{title}</span>}
-        <svg
-          className={`w-4 h-4 text-white/40 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-        >
-          <path strokeLinecap='square' strokeLinejoin='miter' strokeWidth={2} d='M19 9l-7 7-7-7' />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className='text-xs text-white/60 mt-2 leading-relaxed space-y-2'>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
+import MetadataDropdown from '@/components/MetadataDropdown';
 
 function CaseStudyCard({ city, year, action, result }: { city: string; year: string; action: string; result: string }) {
   return (
@@ -45,72 +17,52 @@ function CaseStudyCard({ city, year, action, result }: { city: string; year: str
 
 export default function BraessParadoxPage() {
   return (
-    <main className='min-h-screen bg-black'>
-      {/* Header with Metadata Sidebar */}
+    <main className='min-h-screen'>
+      {/* Header */}
       <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12 lg:pb-16'>
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
-          {/* Left column - Title and description */}
-          <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
-              The Braess Paradox
-            </h1>
-            <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
-              When More Makes Things Worse
-            </p>
-            <p className='text-base text-white/70 max-w-3xl mt-6 md:mt-8 lg:mt-12'>
-              Adding a new highway can make traffic worse. Expanding capacity can reduce throughput. This isn&apos;t a paradox - it&apos;s game theory. Understanding why individual optimization creates collective harm is essential for effective infrastructure and network policy.
-            </p>
-            {/* Tags */}
-            <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Explanation Design</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Interactive</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Policy</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Game Theory</span>
-            </div>
+        <h1 className='font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
+          The Braess Paradox
+        </h1>
+        <p className='font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2'>
+          When More Makes Things Worse
+        </p>
+        <p className='font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12'>
+          Adding a new highway can make traffic worse. Expanding capacity can reduce throughput. This isn&apos;t a paradox - it&apos;s game theory. Understanding why individual optimisation creates collective harm is essential for effective infrastructure and network policy.
+        </p>
+        {/* Tags */}
+        <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Interactive</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Game Theory</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Mathematics</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Simulation</span>
+        </div>
+        {/* Metadata */}
+        <div className='flex flex-wrap gap-x-12 gap-y-6 mt-8 md:mt-12'>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Category</span>
+            <span className='font-nhg text-sm'>Explanation Design</span>
           </div>
-
-          {/* Right column - Portfolio Metadata */}
-          <div className='space-y-6'>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Category
-              </span>
-              <span className='text-sm'>Explanation Design</span>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Audience
-              </span>
-              <MetadataDropdown title='Policymakers'>
-                <p>Officials and analysts involved in infrastructure, urban planning, or network governance. They understand that systems are complex but may not have encountered formal game theory. The reward is a diagnostic framework for identifying when capacity expansion will backfire.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Approach
-              </span>
-              <MetadataDropdown>
-                <p>Lead with the dramatic real-world example (Seoul&apos;s highway removal) to establish that this isn&apos;t academic theory - it&apos;s observed reality. Then introduce the formal mechanism through the classic Braess network.</p>
-                <p>Evidence-based throughout with citations. Interactive simulation makes the paradox visceral rather than abstract.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Adaptability
-              </span>
-              <MetadataDropdown>
-                <p>The Braess Paradox applies to any network where individual agents choose routes: road networks, internet traffic, power grids, supply chains. The game-theoretic framework (Nash equilibrium vs system optimum) transfers directly.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Technology
-              </span>
-              <span className='text-sm'>React, D3.js, Network Simulation</span>
-            </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Audience</span>
+            <MetadataDropdown title='Policymakers'>
+              <p>Officials and analysts involved in infrastructure, urban planning, or network governance. They understand that systems are complex but may not have encountered formal game theory.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Approach</span>
+            <MetadataDropdown>
+              <p>Lead with the dramatic real-world example (Seoul&apos;s highway removal) to establish that this isn&apos;t academic theory - it&apos;s observed reality. Then introduce the formal mechanism through the classic Braess network.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Technology</span>
+            <span className='font-nhg text-sm'>React, D3.js, Network Simulation</span>
           </div>
         </div>
       </section>
+
+      {/* Dark content */}
+      <div className='bg-black text-white'>
 
       {/* Stage 1: HOOK */}
       <section className='relative h-[70vh] min-h-[500px] bg-black overflow-hidden flex items-center justify-center'>
@@ -595,6 +547,7 @@ export default function BraessParadoxPage() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

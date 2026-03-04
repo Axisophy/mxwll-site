@@ -1,113 +1,64 @@
 'use client';
 
-import { useState } from 'react';
 import { MissionMap } from './components/MissionMap';
 import { TransferAnimation } from './components/TransferAnimation';
 import { TransferDesigner } from './components/TransferDesigner';
 import { MissionStoryboard } from './components/MissionStoryboard';
-
-function MetadataDropdown({ title, children }: { title?: string; children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center ${title ? 'justify-between w-full' : ''} text-left`}
-      >
-        {title && <span className='text-sm'>{title}</span>}
-        <svg
-          className={`w-4 h-4 text-white/40 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-        >
-          <path strokeLinecap='square' strokeLinejoin='miter' strokeWidth={2} d='M19 9l-7 7-7-7' />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className='text-xs text-white/60 mt-2 leading-relaxed space-y-2'>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
+import MetadataDropdown from '@/components/MetadataDropdown';
 
 export default function OrbitalMechanicsPage() {
   return (
-    <main className='min-h-screen bg-black'>
-      {/* Header with Metadata Sidebar */}
+    <main className='min-h-screen'>
+      {/* Header */}
       <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12 lg:pb-16'>
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16'>
-          {/* Left column - Title and description */}
-          <div className='lg:col-span-2'>
-            <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
-              Orbital Mechanics
-            </h1>
-            <p className='text-lg md:text-xl lg:text-2xl font-normal text-white/70 mt-2'>
-              A Beginner&apos;s Guide
-            </p>
-            <p className='text-base text-white/70 max-w-3xl mt-6 md:mt-8 lg:mt-12'>
-              An accessible introduction to how spacecraft navigate  - from the counterintuitive physics of orbits to the elegant mathematics of getting to the Moon. Designed to explain what mission controllers actually do without requiring any calculus.
-            </p>
-            {/* Tags */}
-            <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Explanation Design</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Interactive</span>
-              <span className='px-3 py-1 text-xs bg-white/10 text-white/60'>Space</span>
-            </div>
+        <h1 className='font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]'>
+          Orbital Mechanics
+        </h1>
+        <p className='font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2'>
+          How spacecraft navigate
+        </p>
+        <p className='font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12'>
+          How spacecraft navigate - from the counterintuitive physics of orbits to Hohmann transfers and gravity assists. An interactive transfer designer with real mission profiles.
+        </p>
+        {/* Tags */}
+        <div className='flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8'>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Canvas 2D</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Physics</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Simulation</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Interactive</span>
+          <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Space</span>
+        </div>
+        {/* Metadata */}
+        <div className='flex flex-wrap gap-x-12 gap-y-6 mt-8 md:mt-12'>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Category</span>
+            <span className='font-nhg text-sm'>Explanation Design</span>
           </div>
-
-          {/* Right column - Portfolio Metadata */}
-          <div className='space-y-6'>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Category
-              </span>
-              <span className='text-sm'>Explanation Design</span>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Audience
-              </span>
-              <MetadataDropdown title='Generally interested adults'>
-                <p>Curious people who&apos;ve watched rocket launches and wondered how spacecraft actually navigate. They know orbits exist but don&apos;t understand why going faster can make you slow down, or why you can&apos;t just point at the Moon and fire. The reward is understanding what mission controllers see when they plot a trajectory.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Approach
-              </span>
-              <MetadataDropdown>
-                <p>Start by acknowledging the counterintuition: space travel doesn&apos;t work like driving a car. Then build understanding through the key insight that orbits are just falling  - perpetually missing the ground.</p>
-                <p>The Hohmann transfer provides a concrete, visual example. Interactive sliders let people discover the relationships themselves. Real mission profiles connect the abstract to the familiar.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Adaptability
-              </span>
-              <MetadataDropdown>
-                <p>This approach  - acknowledge counterintuition, provide key insight, build through interactive exploration  - works for any subject where common intuition is wrong. Relativity, quantum mechanics, evolutionary biology, economics.</p>
-                <p>The interactive trajectory framework extends to any dynamical system: interplanetary transfers, satellite constellations, even non-space applications like optimal routing.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Technology
-              </span>
-              <span className='text-sm'>React, TypeScript, SVG</span>
-            </div>
-            <div>
-              <span className='text-xs font-nhg uppercase tracking-wider text-white/40 block mb-2'>
-                Data
-              </span>
-              <span className='text-sm text-white/70'>NASA mission profiles, JPL Horizons</span>
-            </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Audience</span>
+            <MetadataDropdown title='Generally interested adults'>
+              <p>Curious people who&apos;ve watched rocket launches and wondered how spacecraft actually navigate. The reward is understanding what mission controllers see when they plot a trajectory.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Approach</span>
+            <MetadataDropdown>
+              <p>Start by acknowledging the counterintuition: space travel doesn&apos;t work like driving a car. Then build understanding through the key insight that orbits are just falling - perpetually missing the ground.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Technology</span>
+            <span className='font-nhg text-sm'>React, TypeScript, SVG</span>
+          </div>
+          <div>
+            <span className='font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2'>Data</span>
+            <span className='font-nhg text-sm text-[var(--text-secondary)]'>NASA mission profiles, JPL Horizons</span>
           </div>
         </div>
       </section>
+
+      {/* Dark content */}
+      <div className='bg-black text-white'>
 
       {/* Stage 1: HOOK - Visual */}
       <section className='relative h-[50vh] min-h-[400px] bg-black overflow-hidden flex items-center justify-center'>
@@ -536,6 +487,7 @@ export default function OrbitalMechanicsPage() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

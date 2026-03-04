@@ -11,7 +11,27 @@ export const metadata: Metadata = {
 
 export default function GalaxyMergerPage() {
   return (
-    <main className='min-h-screen bg-black text-white'>
+    <main className='min-h-screen'>
+      {/* Header */}
+      <section className='px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12'>
+        <div className='max-w-4xl'>
+          <h1 className='font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.03em] leading-[1.1]'>
+            Galaxy Merger
+          </h1>
+          <p className='font-nhg text-lg md:text-xl text-[var(--text-secondary)] mt-2'>
+            N-body simulation of two galaxies colliding. 100,000 particles with timeline scrubbing, speed control, and narrative event markers through the merger process.
+          </p>
+          <div className='flex flex-wrap gap-2 mt-4'>
+            <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Three.js</span>
+            <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Astronomy</span>
+            <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Simulation</span>
+            <span className='px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'>Generative</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Dark content */}
+      <div className='bg-black text-white'>
       {/* Hero */}
       <section className='relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden'>
         <div className='absolute inset-0 bg-gradient-radial from-[#0a1628] to-black' />
@@ -265,6 +285,7 @@ export default function GalaxyMergerPage() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }
