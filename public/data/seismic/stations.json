@@ -1,0 +1,518 @@
+[
+  {
+    "network": "IU",
+    "station": "MAJO",
+    "latitude": 42.236,
+    "longitude": 143.415,
+    "distance_deg": 5,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 40
+      },
+      {
+        "phase": "S",
+        "time_s": 70
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "INCN",
+    "latitude": 47.067,
+    "longitude": 148.23,
+    "distance_deg": 12,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 96
+      },
+      {
+        "phase": "S",
+        "time_s": 168
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "TATO",
+    "latitude": 51.144,
+    "longitude": 163.776,
+    "distance_deg": 24,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 192
+      },
+      {
+        "phase": "S",
+        "time_s": 336
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "GUMO",
+    "latitude": 51.153,
+    "longitude": 165.354,
+    "distance_deg": 25,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 200
+      },
+      {
+        "phase": "S",
+        "time_s": 350
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "CTAO",
+    "latitude": 23.248,
+    "longitude": 204.393,
+    "distance_deg": 55,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 440
+      },
+      {
+        "phase": "S",
+        "time_s": 770
+      },
+      {
+        "phase": "PcP",
+        "time_s": 610
+      },
+      {
+        "phase": "PP",
+        "time_s": 650
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "NWAO",
+    "latitude": -8.302,
+    "longitude": 193.158,
+    "distance_deg": 72,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 576
+      },
+      {
+        "phase": "S",
+        "time_s": 1008
+      },
+      {
+        "phase": "PcP",
+        "time_s": 644
+      },
+      {
+        "phase": "PP",
+        "time_s": 820
+      }
+    ]
+  },
+  {
+    "network": "II",
+    "station": "BFO",
+    "latitude": -24.762,
+    "longitude": 169.496,
+    "distance_deg": 82,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 656
+      },
+      {
+        "phase": "S",
+        "time_s": 1148
+      },
+      {
+        "phase": "PcP",
+        "time_s": 664
+      },
+      {
+        "phase": "PP",
+        "time_s": 920
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "KEV",
+    "latitude": 2.967,
+    "longitude": 201.23,
+    "distance_deg": 66,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 528
+      },
+      {
+        "phase": "S",
+        "time_s": 924
+      },
+      {
+        "phase": "PcP",
+        "time_s": 632
+      },
+      {
+        "phase": "PP",
+        "time_s": 760
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "KONO",
+    "latitude": -11.907,
+    "longitude": 189.43,
+    "distance_deg": 74,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 592
+      },
+      {
+        "phase": "S",
+        "time_s": 1036
+      },
+      {
+        "phase": "PcP",
+        "time_s": 648
+      },
+      {
+        "phase": "PP",
+        "time_s": 840
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "HRV",
+    "latitude": -36.171,
+    "longitude": 126.674,
+    "distance_deg": 94,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 752
+      },
+      {
+        "phase": "S",
+        "time_s": 1316
+      },
+      {
+        "phase": "PP",
+        "time_s": 1040
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "ANMO",
+    "latitude": -31.932,
+    "longitude": 149.739,
+    "distance_deg": 88,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 704
+      },
+      {
+        "phase": "S",
+        "time_s": 1232
+      },
+      {
+        "phase": "PcP",
+        "time_s": 676
+      },
+      {
+        "phase": "PP",
+        "time_s": 980
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "TUC",
+    "latitude": -31.932,
+    "longitude": 149.739,
+    "distance_deg": 88,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 704
+      },
+      {
+        "phase": "S",
+        "time_s": 1232
+      },
+      {
+        "phase": "PcP",
+        "time_s": 676
+      },
+      {
+        "phase": "PP",
+        "time_s": 980
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "CCM",
+    "latitude": -35.124,
+    "longitude": 134.672,
+    "distance_deg": 92,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 736
+      },
+      {
+        "phase": "S",
+        "time_s": 1288
+      },
+      {
+        "phase": "PP",
+        "time_s": 1020
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "WCI",
+    "latitude": -35.695,
+    "longitude": 130.708,
+    "distance_deg": 93,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 744
+      },
+      {
+        "phase": "S",
+        "time_s": 1302
+      },
+      {
+        "phase": "PP",
+        "time_s": 1030
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "SSPA",
+    "latitude": -36.548,
+    "longitude": 122.577,
+    "distance_deg": 95,
+    "in_p_shadow": false,
+    "in_s_shadow": false,
+    "arrivals": [
+      {
+        "phase": "P",
+        "time_s": 760
+      },
+      {
+        "phase": "S",
+        "time_s": 1330
+      },
+      {
+        "phase": "PP",
+        "time_s": 1050
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "SJG",
+    "latitude": -9.703,
+    "longitude": 17.665,
+    "distance_deg": 120,
+    "in_p_shadow": true,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1300
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "BBSR",
+    "latitude": -29.115,
+    "longitude": 57.525,
+    "distance_deg": 110,
+    "in_p_shadow": true,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1200
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "TSUM",
+    "latitude": 4.095,
+    "longitude": 1.419,
+    "distance_deg": 125,
+    "in_p_shadow": true,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1350
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "RCBR",
+    "latitude": 77.971,
+    "longitude": -21.134,
+    "distance_deg": 145,
+    "in_p_shadow": false,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1550
+      },
+      {
+        "phase": "PKP",
+        "time_s": 1270
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "SAML",
+    "latitude": 98.297,
+    "longitude": -13.512,
+    "distance_deg": 150,
+    "in_p_shadow": false,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1600
+      },
+      {
+        "phase": "PKP",
+        "time_s": 1300
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "PAYG",
+    "latitude": 13.524,
+    "longitude": -6.664,
+    "distance_deg": 128,
+    "in_p_shadow": true,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1380
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "SDV",
+    "latitude": 38.297,
+    "longitude": -19.627,
+    "distance_deg": 135,
+    "in_p_shadow": true,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1450
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "LCO",
+    "latitude": 136.351,
+    "longitude": 18.958,
+    "distance_deg": 160,
+    "in_p_shadow": false,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1700
+      },
+      {
+        "phase": "PKP",
+        "time_s": 1360
+      },
+      {
+        "phase": "PKIKP",
+        "time_s": 1330.0
+      }
+    ]
+  },
+  {
+    "network": "IU",
+    "station": "PMSA",
+    "latitude": 118.003,
+    "longitude": -0.111,
+    "distance_deg": 155,
+    "in_p_shadow": false,
+    "in_s_shadow": true,
+    "arrivals": [
+      {
+        "phase": "PP",
+        "time_s": 1650
+      },
+      {
+        "phase": "PKP",
+        "time_s": 1330
+      },
+      {
+        "phase": "PKIKP",
+        "time_s": 1302.5
+      }
+    ]
+  }
+]

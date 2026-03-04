@@ -1,0 +1,92 @@
+[
+  {
+    "isotope": "U-238",
+    "title": "The Beginning",
+    "content": "The first step takes 4.468 billion years \u2014 almost exactly the age of the Earth. Half of all the uranium that existed when the Earth formed has already decayed.",
+    "highlight": "Half-life equals the age of our planet"
+  },
+  {
+    "isotope": "Th-234",
+    "title": "The Pace Quickens",
+    "content": "After billions of years of patience, the pace quickens. Thorium-234 lasts only 24 days.",
+    "highlight": "10 orders of magnitude faster"
+  },
+  {
+    "isotope": "Pa-234m",
+    "title": "A Minute's Rest",
+    "content": "Even faster. Protactinium-234m decays in barely a minute. The 'm' means metastable \u2014 an excited nuclear state.",
+    "highlight": "Metastable isomer"
+  },
+  {
+    "isotope": "U-234",
+    "title": "Back to Uranium",
+    "content": "Back to uranium \u2014 but a lighter version. This one waits 245,000 years. Since anatomically modern humans first appeared.",
+    "highlight": "Human timescales"
+  },
+  {
+    "isotope": "Th-230",
+    "title": "Another Long Wait",
+    "content": "Another thorium, another wait. 75,000 years \u2014 since humans first entered Europe.",
+    "highlight": "Prehistoric timescales"
+  },
+  {
+    "isotope": "Ra-226",
+    "title": "Marie Curie's Element",
+    "content": "Radium-226. Marie Curie's element, discovered in 1898. Half-life: 1,600 years \u2014 the time since the Roman Empire.",
+    "highlight": "Historical discovery"
+  },
+  {
+    "isotope": "Rn-222",
+    "title": "The Dangerous Gas",
+    "content": "Radon-222. The only gas in the chain. It seeps up through soil and into basements. This is why uranium in bedrock can cause lung cancer.",
+    "highlight": "Health hazard \u2014 second leading cause of lung cancer"
+  },
+  {
+    "isotope": "Po-218",
+    "title": "The Cascade Begins",
+    "content": "Three minutes. The cascade is accelerating. We're entering the fast part of the chain.",
+    "highlight": "Rapid succession begins"
+  },
+  {
+    "isotope": "Pb-214",
+    "title": "Lead Interlude",
+    "content": "Lead-214. A brief stop in a sequence of beta decays. About 27 minutes \u2014 the length of a commute.",
+    "highlight": "First appearance of lead"
+  },
+  {
+    "isotope": "Bi-214",
+    "title": "Bismuth Transition",
+    "content": "Bismuth-214. Twenty minutes. Another beta decay, converting a neutron to a proton.",
+    "highlight": "Beta decay sequence"
+  },
+  {
+    "isotope": "Po-214",
+    "title": "The Fastest Step",
+    "content": "And then \u2014 the fastest step. Polonium-214 exists for 164 microseconds. In the time it takes light to travel 49 kilometres, this atom has already transformed. This step is 860 billion trillion times faster than the first.",
+    "highlight": "164 microseconds \u2014 10\u00b2\u00b9 times faster than U-238"
+  },
+  {
+    "isotope": "Pb-210",
+    "title": "A Generation",
+    "content": "Lead-210 catches its breath. 22 years \u2014 a human generation. Long enough to watch a child grow up.",
+    "highlight": "Human lifetime scale"
+  },
+  {
+    "isotope": "Bi-210",
+    "title": "A Working Week",
+    "content": "Bismuth-210. Five days. A working week in nuclear time.",
+    "highlight": "Last beta decay"
+  },
+  {
+    "isotope": "Po-210",
+    "title": "The Final Transformation",
+    "content": "The final transformation. Polonium-210 \u2014 the element used to assassinate Alexander Litvinenko in 2006. Intensely radioactive, emitting energetic alpha particles.",
+    "highlight": "Historical notoriety"
+  },
+  {
+    "isotope": "Pb-206",
+    "title": "Journey's End",
+    "content": "Lead-206. Stable. The journey is complete. From 92 protons to 82, from 146 neutrons to 124. Eight alpha particles ejected, six beta decays completed. 4.5 billion years, 14 steps.",
+    "highlight": "Stable end product"
+  }
+]

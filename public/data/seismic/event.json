@@ -1,0 +1,9 @@
+{
+  "name": "2011 Tohoku-Oki Earthquake",
+  "time_utc": "2011-03-11T05:46:23",
+  "latitude": 38.297,
+  "longitude": 142.373,
+  "depth_km": 30.0,
+  "magnitude": 9.1,
+  "type": "Megathrust"
+}

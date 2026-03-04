@@ -1,0 +1,98 @@
+{
+  "radius_km": 6371,
+  "layers": [
+    {
+      "name": "Inner Core",
+      "r_inner": 0,
+      "r_outer": 1221,
+      "vp": 11.1,
+      "vs": 3.6,
+      "rho": 13.0,
+      "color": "#FFD700"
+    },
+    {
+      "name": "Outer Core",
+      "r_inner": 1221,
+      "r_outer": 3480,
+      "vp": 9.5,
+      "vs": 0,
+      "rho": 11.0,
+      "color": "#FF6B35"
+    },
+    {
+      "name": "Lower Mantle",
+      "r_inner": 3480,
+      "r_outer": 5711,
+      "vp": 12.0,
+      "vs": 6.5,
+      "rho": 4.8,
+      "color": "#2D5016"
+    },
+    {
+      "name": "Transition Zone",
+      "r_inner": 5711,
+      "r_outer": 5961,
+      "vp": 9.7,
+      "vs": 5.3,
+      "rho": 3.7,
+      "color": "#3A6B1E"
+    },
+    {
+      "name": "Upper Mantle",
+      "r_inner": 5961,
+      "r_outer": 6346,
+      "vp": 8.0,
+      "vs": 4.5,
+      "rho": 3.4,
+      "color": "#4A8B2E"
+    },
+    {
+      "name": "Crust",
+      "r_inner": 6346,
+      "r_outer": 6371,
+      "vp": 6.5,
+      "vs": 3.5,
+      "rho": 2.8,
+      "color": "#6B8E23"
+    }
+  ],
+  "discontinuities": [
+    {
+      "name": "CMB",
+      "depth_km": 2891,
+      "radius_km": 3480
+    },
+    {
+      "name": "ICB",
+      "depth_km": 5150,
+      "radius_km": 1221
+    },
+    {
+      "name": "410",
+      "depth_km": 410,
+      "radius_km": 5961
+    },
+    {
+      "name": "660",
+      "depth_km": 660,
+      "radius_km": 5711
+    },
+    {
+      "name": "Moho",
+      "depth_km": 24.4,
+      "radius_km": 6346.6
+    }
+  ],
+  "shadow_zones": {
+    "s_wave": {
+      "start_deg": 103,
+      "end_deg": 180,
+      "cause": "S-waves cannot travel through liquid outer core"
+    },
+    "p_wave": {
+      "start_deg": 103,
+      "end_deg": 142,
+      "cause": "P-waves refract around liquid outer core"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "U-238": {
+    "oklch": "oklch(0.65 0.20 270)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 270,
+    "label": "hue 270\u00b0"
+  },
+  "Th-234": {
+    "oklch": "oklch(0.65 0.20 146)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 146,
+    "label": "hue 146\u00b0"
+  },
+  "Pa-234m": {
+    "oklch": "oklch(0.65 0.20 95)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 95,
+    "label": "hue 95\u00b0"
+  },
+  "U-234": {
+    "oklch": "oklch(0.65 0.20 221)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 221,
+    "label": "hue 221\u00b0"
+  },
+  "Th-230": {
+    "oklch": "oklch(0.65 0.20 215)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 215,
+    "label": "hue 215\u00b0"
+  },
+  "Ra-226": {
+    "oklch": "oklch(0.65 0.20 196)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 196,
+    "label": "hue 196\u00b0"
+  },
+  "Rn-222": {
+    "oklch": "oklch(0.65 0.20 137)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 137,
+    "label": "hue 137\u00b0"
+  },
+  "Po-218": {
+    "oklch": "oklch(0.65 0.20 99)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 99,
+    "label": "hue 99\u00b0"
+  },
+  "Pb-214": {
+    "oklch": "oklch(0.65 0.20 110)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 110,
+    "label": "hue 110\u00b0"
+  },
+  "Bi-214": {
+    "oklch": "oklch(0.65 0.20 109)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 109,
+    "label": "hue 109\u00b0"
+  },
+  "Po-214": {
+    "oklch": "oklch(0.65 0.20 30)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 30,
+    "label": "hue 30\u00b0"
+  },
+  "Pb-210": {
+    "oklch": "oklch(0.65 0.20 175)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 175,
+    "label": "hue 175\u00b0"
+  },
+  "Bi-210": {
+    "oklch": "oklch(0.65 0.20 138)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 138,
+    "label": "hue 138\u00b0"
+  },
+  "Po-210": {
+    "oklch": "oklch(0.65 0.20 155)",
+    "lightness": 0.65,
+    "chroma": 0.2,
+    "hue": 155,
+    "label": "hue 155\u00b0"
+  },
+  "Pb-206": {
+    "oklch": "oklch(0.50 0 0)",
+    "lightness": 0.5,
+    "chroma": 0,
+    "hue": 0,
+    "label": "stable (grey)"
+  }
+}

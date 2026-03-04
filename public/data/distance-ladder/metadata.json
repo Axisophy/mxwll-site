@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-02-12T06:53:16",
+  "rungs": {
+    "parallax": {
+      "count": 100,
+      "file": "parallax_stars.json",
+      "description": "Nearby stars with parallax measurements"
+    },
+    "cepheids": {
+      "count": 936,
+      "file": "cepheids.json",
+      "description": "Classical Cepheid variables with P-L data"
+    },
+    "supernovae": {
+      "count": 129,
+      "file": "supernovae.json",
+      "description": "Type Ia supernovae as standardizable candles"
+    },
+    "hubble": {
+      "file": "hubble_diagram.json",
+      "description": "Hubble diagram with tension comparison"
+    }
+  }
+}

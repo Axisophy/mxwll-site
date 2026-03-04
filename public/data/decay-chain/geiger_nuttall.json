@@ -1,0 +1,42 @@
+[
+  {
+    "isotope": "U-238",
+    "alpha_energy_keV": 4198,
+    "log10_half_life": 17.15
+  },
+  {
+    "isotope": "U-234",
+    "alpha_energy_keV": 4775,
+    "log10_half_life": 12.89
+  },
+  {
+    "isotope": "Th-230",
+    "alpha_energy_keV": 4687,
+    "log10_half_life": 12.38
+  },
+  {
+    "isotope": "Ra-226",
+    "alpha_energy_keV": 4784,
+    "log10_half_life": 10.7
+  },
+  {
+    "isotope": "Rn-222",
+    "alpha_energy_keV": 5489,
+    "log10_half_life": 5.52
+  },
+  {
+    "isotope": "Po-218",
+    "alpha_energy_keV": 6003,
+    "log10_half_life": 2.27
+  },
+  {
+    "isotope": "Po-214",
+    "alpha_energy_keV": 7687,
+    "log10_half_life": -3.78
+  },
+  {
+    "isotope": "Po-210",
+    "alpha_energy_keV": 5304,
+    "log10_half_life": 7.08
+  }
+]

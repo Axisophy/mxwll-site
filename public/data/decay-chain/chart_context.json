@@ -1,0 +1,171 @@
+{
+  "viewport": {
+    "z_min": 81,
+    "z_max": 93,
+    "n_min": 123,
+    "n_max": 147
+  },
+  "chain_path": [
+    {
+      "N": 146,
+      "Z": 92,
+      "isotope": "U-238"
+    },
+    {
+      "N": 144,
+      "Z": 90,
+      "isotope": "Th-234"
+    },
+    {
+      "N": 143,
+      "Z": 91,
+      "isotope": "Pa-234m"
+    },
+    {
+      "N": 142,
+      "Z": 92,
+      "isotope": "U-234"
+    },
+    {
+      "N": 140,
+      "Z": 90,
+      "isotope": "Th-230"
+    },
+    {
+      "N": 138,
+      "Z": 88,
+      "isotope": "Ra-226"
+    },
+    {
+      "N": 136,
+      "Z": 86,
+      "isotope": "Rn-222"
+    },
+    {
+      "N": 134,
+      "Z": 84,
+      "isotope": "Po-218"
+    },
+    {
+      "N": 132,
+      "Z": 82,
+      "isotope": "Pb-214"
+    },
+    {
+      "N": 131,
+      "Z": 83,
+      "isotope": "Bi-214"
+    },
+    {
+      "N": 130,
+      "Z": 84,
+      "isotope": "Po-214"
+    },
+    {
+      "N": 128,
+      "Z": 82,
+      "isotope": "Pb-210"
+    },
+    {
+      "N": 127,
+      "Z": 83,
+      "isotope": "Bi-210"
+    },
+    {
+      "N": 126,
+      "Z": 84,
+      "isotope": "Po-210"
+    },
+    {
+      "N": 124,
+      "Z": 82,
+      "isotope": "Pb-206"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "U-238",
+      "to": "Th-234",
+      "type": "alpha",
+      "half_life": "4.468 By"
+    },
+    {
+      "from": "Th-234",
+      "to": "Pa-234m",
+      "type": "beta_minus",
+      "half_life": "24.10 d"
+    },
+    {
+      "from": "Pa-234m",
+      "to": "U-234",
+      "type": "beta_minus",
+      "half_life": "1.17 m"
+    },
+    {
+      "from": "U-234",
+      "to": "Th-230",
+      "type": "alpha",
+      "half_life": "245.5 ky"
+    },
+    {
+      "from": "Th-230",
+      "to": "Ra-226",
+      "type": "alpha",
+      "half_life": "75.38 ky"
+    },
+    {
+      "from": "Ra-226",
+      "to": "Rn-222",
+      "type": "alpha",
+      "half_life": "1600 y"
+    },
+    {
+      "from": "Rn-222",
+      "to": "Po-218",
+      "type": "alpha",
+      "half_life": "3.823 d"
+    },
+    {
+      "from": "Po-218",
+      "to": "Pb-214",
+      "type": "alpha",
+      "half_life": "3.10 m"
+    },
+    {
+      "from": "Pb-214",
+      "to": "Bi-214",
+      "type": "beta_minus",
+      "half_life": "26.8 m"
+    },
+    {
+      "from": "Bi-214",
+      "to": "Po-214",
+      "type": "beta_minus",
+      "half_life": "19.9 m"
+    },
+    {
+      "from": "Po-214",
+      "to": "Pb-210",
+      "type": "alpha",
+      "half_life": "164 \u03bcs"
+    },
+    {
+      "from": "Pb-210",
+      "to": "Bi-210",
+      "type": "beta_minus",
+      "half_life": "22.20 y"
+    },
+    {
+      "from": "Bi-210",
+      "to": "Po-210",
+      "type": "beta_minus",
+      "half_life": "5.013 d"
+    },
+    {
+      "from": "Po-210",
+      "to": "Pb-206",
+      "type": "alpha",
+      "half_life": "138.4 d"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "title": "Gravity Makes Everything",
+  "subtitle": "A cosmic collision 4 billion years from now",
+  "intro": {
+    "hook": "The Milky Way and Andromeda are on a collision course. At 110 km/s, Andromeda is approaching \u2014 one of the few galaxies in the universe moving toward us instead of away.",
+    "stakes": "In roughly 4 billion years, our night sky will be transformed. Two spiral galaxies will become one elliptical giant: Milkomeda."
+  },
+  "sections": [
+    {
+      "title": "Nothing But Gravity",
+      "content": "This simulation uses a single force: gravity. No dark energy, no magnetic fields, no gas dynamics. Just F = Gm\u2081m\u2082/r\u00b2. Every tidal tail, every bridge of stars, every distortion you see emerges from this one equation applied 50,000 times per timestep."
+    },
+    {
+      "title": "Stars Never Collide",
+      "content": "Despite the violence of the merger, individual stars almost never collide. The average distance between stars is 160 billion kilometers \u2014 galaxies are mostly empty space. When these galaxies \"collide,\" their stars pass through each other like two clouds of gnats."
+    },
+    {
+      "title": "But Gas Does",
+      "content": "Interstellar gas is different. When gas clouds collide, they compress and heat up, triggering massive bursts of star formation. The merger will light up with new stars \u2014 blue, hot, and short-lived."
+    },
+    {
+      "title": "Our Solar System's Fate",
+      "content": "Earth will likely survive. Our Solar System will be flung to the outskirts of the new galaxy \u2014 perhaps 100,000 light-years from the core. The Sun will still be warming Earth (it has 5 billion years of fuel left). But our descendants will see a completely different night sky."
+    }
+  ],
+  "physics": {
+    "title": "The Physics",
+    "barnes_hut": "Direct N-body simulation scales as O(N\u00b2) \u2014 impossibly slow for 50,000 particles. The Barnes-Hut algorithm uses an octree to approximate distant particle groups, reducing complexity to O(N log N). Distant stars are treated as a single mass at their center of gravity.",
+    "softening": "Gravitational softening prevents numerical singularities when particles pass too close. The potential \u03a6 = -Gm/\u221a(r\u00b2 + \u03b5\u00b2) remains finite as r \u2192 0. This represents the finite size of the stellar systems each particle represents.",
+    "leapfrog": "The leapfrog integrator updates positions and velocities in a staggered pattern, naturally conserving energy over long simulations. It's the standard choice for collisionless galaxy dynamics."
+  },
+  "science": {
+    "title": "The Science",
+    "probability": "Recent research (Sawala et al. 2025) revised the merger probability. A head-on collision in 4-5 Gyr has only 2% probability. Including the Large Magellanic Cloud's gravitational influence, the merger probability within 10 Gyr is about 50%.",
+    "dating": "Galaxy mergers are fundamental to cosmic structure formation. Most massive elliptical galaxies formed through mergers. The Milky Way itself has absorbed dozens of smaller galaxies over billions of years."
+  }
+}
