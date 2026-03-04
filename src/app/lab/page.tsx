@@ -128,6 +128,13 @@ const labItems = [
     slug: '/lab/solar-system-scale',
     status: 'Live',
   },
+  {
+    title: 'Pulsar',
+    description: 'A rotating neutron star with its radio beam sweeping past like a lighthouse. Drag to change spin speed, tilt to lose the signal. Three presets: normal pulsar, millisecond pulsar, magnetar.',
+    tags: ['Three.js', 'Web Audio', 'Astrophysics'],
+    slug: '/lab/pulsar',
+    status: 'Live',
+  },
   // --- In Development ---
   {
     title: 'What\'s Inside Your Console?',
