@@ -51,6 +51,7 @@ const allWork = [
     slug: 'stellar-evolution',
     label: 'A map of how stars live and die',
     tags: ['Astronomy', 'Interactive', 'Explanation Design'],
+    videoUrl: '/video/hr_animation.mp4',
   },
   {
     title: 'Exoplanet Systems',
@@ -93,7 +94,6 @@ const allWork = [
 // Map slugs to demo components for animated card backgrounds
 const DEMO_CARDS: Record<string, React.ReactNode> = {
   'stellar-cartography': <StellarDemo className="w-full h-full" />,
-  'stellar-evolution': <StellarDemo className="w-full h-full" />,
   'solar-wavelength': <SolarWorkDemo className="w-full h-full" />,
 }
 

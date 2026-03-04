@@ -34,72 +34,72 @@ export default function StellarEvolutionPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header with Metadata Sidebar */}
+      {/* Header */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-12 lg:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
-          {/* Left column - Title and description */}
-          <div className="lg:col-span-2">
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
-              Stellar Evolution
-            </h1>
-            <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
-              A map of how stars live and die
-            </p>
-            <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
-              An accessible guide to stellar lifecycles - from the hydrogen-burning main sequence to red giants, white dwarfs, and beyond. Using the Hertzsprung-Russell diagram as our map, we explore how every star in the night sky is on a journey through the same cosmic story.
-            </p>
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8">
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Explanation Design</span>
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Interactive</span>
-              <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Astronomy</span>
-            </div>
-          </div>
+        <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] leading-[1.1]">
+          Stellar Evolution
+        </h1>
+        <p className="font-nhg text-lg md:text-xl lg:text-2xl font-normal text-[var(--text-secondary)] mt-2">
+          A map of how stars live and die
+        </p>
+        <p className="font-nhg text-base text-[var(--text-secondary)] max-w-3xl mt-6 md:mt-8 lg:mt-12">
+          An accessible guide to stellar lifecycles - from the hydrogen-burning main sequence to red giants, white dwarfs, and beyond. Using the Hertzsprung-Russell diagram as our map, we explore how every star in the night sky is on a journey through the same cosmic story.
+        </p>
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mt-4 md:mt-6 lg:mt-8">
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Explanation Design</span>
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Interactive</span>
+          <span className="px-3 py-1 text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)]">Astronomy</span>
+        </div>
 
-          {/* Right column - Portfolio Metadata */}
-          <div className="space-y-6">
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Category
-              </span>
-              <span className="font-nhg text-sm">Explanation Design</span>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Audience
-              </span>
-              <MetadataDropdown title="Generally interested adults">
-                <p>Curious people who know stars exist, have heard of red giants and black holes, but don&apos;t understand how stellar lifecycles actually work. They&apos;ve never seen an HR diagram or wouldn&apos;t know how to read one. The reward is understanding what astronomers see when they look at the night sky.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Approach
-              </span>
-              <MetadataDropdown>
-                <p>The HR diagram is introduced as &quot;a map that shows every star&apos;s past and future&quot; - not &quot;astronomy&apos;s most powerful classification tool.&quot; We start with personal stake (the Sun will die), then progressively build understanding through concrete examples.</p>
-                <p>Famous stars provide orientation. The Sun&apos;s evolutionary path shows that the diagram isn&apos;t static. Different mass stars show that initial conditions determine destiny.</p>
-              </MetadataDropdown>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Technology
-              </span>
-              <span className="font-nhg text-sm">React, Canvas, D3.js</span>
-            </div>
-            <div>
-              <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
-                Data
-              </span>
-              <span className="font-nhg text-sm text-[var(--text-secondary)]">Gaia DR3 (3 million stars)</span>
-            </div>
+        {/* Portfolio Metadata */}
+        <div className="flex flex-wrap gap-x-12 gap-y-6 mt-8 md:mt-12">
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Category
+            </span>
+            <span className="font-nhg text-sm">Explanation Design</span>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Audience
+            </span>
+            <MetadataDropdown title="Generally interested adults">
+              <p>Curious people who know stars exist, have heard of red giants and black holes, but don&apos;t understand how stellar lifecycles actually work. They&apos;ve never seen an HR diagram or wouldn&apos;t know how to read one. The reward is understanding what astronomers see when they look at the night sky.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Approach
+            </span>
+            <MetadataDropdown>
+              <p>The HR diagram is introduced as &quot;a map that shows every star&apos;s past and future&quot; - not &quot;astronomy&apos;s most powerful classification tool.&quot; We start with personal stake (the Sun will die), then progressively build understanding through concrete examples.</p>
+              <p>Famous stars provide orientation. The Sun&apos;s evolutionary path shows that the diagram isn&apos;t static. Different mass stars show that initial conditions determine destiny.</p>
+            </MetadataDropdown>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Technology
+            </span>
+            <span className="font-nhg text-sm">React, Canvas, D3.js</span>
+          </div>
+          <div>
+            <span className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] block mb-2">
+              Data
+            </span>
+            <span className="font-nhg text-sm text-[var(--text-secondary)]">Gaia DR3 (3 million stars)</span>
           </div>
         </div>
       </section>
 
       {/* Video Hook */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="rounded-xl overflow-hidden bg-black">
+        <div className="rounded-xl overflow-hidden bg-[#050508] relative" style={{ aspectRatio: '16/10' }}>
+          {!isVideoReady && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-6 h-6 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
+            </div>
+          )}
           <video
             ref={videoRef}
             preload="auto"
@@ -107,21 +107,20 @@ export default function StellarEvolutionPage() {
             playsInline
             loop
             onCanPlayThrough={handleCanPlayThrough}
-            className={`w-full h-auto transition-opacity duration-500 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
-            style={{ aspectRatio: '16/9' }}
+            className={`w-full h-full object-cover transition-opacity duration-500 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
           >
-            <source src="https://bangindustries.co/video/hr_animation.mp4" type="video/mp4" />
+            <source src="/video/hr_animation.mp4" type="video/mp4" />
           </video>
         </div>
       </section>
 
       {/* Stars Don't Last Forever */}
       <section className="px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Stars Don&apos;t Last Forever
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               The Sun rises every morning. It&apos;s been doing that for as long as humans have existed, and for billions of years before that. It feels permanent - the most reliable thing in the sky.
             </p>
@@ -143,11 +142,11 @@ export default function StellarEvolutionPage() {
 
       {/* The Map - Annotated HR Diagram */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
+        <div className="max-w-3xl mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Map
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               A century ago, astronomers discovered something remarkable. If you plot stars by their colour (which tells you temperature) against their brightness, they don&apos;t scatter randomly. They cluster in patterns.
             </p>
@@ -167,11 +166,11 @@ export default function StellarEvolutionPage() {
 
       {/* Three Million Stars */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
+        <div className="max-w-3xl mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Three Million Stars
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               That&apos;s the theory. Here&apos;s the reality.
             </p>
@@ -197,11 +196,11 @@ export default function StellarEvolutionPage() {
 
       {/* Stars You Know - Famous Stars Explorer */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
+        <div className="max-w-3xl mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Stars You Know
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Let&apos;s find some familiar faces on this map.
             </p>
@@ -221,11 +220,11 @@ export default function StellarEvolutionPage() {
 
       {/* The Sun's Future - Solar Evolution Pathway */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
+        <div className="max-w-3xl mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             The Sun&apos;s Future
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Stars don&apos;t stay in one place on this diagram. They move - slowly, over billions of years.
             </p>
@@ -251,11 +250,11 @@ export default function StellarEvolutionPage() {
 
       {/* Mass Is Destiny - Stellar Pathways */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12 mb-8">
+        <div className="max-w-3xl mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Mass Is Destiny
           </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Not all stars end as white dwarfs. A star&apos;s mass at birth determines everything about its life - how long it lives, how brightly it burns, and how it dies.
             </p>
@@ -277,35 +276,37 @@ export default function StellarEvolutionPage() {
       </section>
 
       {/* Reading the Night Sky */}
-      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[var(--bg-tertiary)]">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
-            Reading the Night Sky
-          </h2>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
-            <p>
-              Look at the HR diagram now, and you see something different than you did ten minutes ago.
-            </p>
-            <p>
-              You see a population - billions of stars, each on its own journey. The main sequence isn&apos;t just a cluster; it&apos;s where stars spend most of their lives. The outliers aren&apos;t random; they&apos;re stars at the beginning or end of their stories.
-            </p>
-            <p>
-              You can find a star like Betelgeuse and know it&apos;s near death. You can find a white dwarf and know it&apos;s a stellar corpse. You can find a blue giant and know it&apos;s burning through its fuel at a furious rate.
-            </p>
-            <p className="text-[var(--text-primary)]">
-              The night sky isn&apos;t static. It&apos;s a snapshot of stellar lives in progress. Now you can read it.
-            </p>
+      <section className="px-4 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24">
+        <div className="bg-[var(--bg-secondary)] rounded-xl p-6 md:p-8">
+          <div className="max-w-3xl">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
+              Reading the Night Sky
+            </h2>
+            <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
+              <p>
+                Look at the HR diagram now, and you see something different than you did ten minutes ago.
+              </p>
+              <p>
+                You see a population - billions of stars, each on its own journey. The main sequence isn&apos;t just a cluster; it&apos;s where stars spend most of their lives. The outliers aren&apos;t random; they&apos;re stars at the beginning or end of their stories.
+              </p>
+              <p>
+                You can find a star like Betelgeuse and know it&apos;s near death. You can find a white dwarf and know it&apos;s a stellar corpse. You can find a blue giant and know it&apos;s burning through its fuel at a furious rate.
+              </p>
+              <p className="text-[var(--text-primary)]">
+                The night sky isn&apos;t static. It&apos;s a snapshot of stellar lives in progress. Now you can read it.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Going Deeper */}
       <section className="px-4 md:px-8 lg:px-12 pt-16 md:pt-20 lg:pt-24 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Going Deeper
           </h2>
-          <p className="font-nhg text-[var(--text-tertiary)] text-sm">
+          <p className="font-nhg text-[var(--text-tertiary)] text-sm mt-4">
             For the curious - you&apos;ve got the main idea, this is extra.
           </p>
         </div>
@@ -313,11 +314,11 @@ export default function StellarEvolutionPage() {
 
       {/* Spectral Classification */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             Spectral Classification
           </h3>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Astronomers classify stars by spectral type: O, B, A, F, G, K, M - from hottest to coolest. The Sun is a G-type star. The letters come from historical classification systems, which is why they&apos;re not in alphabetical order.
             </p>
@@ -333,11 +334,11 @@ export default function StellarEvolutionPage() {
 
       {/* The Gaia Mission */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             The Gaia Mission
           </h3>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               The data behind these visualisations comes from the European Space Agency&apos;s Gaia spacecraft, which has measured the positions, distances, and brightnesses of nearly two billion stars with unprecedented precision.
             </p>
@@ -350,11 +351,11 @@ export default function StellarEvolutionPage() {
 
       {/* We Are Star Stuff */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h3 className="font-display text-2xl md:text-3xl font-bold tracking-[-0.03em]">
             We Are Star Stuff
           </h3>
-          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed">
+          <div className="space-y-4 font-nhg text-[var(--text-secondary)] leading-relaxed mt-6">
             <p>
               Stars don&apos;t just burn - they build. In their cores, they forge heavier elements from lighter ones. The Sun is currently fusing hydrogen into helium. Larger stars fuse helium into carbon, carbon into oxygen, all the way up to iron.
             </p>
@@ -370,11 +371,11 @@ export default function StellarEvolutionPage() {
 
       {/* Further Exploration */}
       <section className="px-4 md:px-8 lg:px-12 pb-16 md:pb-20 lg:pb-24 pt-16 md:pt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_7fr] gap-8 lg:gap-12">
+        <div className="max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-[-0.03em]">
             Further Exploration
           </h2>
-          <div>
+          <div className="mt-6">
             <div className="space-y-8">
               <div>
                 <h3 className="font-nhg text-xs uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
