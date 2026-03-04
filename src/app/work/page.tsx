@@ -70,6 +70,15 @@ const allWork = [
     label: 'One moment, eight wavelengths',
     tags: ['Astronomy', 'Data Visualisation', 'Canvas'],
   },
+  {
+    title: 'Space Mission Timeline',
+    description: 'Seven decades of reaching beyond Earth. A scrollytelling timeline of over 120 missions from Sputnik to the James Webb Space Telescope, colour-coded by destination with filterable views.',
+    category: 'EXPLANATION DESIGN',
+    year: '2026',
+    slug: 'space-missions',
+    label: 'Seven decades of reaching beyond Earth',
+    tags: ['Space History', 'Scrollytelling', 'Interactive'],
+  },
 ]
 
 // Map slugs to demo components for animated card backgrounds
