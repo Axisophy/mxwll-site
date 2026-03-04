@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import WorkCard from '@/components/WorkCard'
-import WorkFilter from '@/components/WorkFilter'
+import TagFilter from '@/components/TagFilter'
 
 const StellarDemo = dynamic(
   () => import('@/visualisers/stellar-cartography/demo/StellarDemo'),
@@ -23,7 +23,7 @@ const allWork = [
     year: '2026',
     slug: 'stellar-cartography',
     label: 'Four ways to see the same stars',
-    tags: ['Astronomy', 'Data Visualisation', 'WebGL'],
+    tags: ['WebGL', 'Astronomy', 'Data Visualisation', 'Interactive', 'Gaia'],
   },
   {
     title: 'The Chirp',
@@ -32,7 +32,7 @@ const allWork = [
     year: '2026',
     slug: 'gravitational-wave',
     label: 'How LIGO found a whisper from 1.3 billion years ago',
-    tags: ['Astronomy', 'Interactive', 'WebAudio'],
+    tags: ['Canvas 2D', 'Web Audio', 'Physics', 'Interactive', 'Simulation'],
   },
   {
     title: 'Chart of Nuclides',
@@ -41,7 +41,7 @@ const allWork = [
     year: '2026',
     slug: 'nuclide-chart',
     label: '3,352 ways to build an atom',
-    tags: ['Nuclear Physics', 'Interactive', 'Explanation Design'],
+    tags: ['SVG', 'Nuclear Physics', 'Interactive', 'Data Visualisation', 'IAEA'],
   },
   {
     title: 'Stellar Evolution',
@@ -50,7 +50,7 @@ const allWork = [
     year: '2026',
     slug: 'stellar-evolution',
     label: 'A map of how stars live and die',
-    tags: ['Astronomy', 'Interactive', 'Explanation Design'],
+    tags: ['SVG', 'Astronomy', 'Interactive', 'Data Visualisation', 'Gaia'],
     videoUrl: '/video/hr_animation.mp4',
   },
   {
@@ -60,7 +60,7 @@ const allWork = [
     year: '2026',
     slug: 'exoplanet-systems',
     label: 'A gallery of alien solar systems',
-    tags: ['Astronomy', 'NASA Data', 'Interactive'],
+    tags: ['Canvas 2D', 'Astronomy', 'NASA Data', 'Interactive', 'Data Visualisation'],
   },
   {
     title: 'Solar Wavelength',
@@ -69,7 +69,7 @@ const allWork = [
     year: '2026',
     slug: 'solar-wavelength',
     label: 'One moment, eight wavelengths',
-    tags: ['Astronomy', 'Data Visualisation', 'Canvas'],
+    tags: ['Canvas 2D', 'Astronomy', 'SDO', 'Data Visualisation'],
   },
   {
     title: 'Space Mission Timeline',
@@ -78,7 +78,7 @@ const allWork = [
     year: '2026',
     slug: 'space-missions',
     label: 'Seven decades of reaching beyond Earth',
-    tags: ['Space History', 'Scrollytelling', 'Interactive'],
+    tags: ['Scrollytelling', 'Space', 'NASA Data', 'Interactive', 'Data Visualisation'],
   },
   {
     title: 'Solar Activity',
@@ -87,7 +87,7 @@ const allWork = [
     year: '2026',
     slug: 'solar-activity',
     label: 'The Sun in action across two solar cycles',
-    tags: ['Solar Physics', 'Interactive', 'Canvas 2D'],
+    tags: ['Canvas 2D', 'Astronomy', 'SDO', 'Interactive'],
   },
 ]
 
@@ -97,34 +97,41 @@ const DEMO_CARDS: Record<string, React.ReactNode> = {
   'solar-wavelength': <SolarWorkDemo className="w-full h-full" />,
 }
 
-const categories = ['ALL', 'EXPLANATION DESIGN', 'STRATEGY']
+/** Build tag list with counts from project data */
+function buildTagCounts(items: { tags: string[] }[]): { tag: string; count: number }[] {
+  const counts = new Map<string, number>()
+  for (const item of items) {
+    for (const tag of item.tags) {
+      counts.set(tag, (counts.get(tag) || 0) + 1)
+    }
+  }
+  return Array.from(counts.entries())
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([tag, count]) => ({ tag, count }))
+}
 
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState('ALL')
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
 
-  const filteredWork =
-    activeCategory === 'ALL'
-      ? allWork
-      : allWork.filter((work) => work.category === activeCategory)
+  const tagCounts = useMemo(() => buildTagCounts(allWork), [])
+
+  const filteredWork = useMemo(() => {
+    if (selectedTags.length === 0) return allWork
+    // OR logic: show projects matching ANY selected tag
+    return allWork.filter(work =>
+      selectedTags.some(tag => work.tags.includes(tag))
+    )
+  }, [selectedTags])
 
   return (
     <>
-      {/* Intro */}
+      {/* Title + Filter */}
       <section className="px-4 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32 pb-8">
-        <div className="max-w-3xl">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">Work</h1>
-          <p className="font-nhg text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
-            Work across explanation design, data visualisation, interactive systems, and scientific illustration. Each project starts with the same question: what does the audience need to understand, and what&apos;s the clearest path to get them there?
-          </p>
-        </div>
-      </section>
-
-      {/* Filter Section */}
-      <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
-        <WorkFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-6">Work</h1>
+        <TagFilter
+          tags={tagCounts}
+          selectedTags={selectedTags}
+          onTagsChange={setSelectedTags}
         />
       </section>
 
@@ -139,7 +146,7 @@ export default function WorkPage() {
         ) : (
           <div className="py-24 text-center">
             <p className="text-lg text-[var(--text-secondary)]">
-              No work found in this category.
+              No work matches these tags.
             </p>
           </div>
         )}

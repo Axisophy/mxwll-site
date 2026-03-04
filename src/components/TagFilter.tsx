@@ -1,0 +1,68 @@
+'use client'
+
+interface TagFilterProps {
+  /** All tags with their counts, derived from project data */
+  tags: { tag: string; count: number }[]
+  /** Currently selected tags */
+  selectedTags: string[]
+  /** Callback when tags change */
+  onTagsChange: (tags: string[]) => void
+}
+
+const SUPERSCRIPT_DIGITS: Record<string, string> = {
+  '0': '\u2070',
+  '1': '\u00B9',
+  '2': '\u00B2',
+  '3': '\u00B3',
+  '4': '\u2074',
+  '5': '\u2075',
+  '6': '\u2076',
+  '7': '\u2077',
+  '8': '\u2078',
+  '9': '\u2079',
+}
+
+function toSuperscript(n: number): string {
+  return String(n)
+    .split('')
+    .map(d => SUPERSCRIPT_DIGITS[d] || d)
+    .join('')
+}
+
+export default function TagFilter({
+  tags,
+  selectedTags,
+  onTagsChange,
+}: TagFilterProps) {
+  const toggleTag = (tag: string) => {
+    if (selectedTags.includes(tag)) {
+      onTagsChange(selectedTags.filter(t => t !== tag))
+    } else {
+      onTagsChange([...selectedTags, tag])
+    }
+  }
+
+  return (
+    <div className="flex flex-wrap gap-x-4 gap-y-2">
+      {tags.map(({ tag, count }) => {
+        const isActive = selectedTags.includes(tag)
+        return (
+          <button
+            key={tag}
+            onClick={() => toggleTag(tag)}
+            className={`
+              font-label text-[11px] tracking-[0.05em] uppercase
+              transition-colors duration-150
+              ${isActive
+                ? 'text-[#0055FF]'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-tertiary)]'
+              }
+            `}
+          >
+            {tag}{toSuperscript(count)}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
