@@ -158,7 +158,7 @@ export function MissionMap() {
         </g>
       </svg>
 
-      <p className="text-xs text-black/50 mt-4">
+      <p className="text-xs text-black/50 mx-4 mb-4 mt-2">
         Schematic not to scale. The Moon orbits at 384,400 km; Earth&apos;s radius is 6,371 km.
         A true-scale diagram would show Earth as a barely visible dot.
       </p>

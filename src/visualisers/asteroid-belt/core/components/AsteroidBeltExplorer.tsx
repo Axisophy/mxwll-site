@@ -73,8 +73,8 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
 
   // Camera state
   const panRef = useRef({ x: 0, y: 0 });
-  const zoomRef = useRef(0.15);
-  const [, setZoom] = useState(0.15);
+  const zoomRef = useRef(0.35);
+  const [, setZoom] = useState(0.35);
 
   // Interaction state
   const isDraggingRef = useRef(false);
@@ -127,8 +127,8 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
     // Set appropriate camera for each view
     panRef.current = { x: 0, y: 0 };
     if (viewId === 'spatial') {
-      zoomRef.current = 0.15;
-      setZoom(0.15);
+      zoomRef.current = 0.35;
+      setZoom(0.35);
     } else {
       // All other views use 1.0 zoom
       zoomRef.current = 1.0;
@@ -355,7 +355,7 @@ export default function AsteroidBeltExplorer({ className = '' }: AsteroidBeltExp
 
         // Slow zoom animation for spatial view
         if (targetView === 'spatial' && activeView === 'spatial') {
-          zoomRef.current = 0.12 + viewPhase * 0.06;
+          zoomRef.current = 0.30 + viewPhase * 0.10;
           setZoom(zoomRef.current);
         }
       }
