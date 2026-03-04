@@ -79,6 +79,15 @@ const allWork = [
     label: 'Seven decades of reaching beyond Earth',
     tags: ['Space History', 'Scrollytelling', 'Interactive'],
   },
+  {
+    title: 'Solar Activity',
+    description: 'An interactive solar activity viewer spanning two solar cycles. Scrub through time to watch sunspots wax and wane, switch wavelength channels, and explore major flares and geomagnetic storms.',
+    category: 'EXPLANATION DESIGN',
+    year: '2026',
+    slug: 'solar-activity',
+    label: 'The Sun in action across two solar cycles',
+    tags: ['Solar Physics', 'Interactive', 'Canvas 2D'],
+  },
 ]
 
 // Map slugs to demo components for animated card backgrounds
