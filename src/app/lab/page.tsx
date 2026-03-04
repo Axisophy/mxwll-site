@@ -142,6 +142,13 @@ const labItems = [
     slug: '/lab/neutron-stars',
     status: 'Live',
   },
+  {
+    title: 'Earth\'s Orbital Neighbourhood',
+    description: 'Thousands of real satellites tracked in real time on a 3D globe. SGP4 propagation from CelesTrak TLE data, colour-coded by purpose, with constellation highlights and density view.',
+    tags: ['Three.js', 'satellite.js', 'Space'],
+    slug: '/lab/satellite-tracker',
+    status: 'Live',
+  },
   // --- In Development ---
   {
     title: 'What\'s Inside Your Console?',
