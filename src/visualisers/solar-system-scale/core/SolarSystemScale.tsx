@@ -139,10 +139,10 @@ export default function SolarSystemScale() {
                   {planet.name}
                 </h3>
                 <p className="font-nhg text-sm md:text-base text-gray-500 mt-1">
-                  {planet.diameter.toLocaleString()} km
+                  {planet.diameter.toLocaleString()} km diameter
                 </p>
-                <p className="font-nhg text-xs text-gray-400 mt-0.5">
-                  Tap for details
+                <p className="font-nhg text-xs text-gray-400 mt-1 max-w-xs mx-auto">
+                  {planet.description}
                 </p>
               </div>
             </div>
@@ -202,17 +202,20 @@ export default function SolarSystemScale() {
         </button>
       )}
 
-      {/* Swipe hint (first slide only) */}
-      {activeIndex === 0 && (
-        <div className="absolute top-4 right-4 md:hidden pointer-events-none">
-          <p className="font-nhg text-xs text-gray-400 flex items-center gap-1">
+      {/* Planet counter + swipe hint */}
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
+        <p className="font-label text-[10px] text-gray-400">
+          {activeIndex + 1} / {SLIDES.length}
+        </p>
+        {activeIndex === 0 && (
+          <p className="font-nhg text-xs text-gray-400 md:hidden flex items-center gap-1">
             Swipe
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </p>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Fact card */}
       {showFact && (
@@ -246,8 +249,8 @@ function FactCard({ planet, onClose }: { planet: PlanetData; onClose: () => void
         <h4 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] text-gray-900 pr-8">
           {planet.name}
         </h4>
-        <p className="font-nhg text-sm text-gray-500 mt-1">
-          {planet.description}
+        <p className="font-nhg text-sm text-gray-600 mt-1">
+          {planet.funComparison}
         </p>
 
         <div className="grid grid-cols-2 gap-3 mt-4">
@@ -273,10 +276,6 @@ function FactCard({ planet, onClose }: { planet: PlanetData; onClose: () => void
             {planet.fact}
           </p>
         </div>
-
-        <p className="font-nhg text-xs text-gray-400 mt-3">
-          {planet.funComparison}
-        </p>
       </div>
     </div>
   )
