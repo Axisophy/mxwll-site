@@ -32,11 +32,15 @@ Work / Lab / Method / About / Contact
 
 ### Colours (Light Mode)
 ```
---bg-primary:     #FAFAF8   (warm off-white)
---text-primary:   #1A1A18   (warm near-black)
---text-secondary: #6B6B66   (mid grey)
---text-tertiary:  #9B9B95   (light grey)
---border:         #D8D7D4   (subtle warm border)
+--bg-primary:     #FFFFFF   (white)
+--bg-secondary:   #F5F5F5   (light grey container)
+--bg-tertiary:    #E5E5E5   (nested container)
+--bg-diagram:     #EDEDEC   (light diagram/chart background)
+--text-primary:   #000000   (headings, emphasis)
+--text-secondary: #999999   (body text, descriptions)
+--text-tertiary:  #666666   (labels, metadata, captions)
+--border:         #D4D4D4   (standard border)
+--border-light:   #E5E5E5   (subtle border)
 ```
 Dark mode tokens are defined but not yet active.
 

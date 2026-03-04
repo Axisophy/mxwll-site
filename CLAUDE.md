@@ -158,7 +158,9 @@ Example: `src/widgets/flow-field-visualiser/FlowFieldVisualiser.tsx`
 **Colours:**
 - Background: `#FFFFFF` (white) - use `var(--bg-primary)`
 - Text primary: `#000000` - use `var(--text-primary)`
-- Text secondary: `#666666` - use `var(--text-secondary)`
+- Text secondary: `#999999` - use `var(--text-secondary)` (body text, descriptions)
+- Text tertiary: `#666666` - use `var(--text-tertiary)` (labels, metadata, captions)
+- Diagram background: `#EDEDEC` - use `var(--bg-diagram)` (light-theme diagrams/charts)
 - Always use CSS custom properties, never hardcode hex values
 - Status colours are Tailwind equivalents (green-500, yellow-500, etc.)
 

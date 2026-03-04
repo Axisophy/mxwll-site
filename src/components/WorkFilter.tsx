@@ -23,7 +23,7 @@ export default function WorkFilter({
             'font-display text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.03em] transition-colors',
             activeCategory === category
               ? 'text-[var(--text-primary)]'
-              : 'text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-tertiary)]'
           )}
         >
           {category}

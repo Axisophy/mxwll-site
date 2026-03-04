@@ -107,7 +107,7 @@ export function AnnotatedHRDiagram() {
 
   return (
     <div>
-      <div ref={containerRef} className='bg-white min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden'>
+      <div ref={containerRef} className='bg-[var(--bg-diagram)] min-h-[400px] md:min-h-[500px] rounded-xl overflow-hidden'>
         {dims && (
           <svg
             viewBox={`0 0 ${vw} ${vh}`}
@@ -115,7 +115,7 @@ export function AnnotatedHRDiagram() {
             style={{ minHeight: '400px' }}
           >
             {/* Background */}
-            <rect width={vw} height={vh} fill='white' />
+            <rect width={vw} height={vh} fill='#EDEDEC' />
 
             {/* Grid lines */}
             {TEMP_TICKS.map(t => {

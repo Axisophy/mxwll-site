@@ -263,7 +263,7 @@ export default function LabPage() {
       {/* Note */}
       <section className="px-4 md:px-8 lg:px-12 pb-16">
         <div className="max-w-3xl">
-          <p className="font-nhg text-base text-[var(--text-tertiary)] leading-relaxed">
+          <p className="font-nhg text-base text-[var(--text-secondary)] leading-relaxed">
             Lab projects are works in progress. Some will become client-ready tools. Some will remain experiments. All are built with real data and real science.
           </p>
         </div>

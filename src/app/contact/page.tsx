@@ -136,7 +136,7 @@ export default function ContactPage() {
               <form onSubmit={handleContactSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                  <label htmlFor="name" className="block font-nhg text-xs text-[var(--text-tertiary)] mb-2">
                     Name *
                   </label>
                   <input
@@ -151,7 +151,7 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                  <label htmlFor="email" className="block font-nhg text-xs text-[var(--text-tertiary)] mb-2">
                     E-mail *
                   </label>
                   <input
@@ -165,7 +165,7 @@ export default function ContactPage() {
 
                 {/* Organisation */}
                 <div>
-                  <label htmlFor="organisation" className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                  <label htmlFor="organisation" className="block font-nhg text-xs text-[var(--text-tertiary)] mb-2">
                     Organisation *
                   </label>
                   <input
@@ -180,7 +180,7 @@ export default function ContactPage() {
 
                 {/* Project Type */}
                 <div>
-                  <label htmlFor="projectType" className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                  <label htmlFor="projectType" className="block font-nhg text-xs text-[var(--text-tertiary)] mb-2">
                     Project type *
                   </label>
                   <select
@@ -200,7 +200,7 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                  <label htmlFor="message" className="block font-nhg text-xs text-[var(--text-tertiary)] mb-2">
                     Message *
                   </label>
                   <textarea
@@ -215,7 +215,7 @@ export default function ContactPage() {
 
                 {/* How Found */}
                 <div>
-                  <label htmlFor="howFound" className="block font-nhg text-xs text-[var(--text-secondary)] mb-2">
+                  <label htmlFor="howFound" className="block font-nhg text-xs text-[var(--text-tertiary)] mb-2">
                     How did you find us? (optional)
                   </label>
                   <input

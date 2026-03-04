@@ -157,7 +157,7 @@ export default function Page() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
-              <p className="font-nhg text-sm text-[var(--text-tertiary)] mb-3">{limit.subtitle}</p>
+              <p className="font-nhg text-sm text-[var(--text-secondary)] mb-3">{limit.subtitle}</p>
               <span className="font-mono text-xs text-[var(--text-secondary)] bg-[var(--bg-tertiary)] px-2 py-1 rounded">
                 {limit.equation}
               </span>

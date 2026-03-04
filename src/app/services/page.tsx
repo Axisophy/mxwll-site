@@ -159,7 +159,7 @@ export default function ServicesPage() {
 
             {/* Step 1 */}
             <div className="bg-[var(--bg-primary)] rounded-xl p-6 md:p-8">
-              <p className="font-display text-4xl font-bold text-[var(--text-tertiary)] mb-4">
+              <p className="font-display text-4xl font-bold text-[var(--text-secondary)] mb-4">
                 01
               </p>
               <h3 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-3">
@@ -172,7 +172,7 @@ export default function ServicesPage() {
 
             {/* Step 2 */}
             <div className="bg-[var(--bg-primary)] rounded-xl p-6 md:p-8">
-              <p className="font-display text-4xl font-bold text-[var(--text-tertiary)] mb-4">
+              <p className="font-display text-4xl font-bold text-[var(--text-secondary)] mb-4">
                 02
               </p>
               <h3 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-3">
@@ -185,7 +185,7 @@ export default function ServicesPage() {
 
             {/* Step 3 */}
             <div className="bg-[var(--bg-primary)] rounded-xl p-6 md:p-8">
-              <p className="font-display text-4xl font-bold text-[var(--text-tertiary)] mb-4">
+              <p className="font-display text-4xl font-bold text-[var(--text-secondary)] mb-4">
                 03
               </p>
               <h3 className="font-display text-xl md:text-2xl font-bold tracking-[-0.03em] mb-3">

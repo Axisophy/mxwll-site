@@ -224,9 +224,10 @@ text-[var(--color-pink)]
                   { name: 'BG Primary', value: '#FFFFFF', var: 'var(--bg-primary)' },
                   { name: 'BG Secondary', value: '#F5F5F5', var: 'var(--bg-secondary)' },
                   { name: 'BG Tertiary', value: '#E5E5E5', var: 'var(--bg-tertiary)' },
+                  { name: 'BG Diagram', value: '#EDEDEC', var: 'var(--bg-diagram)' },
                   { name: 'Text Primary', value: '#000000', var: 'var(--text-primary)' },
-                  { name: 'Text Secondary', value: '#666666', var: 'var(--text-secondary)' },
-                  { name: 'Text Tertiary', value: '#999999', var: 'var(--text-tertiary)' },
+                  { name: 'Text Secondary', value: '#999999', var: 'var(--text-secondary)' },
+                  { name: 'Text Tertiary', value: '#666666', var: 'var(--text-tertiary)' },
                   { name: 'Border', value: '#D4D4D4', var: 'var(--border)' },
                   { name: 'Border Light', value: '#E5E5E5', var: 'var(--border-light)' },
                 ].map(color => (
@@ -249,17 +250,22 @@ text-[var(--color-pink)]
   --bg-primary: #FFFFFF;
   --bg-secondary: #F5F5F5;
   --bg-tertiary: #E5E5E5;
+  --bg-diagram: #EDEDEC;
 
   --text-primary: #000000;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
+  --text-secondary: #999999;
+  --text-tertiary: #666666;
 
   --border: #D4D4D4;
   --border-light: #E5E5E5;
 }
 
-// Never hardcode hex values for main palette
-// Always use CSS custom properties`}
+// Text hierarchy:
+//   primary (#000) - headings, emphasis
+//   secondary (#999) - body text, descriptions
+//   tertiary (#666) - labels, metadata, captions
+// bg-diagram - light content areas (diagrams, charts)
+// Never hardcode hex values for main palette`}
               </pre>
             </div>
           </div>
@@ -292,6 +298,40 @@ bg-[#03060f]
 // Used for all WebGL, Canvas, and
 // Three.js visualiser backgrounds
 // Near-black with slight blue cast`}
+              </pre>
+            </div>
+          </div>
+
+          {/* Diagram Background */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-[var(--border-light)]">
+            <div>
+              <h3 className="text-xl font-medium mb-6">Diagram Background</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div
+                    className="h-20 rounded-xl border border-[var(--border)] cursor-pointer"
+                    style={{ backgroundColor: '#EDEDEC' }}
+                    onClick={() => copyToClipboard('var(--bg-diagram)')}
+                  />
+                  <p className="font-medium text-sm">BG Diagram</p>
+                  <code className="font-label text-[10px] text-[var(--text-tertiary)]">#EDEDEC</code>
+                </div>
+              </div>
+              <p className="font-label text-[10px] text-[var(--text-tertiary)] mt-4">
+                LIGHT CONTENT AREAS FOR DIAGRAMS AND CHARTS
+              </p>
+            </div>
+            <div>
+              <p className="font-label text-xs text-[var(--text-tertiary)] mb-2">USAGE</p>
+              <pre className="p-4 bg-[var(--bg-secondary)] rounded-xl text-xs overflow-x-auto">
+{`// Diagram/chart container background
+bg-[var(--bg-diagram)]
+
+// Subtle off-white for light-themed
+// diagrams and charts that sit inside
+// bg-secondary containers. Prevents
+// white content blending into containers.
+// Used by: Stellar Evolution HR diagrams`}
               </pre>
             </div>
           </div>

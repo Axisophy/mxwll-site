@@ -158,6 +158,12 @@ When you learn something the hard way, add it here. Format:
 - **Rule**: No border-radius on buttons - rounded corners are for content containers only.
 - **Rule**: Use `rounded-xl` consistently, never `rounded-lg` for containers.
 
+### Text Colour Hierarchy Update (2026-03-04)
+- **Problem**: text-secondary (#666666) and text-tertiary (#999999) were swapped relative to their intended hierarchy - body text was darker than labels.
+- **Solution**: Swapped values. text-secondary is now #999999 (lighter, for body text) and text-tertiary is now #666666 (darker, for labels/metadata). Added `--bg-diagram: #EDEDEC` for light-theme diagram backgrounds.
+- **Rule**: text-secondary = body text, descriptions. text-tertiary = labels, metadata, captions only. When interactive elements use both tokens for state (inactive/hover), ensure the visual progression goes lighter → darker toward active state.
+- **Rule**: Light-themed diagrams/charts that sit inside bg-secondary containers should use `bg-[var(--bg-diagram)]` instead of `bg-white` to prevent borderless appearance.
+
 ### Mobile Canvas Dimension Timing (2026-02-28)
 - **Problem**: Mobile visualiser views can render cropped or offset if canvas pixel size is resolved before layout is complete.
 - **Solution**: Resolve dimensions from `canvas.getBoundingClientRect()` after mount, set backing width/height with capped DPR, and gate animation start until dimensions are non-zero.
