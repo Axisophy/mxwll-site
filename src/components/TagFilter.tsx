@@ -43,7 +43,7 @@ export default function TagFilter({
   }
 
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-2">
+    <div className="flex flex-wrap gap-x-6 gap-y-2">
       {tags.map(({ tag, count }) => {
         const isActive = selectedTags.includes(tag)
         return (
@@ -51,11 +51,11 @@ export default function TagFilter({
             key={tag}
             onClick={() => toggleTag(tag)}
             className={`
-              font-label text-[11px] tracking-[0.05em] uppercase
+              font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em]
               transition-colors duration-150
               ${isActive
                 ? 'text-[#0055FF]'
-                : 'text-[var(--text-secondary)] hover:text-[var(--text-tertiary)]'
+                : 'text-[var(--text-primary)] hover:text-[#0055FF]'
               }
             `}
           >

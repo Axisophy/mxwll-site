@@ -146,7 +146,7 @@ export default function WorkPage() {
       {/* Work Grid */}
       <section className="px-4 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
         {filteredWork.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 gap-8 md:gap-12">
             {filteredWork.map((work) => (
               <WorkCard key={work.slug} {...work} demoElement={DEMO_CARDS[work.slug]} />
             ))}

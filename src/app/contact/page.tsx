@@ -104,15 +104,20 @@ export default function ContactPage() {
             </a>
           </div>
 
-          {/* Column 2 - Row 1: Get a quote */}
-          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
-              Get a quote
+          {/* Column 2 - Row 1: Instagram */}
+          <a
+            href="https://instagram.com/mxwll.studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[var(--bg-secondary)] hover:bg-blue-600 p-8 rounded-xl transition-colors group block"
+          >
+            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] group-hover:text-white mb-3 transition-colors">
+              Socials
             </h3>
-            <p className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] leading-[1.1]">
-              For a faster response with an instant estimate, use our quote tool - no call required.
-            </p>
-          </div>
+            <span className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] group-hover:text-white transition-colors">
+              Instagram ↗
+            </span>
+          </a>
 
           {/* Column 1 - Row 2: Get in touch */}
           <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
@@ -285,20 +290,6 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Column 1 - Row 3: Socials */}
-          <div className="bg-[var(--bg-secondary)] p-8 rounded-xl">
-            <h3 className="font-nhg text-base font-normal text-[var(--text-primary)] mb-3">
-              Socials
-            </h3>
-            <a
-              href="https://instagram.com/mxwll.studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-nhg text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] hover:opacity-70 transition-opacity"
-            >
-              Instagram ↗
-            </a>
-          </div>
         </div>
       </div>
     </div>
